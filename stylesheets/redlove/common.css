@@ -1,0 +1,2597 @@
+/* Put real @imports above this line - Google Fonts, etc. 
+
+@import url(http://fonts.googleapis.com/css?family=Oxygen|Source+Sans+Pro:400,300);
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900|Roboto:300,400,700,900|Open+Sans:300,400,700,800);
+@import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700|Droid+Serif:400,700italic);
+@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700,400italic,700italic|Great+Vibes);
+Philosopher, Muli, Ovo
+Adelle Sans, Kostic Serif
+Open Sans Condensed, Lora
+Open Sans, Gentium Basic
+Playfair Display, Fauna One
+Museo, Source Sans Pro
+
+*/
+
+/**
+* @version 0.0.0
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+*/
+
+/* ============================================================
+	Table of Contents
+============================================================
+	(Prepend file with @import and @charset as necessary)
+	# Reset
+	# Foundation
+	## Document
+	## Typography
+	## Lists
+	## Tables
+	## Forms
+	## Layout
+	# Components
+	# Color Glossary
+	# Site Styles
+	## Body and Liner
+	## Band, Wrap, and Liner
+	## Navigation
+	## Header
+	## Footer
+	## Content
+	# Page Styles
+	# Utility Helpers
+	# Responsive / Media Queries / Target Devices
+	# Fonts
+	# Print
+*/
+
+/* ============================================================
+	# Foundation
+============================================================ */
+
+/* --------------------------------------------------------------------------------
+	## Document
+-------------------------------------------------------------------------------- */
+
+/* 
+	Add dimensions to the inside of the element and not the outside
+	(borders and padding do not effect widths and heights)
+
+	<body>
+		<div class="border-box">
+			Content.
+		</div>
+	</body>
+---------------------------------------- */
+body *,
+.border-box * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* 
+	Help fix choppy scrolling on elements with overflow scrolling
+	http://stackoverflow.com/questions/12845892/ios-overflow-x-or-position-absolute-makes-scrolling-choppy
+---------------------------------------- */
+body * {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --------------------------------------------------------------------------------
+	## Typography
+-------------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------
+	Text elements
+------------------------------------------------------------ */
+
+/* 
+	Text elements - Headings
+---------------------------------------- */
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+	font-weight: normal;
+	margin-bottom: 0.4167em;
+	margin-bottom: 1.0rem;
+}
+	h1 a, .h1 a,
+	h2 a, .h2 a, 
+	h3 a, .h3 a,
+	h4 a, .h4 a,
+	h5 a, .h5 a,
+	h6 a, .h6 a {
+		color: inherit;
+		font-weight: inherit;
+	}
+h1, .h1 {
+	font-size: 48px;
+	font-size: 4.8rem;
+	
+	font-size: 50px;
+	font-size: 5.0rem;
+	/*letter-spacing: -0.1rem;*/
+	line-height: 1.2;
+}
+h2, .h2 {
+	font-size: 36px;
+	font-size: 3.6rem;
+	
+	font-size: 42px;
+	font-size: 4.2rem;
+	/*letter-spacing: -0.1rem;*/
+	line-height: 1.25;
+}
+h3, .h3 {
+	font-size: 28px;
+	font-size: 2.8rem;
+	
+	font-size: 36px;
+	font-size: 3.6rem;
+	/*letter-spacing: -0.1rem;*/
+	line-height: 1.3;
+}
+h4, .h4 {
+	font-size: 20px;
+	font-size: 2.0rem;
+	
+	font-size: 30px;
+	font-size: 3.0rem;
+	/*letter-spacing: -0.08rem;*/
+	line-height: 1.35;
+}
+h5, .h5 {
+	font-size: 18px;
+	font-size: 1.8rem;
+	
+	font-size: 24px;
+	font-size: 2.4rem;
+	/*letter-spacing: -0.05rem;*/
+	line-height: 1.5;
+}
+h6, .h6 {
+	font-size: 12px;
+	font-size: 1.2rem;
+	
+	font-size: 16px;
+	font-size: 1.6rem;
+	/*letter-spacing: 0.0rem;*/
+	line-height: 1.6;
+}
+/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
+@media only screen and (max-width: 47.99em) {
+	
+	h1, .h1 {
+		font-size: 46px;
+		font-size: 4.6rem;
+	}
+	h2, .h2 {
+		font-size: 38px;
+		font-size: 3.8rem;
+	}
+	h3, .h3 {
+		font-size: 32px;
+		font-size: 3.2rem;
+	}
+	h4, .h4 {
+		font-size: 26px;
+		font-size: 2.6rem;
+	}
+	h5, .h5 {
+		font-size: 20px;
+		font-size: 2.0rem;
+	}
+	
+	body {
+		font-size: 14px;
+		font-size: 1.4rem;
+	}
+}
+/* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
+@media only screen and (max-width: 29.99em) {
+	
+	h1, .h1 {
+		font-size: 42px;
+		font-size: 4.2rem;
+	}
+	h2, .h2 {
+		font-size: 34px;
+		font-size: 3.4rem;
+	}
+	h3, .h3 {
+		font-size: 28px;
+		font-size: 2.8rem;
+	}
+	h4, .h4 {
+		font-size: 22px;
+		font-size: 2.2rem;
+	}
+	h5, .h5 {
+		font-size: 18px;
+		font-size: 1.8rem;
+	}
+	
+	body {
+		font-size: 12px;
+		font-size: 1.2rem;
+	}
+}
+
+/* 
+	Text elements - Paragraphs
+---------------------------------------- */
+
+p.lead {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+/* http://css-tricks.com/minimum-paragraph-widths/
+Minimum paragraph width*/
+p.min:before {
+	content: "";
+	width: 10em;
+	display: block;
+	overflow: hidden;
+	/* For Demonstration */
+	border: 1px solid green;
+}
+
+/* 
+	Text elements - Marks
+---------------------------------------- */
+abbr.initialism {
+	font-size: 90%;
+	text-transform: uppercase;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ddd;
+	margin: 1em 0;
+	padding: 0;
+}
+hr.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+hr.section {
+	border-width: 0.5em 0 0;
+}
+hr.section:after {
+	background: #CCCCCC;
+	content: '';
+	display: block;
+	height: 0.5em;
+	margin: 0 auto;
+	width: 40%;
+}
+
+/* 
+	Text elements - Code
+---------------------------------------- */
+.code {
+	background: #F1F1F1;
+	border: solid 1px #E3E3E3;
+	display: block;
+	font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace;
+	font-size: 90%;
+	margin: 0 1.0rem;
+	padding: 1.0rem 1.5rem;
+	white-space: nowrap;
+	white-space: pre;
+}
+
+/* 
+	Text elements - Blockquotes
+
+	<blockquote>
+		<p>The quote</p>
+		<cite>The citation</cite>
+	</blockquote>
+---------------------------------------- */
+blockquote.default {
+	/* Trigger hasLayout for inline-block */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+	width: 100%;
+	
+	background: #f9f9f9;
+	border-left: 10px solid #ccc;
+	line-height: 2.0;
+	padding: 2.5em 2.5em 1.0em;
+	quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote.default,
+blockquote.default p {
+	color: #777;
+	font-style: italic;
+}
+blockquote.default:before,
+blockquote.default:after {
+	color: #ccc;
+	content: open-quote;
+	font-size: 4em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em;
+}
+blockquote.default:after {
+	content: close-quote;
+	margin-left: -0.1em;
+}
+	blockquote.default p {
+		display: inline;
+		font-style: normal;
+		padding-top: 1.0em;
+	}
+	blockquote.default footer {
+		color: #999;
+		display: block;
+		float: right;
+	}
+	blockquote.default cite {
+		display: block;
+		float: right;
+		
+		color: #999;
+		font: inherit;
+		margin-top: 0.5em;
+	}
+	blockquote.default footer cite {
+		display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+		float: none;
+		margin-left: 1.0em;
+	}
+	blockquote.default cite:before {
+		content: "\2014 \0020";
+		float: left;
+		padding-right: 5px;
+	}
+	blockquote.default cite a,
+	blockquote.default cite a:visited,
+	blockquote.default cite a:visited {
+		color: #555;
+	}
+	blockquote.default .newline {
+		display: block;
+		line-height: 1;
+	}
+
+/* 
+	Text elements - Spacing
+---------------------------------------- */
+p,
+pre,
+iframe,
+table {
+	margin: 0 0 1.0em;
+}
+
+p + h1, p + .h1,
+p + h2, p + .h2,
+p + h3, p + .h3,
+p + h4, p + .h4,
+p + h5, p + .h5,
+p + h6, p + .h6 {
+	margin-top: 0.8334em;
+	margin-top: 0.4167em;
+	
+	margin-top: 1.0rem;
+}
+
+
+/* --------------------------------------------------------------------------------
+	## Lists
+
+	<ul>
+		<li>List item</li>
+		<li>List item</li>
+		<li>List item</li>
+	</ul>
+-------------------------------------------------------------------------------- */
+
+
+/* 
+	Lists - Styles
+---------------------------------------- */
+.list-style-square {
+	list-style: square outside; 
+}
+.list-style-circle {
+	list-style: circle outside;
+}
+.list-style-disc {
+	list-style: disc outside;
+}
+
+/* 
+	Lists - No Style
+---------------------------------------- */
+.list-style-none,
+.list-style-none li {
+	list-style: none;
+}
+
+.list-style-no-margin,
+.list-style-no-margin > li {
+	margin-left: 0;
+}
+
+/* 
+	Lists - Inline
+---------------------------------------- */
+.list-inline,
+.list-inline li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.list-inline {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: middle;
+}
+.list-inline li {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	padding-right: 0.5em;
+}
+
+/* 
+	Lists - Horizontal
+---------------------------------------- */
+.list-horizontal,
+.list-horizontal li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.list-horizontal {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: middle;
+}
+.list-horizontal li {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	float: left;
+}
+
+/* 
+	Lists - Vertical
+---------------------------------------- */
+.list-vertical,
+.list-vertical li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.list-vertical {
+}
+.list-vertical li {
+}
+
+/* --------------------------------------------------------------------------------
+	## Tables
+
+	<div class="table-responsive-wrap">
+		<table border="0" cellpadding="0" cellspacing="0" class="table">
+			<caption>Table Caption</caption>
+			<thead>
+				<tr>
+					<th colspan="2" >Table heading</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Table cell</td>
+					<td>Table cell</td>
+				</tr>
+			</tbody>
+			<tfoot></tfoot>
+		</table>
+	</div>
+-------------------------------------------------------------------------------- */
+
+.table-responsive-wrap {
+	overflow: auto;
+	width: 100%;
+}
+
+table.table {
+	margin-bottom: 1.0em;
+}
+table.table.full-width {
+	max-width: 100%;
+	width: 100%;
+}
+table.table thead {
+}
+table.table th,
+table.table td {
+	padding: 0.5em;
+	vertical-align: top;
+}
+table.table th {
+	font-weight: bold;
+}
+table.table thead th {
+}
+table.table .normal {
+	font-weight: normal;
+}
+table.table .row {
+	border-bottom: 1px solid #EBEBEB;
+}
+
+table.table .zebra tr:nth-child(2n+2) {
+	background: #EBEBEB;
+}
+table.table .total {
+	border-top: 1px solid #CCCCCC;
+}
+table.table .number {
+	text-align: right;
+}
+
+table.table > thead > tr > th {
+	border-bottom: 2px solid #ddd;
+	vertical-align: bottom;
+}
+table.table.table-borders > thead > tr > th,
+table.table > tbody > tr > th,
+table.table > tfoot > tr > th,
+table.table > thead > tr > td,
+table.table > tbody > tr > td,
+table.table > tfoot > tr > td {
+	padding: 0.5em;
+}
+table.table.table-borders > thead > tr > th,
+table.table.table-borders > tbody > tr > th,
+table.table.table-borders > tfoot > tr > th,
+table.table.table-borders > thead > tr > td,
+table.table.table-borders > tbody > tr > td,
+table.table.table-borders > tfoot > tr > td {
+	border-top: 1px solid #ddd;
+}
+
+/* --------------------------------------------------------------------------------
+	## Forms
+-------------------------------------------------------------------------------- */
+
+/* 
+	Forms - <form> <fieldset> <legend>
+---------------------------------------- */
+legend {
+	font-size: 1.6em;
+	font-weight: normal;
+}
+legend,
+label,
+.label {
+	margin-bottom: 0.5rem;
+}
+
+/* 
+	Forms - <label> and nested <input> radio and checkbox
+---------------------------------------- */
+label,
+.label {
+	min-height: 1px;/* helps empty floating columns have layout */
+}
+label em {
+	color: red;
+	padding-left: 0.2em;
+	vertical-align: top;
+}
+
+.label_radio,
+.label_checkbox {
+	font-weight: inherit;
+	width: auto;
+}
+.label_radio input[type="radio"],
+.label_checkbox input[type="checkbox"] {
+	vertical-align: middle;
+}
+
+/* 
+	Forms - <button> <input> <textarea> <select>
+---------------------------------------- */
+button,
+input,
+textarea,
+select {
+	border: 1px solid #bbb;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	color: #555;
+	line-height: 1.42857;
+	line-height: 1.2;
+	line-height: 1.4;
+	padding: 0.5em;/* Vertical padding centers text on FF, ignored by Webkit */
+}
+button,
+input,
+.input,
+textarea,
+select {
+	margin-bottom: 1.5rem;
+}
+.input label,
+.input .label,
+.input button,
+.input input,
+.input .input,
+.input textarea,
+.input select {
+	margin-bottom: 0;
+}
+input[type="checkbox"],
+input[type="radio"] {
+	margin-bottom: 0;
+}
+
+/* Hover state */
+button:hover,
+input:hover,
+textarea:hover,
+select:hover {
+	border-color: #888;
+	color: #333;
+	outline: 0;
+}
+/* Focus state */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: #33c3f0;
+	color: #333;
+	outline: 0;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+
+/* 
+	Forms - Rows
+
+	<form action="" method="post"><!-- enctype="multipart/form-data"-->
+		<fieldset>
+			<div class="form-row">
+				<div class="label"><label for="">Name<em>*</em></label></div>
+				<div class="input"><input type="text" id="" name="" value="" autocomplete="off" /></div>
+			</div>
+			<div class="form-row">
+				<div class="label">&nbsp;</div>
+				<label class="checkbox"><input type="checkbox" name="agree_to_terms" value="1" id="" /> I agree to terms<em>*</em></label>
+			</div>
+			<div class="form-row">
+				<div class="label">&nbsp;</div>
+				<input type="submit" value="Submit" class="input_button" /><span class="ajax-loading hide"></span>
+			</div>
+			<div class="form-row">
+				<label>Cardholder Name</label>
+				<input type="text" size="20" class="card_name" />
+			</div>
+			<div class="form-row stack">
+				<label>Cardholder Name</label>
+				<input type="text" size="20" class="card_name" />
+			</div>
+			<div class="form-row">
+				<div class="label"><label for="">Name<em>*</em></label></div>
+				<div class="input"><input type="text" id="" name="" value="" /></div>
+			</div>
+			<div class="form-row stack">
+				<div class="label"><label for="">Name<em>*</em></label></div>
+				<div class="input"><input type="text" id="" name="" value="" /></div>
+			</div>
+		</fieldset>
+	</form>
+---------------------------------------- */
+.form-row {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+	width: 100%;
+}
+.form-row.block {
+	display: block;
+	overflow: hidden;
+	width: auto;
+}
+.form-row.divider {
+	border-top: 1px solid #EBEBEB;
+	padding-top: 1em;
+}
+.form-row.spacer {
+	height: 2.0em;
+	
+	/* hide text */
+	color: transparent;
+	font: 0/0 a;
+	text-shadow: none;
+}
+
+/* 
+	Forms - Inline fields
+---------------------------------------- */
+.fields-inline label,
+.fields-inline .label {
+	/*float: left;*/
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	margin-right: -4px;
+	padding: 0 1.0em;
+	vertical-align: middle;
+	width: auto;
+}
+.fields-inline label:first-child,
+.fields-inline .label:first-child {
+	padding-left: 0;
+}
+.fields-inline label,
+.fields-inline .label,
+.fields-inline button,
+.fields-inline input,
+.fields-inline .input,
+.fields-inline textarea,
+.fields-inline select {
+	margin-bottom: 0;
+}
+
+/* 
+	Forms - Float fields
+---------------------------------------- */
+.form-float .form-row > label,
+.form-float .form-row > .label {
+	padding-right: 1.0em;
+	width: 200px;
+}
+.form-float .form-row > label,
+.form-float .form-row > .label,
+.form-float .form-row > button,
+.form-float .form-row > input,
+.form-float .form-row > .input,
+.form-float .form-row > textarea,
+.form-float .form-row > select {
+	float: left;
+}
+.form-float label,
+.form-float .label,
+.form-float button,
+.form-float input,
+.form-float .input,
+.form-float textarea,
+.form-float select {
+	margin-bottom: 0;
+}
+
+/* 
+	Forms - Table fields
+---------------------------------------- */
+.form-table label,
+.form-table .label,
+.form-table button,
+.form-table input,
+.form-table .input,
+.form-table textarea,
+.form-table select {
+	margin-bottom: 0;
+}
+.form-table tr > td:first-child {
+	padding-right: 1.0em;
+}
+.form-table tr > td {
+	padding-bottom: 1.5rem;
+}
+
+/* 
+	Forms - Row spacing
+---------------------------------------- */
+.form-row.fields-inline,
+.fields-inline .form-row,
+.form-float .form-row {
+	margin-bottom: 1.5rem;
+}
+
+/* 
+	Forms - Field spacing
+---------------------------------------- */
+.field_space-left {
+	margin-left: 1.0em;
+}
+.field_space-top {
+	margin-top: 1.0em;
+}
+.field_space-top-half {
+	margin-top: 0.5em;
+}
+
+/* 
+	Forms - Pill formatting
+---------------------------------------- */
+.form-row-pill input[type="text"] {
+	-khtml-top-right-border-radius: 0;
+	-khtml-bottom-right-border-radius: 0;
+	-moz-border-radius-topright: 0;
+	-moz-border-radius-bottomright: 0;
+	-webkit-top-right-border-radius: 0;
+	-webkit-bottom-right-border-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.form-row-pill input[type="submit"] {
+	-khtml-top-left-border-radius: 0;
+	-khtml-bottom-left-border-radius: 0;
+	-moz-border-radius-topleft: 0;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-top-left-border-radius: 0;
+	-webkit-bottom-left-border-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	
+	background: #CCCCCC;
+	border-left: 0;
+}
+.form-row-pill input[type="submit"]:hover,
+.form-row-pill input[type="submit"]:focus {
+	background: #BBBBBB;
+}
+
+/* 
+	Forms - <select> wrap; Styled select and form replacement
+---------------------------------------- */
+/* Support <select> styling on IE by styling the wrap instead */
+.input_select-wrap {
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	overflow: hidden;
+	vertical-align: middle;
+}
+	.input_select-wrap select {
+		/*
+		-webkit-appearance: none;
+		background-color: transparent;
+		background-color: rgba(0,0,0,0);
+		border: 0;
+		-webkit-border-radius: 0px;
+		-khtml-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+		text-transform: uppercase;
+		*/
+	}
+	.input_select-wrap-hide-arrow select {
+		min-width: 120%;
+	}
+
+/* 
+	Forms - Faux file upload styling
+
+	http://www.quirksmode.org/dom/inputfile.html
+	<div class="input_file-hide_wrap">
+		<input type="file" name="directory_image" id="directory_image" class="input_file input_file-hide_file" onchange="$(this).next().find('input[type=text]').val(this.value.substring(this.value.lastIndexOf('\\')+1));" />
+		<div class="input_file-hide_fake">
+			<input type="text" name="directory_image-text" value="" class="input_text" />
+			<input type="button" value="Browse" class="input_button" />
+		</div>
+	</div>
+
+	<script>
+	jQuery(document).ready(function($)
+	{
+		// http://stackoverflow.com/questions/793014/jquery-trigger-file-input
+		$('.file-opener').on('click', function(event)
+		{
+			event.preventDefault();
+			$('#photo').trigger('click').get(0).focus();
+		});
+		
+		// Help single click browse dialogue
+		$('.input_file-hide_file', '.ie').on('focus', function(event)
+		{
+			event.preventDefault();
+			$(this).trigger('click');
+			this.blur();
+		});
+		
+		// Put text in text field under file input
+		$('.input_file-hide_file').on('change', function(event)
+		{
+			event.preventDefault();
+			$(this)
+				.next()
+				.find('input[type=text]')
+				.val(this.value.substring(this.value.lastIndexOf('\\')+1));
+			this.blur();
+		});
+	});
+	</script>
+	<?php
+	$id = 'photo';
+	$name = $id;
+	$value = set_value($name);
+	?>
+	<div class="form-row">
+		<div class="input_file-hide_wrap">
+			<input type="file" name="<?php echo $name; ?>" id="<?php echo $id; ?>" class="input_file-hide_file" />
+			<div class="input_file-hide_fake">
+				<input type="text" name="photo-text" value="" title="Photo" class="toggle_val" />
+			</div>
+		</div>
+	</div>
+---------------------------------------- */
+.input_file-hide_wrap {
+	position: relative;
+}
+.input_file-hide {
+	height: auto;
+	-moz-opacity: 0 ;
+	opacity: 0;
+	filter: alpha(opacity: 0);
+	left: 0;
+	position: absolute;
+	text-align: right;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+	*zoom: 1;
+}
+
+.input_file-hide_file {
+	position: relative;
+	z-index: 2;
+	*zoom: 1;
+	width: 100%;
+	height: auto;
+	
+	-moz-opacity: 0 ;
+	opacity: 0;
+	filter:alpha(opacity: 0);
+	
+	text-align: right;
+}
+.input_file-hide_fake {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+
+.input_file_hide {
+	height: 0;
+	-moz-opacity: 0 ;
+	opacity: 0;
+	filter: alpha(opacity: 0);
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 0;
+}
+
+/* 
+	AJAX loading
+---------------------------------------- */
+.ajax-loading {
+	background: transparent url('../images/ajax-loader.gif') scroll no-repeat 0 0;
+	display: inline-block;
+	margin-left: 10px;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+}
+
+/* ------------------------------------------------------------
+	Form validation
+------------------------------------------------------------ */
+
+/* 
+	Form validation - <label>
+---------------------------------------- */
+label.error,
+label.success {
+	color: #E25F53;
+}
+
+label.success {
+	background-color: transparent;
+	color: #0060BF;
+}
+
+/* 
+	Form validation - <label> <input> <textarea> <select>
+---------------------------------------- */
+input.error,
+textarea.error,
+select.error,
+input.error:focus,
+textarea.error:focus,
+select.error:focus {
+	border: 1px solid #E25F53;
+}
+
+/* 
+	Form validation - jQuery validate plugin
+---------------------------------------- */
+.invalid label {
+	color: #B94A48;
+}
+.invalid input,
+.invalid textarea,
+.invalid select {
+	border-color: #B94A48;
+}
+
+
+/* --------------------------------------------------------------------------------
+	## Layout
+-------------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------
+	Columns and Grid
+	
+	<div class="columns">
+		<div class="column p50">
+			<p>Column 50%</p>
+		</div>
+		<div class="column p50">
+			<p>Column 50%</p>
+		</div>
+	</div>
+	
+	<div class="columns grid">
+		<h4>Two Thirds</h4>
+		<div class="column-row">
+			<div class="column f2-3">
+				<p>Column 2/3</p>
+			</div>
+			<div class="column f1-3">
+				<p>Column 1/3</p>
+			</div>
+		</div>
+	</div>
+------------------------------------------------------------ */
+
+.columns,
+.column {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+	width: 100%;
+}
+.column-row:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+.column {
+	float: left;
+	min-height: 1px;/* helps empty floating columns have layout */
+	width: auto;
+}
+.column.pull-right {
+	float: right;
+}
+
+/* Debug with visual aides */
+.debug .columns,
+.debug .column {
+	border: 1px solid blue;
+}
+.debug .columns {
+	background: blue;
+}
+.debug .column-row {
+	background: green;
+}
+.debug .column {
+	background: red;
+}
+
+/* Switch to a table layout without widths */
+.columns-table
+.columns-table .column-row {
+	display: table;
+}
+.columns-table > .column,
+.columns-table .column-row > .column {
+	display: table-cell;
+	float: none;
+	vertical-align: top;
+}
+.columns-table .align-middle > .column {
+	vertical-align: middle;
+}
+
+/* 
+	Columns and Grid - Grid and gutter spacing
+---------------------------------------- */
+/* Wrap columns in a row and counter gutter with negative margin to keep flush outside gutters */
+.grid .column-row {
+	margin-left: -1.0em;
+	margin-right: -1.0em;
+}
+.grid-undo .column-row {
+	margin-left: 0.0em;
+	margin-right: 0.0em;
+}
+/* Add padding to create gutters between columns */
+.grid,
+.grid .column,
+.grid-gutter {
+	border-left: 1.0em solid transparent;
+	border-right: 1.0em solid transparent;
+	/*padding-left: 1.0em;
+	padding-right: 1.0em;*/
+}
+
+/* Prevent nested gutters from compounding space */
+.grid .columns,
+/* Prevent edge gutters on first columns, making the grid flush against the layout */
+.grid-flush,
+/* Reset nested gutters */
+.grid-undo,
+.grid-undo .column:not(.grid-gutter) {
+	border-left: 0;
+	border-right: 0;
+	/*padding-left: 0;
+	padding-right: 0;*/
+}
+/* Prevent first/last column gutters */
+.grid .column.alpha {
+	border-left: 0;
+	/*padding-left: 0;*/
+}
+.grid .column.omega {
+	border-right: 0;
+	/*padding-right: 0;*/
+}
+
+/* 
+	Columns and Grid - Responsive formatting
+---------------------------------------- */
+/* Tablet : Design for a width of 768px (0px - 959px) */
+@media only screen and (max-width: 59.99em) {
+}
+/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
+@media only screen and (max-width: 47.99em) {
+}
+/* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
+@media only screen and (max-width: 29.99em) {
+	/* Turn columns into rows */
+	.columns-table > .column:not(.column-unresponsive),
+	.columns-table .column-row > .column:not(.column-unresponsive),
+	.column:not(.column-unresponsive) {
+		border-left: 0;
+		border-right: 0;
+		display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+		float: none;
+		margin-left: 0;
+		margin-right: 0;
+		vertical-align: bottom;
+		width: 100% !important;
+	}
+}
+
+/* ------------------------------------------------------------
+	Widths
+------------------------------------------------------------ */
+
+/* 
+	Widths - Fraction widths
+---------------------------------------- */
+.f1 {width: 100%;}
+.f4-5 {width: 80%;}
+.f3-4 {width: 75%;}
+.f2-3 {width: 66.66%;}
+	.f2-3.last {width: 66.67%;}
+.f3-5 {width: 60%;}
+.f1-2 {width: 50%;}
+.f2-5 {width: 40%;}
+.f1-3 {width: 33.33%;}
+	.f1-3.last {width: 33.34%;}
+.f1-4 {width: 25%;}
+.f1-5 {width: 20%;}
+.f1-6 {width: 16.66%;}
+	.f1-6.last {width: 16.70%;}
+.f1-7 {width: 14.28%;}
+	.f1-7.last {width: 14.32%;}
+.f1-8 {width: 12.50%;}
+.f1-9 {width: 11.11%;}
+	.f1-9.last {width: 11.12%;}
+.f1-10 {width: 10%;}
+.f1-11 {width: 9.09%;}
+	.f1-11.last {width: 9.10%;}
+.f1-12 {width: 8.33%;}
+	.f1-12.last {width: 8.34%;}
+
+/* 
+	Widths - Percent widths
+---------------------------------------- */
+.p100 {width: 100%;}
+.p95 {width: 95%;}
+.p90 {width: 90%;}
+.p85 {width: 85%;}
+.p80 {width: 80%;}
+.p75 {width: 75%;}
+.p70 {width: 70%;}
+.p66 {width: 66.66%;}
+	.p66.last {width: 66.67%;}
+.p65 {width: 65%;}
+.p60 {width: 60%;}
+.p55 {width: 55%;}
+.p50 {width: 50%;}
+.p45 {width: 45%;}
+.p40 {width: 40%;}
+.p35 {width: 35%;}
+.p33 {width: 33.33%;}
+.p33-offset {margin-left: 33.33%;}
+	.p33.last {width: 33.34%;}
+.p30 {width: 30%;}
+.p25 {width: 25%;}
+.p20 {width: 20%;}
+.p15 {width: 15%;}
+.p15-offset {margin-left: 15%;}
+.p10 {width: 10%;}
+.p5 {width: 5%;}
+
+/* ------------------------------------------------------------
+	Media
+------------------------------------------------------------ */
+
+/* Firstly we deal with the container element making it relatively positioned
+and defining its height proportionally to its width - giving us a 16:9 ratio */
+.embed {
+	position: relative;
+	padding: 0;
+	padding-bottom: 56.25%; /* 16:9 ratio*/
+	height: 0;
+	overflow: hidden;
+}
+.embed_16-9 {
+	padding-bottom: 56.25%; /* 16:9 ratio*/
+}
+.embed_4-3 {
+	padding-bottom: 75.00%; /* 4:3 ratio*/
+}
+/* Then we make the actual embedded content behave in terms of its dimensions
+and its position within the container */
+.embed iframe,
+.embed object,
+.embed embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* ------------------------------------------------------------
+	Images
+------------------------------------------------------------ */
+
+.img,
+.img * {
+	vertical-align: bottom;
+}
+
+.img-row {
+	margin-bottom: 1.0em;
+}
+
+.img-border {
+	border: 1.5em solid rgba(0, 0, 0, 0.1);
+}
+.img-rounded {
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.img-dropshadow {
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+.img-circle {
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+.img-thumbnail {
+	border: 1px solid #EEEEEE;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	display: inline-block;
+	padding: 5px;
+}
+
+.img-right {
+	float: right;
+	margin-left: 1.0em;
+}
+.img-right-clear {
+	clear: right;
+}
+.img-left {
+	float: left;
+	margin-right: 1.0em;
+}
+.img-left-clear {
+	clear: left;
+}
+.img-center {
+	float: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* 
+	Images - Responsive images
+---------------------------------------- */
+.img-fluid,
+.img-fluid-inside > * {
+	-ms-interpolation-mode: bicubic;
+	height: auto;
+	width: 100%;
+}
+.img-scale {
+	-ms-interpolation-mode: bicubic;
+	height: auto;
+	max-width: 100%;
+	width: auto;
+}
+
+/* 
+	Images - Fix < IE9 PNG transaprency
+---------------------------------------- */
+.png {/* * html .png { */
+	behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none",
+	this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
+	this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
+	this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')",
+	this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
+}
+
+
+/* ------------------------------------------------------------
+	Filters
+------------------------------------------------------------ */
+
+.is-contrast-filtered {
+	-webkit-filter: contrast(10);
+	filter: url('filters.xml#contrast');
+}
+.is-brightness-filtered {
+	-webkit-filter: brightness(50%);
+	filter: url('filters.xml#brightness');
+} 
+.is-grayscale-filtered {
+	-webkit-filter: grayscale(1);
+	filter: url('filters.xml#grayscale');
+}
+.is-saturate-filtered {
+	-webkit-filter: saturate(7);
+	filter: url('filters.xml#saturate');
+}
+.is-hue-rotate-filtered {
+	-webkit-filter: hue-rotate(180deg);
+	filter: url('filters.xml#hue-rotate');
+}
+.is-sepia-filtered {
+	-webkit-filter: sepia(100%);
+	filter: url('filters.xml#sepia');
+}
+.is-invert-filtered {
+	-webkit-filter: invert(100%);
+	filter: url('filters.xml#invert');
+}
+.is-blur-filtered {
+	-webkit-filter: blur(10px);
+	filter: url('filters.xml#blur');
+}
+
+img.desaturate {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+	filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
+	zoom:1;
+}
+img.sepia {
+	background-color: #5E2612;
+	
+	-webkit-filter: sepia(100%);
+	-webkit-filter: sepia(1);
+	-moz-filter: sepia(100%);
+	-ms-filter: sepia(100%);
+	-o-filter: sepia(100%);
+	filter: sepia(100%);
+	filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg'><filter id='old-timey'><feColorMatrix type='matrix' values='0.14 0.45 0.05 0 0 0.12 0.39 0.04 0 0 0.08 0.28 0.03 0 0 0 0 0 1 0' /></filter></svg>#old-timey");
+	zoom: 1;
+}
+img.blur {
+	-webkit-filter: blur(3px);
+	-moz-filter: blur(3px);
+	-o-filter: blur(3px);
+	-ms-filter: blur(3px);
+	filter: blur(3px);
+	filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg'><filter id='blur'><feGaussianBlur stdDeviation='3' /></filter></svg>#blur");
+	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+	zoom:1;
+}
+
+img.bicubic {
+	-ms-interpolation-mode: bicubic; /* IE8+ */
+	image-rendering: optimizeQuality; /* Legal fallback */
+}
+img.pixelated {
+	-ms-interpolation-mode: nearest-neighbor; /* IE8+ */
+	image-rendering: optimizeSpeed; /* Legal fallback */
+	image-rendering: -moz-crisp-edges; /* Firefox */
+	image-rendering: -o-crisp-edges; /* Opera */
+	image-rendering:- webkit-optimize-contrast; /* Safari */
+	image-rendering: optimize-contrast; /* CSS3 Proposed */
+	image-rendering: crisp-edges; /* CSS4 Proposed */
+	image-rendering: pixelated; /* CSS4 Proposed */
+}
+
+/* ============================================================
+	# Site Styles
+============================================================ */
+
+/* --------------------------------------------------------------------------------
+	## Body and Liner
+
+	<body class="border-box">
+		<div class="body-liner">
+			<header></header>
+			<section></section>
+		</div>
+		<footer></footer>
+	</body>
+-------------------------------------------------------------------------------- */
+
+/* Set as the color of the <footer> so non-scrollable area below it looks like part of the <footer> */
+body {
+	/*background: #323131;*/
+}
+
+/* Set as the desired <body> color; it is layered on top of the real <body> */
+.body-liner {
+	/*background: #FFFFFF;*/
+}
+
+/* --------------------------------------------------------------------------------
+	## Band, Wrap, and Liner
+
+	<div class="band-wrap>
+		<div class="band padding">
+			<div class="band-liner">
+			
+			</div>
+		</div>
+	</div>
+-------------------------------------------------------------------------------- */
+.band-wrap {
+}
+.debug .band-wrap {
+	border: 1px solid red;
+}
+
+.band {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+	width: 100%;
+}
+.band.band-row {
+	position: relative;
+}
+
+.band-liner {
+	margin: 0 auto;
+	position: relative;
+	width: 1200px;
+	max-width: 1200px;
+}
+/* Desktop : Design for a width of 960px (0px - 1199px) */
+@media only screen and (max-width: 74.99em) {
+	.band-liner {
+		width: 960px;
+	}
+}
+/* Tablet : Design for a width of 768px (0px - 959px) */
+@media only screen and (max-width: 59.99em) {
+	.band-liner {
+		width: 100%;
+	}
+}
+/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
+@media only screen and (max-width: 47.99em) {
+}
+/* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
+@media only screen and (max-width: 29.99em) {
+}
+
+
+/* --------------------------------------------------------------------------------
+	## Navigation
+-------------------------------------------------------------------------------- */
+
+.header-test {
+	background-color: rgba(0, 0, 0, 0.1);
+	color: #ffffff;
+	transition: all 0.2s ease-in-out 0s;
+}
+.header-test.scrolled {
+	background-color: rgba(0, 0, 0, 0.9);
+	background-color: rgba(51, 122, 183, 0.9);
+	padding: 1.0em 0;
+}
+
+.navbar-fixed {
+	left: 0;
+	position: fixed;
+	right: 0;
+	z-index: 1000;
+}
+.navbar-fixed-top {
+	bottom: auto;
+	top: 0;
+}
+
+/* 
+	Navigation - Nav list setup
+---------------------------------------- */
+.nav-list {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block; *display: inline;zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+}
+/* Reset list styles */
+.nav-list ul,
+.nav-list li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+/* Setup menu items, Item > Subitem... */
+.nav-list ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+}
+.nav-list li {
+	float: left;
+	position: relative;
+}
+.nav-list li.first,
+.nav-list li:first-child {
+}
+.nav-list li:before {
+}
+.nav-list li:first-child:before {
+}
+/* Restful state */
+.nav-list a {
+	display: block;
+}
+/* Hover state */
+.nav-list a:hover {
+}
+/* Active state */
+.nav-list .active a {
+}
+
+/* 
+	Navigation - Nav List Dropdown Setup
+---------------------------------------- */
+/* Setup menus, Item... */
+.nav-dropdown-setup {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+	width: 100%;
+}
+.nav-dropdown-setup ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	text-align: left;
+	vertical-align: top;
+}
+/* Reset list styles */
+.nav-dropdown-setup ul,
+.nav-dropdown-setup li {
+	border: 0 none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+.nav-dropdown-setup li {
+	float: left;/**//*Horizontal menu*/
+	position: relative;
+}
+/* Setup nested menus, Item > Subitem... */
+.nav-dropdown-setup ul ul {
+	/* Position dropdown */
+	left: 0;
+	min-width: 100%;/**//* Attempt uniform width throughout descendants */
+	pointer-events: none;
+	position: absolute;
+	top: 100%;
+	width: auto;
+	z-index: 20;
+	
+	/* Squish - Hide it initially */
+	/* don't do display:none; squish it for screen readers and devices */
+	height: 0px;
+	overflow: hidden;
+	
+	/* Transition from */
+	opacity: 0;/* for transition, problem with nesting in IE8 */
+	/*filter: alpha(opacity=0);*/
+	
+	/* Transition */
+	-webkit-transition: opacity 0.4s ease-out 0s;
+	-moz-transition: opacity 0.4s ease-out 0s;
+	-ms-transition: opacity 0.4s ease-out 0s;
+	-o-transition: opacity 0.4s ease-out 0s;
+	transition: opacity 0.4s ease-out 0s;
+}
+.lt-ie9 .nav-dropdown-setup ul ul {
+	height: 0px;
+}
+.nav-dropdown-setup li li {
+	display: list-item;
+	float: none;
+}
+/* Setup nested menus, Item > Subitem > Sub-subitem... */
+.nav-dropdown-setup ul ul ul {/* Position to the top right of parent */
+	left: 100%;
+	top: 0;
+}
+/* Show the direct submenu on hover (not nested menu ULs) */
+.nav-dropdown-setup li:hover > ul {
+	/* Squish - Show it */
+	height: auto;
+	overflow: visible;
+	pointer-events: inherit;
+	
+	/* Transition to */
+	opacity: 1.0;/* for transition, problem with nesting in IE8 */
+	/*filter: alpha(opacity=100);*/
+}
+
+/* ------------------------------------------------------------
+	Mobile menu
+------------------------------------------------------------ */
+
+.body-liner {
+	position: relative;
+	left: 0;
+	top: 0;
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+}
+
+.mobile-menu_container {
+	text-align: left;
+}
+.mobile-menu {
+	height: 100%;
+	opacity: 1;
+	position: relative;
+	white-space: nowrap;
+	z-index: 9999999;
+	
+	background: rgb(255, 255, 255);
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+}
+/* Reset list styles */
+.mobile-menu ul,
+.mobile-menu li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+/* Setup menu items, Item > Subitems */
+.mobile-menu ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+	width: 100%;
+}
+	/* Restful state */
+	.mobile-menu a {
+		display: block;
+		padding: 0.5em;
+		padding-left: 1.0em;
+		text-decoration: none;
+	}
+	.mobile-menu a.active,
+	.mobile-menu a:hover {
+		text-decoration: underline;
+	}
+
+.mobile-menu li ul {
+	padding-left: 1.0em;
+}
+	.mobile-menu li li,
+	.mobile-menu li li:first-child {
+		border: 0;
+	}
+		.mobile-menu li li a {
+			font-weight: normal;
+		}
+		.mobile-menu li li a:before {
+			/*content: '- ';*/
+		}
+/* Custom override */
+.mobile-menu > ul {
+	padding: 2.0em 0 4.0em;
+}
+.mobile-menu > ul ul {
+	padding-bottom: 1.0em;
+}
+.mobile-menu li li {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+.mobile-menu a {
+	font-size: 1.2em;
+}
+.mobile-menu .active > a {
+	font-weight: 700;
+	text-decoration: underline;
+}
+.mobile-menu > ul > li > a {
+	text-transform: uppercase;
+}
+
+/* 
+	Mobile menu - Fixed right
+---------------------------------------- */
+.mobile-menu.fixed-right {
+	bottom: 0;
+	display: block;
+	height: 100%;
+	left: 100%;
+	opacity: 1;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 80%;
+}
+.mobile-menu_checkbox.fixed-right:checked ~ .mobile-menu.fixed-right,
+.mobile-menu_checkbox.fixed-right:checked ~ div .mobile-menu.fixed-right {
+	left: 20%;
+	overflow: visible;
+	overflow-y: auto;
+	
+	-moz-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+}
+
+/* 
+	Mobile menu - Push fixed menu left
+---------------------------------------- */
+.mobile-menu_checkbox.push-left:checked ~ .body-liner {
+	left: -80%;
+}
+
+/* 
+	Mobile menu - Left fixed menu
+----------------------------------- */
+.mobile-menu.left-fixed {
+	position: fixed;
+	width: 80%;
+	left: -100%;
+	overflow: hidden;
+	top: 0;
+	bottom: 0;
+	
+	-moz-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+}
+#mobile-menu-toggle_left-fixed:checked ~ .mobile-menu.left-fixed,
+#mobile-menu-toggle_left-fixed:checked ~ div .mobile-menu.left-fixed {
+	left: 0;
+	overflow: visible;
+	overflow-y: auto;
+}
+
+/* 
+	Mobile menu - Top height menu
+---------------------------------------- */
+.mobile-menu.top-height {
+	height: auto;
+	max-height: 0px;
+	overflow: hidden;
+}
+#mobile-menu-toggle_top-height:checked ~ .mobile-menu.top-height,
+#mobile-menu-toggle_top-height:checked ~ div .mobile-menu.top-height {
+	max-height: 1000px;
+}
+
+/* 
+	Mobile menu - Dropdown select replacement for nav
+---------------------------------------- */
+.responsive-nav_mobile {
+	display: none;
+}
+.responsive-nav_mobile select {
+	background: #e8ecf3;
+	font: normal 400 1.8em/100% inherit;
+	margin: 0;
+	min-height: 28px;
+	width: 100%;
+}
+/* Tablet : Design for a width of 768px (0px - 959px) */
+@media only screen and (max-width: 767px) {
+	.responsive-nav_desktop {
+		display: none !important;
+	}
+	.responsive-nav_mobile {
+		display: block;
+	}
+}
+
+/* ------------------------------------------------------------
+	Mobile menu controls
+------------------------------------------------------------ */
+
+/* 
+	Mobile menu controls - Checkbox toggle - Checkbox after opening <body>
+---------------------------------------- */
+.mobile-menu_checkbox {
+	display: none !important;
+	text-rendering: geometricPrecision;
+}
+
+/* 
+	Mobile menu controls - Checkbox toggle - Button to toggle checkbox
+---------------------------------------- */
+.mobile-menu_button {
+	cursor: pointer;
+	display: none;
+	margin: 0;
+	padding: 1.0em;
+	text-align: center;
+	text-rendering: geometricPrecision;
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+/* Tablet : Design for a width of 768px (0px - 959px) 
+@media only screen and (max-width: 59.99em) {
+	.nav-primary {
+		display: none !important;
+	}
+	.mobile-menu_button {
+		display: block !important;
+	}
+}
+*/
+/* Custom override */
+.mobile-menu_button {
+	padding: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 99999999;
+}
+.mobile-menu_button:after {
+	content: '\f0c9';
+	display: block;
+	font-family: FontAwesome;
+	font-size: 1.88em;
+	line-height: 1;
+	padding: 0.5em;
+}
+
+/* ------------------------------------------------------------
+	Weblog Navigation
+------------------------------------------------------------ */
+
+/* 
+	Weblog Navigation - Pagination
+---------------------------------------- */
+.weblog_pagination {
+	width: 100%;
+	text-align: center;
+}
+.weblog_pagination ul,
+.weblog_pagination li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.weblog_pagination ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: middle;
+}
+.weblog_pagination li {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	float: left;
+}
+.weblog_pagination a {
+	display: block;
+	padding: 0.5em;
+}
+.weblog_pagination .active a {
+	font-weight: bold;
+}
+
+/* 
+	Weblog Navigation - Adjacent
+---------------------------------------- */
+.weblog_prev-next-entries {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+	width: 100%;
+}
+.weblog_prev-next-entries_prev {
+	float: left;
+}
+.weblog_prev-next-entries_next {
+	float: right;
+}
+
+
+/* ============================================================
+	# Page Styles
+============================================================ */
+
+/* ------------------------------------------------------------
+	## Home
+------------------------------------------------------------ */
+
+
+/* ============================================================
+	# Utility Helpers
+============================================================ */
+
+/* ------------------------------------------------------------
+	Positioning
+------------------------------------------------------------ */
+
+/* Trigger hasLayout for inline-block, contain floats */
+.float-container,
+.has-layout {
+	/* trigger hasLayout */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+	width: 100%;
+}
+
+.position_relative {
+	position: relative;
+}
+
+.position_center_horizontal-0 {
+	left: 0;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	right: 0;
+}
+.position_center_horizontal {
+	left: 50%;
+	position: absolute;
+	-webkit-transform: translate(-50%);
+	-moz-transform: translate(-50%);
+	-ms-transform: translate(-50%);
+	-o-transform: translate(-50%);
+	transform: translate(-50%);
+}
+.position_center {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.display_table {
+	display: table;
+}
+	.display_table-cell {
+		display: table-cell;
+	}
+	.display_table-cell.middle {
+		vertical-align: middle;
+	}
+.display_inline-block {
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+}
+
+.pull-left,
+.float_left {
+	float: left;
+}
+.pull-right,
+.float_right {
+	float: right;
+}
+
+.vertical-align_top {
+	vertical-align: top !important;
+}
+.vertical-align_middle {
+	vertical-align: middle !important;
+}
+.vertical-align_bottom {
+	vertical-align: bottom !important;
+}
+
+.transform_origin-0 {
+	-webkit-transform-origin: 0% 0%;
+	-moz-transform-origin: 0% 0%;
+	-ms-transform-origin: 0% 0%;
+	-o-transform-origin: 0% 0%;
+	transform-origin: 0% 0%;
+}
+.transform_rotate-45 {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+/* ------------------------------------------------------------
+	Formatting
+------------------------------------------------------------ */
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.no-scroll {
+	overflow: hidden;
+}
+
+.no-select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.dropcap {
+	float: left;
+	font-size: 2.8em;
+	font-weight: bold;
+	line-height: 1;
+	padding-right: 0.1em;
+}
+
+.text-center {
+	text-align: center !important;
+}
+.text-left {
+	text-align: left !important;
+}
+.text-right {
+	text-align: right !important;
+}
+.text-justify {
+	text-align: justify !important;
+}
+.text-nowrap {
+	white-space: nowrap !important;
+}
+.text-lowercase {
+	text-transform: lowercase !important;
+}
+.text-uppercase {
+	text-transform: uppercase !important;
+}
+.text-capitalize {
+	text-transform: capitalize !important;
+}
+
+.text-larger {
+	font-size: 140%;
+}
+.text-large {
+	font-size: 120%;
+}
+.text-small {
+	font-size: 80%;
+}
+.text-smaller {
+	font-size: 60%;
+}
+
+.text_meta {
+	font-size: 80%;
+}
+.text_dim {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";/* IE 8 */
+	filter: alpha(opacity=80);/* IE 5-7 */
+	-moz-opacity: 0.8;/* Netscape */
+	-khtml-opacity: 0.8;/* Safari 1.x */
+	opacity: 0.8;/* Good browsers */
+}
+
+.padding-xsmall {
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+}
+.padding-small {
+	padding-bottom: 1.0em;
+	padding-top: 1.0em;
+}
+.padding-medium {
+	padding-bottom: 2.0em;
+	padding-top: 2.0em;
+}
+.padding-large {
+	padding-bottom: 4.0em;
+	padding-top: 4.0em;
+}
+.padding-xlarge {
+	padding-bottom: 6.0em;
+	padding-top: 6.0em;
+}
+.padding-xxlarge {
+	padding-bottom: 7.0em;
+	padding-top: 7.0em;
+}
+.padding-no-bottom {
+	padding-bottom: 0;
+}
+.padding-no-top {
+	padding-top: 0;
+}
+
+.margin-xsmall {
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+}
+.margin-small {
+	margin-bottom: 1.0em;
+	margin-top: 1.0em;
+}
+.margin-medium {
+	margin-bottom: 2.0em;
+	margin-top: 2.0em;
+}
+.margin-large {
+	margin-bottom: 4.0em;
+	margin-top: 4.0em;
+}
+.margin-xlarge {
+	margin-bottom: 6.0em;
+	margin-top: 6.0em;
+}
+.margin-no-bottom {
+	margin-bottom: 0;
+}
+.margin-no-top {
+	margin-top: 0;
+}
+
+.width-auto {
+	width: auto;
+}
+.width-full {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+/* http://www.colorzilla.com/gradient-editor/
+Support for full multi-stop gradients with IE9 (using SVG). */
+.gte-ie9 .gradient {
+	filter: none;
+}
+
+/* <span data-icon="&#x25a8;"></span> */
+[data-icon]:before {
+	font-family: icons;/* BYO icon font, mapped smartly */
+	content: attr(data-icon);
+	speak: none;/* Not to be trusted, but hey. */
+}
+/* <span data-icon="&#x25a8;"></span>
+<span class="screen-reader-text">RSS</span> */
+.screen-reader-text {
+	/* Reusable, toolbox kind of class */
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+/* ------------------------------------------------------------
+	Hiding
+------------------------------------------------------------ */
+
+/* Address styling not present in IE 7/8/9, Firefox 3, and Safari 4. Known issue: no IE 6 support. */
+[hidden] {
+	display: none;
+}
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+/* Extends the .visuallyhidden class to allow the element to be focusable 
+when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible {
+	visibility: hidden;
+}
+
+/* Accessible Hiding */
+.hide {
+	display: none !important;
+}
+.hide-offpage {
+	position: absolute;
+	left: -9999px;
+}
+.hide-squish {
+	/* don't do display:none for screen readers and devices */
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+.show-squish {
+	/* don't do display:none for screen readers and devices */
+	width: auto;
+	height: auto;
+	overflow: visible;
+}
+.hide-text {
+	/* hide text */
+	background-color: transparent;
+	border: 0;
+	color: transparent;
+	font: 0/0 a;
+	text-shadow: none;
+}
+
+/* 
+	Breakpoint hiding at this breakpoint and above or below
+---------------------------------------- */
+
+/* Tablet : Design for a width of 960px (960px+) */
+@media only screen and (min-width: 60.00em) {
+	.hidden_bp1,
+	.hidden_bp1-up,
+	.hidden_bp2-up,
+	.hidden_bp3-up,
+	.hidden_bp4-up,
+	.hidden_bp1-down {
+		display: none !important;
+	}
+}
+/* Tablet : Design for a width of 768px (0px - 959px) */
+@media only screen and (min-width: 48.00em) and (max-width: 59.99em) {
+	.hidden_bp2,
+	.hidden_bp2-up
+	.hidden_bp3-up,
+	.hidden_bp4-up,
+	.hidden_bp1-down,
+	.hidden_bp2-down {
+		display: none !important;
+	}
+}
+/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
+@media only screen and (min-width: 30.00em) and (max-width: 47.99em) {
+	.hidden_bp3,
+	.hidden_bp3-up,
+	.hidden_bp4-up,
+	.hidden_bp1-down,
+	.hidden_bp2-down,
+	.hidden_bp3-down {
+		display: none !important;
+	}
+}
+/* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
+@media only screen and (max-width: 29.99em) {
+	.hidden_bp4,
+	.hidden_bp4-up,
+	.hidden_bp1-down,
+	.hidden_bp2-down,
+	.hidden_bp3-down,
+	.hidden_bp4-down {
+		display: none !important;
+	}
+}
+
+/* 
+	Device hiding
+---------------------------------------- */
+
+.desktop-only {
+	display: inherit !important;
+}
+.mobile-only {
+	display: none !important;
+}
+.mobile-only.block {
+	display: block !important;
+}
+
+.visible-phone {
+	display: none !important;
+}
+.visible-tablet {
+	display: none !important;
+}
+.hidden-desktop {
+	display: none !important;
+}
+.visible-desktop {
+	display: inherit !important;
+}
+/* Tablet : Design for a width of 768px (0px - 959px) */
+@media only screen and (max-width: 59.99em) {
+}
+/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
+@media only screen and (max-width: 47.99em) {
+	.hidden-desktop {
+		display: inherit !important;
+	}
+	.visible-desktop {
+		display: none !important ;
+	}
+	.visible-tablet {
+		display: inherit !important;
+	}
+	.hidden-tablet {
+		display: none !important;
+	}
+}
+/* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
+@media only screen and (max-width: 29.99em) {
+	.desktop-only {
+		display: none !important;
+	}
+	.mobile-only {
+		display: inherit !important;
+	}
+	
+	.hidden-desktop {
+		display: inherit !important;
+	}
+	.visible-desktop {
+		display: none !important;
+	}
+	.visible-phone {
+		display: inherit !important;
+	}
+	.hidden-phone {
+		display: none !important;
+	}
+}
+
+/* ------------------------------------------------------------
+	Clearing
+------------------------------------------------------------ */
+
+/* Self-clearing goodness */
+.container:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* Use clearfix class on parent to clear nested columns, or wrap each row of columns in a <div class="row"> */
+.clearfix {
+	*zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+	content: '\0020';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.clearfix:after {
+	clear: both;
+}
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.clear2 {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+/* Clear floating elements */
+.clear_float {
+	clear: both;
+	overflow: hidden;
+	height: 1px;
+	margin-top: -1px;
+	font-size: 1px;
+	background: transparent;
+}
+
+
+/* ============================================================
+	# Responsive Media Queries / Target Devices
+============================================================ */
+
+@-ms-viewport {
+	width: device-width;
+}
+
+/* Desktop : Design for a width of 960px (0px - 1199px) */
+@media only screen and (max-width: 74.99em) {
+}
+
+/* Tablet : Design for a width of 768px (0px - 959px) */
+@media only screen and (max-width: 59.99em) {
+}
+
+/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
+@media only screen and (max-width: 47.99em) {
+}
+
+/* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
+@media only screen and (max-width: 29.99em) {
+}
+
+/* iPhone 4+ and high dpi retina displays */
+@media only screen and (min-resolution: 2dppx) and (-webkit-min-device-pixel-ratio: 2) {
+	/*http://flowz.com/2010/07/css-image-replacement-for-iphone-4-high-dpi-retina-display/*/
+	.replace-2x {/*for img tags and will have no effect; flag that will tell our javascript it is okay to do image replacement*/
+		font-size: 1px;
+	}
+	
+	/*http://dryan.com/articles/hi-res-mobile-css-iphone-4/
+	#browserHigh 
+	{
+		background-image: url(../images/Browser-128.png);
+		-webkit-background-size: 64px 64px;
+		-khtml-background-size: 64px 64px;
+		-moz-background-size: 64px 64px;
+		-o-background-size: 64px 64px;
+		background-size: 64px 64px;
+		
+		text-shadow: 0 -1px 1px #777;
+		text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.35);
+	}*/
+	
+	/*#logo {
+		background-image: url('../../images/mobile/moen-logo@2x.png');
+	}*/
+}
+
+
+/* ============================================================
+	# Fonts
+============================================================ */
+
+/*
+@font-face {
+	font-family: 'museo_sans100';
+	src: url('fonts/museosans/museosans_100-webfont.eot');
+	src: url('fonts/museosans/museosans_100-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/museosans/museosans_100-webfont.woff') format('woff'),
+		 url('fonts/museosans/museosans_100-webfont.ttf') format('truetype'),
+		 url('fonts/museosans/museosans_100-webfont.svg#museo_sans100') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Archivo Narrow';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Archivo Narrow Regular'), local('ArchivoNarrow-Regular'), url(fonts/archivonarrow/DsLzC9scoPnrGiwYYMQXphdbPw3QSf9R-kE0EsQUn2A.woff) format('woff');
+}
+*/
+
+
+/* ============================================================
+	# Print
+============================================================ */
+
+/* 
+	Print - Hiding
+---------------------------------------- */
+.visible-print {
+	display: none !important;
+}
+@media print {
+	.visible-print {
+		display: inherit !important;
+	}
+	.hidden-print {
+		display: none !important;
+	}
+}

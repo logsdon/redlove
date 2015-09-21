@@ -1,0 +1,225 @@
+/**
+* @version 0.0.0
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+*/
+
+.redlove_hidden {
+	display: none;
+}
+/* Put on body to prevent background scrolling */
+.redlove_no-scroll {
+	overflow: hidden;
+}
+
+/*
+firstly we deal with the container element
+making it relatively positioned
+and defining its height proportionally
+to its width - giving us a 16:9 ratio
+*/
+.redlove_embed {
+	position: relative;
+	padding: 0;
+	padding-bottom: 56.25%; /* 16:9 ratio*/
+	height: 0;
+	overflow: hidden;
+}
+.redlove_embed-16-9 {
+	padding-bottom: 56.25%; /* 16:9 ratio*/
+}
+.redlove_embed-4-3 {
+	padding-bottom: 75.00%; /* 4:3 ratio*/
+}
+/*
+then we make the actual embedded content
+behave in terms of its dimensions
+and its position within the container
+*/
+.redlove_embed iframe,
+.redlove_embed object,
+.redlove_embed embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+/* 
+	Logsdon Modal
+
+	<div class="redlove_modal">
+		<div class="redlove_modal_liner">
+			<div class="redlove_modal_controls_close"></div>
+			<div class="redlove_modal_controls_prev"></div>
+			<div class="redlove_modal_controls_next"></div>
+			<div class="redlove_modal_content">
+				<div class="redlove_modal_content_liner">
+					Content
+				</div>
+			</div>
+		</div>
+	</div>
+________________________________________ */
+
+.redlove_modal-container {
+	display: none;
+}
+
+.redlove_modal {
+	background: rgb(0, 0, 0);/*lte IE8*/
+	background: rgba(0, 0, 0, 0.8);
+	
+	/* Fixed to fill scrollable area */
+	bottom: 0;
+	left: 0;
+	position: fixed;/* If appended to body element, set position fixed to fill all scrollable */
+	right: 0;
+	top: 0;
+	z-index: 997;
+}
+
+.redlove_modal_liner {
+	/* Absolute Center - Width and height necessary */
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+	/*
+	display: inline-block;
+	left: 50%;
+	position: relative;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	*/
+	
+	/* Scroll overflowing content */
+	overflow: auto;
+	/*overflow: hidden; Prevent scrolling after magic number fix on content making it slightly larger to prevent scrolling */
+	
+	/* Resize */
+	resize: both;
+	resize: none;
+	
+	/* Responsive */
+	min-width: 1%;
+	max-width: 100%;
+	min-height: 1%;
+	max-height: 100%;
+	
+	/* Styling */
+	background: #FFFFFF;
+	padding: 2.0em;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	
+	-webkit-box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
+	box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
+}
+
+.redlove_modal_content {
+	/* Scroll overflowing content*/
+	height: 100%;
+	/*height: 102%; Magic number for preventing overflow: auto showing scroll */
+	overflow: auto;
+	resize: none;
+	width: 100%;
+}
+.redlove_modal_content-image .redlove_modal_content_liner {
+	height: 100%;
+	width: 100%;
+}
+.redlove_modal_content-image .redlove_modal_content_liner > img {
+	display: block;
+	margin: 0 auto;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.redlove_modal_controls_close {
+	cursor: pointer;
+	left: auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 999;
+}
+.redlove_modal_controls_close:before {
+	content: '\2716';
+	content: '\274C';
+	content: '×';
+	content: '\2715';
+	content: '\00D7';
+	display: inline-block;
+	font-size: 1.5em;
+	line-height: 1.0;
+	padding: 0.5em;
+}
+
+.redlove_modal_controls_next,
+.redlove_modal_controls_prev {
+	cursor: pointer;
+	left: 0;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	z-index: 999;
+}
+.redlove_modal_controls_next {
+	left: auto;
+	right: 0;
+}
+.redlove_modal_controls_next:before,
+.redlove_modal_controls_prev:before {
+	content: '\f053';
+	display: inline-block;
+	font-family: FontAwesome;
+	font-size: 1.0em;
+	line-height: 1.0;
+	padding: 0.5em;
+}
+.redlove_modal_controls_next:before {
+	content: '\f054';
+}
+
+/* #Tablet : Design for a width of 768px */
+@media only screen and (max-width: 59.99em) {/*0px - 959px*/
+}
+/* #Mobile (Landscape) : Design for a width of 480px */
+@media only screen and (max-width: 47.99em) {/*0px - 767px*/
+	/*
+	.redlove_modal_liner,
+	.redlove_modal_content iframe {
+		max-height: 100%;
+		max-width: 100%;
+		width: 100%;
+	}
+	*/
+}
+
+
+/*
+	Logsdon Modal - Overrides
+---------------------------------------- 
+
+.redlove_modal_liner {
+	background: #191919;
+	color: #FFFFFF;
+	padding: 2.0em;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	
+	-webkit-box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
+	box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
+}
+*/
