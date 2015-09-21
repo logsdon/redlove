@@ -21,7 +21,7 @@
 		z-index: 2;
 	}
 </style>
-<script type="text/javascript" src="scripts/redlove_affix.js"></script>
+<script type="text/javascript" src="javascript/redlove/plugins/redlove_affix.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{

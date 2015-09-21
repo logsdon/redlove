@@ -25,7 +25,7 @@
 		top: auto;
 	}
 </style>
-<script type="text/javascript" src="scripts/redlove/plugins/redlove_throttle.js"></script>
+<script type="text/javascript" src="javascript/redlove/plugins/redlove_throttle.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{

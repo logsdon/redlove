@@ -14,7 +14,7 @@
 <a href="#" onclick="$('.redlove_demo_equal-column').redlove_equal();return false;">Equal heights</a>
 <a href="#" onclick="$('.redlove_demo_equal-column').redlove_equal({dimension : 'width'});return false;">Equal widths</a>
 
-<script type="text/javascript" src="scripts/redlove/plugins/redlove_equal.js"></script>
+<script type="text/javascript" src="javascript/redlove/plugins/redlove_equal.js"></script>
 
 * 
 */

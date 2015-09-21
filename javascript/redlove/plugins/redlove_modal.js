@@ -17,8 +17,8 @@
 
 <a href="#modal-2-and-3" onclick="$.fn.redlove_modal.show('test');$.fn.redlove_modal.show('<h2>Testing more</h2><p>A paragaph.</p><ul><li>list item</li></ul>');return false;">Modals 2 &amp; 3</a>
 
-<link rel="stylesheet" type="text/css" href="scripts/redlove_modal.css">
-<script type="text/javascript" src="scripts/redlove_modal.js"></script>
+<link rel="stylesheet" type="text/css" href="javascript/redlove/plugins/redlove_modal.css">
+<script type="text/javascript" src="javascript/redlove/plugins/redlove_modal.js"></script>
 <script type="text/javascript">
 
 jQuery(document).ready(function($)

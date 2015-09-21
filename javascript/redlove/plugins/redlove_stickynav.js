@@ -26,8 +26,8 @@
 	<p>This is some test content!</p>
 </div>
 
-<link rel="stylesheet" type="text/css" href="scripts/redlove_stickynav.css" media="all">
-<script type="text/javascript" src="scripts/redlove_stickynav.js"></script>
+<link rel="stylesheet" type="text/css" href="javascript/redlove/plugins/redlove_stickynav.css" media="all">
+<script type="text/javascript" src="javascript/redlove/plugins/redlove_stickynav.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
