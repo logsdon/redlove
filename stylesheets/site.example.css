@@ -1,0 +1,333 @@
+/* ============================================================
+	Table of Contents
+============================================================
+	(Prepend file with @import and @charset as necessary)
+	# Reset
+	# Foundation
+	## Document
+	## Typography
+	## Lists
+	## Tables
+	## Forms
+	## Layout
+	# Components
+	# Color Glossary
+	# Site Styles
+	## Body and Liner
+	## Band, Wrap, and Liner
+	## Navigation
+	## Header
+	## Footer
+	## Content
+	# Page Styles
+	# Utility Helpers
+	# Responsive / Media Queries / Target Devices
+	# Fonts
+	# Print
+*/
+
+/* ============================================================
+	# Foundation
+============================================================ */
+
+/* --------------------------------------------------------------------------------
+	## Typography
+-------------------------------------------------------------------------------- */
+
+/* 
+	Base Font Family
+---------------------------------------- */
+body {
+	color: #323131;
+	font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+	font-weight: 300;
+}
+
+/* 
+	Spacing
+---------------------------------------- */
+p,
+pre,
+iframe {
+	margin: 0 0 1.0em;
+}
+
+
+/* --------------------------------------------------------------------------------
+	## Forms
+-------------------------------------------------------------------------------- */
+
+/* 
+	Forms - <form> <fieldset> <legend>
+---------------------------------------- */
+legend {
+}
+
+/* 
+	Forms - <button> <input> <textarea> <select>
+---------------------------------------- */
+button,
+input,
+textarea,
+select {
+}
+
+/* Focus state */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+}
+
+/* 
+	Forms - <div> forms overrides
+---------------------------------------- */
+.form-row {
+}
+.form-row label,
+.form-row .label {
+}
+
+
+/* ============================================================
+	# Color Glossary
+============================================================
+Dark grey (text): #333333
+*/
+
+
+/*============================================================
+	# Site Styles
+============================================================ */
+
+/* --------------------------------------------------------------------------------
+	## Body and Liner
+
+	<body class="border-box">
+		<div class="body-liner">
+			<header></header>
+			<section></section>
+		</div>
+		<footer></footer>
+	</body>
+-------------------------------------------------------------------------------- */
+
+/* Set as the color of the <footer> so non-scrollable area below it looks like part of the <footer> */
+body {
+	background: #323131;
+}
+
+/* Set as the desired <body> color; it is layered on top of the real <body> */
+.body-liner {
+	background: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------------
+	## Band, Wrap, and Liner
+
+	<div class="band-wrap>
+		<div class="band padding">
+			<div class="band-liner">
+			
+			</div>
+		</div>
+	</div>
+-------------------------------------------------------------------------------- */
+.band-liner {
+	width: 960px;
+	max-width: 960px;
+}
+
+/* --------------------------------------------------------------------------------
+	## Navigation
+-------------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------
+	Primary navigation list
+------------------------------------------------------- */
+
+.nav-primary {
+	float: right;
+	width: auto;
+}
+.nav-primary ul ul {
+	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, 0.9);
+}
+.nav-primary >ul > li {
+	margin-left: 2.5em;
+}
+.nav-primary >ul > li.first,
+.nav-primary >ul > li:first-child {
+	margin-left: 0;
+}
+.nav-primary a {
+	background: inherit;
+	display: block;
+	font-size: 1.0em;
+	outline: 0 none;
+	padding: 0.5em 0.6em 0.4em;
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;/* Keep item from text wrapping */
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+}
+/* Restful state */
+.nav-primary a,
+.nav-primary > ul:hover .active > a /*on nav hover, change active display to inactive*/
+{
+	background: inherit;
+}
+/* Hover state */
+.nav-primary a:hover,
+.nav-primary > ul:hover :hover > a:hover, /*on nav hover, on child hover and continued parent display*/
+.nav-primary > ul:hover .active:hover > a:hover /*on nav hover, on active hover and direct child hover*/
+{
+	background: #E6E6E6;
+}
+/* Hover active state */
+.nav-primary > ul:hover :hover > a,
+.nav-primary > ul:hover .active:hover > a /*on nav hover, on active hover and direct child display*/
+{
+	background: #E6E6E6;
+}
+/* Active state */
+.nav-primary .active > a,
+.nav-primary > ul:hover .active .active > a /*Nested active*/
+{
+	background: #E6E6E6;
+}
+
+/* -------------------------------------------------------
+	Footer navigation list
+------------------------------------------------------- */
+
+nav.footer {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block; *display: inline;zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+	
+	float: right;
+	font-size: 0.9em;
+	text-transform: uppercase;
+}
+/* Reset list styles */
+nav.footer ul,
+nav.footer li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+/* Setup menu items, Item > Subitem... */
+nav.footer ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+}
+nav.footer li {
+	float: left;
+	position: relative;
+	
+	margin-left: 1.2em;
+}
+nav.footer li.first,
+nav.footer li:first-child {
+	border-left: 0 none;
+	margin-left: 0;
+	padding-left: 0;
+}
+nav.footer img {
+	vertical-align: top;
+}
+/* Restful state */
+nav.footer a {
+	display: block;
+	text-decoration: none;
+}
+/* Hover state */
+nav.footer a:hover {
+	text-decoration: underline;
+}
+/* Active state */
+nav.footer .active a {
+}
+
+/* --------------------------------------------------------------------------------
+	## Header
+-------------------------------------------------------------------------------- */
+
+/* 
+	Band header
+---------------------------------------- */
+.band.header {
+	border-bottom: 1px solid #bdbdbd;
+	position: relative;
+}
+
+/* 
+	Header logo
+---------------------------------------- */
+header.primary h1 {
+	float: left;
+	margin: 0;
+}
+header.primary h1 a {
+	display: block;
+	line-height: 1.0;
+	/*
+	background: transparent url('../images/logo_header.png') scroll no-repeat 0 0;
+	height: 105px;
+	width: 164px;
+	*/
+}
+
+
+/* --------------------------------------------------------------------------------
+	## Footer
+-------------------------------------------------------------------------------- */
+
+.band.footer {
+	background: #323131;
+	color: #969595;
+	
+	-webkit-box-shadow: 
+		inset 0 20px 20px -10px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 
+		inset 0 20px 20px -10px rgba(0, 0, 0, 0.3);
+	box-shadow: 
+		inset 0 20px 20px -10px rgba(0, 0, 0, 0.3);
+		
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.band.footer.secondary {
+	background: #2b2b2b;
+	border-bottom: 1px solid #171616;
+}
+
+
+/* --------------------------------------------------------------------------------
+	## Content
+-------------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------
+	Backgrounds
+------------------------------------------------------- */
+
+
+/* ============================================================
+	# Page Styles
+============================================================ */
+
+/* -------------------------------------------------------
+	Home
+------------------------------------------------------- */
+
