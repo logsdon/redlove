@@ -76,7 +76,7 @@
 		overflow: hidden;
 	}
 </style>
-<script type="text/javascript" src="scripts/redlove/plugins/redlove_modalbox.js"></script>
+<script type="text/javascript" src="javascript/redlove/plugins/redlove_modalbox.js"></script>
 <script type="text/javascript">
 	$(document).ready(function($)
 	{

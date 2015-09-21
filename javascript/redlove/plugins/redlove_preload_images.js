@@ -8,7 +8,7 @@
 * 
 * Usage:
 
-<script type="text/javascript" src="scripts/redlove/plugins/redlove_preload_images.js"></script>
+<script type="text/javascript" src="javascript/redlove/plugins/redlove_preload_images.js"></script>
 
 $('#cards_pool img').redlove_preload_images({
 	oncomplete : function ( num_preloaded_images )

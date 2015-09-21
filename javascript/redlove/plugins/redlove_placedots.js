@@ -80,7 +80,7 @@
 		transform: rotate(45deg);
 	}
 </style>
-<script type="text/javascript" src="scripts/redlove/plugins/redlove_placedots.js"></script>
+<script type="text/javascript" src="javascript/redlove/plugins/redlove_placedots.js"></script>
 <script type="text/javascript">
 	$(document).ready(function()
 	{
