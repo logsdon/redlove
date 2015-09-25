@@ -1,0 +1,85 @@
+/**
+* @version 0.0.0
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+*/
+
+/* ------------------------------------------------------------
+	Redlove Growl
+------------------------------------------------------------ */
+
+/* 
+	Redlove Growl - Container
+---------------------------------------- */
+
+#redlove_growl_container {
+	position: fixed;
+	z-index: 1;
+	
+	/* Position - Top right */
+	left: auto;
+	right: 0;
+	top: 0;
+	
+	/* Position - Center */
+	left: 50%;
+	right: auto;
+	-webkit-transform: translate(-50%, 0%);
+	-moz-transform: translate(-50%, 0%);
+	-ms-transform: translate(-50%, 0%);
+	-o-transform: translate(-50%, 0%);
+	transform: translate(-50%, 0%);
+}
+
+/* 
+	Redlove Growl - Item
+---------------------------------------- */
+
+.redlove_growl {
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.8);
+	padding: 2.0em;
+	position: relative;
+	
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+.redlove_growl,
+.redlove_growl *,
+.redlove_growl:after {
+	color: rgb(255, 255, 255);
+}
+.redlove_growl:after {
+	color: rgba(255, 255, 255, 0.3);
+	content: '\f00d';
+	cursor: pointer;
+	display: inline-block;
+	font-family: FontAwesome;
+	left: auto;
+	margin: 0.5em;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.redlove_growl *:last-child {
+	margin-bottom: 0;
+}
+
+/* 
+	Redlove Growl - Item Type
+---------------------------------------- */
+
+.redlove_growl.success {
+	background-color: #468847;
+}
+.redlove_growl.error {
+	background-color: #B94A48;
+}
+.redlove_growl.warning {
+	background-color: #C09853;
+}
+.redlove_growl.info {
+	background-color: #3A87AD;
+}
+
