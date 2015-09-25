@@ -246,10 +246,28 @@
 }
 
 /* ------------------------------------------------------------
+	Site Loading Overlay
+------------------------------------------------------------ */
+
+.redlove_site-loading {
+	background: #FFFFFF url('../../images/icon_preloader.png') scroll no-repeat 50% 50%;
+	background-color: rgba(255, 255, 255, 0.8);
+	bottom: 0;
+	display: none;
+	left: 0;
+	padding: 1.0em;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 9999999;
+}
+
+/* ------------------------------------------------------------
 	Loading Overlay
 ------------------------------------------------------------ */
 
-.l-loading-overlay_bg {
+.redlove_loading-overlay_bg {
 	background: rgb(0, 0, 0);/*lte IE8*/
 	background: rgba(0, 0, 0, 0.8);
 	
@@ -265,12 +283,12 @@
 	height: 100%;
 	width: 100%;
 }
-.l-loading-overlay_liner {
+.redlove_loading-overlay_liner {
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
 }
-.l-loading-overlay_content {
+.redlove_loading-overlay_content {
 	/* Scroll overflowing content */
 	overflow: auto;
 	
@@ -291,6 +309,18 @@
 	-webkit-box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
 	-moz-box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
 	box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
+}
+
+/* ------------------------------------------------------------
+	Redlove Utilities
+------------------------------------------------------------ */
+
+.redlove_hidden {
+	display: none;
+}
+/* Put on body to prevent background scrolling */
+.redlove_no-scroll {
+	overflow: hidden;
 }
 
 /* ------------------------------------------------------------
@@ -735,6 +765,15 @@ fieldset[disabled] .btn-default.active {
 }
 
 .border-radius {
+	-webkit-top-left-border-radius: 10px;
+	-webkit-top-right-border-radius: 10px;
+	-khtml-top-left-border-radius: 10px;
+	-khtml-top-right-border-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	
 	-webkit-border-radius: 3px;
 	-khtml-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -744,6 +783,7 @@ fieldset[disabled] .btn-default.active {
 .text-shadow {
 	text-shadow: 0 1px rgb(0, 0, 0);
 	text-shadow: -1px -1px 0px rgb(0, 0, 0);
+	filter: dropshadow(color=#000000, offx=-1, offy=-1);
 }
 
 /* ------------------------------------------------------------
@@ -772,6 +812,49 @@ fieldset[disabled] .btn-default.active {
 	width: 0;
 }
 
+.arrow-down {
+	border-left: 16px solid transparent;
+	border-right: 16px solid transparent;
+	border-top: 16px solid #bdb0ce;
+	display: inline-block;
+	height: 0;
+	min-height: 1px;
+	width: 0;
+}
+.arrow-up {
+	border-left: 16px solid transparent;
+	border-right: 16px solid transparent;
+	border-bottom: 16px solid #bdb0ce;
+	display: inline-block;
+	height: 0;
+	min-height: 1px;
+	pointer-events: none;
+	vertical-align: bottom;
+	width: 0;
+}
+
+/* ------------------------------------------------------------
+	Gradients
+	
+	http://www.colorzilla.com/gradient-editor/
+	http://css3button.net/
+	http://css-tricks.com/examples/ButtonMaker/
+	http://www.cssbuttongenerator.com/
+	http://css3generator.com/
+	http://www.cssportal.com/button-maker/
+	http://www.sitepoint.com/10-best-css3-code-generators/
+------------------------------------------------------------ */
+
+.light-grey-gradient {
+	background: #D4DDE4; /* Old browsers */
+	background: -moz-linear-gradient(top, #D4DDE4 0%, #EAEFF2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D4DDE4), color-stop(100%,#EAEFF2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #D4DDE4 0%, #EAEFF2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #D4DDE4 0%, #EAEFF2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #D4DDE4 0%, #EAEFF2 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #D4DDE4 0%, #EAEFF2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D4DDE4', endColorstr='#EAEFF2',GradientType=0 ); /* IE6-9 */
+}
 
 /* ------------------------------------------------------------
 	Hover Cards

@@ -1429,7 +1429,7 @@ $.extend(window.REDLOVE.fn, {
 		show = ( show !== false );
 		
 		// Create element if it doesn't exist
-		var site_loading_class = 'site_loading';
+		var site_loading_class = 'redlove_site-loading';
 		var $site_loading = $('.' + site_loading_class);
 		if ( $site_loading.length == 0 )
 		{
@@ -1446,14 +1446,14 @@ $.extend(window.REDLOVE.fn, {
 		if ( show )
 		{
 			// Prevent body scrolling and text selection
-			$('body').addClass('no-scroll no-select');
+			$('body').addClass('redlove_no-scroll redlove_no-select');
 			$site_loading.stop().fadeIn(300);
 		}
 		else
 		{
 			$site_loading.stop().fadeOut(300, function ()
 			{
-				$('body').removeClass('no-scroll no-select');
+				$('body').removeClass('redlove_no-scroll redlove_no-select');
 			});
 		}
 	},
