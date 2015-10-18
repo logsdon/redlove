@@ -1,0 +1,173 @@
+/**
+* @version 0.0.0
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+*/
+
+/* ------------------------------------------------------------
+	Redlove Form Replacement
+	
+	<span data-for-index="0" data-for="rating" class="redlove_form-replacement_input_box redlove_form-replacement_input_radio"></span>
+	<span data-for-index="0" data-for="rating" class="redlove_form-replacement_input_box redlove_form-replacement_input_radio checked"></span>
+	<span data-for-index="0" data-for="rating" class="redlove_form-replacement_input_box redlove_form-replacement_input_radio disabled"></span>
+	
+	<span class="redlove_form-replacement_input_box redlove_form-replacement_input_checkbox" data-for="replaced_checkbox-5" data-for-index="4"></span>
+	<span class="redlove_form-replacement_input_box redlove_form-replacement_input_checkbox checked" data-for="replaced_checkbox-5" data-for-index="4"></span>
+	<span class="redlove_form-replacement_input_box redlove_form-replacement_input_checkbox disabled" data-for="replaced_checkbox-5" data-for-index="4"></span>
+	
+	<div class="redlove_form-replacement_select">
+		<div data-value="" class="redlove_form-replacement_selected_option">&mdash;Please select &mdash;</div>
+		<div class="redlove_form-replacement_select_options">
+			<div class="redlove_form-replacement_select_option active">&mdash;Please select &mdash;</div>
+			<div class="redlove_form-replacement_select_option">One</div>
+			<div class="redlove_form-replacement_select_option">Two</div>
+			<div class="redlove_form-replacement_select_option">Three</div>
+		</div>
+	</div>
+------------------------------------------------------------ */
+
+/* 
+	Redlove Form Replacement - Inputs
+---------------------------------------- */
+
+.redlove_form-replacement_input_box {
+	cursor: pointer;
+	display: inline-block;
+	height: 1.0em;
+	position: relative;
+	width: 1.0em;
+}
+.redlove_form-replacement_input_box.disabled {
+	color: #bbb;
+	cursor: default;
+	pointer-events: none;
+}
+
+.redlove_form-replacement_input_box:after {
+	font-family: FontAwesome;
+	left: 50%;
+	line-height: 1;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.redlove_form-replacement_input_checkbox:after {
+	content: "\f096";
+}
+.redlove_form-replacement_input_checkbox.checked:after {
+	content: "\f046";
+}
+.redlove_form-replacement_input_radio:after {
+	content: "\f10c";
+}
+.redlove_form-replacement_input_radio.checked:after {
+	content: "\f192";
+}
+
+/* 
+	Redlove Form Replacement - Select
+---------------------------------------- */
+
+.redlove_form-replacement_select {
+	display: inline-block;
+	margin-bottom: 1.5rem;
+	vertical-align: middle;
+}
+.redlove_form-replacement_select.disabled {
+	background: #bbb;
+	cursor: default;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.redlove_form-replacement_select div {
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.redlove_form-replacement_selected_option {
+	border: 1px solid #bbb;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	color: #555;
+	line-height: 1.42857;
+	line-height: 1.2;
+	line-height: 1.4;
+	padding: 0.5em;/* Vertical padding centers text on FF, ignored by Webkit */
+	padding-right: 1.5em;
+	
+	overflow: hidden;
+	position: relative;
+	white-space: nowrap;
+}
+.redlove_form-replacement_selected_option:after {
+	content: "\f0d7";
+	font-family: FontAwesome;
+	left: auto;
+	position: absolute;
+	right: 0.5em;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+/* Hover state */
+.redlove_form-replacement_selected_option:hover {
+	border-color: #888;
+	color: #333;
+	outline: 0;
+}
+/* Focus state */
+.redlove_form-replacement_selected_option:focus {
+	border-color: #33c3f0;
+	color: #333;
+	outline: 0;
+}
+
+.redlove_form-replacement_select_options {
+	background: #fff;
+	border: 1px solid #bbb;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	position: absolute;
+	z-index: 9999999;
+}
+
+.redlove_form-replacement_select_option {
+	padding: 0.5em;/* Vertical padding centers text on FF, ignored by Webkit */
+	padding-right: 1.5em;
+}
+.redlove_form-replacement_select_option:first-child {
+	-webkit-border-radius: 4px 4px 0 0;
+	-khtml-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+.redlove_form-replacement_select_option:last-child {
+	-webkit-border-radius: 0 0 4px 4px;
+	-khtml-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+.redlove_form-replacement_select_option.active {
+	background: #888;
+	color: #fff;
+}
+.redlove_form-replacement_select_option:hover {
+	background: #bbb;
+}

@@ -12,12 +12,12 @@
 * 
 * Usage:
 
-<div id="back-to-top">
+<div id="return-to-top">
 	<a href="#">^</a>
 </div>
 
 <style type="text/css">
-	#back-to-top.fixed {
+	#return-to-top.fixed {
 		bottom: 0;
 		left: auto;
 		position: fixed;
@@ -29,19 +29,15 @@
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
-		$('#return-to-top').on('click', function(event)
+		var $element = $('#return-to-top');
+		$element.on('click', function(event)
 		{
 			event.preventDefault();
-			$('html,body').animate(
-				{'scrollTop' : 0},
-				'slow',
-				function () {}
-			);
+			$('html,body').animate({'scrollTop' : 0}, 'slow', function(){});
 		});
 		
 		var $window = $(window);
-		var $element = $('#return-to-top');
-		var scroll_target_top = 500;//$element.offset().top;
+		var scroll_target_top = $window.height() / 2;//$element.offset().top;
 		var throttle_options = {
 			debug : true,
 			interval : 250,

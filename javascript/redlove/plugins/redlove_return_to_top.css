@@ -1,0 +1,64 @@
+/**
+* @version 0.0.0
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+*/
+
+/* ------------------------------------------------------------
+	Redlove Return to Top
+------------------------------------------------------------ */
+
+#redlove_return-to-top {
+	bottom: -4.0em;
+	display: inline-block;
+	left: auto;
+	line-height: 0;
+	margin: 2.0em;
+	opacity: 0.0;
+	position: fixed;
+	right: 0;
+	top: auto;
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+	visibility: hidden;
+	z-index: 9999999;
+}
+#redlove_return-to-top.fixed {
+	bottom: 0;
+	opacity: 0.6;
+	visibility: visible;
+}
+#redlove_return-to-top.fixed:hover {
+	opacity: 1.0;
+}
+#redlove_return-to-top a {
+	background: rgba(0, 0, 0, 0.4);
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	display: inline-block;
+	outline: 0;
+	padding: 1.0em;
+	position: relative;
+	text-decoration: none;
+}
+#redlove_return-to-top a:after {
+	color: #FFFFFF;
+	content: "\f077";
+	display: block;
+	font-family: FontAwesome;
+	left: 50%;
+	margin-top: -0.1em;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+

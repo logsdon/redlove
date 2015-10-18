@@ -300,6 +300,40 @@ jQuery(document).ready(function ( $ )
 	
 	// --------------------------------------------------------------------
 	
+	// --------------------------------------------------------------------
+	// Alerts and Notifications
+	// --------------------------------------------------------------------
+	
+	// Close and remove element
+	$(document).on('click', '.alert, .notification', function(event)
+	{
+		var $element = $(this);
+		var offset = $element.offset();
+		var click_from_right = $element.outerWidth() - (event.pageX - offset.left);
+		var click_from_top = (event.pageY - offset.top);
+		//console.log(click_from_right + ', ' + click_from_top);
+		
+		// If clicked in the top right corner
+		if ( click_from_right > 30 || click_from_top > 30 )
+		{
+			return true;
+		}
+		
+		event.preventDefault();
+		
+		// Hide overflow, FadeOut and SlideUp at the same time, then remove
+		$element
+		.css({overflow: 'hidden'})
+		.animate({opacity: 0, height: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0}, 300, function()
+		{
+			$element.remove();
+		});
+		
+		return false;
+	});
+	
+	// --------------------------------------------------------------------
+	
 });
 
 // --------------------------------------------------------------------

@@ -346,6 +346,12 @@ jQuery(document).ready(function ( $ )
 	
 	// --------------------------------------------------------------------
 	
+	var $first_field = $('.form_some-form').find('input[type!="hidden"], textarea, select').eq(0);
+	if ( $first_field.length && $first_field.val().length == 0 )
+	{
+		$first_field[0].focus();
+	}
+	
 	// Send additional resource entry check
 	$('.form_some-form').on('submit', function ( event )
 	{
@@ -381,7 +387,7 @@ jQuery(document).ready(function ( $ )
 		// ----------------------------------------
 		
 		// ----------------------------------------
-		// Validate
+		// Validate data
 		var valid = true;
 		var messages = new Array();
 		
@@ -402,6 +408,7 @@ jQuery(document).ready(function ( $ )
 		{
 			messages.push('Please enter valid information for all required fields.');
 			REDLOVE.fn.show_form_messages( $form, messages, 'error' );
+			REDLOVE.fn.show_form_loading($form, false);
 			return false;
 		}
 		// ----------------------------------------
@@ -410,7 +417,7 @@ jQuery(document).ready(function ( $ )
 		// Gather request data
 		var request_data = {};
 		request_data = REDLOVE.fn.serialize_multiple(request_data, REDLOVE.form_data, $form.serialize());
-		
+		// Or
 		var request_data = {};
 		// Manual data
 		//request_data.key = value;
@@ -426,7 +433,7 @@ jQuery(document).ready(function ( $ )
 		request_data += serialize_data(REDLOVE.form_data);
 		request_data += serialize_data(REDLOVE.security);
 		*/
-		
+		// Or
 		// If clicking on an item with data instead of a form
 		var request_data = {
 			action : $this.data('editable-action'),
@@ -436,7 +443,7 @@ jQuery(document).ready(function ( $ )
 		// ----------------------------------------
 		
 		// Send request
-		//$.ajax($.extend({}, COMMON.default_ajax_object, {}));
+		//$.ajax($.extend({}, COMMON.common_ajax_options, {}));
 		$.ajax({
 			cache : false,
 			context : $form,
@@ -446,7 +453,7 @@ jQuery(document).ready(function ( $ )
 			type : 'POST',
 			url : $form.attr('action'),//base_url + ''//$form.attr('action'),//this.action//this.href// For IE, make sure form action attribute is not empty if used
 			
-			success : function ( response, textStatus, jqXHR )
+			success : function ( response, text_status, jq_xhr )
 			{
 				// Check if debugging
 				if ( REDLOVE.debug )
@@ -482,7 +489,7 @@ jQuery(document).ready(function ( $ )
 					
 					// Reload page
 					window.location.reload();
-					window.location.href = 'http://example.com';
+					window.location.href = 'http://example.com/thank-you?';
 					
 					// Clone elements
 					var $template = $(event.currentTarget);
@@ -544,13 +551,13 @@ jQuery(document).ready(function ( $ )
 				}//end if not successful
 			},
 			
-			error : function ( jqXHR, textStatus, errorThrown )
+			error : function ( jq_xhr, text_status, error_thrown )
 			{
 				var newline = "\n";
 				var message = [
 					'There was an error with the request.',
-					'Javascript: ' + errorThrown,
-					'Application: ' + jqXHR.responseText
+					'Javascript: ' + error_thrown,
+					'Application: ' + jq_xhr.responseText
 				].join(newline);
 				
 				REDLOVE.fn.show_message(message, 'error');
@@ -564,12 +571,12 @@ jQuery(document).ready(function ( $ )
 				}
 			},
 			
-			beforeSend : function( jqXHR, settings )
+			beforeSend : function( jq_xhr, settings )
 			{
 				REDLOVE.fn.show_site_loading();
 			},
 			
-			complete : function( jqXHR, textStatus )
+			complete : function( jq_xhr, text_status )
 			{
 				REDLOVE.fn.show_form_loading($form, false);
 				REDLOVE.fn.show_site_loading(false);
@@ -706,7 +713,7 @@ jQuery(document).ready(function ( $ )
 	
 	
 	
-	$(document).on('submit', '.form_ask', function(event)
+	$(document).on('submit', '.form_ask', function ( event )
 	{
 		event.preventDefault();
 		
@@ -760,7 +767,7 @@ jQuery(document).ready(function ( $ )
 			context : $form,
 			data : request_data,
 			url : $form.attr('action'),
-			success : function ( response, textStatus, jqXHR )
+			success : function ( response, text_status, jq_xhr )
 			{
 				// Check if no or invalid response received
 				if ( ! response || typeof response !== 'object' )
@@ -833,7 +840,7 @@ jQuery(document).ready(function ( $ )
 		$.ajax($.extend({}, REDLOVE.common_ajax_options, {
 			data : request_data,
 			url : url,
-			success : function ( response, textStatus, jqXHR )
+			success : function ( response, text_status, jq_xhr )
 			{
 				// Check if no or invalid response received
 				if ( ! response || typeof response !== 'object' )
@@ -1090,7 +1097,7 @@ jQuery(document).ready(function ( $ )
 			type : 'POST',
 			url : COMMON.store_api,
 			
-			success : function( response, textStatus, jqXHR )
+			success : function( response, text_status, jq_xhr )
 			{
 				// Check if no or invalid response received
 				if ( ! response || typeof response != 'object' )
@@ -1115,12 +1122,12 @@ jQuery(document).ready(function ( $ )
 			
 			error : ajax_error_handler,
 			
-			beforeSend : function( jqXHR, settings )
+			beforeSend : function( jq_xhr, settings )
 			{
 				show_site_loading();
 			},
 			
-			complete : function( jqXHR, textStatus )
+			complete : function( jq_xhr, text_status )
 			{
 				show_site_loading(false);
 			}

@@ -1,0 +1,97 @@
+/**
+* @version 0.0.0
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+*/
+
+/* ------------------------------------------------------------
+	Redlove Code Example
+------------------------------------------------------------ */
+
+.redlove_code-example {
+	border: 1px solid #e6e6e6;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+	margin: 1.0em 0;
+	padding: 2.0em;
+	position: relative;
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+}
+.redlove_code-example-shown {
+	background: #e6e6e6;
+}
+.redlove_code-example-hover {
+	border-color: #cccccc;
+}
+
+.redlove_code-example_toggle {
+	background: #e6e6e6;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-khtml-top-left-border-radius: 0;
+	-khtml-bottom-right-border-radius: 0;
+	-moz-border-radius-topleft: 0;
+	-moz-border-radius-bottomright: 0;
+	-webkit-top-left-border-radius: 0;
+	-webkit-bottom-right-border-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 0;
+	color: #b6b6b6;
+	cursor: pointer;
+	font-family: FontAwesome;
+	left: auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+	z-index: 1;
+}
+.redlove_code-example_toggle:hover,
+.redlove_code-example-shown .redlove_code-example_toggle {
+	color: #cccccc;
+}
+.redlove_code-example_toggle:before {
+	content: '\f121';
+	display: inline-block;
+	font-size: 1.0em;
+	line-height: 1.0;
+	padding: 0.25em;
+}
+
+.redlove_code-example_liner {
+	overflow: auto;
+}
+.redlove_code-example-shown .redlove_code-example_liner {
+	background: #fcfcfc;
+	border: solid 0px transparent;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	padding: 1.5rem 2.0rem;
+}
+.redlove_code-example-shown .redlove_code-example_liner pre {
+	font-family: 'Courier New', Courier, 'Lucida Console', Monaco, monospace, serif;
+	font-size: 90%;
+	margin: 0;
+	white-space: pre-wrap;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+

@@ -1,0 +1,882 @@
+/**
+* @version 0.0.0
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+*/
+
+/* ============================================================
+	# Style References
+============================================================ */
+
+.border-radius {
+	-webkit-top-left-border-radius: 10px;
+	-webkit-top-right-border-radius: 10px;
+	-khtml-top-left-border-radius: 10px;
+	-khtml-top-right-border-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.box-shadow {
+	-webkit-box-shadow: 1px 1px 3px 0px rgb(240, 0, 0);
+	-moz-box-shadow: 1px 1px 3px 0px rgb(240, 0, 0);
+	box-shadow: 1px 1px 3px 0px rgb(240, 0, 0);
+	
+	-webkit-box-shadow: 
+		inset 3px 3px 3px 0px rgba(255, 255, 255, 0.6), 
+		inset -3px -3px 3px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 
+		inset 3px 3px 3px 0px rgba(255, 255, 255, 0.6), 
+		inset -3px -3px 3px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 
+		inset 3px 3px 3px 0px rgba(255, 255, 255, 0.6), 
+		inset -3px -3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow {
+	text-shadow: 0 1px rgb(0, 0, 0);
+	text-shadow: -1px -1px 0px rgb(0, 0, 0);
+	filter: dropshadow(color=#000000, offx=-1, offy=-1);
+}
+
+/* ------------------------------------------------------------
+	Gradients
+	
+	http://www.colorzilla.com/gradient-editor/
+	http://css3button.net/
+	http://css-tricks.com/examples/ButtonMaker/
+	http://www.cssbuttongenerator.com/
+	http://css3generator.com/
+	http://www.cssportal.com/button-maker/
+	http://www.sitepoint.com/10-best-css3-code-generators/
+------------------------------------------------------------ */
+
+.gradient {
+	background: #D4DDE4; /* Old browsers */
+	background: -moz-linear-gradient(top, #D4DDE4 0%, #EAEFF2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D4DDE4), color-stop(100%,#EAEFF2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #D4DDE4 0%, #EAEFF2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #D4DDE4 0%, #EAEFF2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #D4DDE4 0%, #EAEFF2 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #D4DDE4 0%, #EAEFF2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D4DDE4', endColorstr='#EAEFF2',GradientType=0 ); /* IE6-9 */
+}
+
+.gradient-button {
+	background: #818285; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzgxODI4NSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1ODU4NTgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #818285 0%, #585858 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#818285), color-stop(100%,#585858)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #818285 0%,#585858 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #818285 0%,#585858 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #818285 0%,#585858 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #818285 0%,#585858 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#818285', endColorstr='#585858',GradientType=0 ); /* IE6-8 */
+	
+	cursor: pointer;
+}
+.gradient-button:hover,
+.gradient-button:active {
+	background: #818285; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzgxODI4NSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4MTgyODUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #818285 0%, #818285 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#818285), color-stop(100%,#818285)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #818285 0%,#818285 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #818285 0%,#818285 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #818285 0%,#818285 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #818285 0%,#818285 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#818285', endColorstr='#818285',GradientType=0 ); /* IE6-8 */
+}
+
+/* ------------------------------------------------------------
+	Animation
+------------------------------------------------------------ */
+
+@-webkit-keyframes flicker{
+	0%, 100%   { opacity: 1; }
+	50%  { opacity: 0.2; }
+}
+@-moz-keyframes flicker{
+	0%, 100%   { opacity: 1; }
+	50%  { opacity: 0.2; }
+}
+@-o-keyframes flicker{
+	0%, 100%   { opacity: 1; }
+	50%  { opacity: 0.2; }
+}
+@keyframes flicker {
+	0%, 100%   { opacity: 1; }
+	50%  { opacity: 0.2; }
+}
+.animation-flicker {
+	-webkit-animation: flicker 1s infinite;
+	-moz-animation: flicker 1s infinite;
+	-o-animation: flicker 1s infinite;
+	animation: flicker 1s infinite;
+}
+.animation-flicker2 {
+	-webkit-animation: flicker 0.5s steps(5, start) infinite;
+	-moz-animation: flicker 0.5s steps(5, start) infinite;
+	animation: flicker 0.5s steps(5, start) infinite;
+}
+
+@keyframes blink {
+	to {
+		visibility: hidden;
+	}
+}
+@-webkit-keyframes blink {
+	to {
+		visibility: hidden;
+	}
+}
+.blink {
+	-webkit-animation: blink 1s steps(5, start) infinite;
+	-moz-animation: blink 0.5s linear infinite;
+	animation: blink 1s steps(5, start) infinite;
+}
+
+
+/* ============================================================
+	# Style Examples
+============================================================ */
+
+/* ------------------------------------------------------------
+	Border Arrows
+------------------------------------------------------------ */
+
+.border-arrow {
+	border: 4px solid;
+	display: inline-block;
+	height: 0;
+	min-height: 1px;
+	vertical-align: middle;
+	width: 0;
+}
+.border-arrow-down {
+	border-bottom: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px solid;
+}
+.border-arrow-left {
+	border-bottom: 4px solid transparent;
+	border-left: 0;
+	border-right: 4px solid;
+	border-top: 4px solid transparent;
+}
+.border-arrow-right {
+	border-bottom: 4px solid transparent;
+	border-left: 4px solid;
+	border-right: 0;
+	border-top: 4px solid transparent;
+}
+.border-arrow-up {
+	border-bottom: 4px solid;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 0;
+}
+
+/* ------------------------------------------------------------
+	Cards
+------------------------------------------------------------ */
+
+.card {
+	background: rgba(0,0,0,0.2);
+	padding: 2.0em;
+	position: relative;
+	text-rendering: optimizelegibility;
+}
+.card h5 {
+	margin: 0 0 1.0em;
+	width: 100%;
+}
+.card p {
+	width: 100%;
+}
+/* Fill the area */
+.card-hover-content {
+	background: rgba(255,255,255,0.8);
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	filter: alpha(opacity=0);
+	opacity: 0.0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+	visibility: hidden;
+	width: 100%;
+}
+.card:hover .card-hover-content {
+	filter: alpha(opacity=100);
+	opacity: 1.0;
+	visibility: visible;
+}
+
+.card-table {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+.card-cell-center {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* ------------------------------------------------------------
+	Drop Shadows and Corners
+	
+	<div class="shadows shadows_lifted-no-curl">
+		<h1 style="background: white;position: relative; z-index: 1;">Test</h1>
+	</div>
+
+	<div class="shadows shadows_lifted-no-curl" style="height: 200px; width: 200px;">
+		<div style="background: white; width: 100%; height: 100%; position: relative; z-index: 1;">
+		</div>
+	</div>
+------------------------------------------------------------ */
+
+.shadows {
+	position:relative;
+	/*z-index: 0;*/
+}
+.shadows:before,
+.shadows:after {
+	content:"";
+	position:absolute;
+	z-index:0;/*-1*/
+}
+
+/* 
+	Lifted corners
+------------------------------------------------------- */
+.shadows_lifted-no-curl:before,
+.shadows_lifted-no-curl:after {
+	bottom:15px;
+	left:10px;
+	width:50%;
+	height:20%;
+	max-width:300px;
+	-webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	-webkit-transform:rotate(-3deg);
+	-moz-transform:rotate(-3deg);
+	-ms-transform:rotate(-3deg);
+	-o-transform:rotate(-3deg);
+	transform:rotate(-3deg);
+}
+
+.shadows_lifted-no-curl:after {
+	right:10px;
+	left:auto;
+	-webkit-transform:rotate(3deg);
+	-moz-transform:rotate(3deg);
+	-ms-transform:rotate(3deg);
+	-o-transform:rotate(3deg);
+	transform:rotate(3deg);
+}
+
+/* 
+	Lifted corners
+------------------------------------------------------- */
+.shadows_lifted-no-curl_inverted:before,
+.shadows_lifted-no-curl_inverted:after {
+	bottom:15px;
+	left:10px;
+	width:25%;
+	height:20%;
+	max-width:300px;
+	-webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	-webkit-transform:rotate(10deg);
+	-moz-transform:rotate(10deg);
+	-ms-transform:rotate(10deg);
+	-o-transform:rotate(10deg);
+	transform:rotate(10deg);
+}
+
+.shadows_lifted-no-curl_inverted:after {
+	right:10px;
+	left:auto;
+	-webkit-transform:rotate(-10deg);
+	-moz-transform:rotate(-10deg);
+	-ms-transform:rotate(-10deg);
+	-o-transform:rotate(-10deg);
+	transform:rotate(-10deg);
+}
+
+/* 
+	Lifted corners
+------------------------------------------------------- */
+.shadows_lifted {
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+
+.shadows_lifted:before,
+.shadows_lifted:after {
+	bottom:15px;
+	left:10px;
+	width:50%;
+	height:20%;
+	max-width:300px;
+	-webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+	-webkit-transform:rotate(-3deg);
+	-moz-transform:rotate(-3deg);
+	-ms-transform:rotate(-3deg);
+	-o-transform:rotate(-3deg);
+	transform:rotate(-3deg);
+}
+
+.shadows_lifted:after {
+	right:10px;
+	left:auto;
+	-webkit-transform:rotate(3deg);
+	-moz-transform:rotate(3deg);
+	-ms-transform:rotate(3deg);
+	-o-transform:rotate(3deg);
+	transform:rotate(3deg);
+}
+
+.shadows_lifted-no-curl_left:before,
+.shadows_lifted-no-curl_left:after {
+	bottom: 3px;
+	height:50%;
+	left: 13px;
+	width:20%;
+	max-height:100px;
+
+	-webkit-box-shadow:-12px 0 5px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:-12px 0 5px rgba(0, 0, 0, 0.4);
+	box-shadow:-12px 0 5px rgba(0, 0, 0, 0.4);
+
+	-webkit-transform:rotate(4deg);
+	-moz-transform:rotate(4deg);
+	-ms-transform:rotate(4deg);
+	-o-transform:rotate(4deg);
+	transform:rotate(4deg);
+}
+.shadows_lifted-no-curl_left:after {
+	top: 3px;
+	left: 13px;
+
+	-webkit-transform:rotate(-4deg);
+	-moz-transform:rotate(-4deg);
+	-ms-transform:rotate(-4deg);
+	-o-transform:rotate(-4deg);
+	transform:rotate(-4deg);
+}
+
+.shadows_lifted-no-curl_right:before,
+.shadows_lifted-no-curl_right:after {
+	bottom: 3px;
+	height:50%;
+	left: auto;
+	right: 13px;
+	width:20%;
+	max-height:100px;
+
+	-webkit-box-shadow:12px 0 5px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:12px 0 5px rgba(0, 0, 0, 0.4);
+	box-shadow:12px 0 5px rgba(0, 0, 0, 0.4);
+
+	-webkit-transform:rotate(-4deg);
+	-moz-transform:rotate(-4deg);
+	-ms-transform:rotate(-4deg);
+	-o-transform:rotate(-4deg);
+	transform:rotate(-4deg);
+}
+.shadows_lifted-no-curl_right:after {
+	top: 3px;
+
+	-webkit-transform:rotate(4deg);
+	-moz-transform:rotate(4deg);
+	-ms-transform:rotate(4deg);
+	-o-transform:rotate(4deg);
+	transform:rotate(4deg);
+}
+
+/* 
+	Curled corners
+------------------------------------------------------- */
+.shadows_curled {
+	border:1px solid #efefef;
+	-moz-border-radius:0 0 120px 120px / 0 0 6px 6px;
+	border-radius:0 0 120px 120px / 0 0 6px 6px;
+}
+
+.shadows_curled:before,
+.shadows_curled:after {
+	bottom:12px;
+	left:10px;
+	width:50%;
+	height:55%;
+	max-width:200px;
+	-webkit-box-shadow:0 8px 12px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow:0 8px 12px rgba(0, 0, 0, 0.5);
+	box-shadow:0 8px 12px rgba(0, 0, 0, 0.5);
+	-webkit-transform:skew(-8deg) rotate(-3deg);
+	-moz-transform:skew(-8deg) rotate(-3deg);
+	-ms-transform:skew(-8deg) rotate(-3deg);
+	-o-transform:skew(-8deg) rotate(-3deg);
+	transform:skew(-8deg) rotate(-3deg);
+}
+
+.shadows_curled:after {
+	right:10px;
+	left:auto;
+	-webkit-transform:skew(8deg) rotate(3deg);
+	-moz-transform:skew(8deg) rotate(3deg);
+	-ms-transform:skew(8deg) rotate(3deg);
+	-o-transform:skew(8deg) rotate(3deg);
+	transform:skew(8deg) rotate(3deg);
+}
+
+/* 
+	Perspective corners
+------------------------------------------------------- */
+.shadows_perspective:before {
+	left:80px;
+	bottom:5px;
+	width:50%;
+	height:35%;
+	max-width:200px;
+	-webkit-box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+	box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+	-webkit-transform:skew(50deg);
+	-moz-transform:skew(50deg);
+	-ms-transform:skew(50deg);
+	-o-transform:skew(50deg);
+	transform:skew(50deg);
+	-webkit-transform-origin:0 100%;
+	-moz-transform-origin:0 100%;
+	-ms-transform-origin:0 100%;
+	-o-transform-origin:0 100%;
+	transform-origin:0 100%;
+}
+
+.shadows_perspective:after {
+	display:none;
+}
+
+/* 
+	Raised shadow - no pseudo-elements needed
+------------------------------------------------------- */
+.shadows_raised {
+	-webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* 
+	Curved shadows
+------------------------------------------------------- */
+.shadows_curved:before {
+	top:10px;
+	bottom:10px;
+	left:0;
+	right:50%;
+	-webkit-box-shadow:0 0 15px rgba(0,0,0,0.6);
+	-moz-box-shadow:0 0 15px rgba(0,0,0,0.6);
+	box-shadow:0 0 15px rgba(0,0,0,0.6);
+	-moz-border-radius:10px / 100px;
+	border-radius:10px / 100px;
+}
+
+.shadows_curved-vt-2:before {
+	right:0;
+}
+
+.shadows_curved-hz-1:before {
+	top:50%;
+	bottom:0;
+	left:10px;
+	right:10px;
+	-moz-border-radius:100px / 10px;
+	border-radius:100px / 10px;
+}
+
+.shadows_curved-hz-2:before {
+	top:0;
+	bottom:0;
+	left:10px;
+	right:10px;
+	-moz-border-radius:100px / 10px;
+	border-radius:100px / 10px;
+}
+
+/* 
+	Rotated box
+------------------------------------------------------- */
+.shadows_rotated {
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+	-webkit-transform:rotate(-3deg);
+	-moz-transform:rotate(-3deg);
+	-ms-transform:rotate(-3deg);
+	-o-transform:rotate(-3deg);
+	transform:rotate(-3deg);
+}
+
+.shadows_rotated > :first-child:before {
+	content:"";
+	position:absolute;
+	z-index:-1;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background:#fff;
+	-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* --------------------------------------------------------------------------------
+	## Navigation
+-------------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------
+	Navigation list
+------------------------------------------------------- */
+
+.nav-primary-list {
+	text-align: right;
+	width: 100%;
+}
+.nav-primary-list >ul > li {
+	margin-left: 2.5em;
+}
+.nav-primary-list >ul > li.first,
+.nav-primary-list >ul > li:first-child {
+	margin-left: 0;
+}
+.nav-primary-list ul ul {
+	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, 0.9);
+}
+.nav-primary-list a {
+	background: inherit;
+	display: block;
+	font-size: 1.0em;
+	outline: 0 none;
+	padding: 0.5em 0.6em 0.4em;
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;/* Keep item from text wrapping */
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+}
+/* Restful state */
+.nav-primary-list a,
+.nav-primary-list > ul:hover .active > a /*on nav hover, change active display to inactive*/
+{
+	background: inherit;
+	color: inherit;
+}
+/* Hover state */
+.nav-primary-list a:hover,
+.nav-primary-list > ul:hover :hover > a:hover, /*on nav hover, on child hover and continued parent display*/
+.nav-primary-list > ul:hover .active:hover > a:hover /*on nav hover, on active hover and direct child hover*/
+{
+	background: #E1802D;
+	color: #FFFFFF;
+}
+/* Hover active state */
+.nav-primary-list > ul:hover :hover > a,
+.nav-primary-list > ul:hover .active:hover > a /*on nav hover, on active hover and direct child display*/
+{
+	background: #E1802D;
+	color: #FFFFFF;
+}
+/* Active state */
+.nav-primary-list .active > a,
+.nav-primary-list > ul:hover .active .active > a /*Nested active*/
+{
+	background: #E1802D;
+	color: #FFFFFF;
+}
+
+/* -------------------------------------------------------
+	Footer navigation list
+------------------------------------------------------- */
+
+.nav-footer-list {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block; *display: inline;zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+	
+	float: right;
+	font-size: 0.9em;
+	text-transform: uppercase;
+}
+/* Reset list styles */
+.nav-footer-list ul,
+.nav-footer-list li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+/* Setup menu items, Item > Subitem... */
+.nav-footer-list ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: bottom;
+}
+.nav-footer-list li {
+	float: left;
+	position: relative;
+	
+	margin-left: 1.2em;
+}
+.nav-footer-list li.first,
+.nav-footer-list li:first-child {
+	border-left: 0 none;
+	margin-left: 0;
+	padding-left: 0;
+}
+.nav-footer-list img {
+	vertical-align: top;
+}
+/* Restful state */
+.nav-footer-list a {
+	display: block;
+	text-decoration: none;
+}
+/* Hover state */
+.nav-footer-list a:hover {
+	text-decoration: underline;
+}
+/* Active state */
+.nav-footer-list .active a {
+}
+
+/* -------------------------------------------------------
+	Social navigation list
+------------------------------------------------------- */
+
+.nav-social {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+}
+/* Reset list styles
+----------------------------------- */
+.nav-social ul,
+.nav-social li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+/* Setup menu items, Item > Subitem...
+----------------------------------- */
+.nav-social ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+	
+	float: right;
+	text-align: left;
+}
+.nav-social li {
+	display: block;
+	float: left;
+	position: relative;
+	
+	padding: 0.5em 1.0em;
+}
+/* Restful state of item
+----------------------------------- */
+.nav-social a {
+	/*background: transparent url('../images/splash/sprite__social.png') scroll no-repeat 0 0;*/
+	display: block;
+	font-size: 1.0em;
+	height: 28px;
+	line-height: 1;
+	text-decoration: none;
+	white-space: nowrap;
+	width: 29px;
+	
+	/* Hide text */
+	background-color: transparent;
+	border: 0;
+	color: transparent;
+	font: 0/0 a;
+	text-shadow: none;
+}
+.nav-social .facebook a {
+	background-position: 0 -28px;
+}
+.nav-social .twitter a {
+	background-position: 0 -28px;
+}
+.nav-social .pinterest a {
+	background-position: 0 -56px;
+}
+.nav-social .instagram a {
+	background-position: 0 -84px;
+}
+
+/* -------------------------------------------------------
+	Breadcrumb navigation list
+------------------------------------------------------- */
+
+.nav-breadcrumbs {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+	width: 100%;
+}
+/* Reset list styles */
+.nav-breadcrumbs,
+.nav-breadcrumbs li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.nav-breadcrumbs ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+}
+.nav-breadcrumbs li {
+	color: #818285;
+	display: block;
+	float: left;
+	font-size: 0.8em;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+.nav-breadcrumbs li:before {
+	content: "\002F";
+	content: "\00BB";
+	content: "\203A";
+	font-size: 1.4em;
+	line-height: 1.6;
+}
+.nav-breadcrumbs li.first,
+.nav-breadcrumbs li:first-child {
+	border-left: 0 none;
+	margin-left: 0;
+	padding-left: 0;
+}
+.nav-breadcrumbs li.last:before,
+.nav-breadcrumbs li:last-child:before {
+   content: "";
+}
+/* Restful state of item*/
+.nav-breadcrumbs a {
+	color: #818285;
+	display: block;
+	float: left;
+	padding: 0.5em 1.0em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+/* Hover state */
+.nav-breadcrumbs a:hover {
+	text-decoration: underline;
+}
+.nav-breadcrumbs .active a {
+	color: #1a3654;
+}
+
+/* -------------------------------------------------------
+	Pagination
+------------------------------------------------------- */
+
+.pagination {
+	width: 100%;
+	text-align: center;
+}
+.pagination ul,
+.pagination li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.pagination ul {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: middle;
+}
+.pagination li {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	float: left;
+}
+.pagination a {
+	display: block;
+	padding: 0.5em;
+}
+.pagination .active a {
+	font-weight: bold;
+}
+
+/* 
+	Pagination - Adjacent
+---------------------------------------- */
+.pagination_prev-next {
+	/* Trigger hasLayout for inline-block, contain floats */
+	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+	vertical-align: top;
+	width: 100%;
+}
+.pagination_prev-next_prev {
+	float: left;
+}
+.pagination_prev-next_next {
+	float: right;
+}
+
+
+/* --------------------------------------------------------------------------------
+	## Content
+-------------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------
+	Meter
+------------------------------------------------------- */
+
+.meter {
+	background: #f1f1f1;
+	border: 1px solid #ccc;
+}
+.meter-bar {
+	background: #ccc;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #f1f1f1;
+	font-size: 0.8em;
+	padding: 0.25em 0.5em;
+	text-align: right;
+	width: 80%;
+}

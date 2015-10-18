@@ -13,7 +13,7 @@
 	<p>This is some test content!</p>
 </div>
 
-<style type="text/stylesheet">
+<style type="text/css">
 	.redlove_affixed {
 		left: 0;
 		position: fixed;

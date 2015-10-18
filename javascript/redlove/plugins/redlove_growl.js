@@ -8,7 +8,7 @@
 * 
 * Usage:
 
-<link href="javascript/redlove/plugins/redlove_growl.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="javascript/redlove/plugins/redlove_growl.css">
 <script type="text/javascript" src="javascript/redlove/plugins/redlove_growl.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
@@ -77,7 +77,7 @@
 	* @param mixed args Passed arguments
 	* @return void
 	*/
-	proto.create = function ( content, addon_class )
+	proto.create = function ( content, addon_class, ttl_interval )
 	{
 		var $growl_container = $('#' + this.options.container_id);
 		if ( $growl_container.length == 0 )
@@ -96,7 +96,7 @@
 			{
 				self.remove($growl);
 			},
-			self.options.ttl_interval
+			(ttl_interval || self.options.ttl_interval)
 		);
 		
 		return $growl;

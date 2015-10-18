@@ -14,28 +14,28 @@ http://demosthenes.info/blog/534/Cross-browser-Image-Blur-with-CSS
 	filter: url('filters.xml#_sepia');
 }
 -->
-<svg id='image' version="1.1" xmlns="http://www.w3.org/2000/svg" height="0">
+<svg id="image" version="1.1" xmlns="http://www.w3.org/2000/svg" height="0">
 	
 	<defs>
 		
-		<filter id="_blur" x="0%" y="0%" width="100%" height="100%">
+		<filter id="blur" x="0%" y="0%" width="100%" height="100%">
 			<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="outBlur"/>
 		</filter>
-		<filter id="_brightness">
+		<filter id="brightness">
 			<feComponentTransfer>
 				<feFuncR type="linear" slope="5"/>
 				<feFuncG type="linear" slope="5"/>
 				<feFuncB type="linear" slope="5"/>
 			</feComponentTransfer>
 		</filter>
-		<filter id="_contrast">
+		<filter id="contrast">
 			<feComponentTransfer>
 				<feFuncR type="linear" slope="[amount]" intercept="-(0.5 * [amount]) + 0.5"/>
 				<feFuncG type="linear" slope="[amount]" intercept="-(0.5 * [amount]) + 0.5"/>
 				<feFuncB type="linear" slope="[amount]" intercept="-(0.5 * [amount]) + 0.5"/>
 			</feComponentTransfer>
 		</filter>
-		<filter id="_contrast2">
+		<filter id="contrast2">
 			<feGaussianBlur stdDeviation="1.5"/>
 			<feComponentTransfer>
 				<feFuncR type="discrete" tableValues="0 .5 1 1"/>
@@ -43,7 +43,7 @@ http://demosthenes.info/blog/534/Cross-browser-Image-Blur-with-CSS
 				<feFuncB type="discrete" tableValues="0"/>
 			</feComponentTransfer>
 		</filter>
-		<filter id="_drop-shadow">
+		<filter id="drop-shadow">
 			<feGaussianBlur in="SourceAlpha" stdDeviation="[radius]"/>
 			<feOffset dx="[offset-x]" dy="[offset-y]" result="offsetblur"/>
 			<feFlood flood-color="[color]"/>
@@ -53,7 +53,7 @@ http://demosthenes.info/blog/534/Cross-browser-Image-Blur-with-CSS
 				<feMergeNode in="SourceGraphic"/>
 			</feMerge>
 		</filter>
-		<filter id="_drop-shadow1">
+		<filter id="drop-shadow1">
 			<feGaussianBlur stdDeviation="5" in="SourceAlpha"/>
 			<feOffset dy="16" dx="16"/>
 			<feMerge>
@@ -61,7 +61,7 @@ http://demosthenes.info/blog/534/Cross-browser-Image-Blur-with-CSS
 				<feMergeNode in="SourceGraphic"/>
 			</feMerge>
 		</filter>
-		<filter id="_drop-shadow2">
+		<filter id="drop-shadow2">
 			<feGaussianBlur stdDeviation="4" in="SourceAlpha"/>
 			<feOffset dy="10" dx="8"/>
 			<feMerge>
@@ -69,57 +69,57 @@ http://demosthenes.info/blog/534/Cross-browser-Image-Blur-with-CSS
 				<feMergeNode in="SourceGraphic"/>
 			</feMerge>
 		</filter>
-		<filter id="_sepia">
+		<filter id="sepia">
 			<feColorMatrix values="0.393 0.769 0.189 0 0
 			0.349 0.686 0.168 0 0
 			0.272 0.534 0.131 0 0
 			0 0 0 1 0" type="matrix"/>
 		</filter>
-		<filter id="_sepia_old-timey">
+		<filter id="sepia_old-timey">
 			<feColorMatrix values="0.14 0.45 0.05 0 0
 			0.12 0.39 0.04 0 0
 			0.08 0.28 0.03 0 0
 			0 0 0 1 0" type="matrix"/>
 		</filter>
-		<filter id="_grayscale">
+		<filter id="grayscale">
 			<feColorMatrix values="0.2126 0.7152 0.0722 0 0
 			0.2126 0.7152 0.0722 0 0
 			0.2126 0.7152 0.0722 0 0
 			0 0 0 1 0" type="matrix"/>
 		</filter>
-		<filter id="_grayscale2">
+		<filter id="grayscale2">
 			<feColorMatrix values="0.3333 0.3333 0.3333 0 0
 			0.3333 0.3333 0.3333 0 0
 			0.3333 0.3333 0.3333 0 0
 			0 0 0 1 0"/>
 		</filter>
-		<filter id="_hue-rotate">
+		<filter id="hue-rotate">
 			<feColorMatrix values="90" type="hueRotate"/>
 		</filter>
-		<filter id="_hue-rotate2">
+		<filter id="hue-rotate2">
 			<feComponentTransfer>
 				<feFuncR type="table" tableValues="1 0"/>
 				<feFuncG type="table" tableValues="1 0"/>
 				<feFuncB type="table" tableValues="1 0"/>
 			</feComponentTransfer>
 		</filter>
-		<filter id="_invert">
+		<filter id="invert">
 			<feComponentTransfer>
 				<feFuncR tableValues="1 0" type="table"/>
 				<feFuncG tableValues="1 0" type="table"/>
 				<feFuncB tableValues="1 0" type="table"/>
 			</feComponentTransfer>
 		</filter>
-		<filter id="_opacity">
+		<filter id="opacity">
 			<feComponentTransfer>
 				<feFuncA tableValues="0 0.5" type="table">
 				</feFuncA>
 			</feComponentTransfer>
 		</filter>
-		<filter id="_saturate">
+		<filter id="saturate">
 			<feColorMatrix values="2" type="saturate"/>
 		</filter>
-		<filter id="_saturate2">
+		<filter id="saturate2">
 			<feComponentTransfer>
 				<feFuncR tableValues="1 .33 .33" type="table"/>
 				<feFuncG tableValues=".33 1 .33" type="table"/>

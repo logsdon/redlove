@@ -577,6 +577,10 @@ window.GLOBAL_OBJECT = $.extend(window.GLOBAL_OBJECT, {
 		});
 		
 		/*
+		console.log('( w, h ) : ( ' + $element.outerWidth() + ', ' + $element.outerHeight() + ' )');
+		console.log('( e.pageX, e.pageY ) : ( ' + event.pageX + ', ' + event.pageY + ' )');
+		console.log('( x, y ) : ( ' + (event.pageX - offset.left) + ', ' + (event.pageY - offset.top) + ' )');
+		
 		var $window = $(window);
 		var $document = $(document);
 		var document_width = $document.width();// width of HTML document

@@ -46,6 +46,9 @@ $.extend(window.REDLOVE, {
 		ajax : 1
 	},
 	base_url : '<?php echo function_exists('base_url') ? base_url() : ''; ?>',
+	site_theme : '<?php echo isset($this->site_theme) ? $this->site_theme : ''; ?>',
+	site_theme_path : '<?php echo isset($this->site_theme_path) ? $this->site_theme_path : ''; ?>',
+	site_theme_url : '<?php echo isset($this->site_theme_url) ? $this->site_theme_url : ''; ?>',
 	page_start_time : <?php echo time(); ?>,
 	server_timezone_offset : <?php echo date('Z'); ?>,
 	client_timezone_offset : - new Date().getTimezoneOffset() * 60,
@@ -86,11 +89,19 @@ $.extend(window.REDLOVE.fn, {
 	},
 
 	/**
+	* Trim text
+	*/
+	trim : function ( string )
+	{
+		return String(string).replace(/^\s+/, '').replace(/\s+$/, '');
+	},
+
+	/**
 	* Trim whitespace from text
 	*/
-	trim : function ()
+	trim_all_whitespace : function ( string )
 	{
-		return this.replace(/^\s+|\s+$/gm, '');
+		return String(string).replace(/^\s+|\s+$/gm, '');
 	},
 
 	// --------------------------------------------------------------------
@@ -595,14 +606,16 @@ $.extend(window.REDLOVE.fn, {
 		}
 		// Normalize page to number
 		page *= 1;
+		
 		// Check page range
+		if ( page > total_pages )
+		{
+			page = total_pages;
+		}
+		
 		if ( page < 1 )
 		{
 			page = 1;
-		}
-		else if ( page > total_pages )
-		{
-			page = total_pages;
 		}
 		
 		var offset = (page - 1) * limit;
@@ -894,7 +907,31 @@ $.extend(window.REDLOVE.fn, {
 			.replace(/\s+/g, '-')
 			;
 	},
-
+	
+	/**
+	* Encode common html entities with replacements
+	*/
+	encode_html_entities : function ( string )
+	{
+		return String(string).replace(/&amp;/g, '&').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+	},
+	
+	/**
+	* Encode html entities using DOM
+	*/
+	encode_entities : function ( string )
+	{
+		return $('<div/>').text(string).html();
+	},
+	
+	/**
+	* Decode html entities using DOM
+	*/
+	decode_entities : function ( string )
+	{
+		return $('<div/>').html(string).text();
+	},
+	
 	// --------------------------------------------------------------------
 	//	# Files
 	// --------------------------------------------------------------------
@@ -1145,7 +1182,7 @@ $.extend(window.REDLOVE.fn, {
 	/**
 	* Common functionality before sending AJAX
 	*/
-	ajax_beforesend_handler : function ( jqXHR, settings )
+	ajax_beforesend_handler : function ( jq_xhr, settings )
 	{
 		window.REDLOVE.fn.show_site_loading();
 	},
@@ -1153,7 +1190,7 @@ $.extend(window.REDLOVE.fn, {
 	/**
 	* Common functionality after AJAX complete
 	*/
-	ajax_complete_handler : function ( jqXHR, textStatus )
+	ajax_complete_handler : function ( jq_xhr, text_status )
 	{
 		window.REDLOVE.fn.show_site_loading(false);
 	},
@@ -1161,13 +1198,13 @@ $.extend(window.REDLOVE.fn, {
 	/**
 	* Common functionality for AJAX error
 	*/
-	ajax_error_handler : function ( jqXHR, textStatus, errorThrown )
+	ajax_error_handler : function ( jq_xhr, text_status, error_thrown )
 	{
 		var newline = "\n";
 		var message = [
 			'There was an error with the request.',
-			'Javascript: ' + errorThrown,
-			'Application: ' + jqXHR.responseText
+			'Javascript: ' + error_thrown,
+			'Application: ' + jq_xhr.responseText
 		].join(newline);
 		
 		window.REDLOVE.fn.show_message(message, 'error');
@@ -1346,8 +1383,8 @@ $.extend(window.REDLOVE.fn, {
 				$submit_button.attr('disabled', 'disabled').html('Sending...');
 			}
 			
-			var messages = new Array('Please wait...');
-			this.show_form_messages($form, messages, 'warning');
+			//var messages = new Array('Please wait...');
+			//this.show_form_messages($form, messages, 'warning');
 		}
 		else
 		{
@@ -1409,16 +1446,32 @@ $.extend(window.REDLOVE.fn, {
 	/**
 	* Show common message
 	*/
-	show_message : function ( message, type )
+	show_message : function ( messages, type )
 	{
-		if ( type == 'error' )
+		if ( typeof messages === 'string' )
 		{
-			alert(message);
+			messages = new Array(messages);
 		}
-		else
+		
+		for ( var i in messages )
 		{
-			alert(message);
+			message = String(messages[i]);
+			if ( type == 'error' )
+			{
+				alert(message);
+			}
+			else
+			{
+				alert(message);
+			}
 		}
+		/*
+		for ( var i in messages )
+		{
+			message = String(messages[i]).replace("\n", '<br>');
+			growl.create(message, type, 5000);
+		}
+		*/
 	},
 
 	/**
@@ -1429,7 +1482,7 @@ $.extend(window.REDLOVE.fn, {
 		show = ( show !== false );
 		
 		// Create element if it doesn't exist
-		var site_loading_class = 'redlove_site-loading';
+		var site_loading_class = 'site-loading';
 		var $site_loading = $('.' + site_loading_class);
 		if ( $site_loading.length == 0 )
 		{
@@ -1446,14 +1499,14 @@ $.extend(window.REDLOVE.fn, {
 		if ( show )
 		{
 			// Prevent body scrolling and text selection
-			$('body').addClass('redlove_no-scroll redlove_no-select');
+			$('body').addClass('no-scroll no-select');
 			$site_loading.stop().fadeIn(300);
 		}
 		else
 		{
 			$site_loading.stop().fadeOut(300, function ()
 			{
-				$('body').removeClass('redlove_no-scroll redlove_no-select');
+				$('body').removeClass('no-scroll no-select');
 			});
 		}
 	},
