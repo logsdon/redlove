@@ -663,8 +663,8 @@ audio:not([controls]) {
 img {
 	border-style: none 0;
 	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
-	vertical-align: bottom;
 	-ms-interpolation-mode: bicubic;
+	vertical-align: bottom;
 }
 
 svg:not(:root) {

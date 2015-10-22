@@ -281,7 +281,7 @@ jQuery(document).ready(function ( $ )
 		.appendTo($select);
 		
 		// Populate with menu items
-		$responsive_nav_desktop.find$('a:not(.not-responsive)').each(function(i)
+		$responsive_nav_desktop.find('a:not(.not-responsive)').each(function(i)
 		{
 			var el = $(this);
 			$('<option />', {

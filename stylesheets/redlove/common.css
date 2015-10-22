@@ -62,99 +62,114 @@ Museo, Source Sans Pro
 /* 
 	Text elements - Headings
 ---------------------------------------- */
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
 	font-weight: normal;
 	margin-bottom: 0.4167em;
 	margin-bottom: 1.0rem;
 }
-	h1 a, .h1 a,
-	h2 a, .h2 a, 
-	h3 a, .h3 a,
-	h4 a, .h4 a,
-	h5 a, .h5 a,
-	h6 a, .h6 a {
+	h1 a,
+	.h1 a,
+	h2 a,
+	.h2 a, 
+	h3 a,
+	.h3 a,
+	h4 a,
+	.h4 a,
+	h5 a,
+	.h5 a,
+	h6 a,
+	.h6 a {
 		color: inherit;
 		font-weight: inherit;
 	}
-h1, .h1 {
-	font-size: 48px;
-	font-size: 4.8rem;
-	
+h1,
+.h1 {
+	font-size: 70px;
+	font-size: 7.2rem;
 	font-size: 50px;
 	font-size: 5.0rem;
 	/*letter-spacing: -0.1rem;*/
 	line-height: 1.2;
 }
-h2, .h2 {
-	font-size: 36px;
-	font-size: 3.6rem;
-	
-	font-size: 42px;
-	font-size: 4.2rem;
-	/*letter-spacing: -0.1rem;*/
-	line-height: 1.25;
-}
-h3, .h3 {
-	font-size: 28px;
-	font-size: 2.8rem;
-	
-	font-size: 36px;
-	font-size: 3.6rem;
+h2,
+.h2 {
+	font-size: 54px;
+	font-size: 5.4rem;
+	font-size: 40px;
+	font-size: 4.0rem;
 	/*letter-spacing: -0.1rem;*/
 	line-height: 1.3;
 }
-h4, .h4 {
-	font-size: 20px;
-	font-size: 2.0rem;
-	
+h3,
+.h3 {
+	font-size: 40px;
+	font-size: 4.0rem;
+	font-size: 32px;
+	font-size: 3.2rem;
+	/*letter-spacing: -0.1rem;*/
+	line-height: 1.4;
+}
+h4,
+.h4 {
 	font-size: 30px;
 	font-size: 3.0rem;
+	font-size: 26px;
+	font-size: 2.6rem;
 	/*letter-spacing: -0.08rem;*/
-	line-height: 1.35;
-}
-h5, .h5 {
-	font-size: 18px;
-	font-size: 1.8rem;
-	
-	font-size: 24px;
-	font-size: 2.4rem;
-	/*letter-spacing: -0.05rem;*/
 	line-height: 1.5;
 }
-h6, .h6 {
-	font-size: 12px;
-	font-size: 1.2rem;
-	
+h5,
+.h5 {
+	font-size: 22px;
+	font-size: 2.2rem;
+	font-size: 20px;
+	font-size: 2.0rem;
+	/*letter-spacing: -0.05rem;*/
+	line-height: 1.7;
+}
+h6,
+.h6 {
 	font-size: 16px;
 	font-size: 1.6rem;
 	/*letter-spacing: 0.0rem;*/
-	line-height: 1.6;
+	line-height: 1.8;
 }
 /* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
 @media only screen and (max-width: 47.99em) {
 	
-	h1, .h1 {
+	h1,
+	.h1 {
 		font-size: 46px;
 		font-size: 4.6rem;
 	}
-	h2, .h2 {
+	h2,
+	.h2 {
 		font-size: 38px;
 		font-size: 3.8rem;
 	}
-	h3, .h3 {
+	h3,
+	.h3 {
 		font-size: 32px;
 		font-size: 3.2rem;
 	}
-	h4, .h4 {
+	h4,
+	.h4 {
 		font-size: 26px;
 		font-size: 2.6rem;
 	}
-	h5, .h5 {
+	h5,
+	.h5 {
 		font-size: 20px;
 		font-size: 2.0rem;
 	}
@@ -167,23 +182,28 @@ h6, .h6 {
 /* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
 @media only screen and (max-width: 29.99em) {
 	
-	h1, .h1 {
+	h1,
+	.h1 {
 		font-size: 42px;
 		font-size: 4.2rem;
 	}
-	h2, .h2 {
+	h2,
+	.h2 {
 		font-size: 34px;
 		font-size: 3.4rem;
 	}
-	h3, .h3 {
+	h3,
+	.h3 {
 		font-size: 28px;
 		font-size: 2.8rem;
 	}
-	h4, .h4 {
+	h4,
+	.h4 {
 		font-size: 22px;
 		font-size: 2.2rem;
 	}
-	h5, .h5 {
+	h5,
+	.h5 {
 		font-size: 18px;
 		font-size: 1.8rem;
 	}
@@ -362,19 +382,25 @@ blockquote.default:after {
 /* 
 	Text elements - Spacing
 ---------------------------------------- */
+iframe,
 p,
 pre,
-iframe,
 table {
 	margin: 0 0 1.0em;
 }
 
-p + h1, p + .h1,
-p + h2, p + .h2,
-p + h3, p + .h3,
-p + h4, p + .h4,
-p + h5, p + .h5,
-p + h6, p + .h6 {
+p + h1,
+p + .h1,
+p + h2,
+p + .h2,
+p + h3,
+p + .h3,
+p + h4,
+p + .h4,
+p + h5,
+p + .h5,
+p + h6,
+p + .h6 {
 	margin-top: 0.8334em;
 	margin-top: 0.4167em;
 	margin-top: 1.0rem;
@@ -467,16 +493,12 @@ p + h6, p + .h6 {
 	margin: 0;
 	padding: 0;
 }
-.list-vertical {
-}
-.list-vertical li {
-}
 
 /* --------------------------------------------------------------------------------
 	## Tables
 
-	<div class="table-responsive-wrap">
-		<table border="0" cellpadding="0" cellspacing="0" class="table">
+	<div class="responsive-wrap">
+		<table border="0" cellpadding="0" cellspacing="0" class="default">
 			<caption>Table Caption</caption>
 			<thead>
 				<tr>
@@ -494,61 +516,61 @@ p + h6, p + .h6 {
 	</div>
 -------------------------------------------------------------------------------- */
 
-.table-responsive-wrap {
+.responsive-wrap {
 	overflow: auto;
 	width: 100%;
 }
 
-.table {
+table.default {
 	margin-bottom: 1.0em;
 }
-.table thead {
+table.default thead {
 }
-.table th,
-.table td {
+table.default th,
+table.default td {
 	padding: 0.5em;
 	vertical-align: top;
 }
-.table th {
+table.default th {
 	font-weight: bold;
 }
-.table thead th {
-}
-.table .normal {
-	font-weight: normal;
-}
-.table .row {
-	border-bottom: 1px solid #EBEBEB;
+table.default thead th {
 }
 
-.table .zebra tr:nth-child(2n+2) {
+table.default .normal {
+	font-weight: normal;
+}
+table.default .row {
+	border-bottom: 1px solid #EBEBEB;
+}
+table.default .zebra tr:nth-child(2n+2) {
 	background: #EBEBEB;
 }
-.table .total {
+table.default .total {
 	border-top: 1px solid #CCCCCC;
 }
-.table .number {
+table.default .number {
 	text-align: right;
 }
 
-.table > thead > tr > th {
+table.default > thead > tr > th {
 	border-bottom: 2px solid #ddd;
 	vertical-align: bottom;
 }
-.table-borders > thead > tr > th,
-.table > tbody > tr > th,
-.table > tfoot > tr > th,
-.table > thead > tr > td,
-.table > tbody > tr > td,
-.table > tfoot > tr > td {
+table.borders > thead > tr > th,
+table.default > tbody > tr > th,
+table.default > tfoot > tr > th,
+table.default > thead > tr > td,
+table.default > tbody > tr > td,
+table.default > tfoot > tr > td {
 	padding: 0.5em;
 }
-.table-borders > thead > tr > th,
-.table-borders > tbody > tr > th,
-.table-borders > tfoot > tr > th,
-.table-borders > thead > tr > td,
-.table-borders > tbody > tr > td,
-.table-borders > tfoot > tr > td {
+table.borders > thead > tr > th,
+table.borders > tbody > tr > th,
+table.borders > tfoot > tr > th,
+table.borders > thead > tr > td,
+table.borders > tbody > tr > td,
+table.borders > tfoot > tr > td {
 	border-top: 1px solid #ddd;
 }
 
@@ -582,13 +604,13 @@ label em {
 	vertical-align: top;
 }
 
-.label_radio,
-.label_checkbox {
+.label-radio,
+.label-checkbox {
 	font-weight: inherit;
 	width: auto;
 }
-.label_radio input[type="radio"],
-.label_checkbox input[type="checkbox"] {
+.label-radio input[type="radio"],
+.label-checkbox input[type="checkbox"] {
 	vertical-align: middle;
 }
 
@@ -1232,19 +1254,19 @@ fieldset[disabled] .button {
 	pointer-events: none;
 }
 
-.button-xlarge {
+.button-xl {
 	font-size: 1.8em;
 	text-transform: uppercase;
 }
-.button-large {
+.button-l {
 	font-size: 1.4em;
 	text-transform: uppercase;
 }
-.button-small {
+.button-s {
 	font-size: 0.8em;
 	text-transform: uppercase;
 }
-.button-xsmall {
+.button-xs {
 	font-size: 0.6em;
 	padding: 0.5em 0.8em;
 	text-transform: uppercase;
@@ -2300,18 +2322,31 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	margin-right: auto;
 }
 
+.img-contain {
+	object-fit: contain;
+}
+.img-cover {
+	object-fit: cover;
+}
+.img-fill {
+	object-fit: fill;
+}
+.img-scale-down {
+	object-fit: scale-down;
+}
+
 /* 
 	Images - Responsive images
 ---------------------------------------- */
 .img-fluid,
 .img-fluid-inside > * {
-	-ms-interpolation-mode: bicubic;
 	height: auto;
+	-ms-interpolation-mode: bicubic;
 	width: 100%;
 }
 .img-scale {
-	-ms-interpolation-mode: bicubic;
 	height: auto;
+	-ms-interpolation-mode: bicubic;
 	max-width: 100%;
 	width: auto;
 }
@@ -2368,40 +2403,40 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	Filters
 ------------------------------------------------------------ */
 
-.is-contrast-filtered {
+.filter-contrast {
 	-webkit-filter: contrast(10);
 	filter: url('filters.xml#contrast');
 }
-.is-brightness-filtered {
+.filter-brightness {
 	-webkit-filter: brightness(50%);
 	filter: url('filters.xml#brightness');
 } 
-.is-grayscale-filtered {
+.filter-grayscale {
 	-webkit-filter: grayscale(1);
 	filter: url('filters.xml#grayscale');
 }
-.is-saturate-filtered {
+.filter-saturate {
 	-webkit-filter: saturate(7);
 	filter: url('filters.xml#saturate');
 }
-.is-hue-rotate-filtered {
+.filter-hue-rotate {
 	-webkit-filter: hue-rotate(180deg);
 	filter: url('filters.xml#hue-rotate');
 }
-.is-sepia-filtered {
+.filter-sepia {
 	-webkit-filter: sepia(100%);
 	filter: url('filters.xml#sepia');
 }
-.is-invert-filtered {
+.filter-invert {
 	-webkit-filter: invert(100%);
 	filter: url('filters.xml#invert');
 }
-.is-blur-filtered {
+.filter-blur {
 	-webkit-filter: blur(10px);
 	filter: url('filters.xml#blur');
 }
 
-.filter_desaturate {
+.filter-desaturate2 {
 	-webkit-filter: grayscale(100%);
 	-moz-filter: grayscale(100%);
 	-ms-filter: grayscale(100%);
@@ -2411,7 +2446,7 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
 	zoom: 1;
 }
-.filter_sepia {
+.filter-sepia2 {
 	background-color: #5E2612;
 	
 	-webkit-filter: sepia(100%);
@@ -2423,7 +2458,7 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg'><filter id='old-timey'><feColorMatrix type='matrix' values='0.14 0.45 0.05 0 0 0.12 0.39 0.04 0 0 0.08 0.28 0.03 0 0 0 0 0 1 0' /></filter></svg>#old-timey");
 	zoom: 1;
 }
-.filter_blur {
+.filter-blur2 {
 	-webkit-filter: blur(3px);
 	-moz-filter: blur(3px);
 	-ms-filter: blur(3px);
@@ -2444,13 +2479,13 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 ------------------------------------------------------------ */
 
 .position-absolute {
-	position: absolute;
+	position: absolute !important;
 }
 .position-fixed {
-	position: fixed;
+	position: fixed !important;
 }
 .position-relative {
-	position: relative;
+	position: relative !important;
 }
 
 .position-center-horizontal {
@@ -2497,14 +2532,14 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	top: 0;
 }
 
-.transform-origin-0 {
+.transform-o-0 {
 	-webkit-transform-origin: 0% 0%;
 	-moz-transform-origin: 0% 0%;
 	-ms-transform-origin: 0% 0%;
 	-o-transform-origin: 0% 0%;
 	transform-origin: 0% 0%;
 }
-.transform-rotate-45 {
+.transform-r-45 {
 	-webkit-transform: rotate(45deg);
 	-moz-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
@@ -2540,13 +2575,13 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
 }
 
-.vertical-align-top {
+.valign-top {
 	vertical-align: top !important;
 }
-.vertical-align-middle {
+.valign-middle {
 	vertical-align: middle !important;
 }
-.vertical-align-bottom {
+.valign-bottom {
 	vertical-align: bottom !important;
 }
 
@@ -2555,25 +2590,29 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 ------------------------------------------------------------ */
 
 /* Trigger hasLayout for inline-block, contain floats */
-.float-container,
-.has-layout {
+.has-layout,
+.float-container {
 	/* trigger hasLayout */
 	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
 	vertical-align: bottom;
 	width: 100%;
 }
 
-.pull-left,
-.float-left {
+.float-left,
+.pull-left {
 	float: left;
 }
-.pull-right,
-.float-right {
+.float-none,
+.pull-none {
+	float: none;
+}
+.float-right,
+.pull-right {
 	float: right;
 }
 
 /* ------------------------------------------------------------
-	Clearing
+	Clearing floated elements
 ------------------------------------------------------------ */
 
 .clear-left {
@@ -2586,32 +2625,6 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	clear: both;
 }
 
-/* Self-clearing goodness */
-.clear-self:after {
-	clear: both;
-	content: "\0020";
-	display: block;
-	height: 0;
-	visibility: hidden;
-}
-
-/* Use clearfix class on parent to clear nested columns, or wrap each row of columns in a <div class="row"> */
-.clearfix {
-	*zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-	content: '\0020';
-	display: block;
-	height: 0;
-	overflow: hidden;
-	visibility: hidden;
-	width: 0;
-}
-.clearfix:after {
-	clear: both;
-}
-
 /* You can also use a <br class="clear" /> to clear columns */
 .clear {
 	clear: both;
@@ -2621,69 +2634,77 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	visibility: hidden;
 	width: 0;
 }
-.clear-after:after {
+
+.clear-after,
+.clear-before {
+	*zoom: 1;
+}
+.clear-after:after,
+.clear-before:before {
 	clear: both;
 	content: "";
 	display: table;
-}
-
-/* Clear floating elements */
-.clear-float {
-	background: transparent;
-	clear: both;
-	font-size: 1px;
-	height: 1px;
-	margin-top: -1px;
-	overflow: hidden;
 }
 
 /* ------------------------------------------------------------
 	Margin
 ------------------------------------------------------------ */
 
-.margin-xxxsmall {
+.m-xxxs,
+.margin-xxxs {
 	margin-bottom: 0.125em;
 	margin-top: 0.125em;
 }
-.margin-xxsmall {
+.m-xxs,
+.margin-xxs {
 	margin-bottom: 0.25em;
 	margin-top: 0.25em;
 }
-.margin-xsmall {
+.m-xs,
+.margin-xs {
 	margin-bottom: 0.5em;
 	margin-top: 0.5em;
 }
-.margin-small {
+.m-s,
+.margin-s {
 	margin-bottom: 1.0em;
 	margin-top: 1.0em;
 }
-.margin-medium {
+.m-m,
+.margin-m {
 	margin-bottom: 2.0em;
 	margin-top: 2.0em;
 }
-.margin-large {
+.m-l,
+.margin-l {
 	margin-bottom: 4.0em;
 	margin-top: 4.0em;
 }
-.margin-xlarge {
+.m-xl,
+.margin-xl {
 	margin-bottom: 6.0em;
 	margin-top: 6.0em;
 }
-.margin-xxlarge {
+.m-xxl,
+.margin-xxl {
 	margin-bottom: 8.0em;
 	margin-top: 8.0em;
 }
-.margin-xxxlarge {
+.m-xxxl,
+.margin-xxxl {
 	margin-bottom: 33vh;
 	margin-top: 33vh;
 }
-.margin-no-bottom {
+.m-b0,
+.margin-b0 {
 	margin-bottom: 0;
 }
-.margin-no-top {
+.m-t0,
+.margin-t0 {
 	margin-top: 0;
 }
-.margin-none {
+.m-0,
+.margin-0 {
 	margin: 0;
 }
 
@@ -2691,49 +2712,61 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	Padding
 ------------------------------------------------------------ */
 
-.padding-xxxsmall {
+.p-xxxs,
+.padding-xxxs {
 	padding-bottom: 0.125em;
 	padding-top: 0.125em;
 }
-.padding-xxsmall {
+.p-xxs,
+.padding-xxs {
 	padding-bottom: 0.25em;
 	padding-top: 0.25em;
 }
-.padding-xsmall {
+.p-xs,
+.padding-xs {
 	padding-bottom: 0.5em;
 	padding-top: 0.5em;
 }
-.padding-small {
+.p-s,
+.padding-s {
 	padding-bottom: 1.0em;
 	padding-top: 1.0em;
 }
-.padding-medium {
+.p-m,
+.padding-m {
 	padding-bottom: 2.0em;
 	padding-top: 2.0em;
 }
-.padding-large {
+.p-l,
+.padding-l {
 	padding-bottom: 4.0em;
 	padding-top: 4.0em;
 }
-.padding-xlarge {
+.p-xl,
+.padding-xl {
 	padding-bottom: 6.0em;
 	padding-top: 6.0em;
 }
-.padding-xxlarge {
+.p-xxl,
+.padding-xxl {
 	padding-bottom: 8.0em;
 	padding-top: 8.0em;
 }
-.padding-xxxlarge {
+.p-xxxl,
+.padding-xxxl {
 	padding-bottom: 33vh;
 	padding-top: 33vh;
 }
-.padding-no-bottom {
+.p-b0,
+.padding-b0 {
 	padding-bottom: 0;
 }
-.padding-no-top {
+.p-t0,
+.padding-t0 {
 	padding-top: 0;
 }
-.padding-none {
+.p-0,
+.padding-0 {
 	padding: 0;
 }
 
@@ -2741,9 +2774,11 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	Width
 ------------------------------------------------------------ */
 
+.w-auto,
 .width-auto {
 	width: auto;
 }
+.w-full,
 .width-full {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -2753,99 +2788,222 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 }
 
 /* 
-	Width - Fraction widths
+	Width - Fractions and Percents
 ---------------------------------------- */
-.f1 {width: 100%;}
-	.f1-offset {margin-left: 100%;}
-.f4-5 {width: 80%;}
-	.f4-5-offset {margin-left: 80%;}
-.f3-4 {width: 75%;}
-	.f3-4-offset {margin-left: 75%;}
-.f2-3 {width: 66.66%;}
-	.f2-3-offset {margin-left: 66.66%;}
-	.f2-3.last {width: 66.67%;}
-.f3-5 {width: 60%;}
-	.f3-5-offset {margin-left: 60%;}
-.f1-2 {width: 50%;}
-	.f1-2-offset {margin-left: 50%;}
-.f2-5 {width: 40%;}
-	.f2-5-offset {margin-left: 40%;}
-.f1-3 {width: 33.33%;}
-	.f1-3-offset {margin-left: 33.33%;}
-	.f1-3.last {width: 33.34%;}
-.f1-4 {width: 25%;}
-	.f1-4-offset {margin-left: 25%;}
-.f1-5 {width: 20%;}
-	.f1-5-offset {margin-left: 20%;}
-.f1-6 {width: 16.66%;}
-	.f1-6-offset {margin-left: 16.66%;}
-	.f1-6.last {width: 16.70%;}
-.f1-7 {width: 14.28%;}
-	.f1-7-offset {margin-left: 14.28%;}
-	.f1-7.last {width: 14.32%;}
-.f1-8 {width: 12.50%;}
-	.f1-8-offset {margin-left: 12.50%;}
-.f1-9 {width: 11.11%;}
-	.f1-9-offset {margin-left: 11.11%;}
-	.f1-9.last {width: 11.12%;}
-.f1-10 {width: 10%;}
-	.f1-10-offset {margin-left: 10%;}
-.f1-11 {width: 9.09%;}
-	.f1-11-offset {margin-left: 9.09%;}
-	.f1-11.last {width: 9.10%;}
-.f1-12 {width: 8.33%;}
-	.f1-12-offset {margin-left: 8.33%;}
-	.f1-12.last {width: 8.34%;}
+.w1,
+.w100 {
+	width: 100%;
+}
+	.w1-offset,
+	.w100-offset {
+		margin-left: 100%;
+	}
+.w95 {
+	width: 95%;
+}
+	.w95-offset {
+		margin-left: 95%;
+	}
+.w90 {
+	width: 90%;
+}
+	.w90-offset {
+		margin-left: 90%;
+	}
+.w85 {
+	width: 85%;
+}
+	.w85-offset {
+		margin-left: 85%;
+	}
+.w4-5,
+.w80 {
+	width: 80%;
+}
+	.w4-5-offset,
+	.w80-offset {
+		margin-left: 80%;
+	}
+.w3-4,
+.w75 {
+	width: 75%;
+}
+	.w3-4-offset,
+	.w75-offset {
+		margin-left: 75%;
+	}
+.w70 {
+	width: 70%;
+}
+	.w70-offset {
+		margin-left: 70%;
+	}
+.w2-3,
+.w66 {
+	width: 66.66%;
+}
+	.w2-3-offset,
+	.w66-offset {
+		margin-left: 66.66%;
+	}
+	.w2-3.last,
+	.w66.last {
+		width: 66.67%;
+	}
+.w65 {
+	width: 65%;
+}
+	.w65-offset {
+		margin-left: 65%;
+	}
+.w3-5,
+.w60 {
+	width: 60%;
+}
+	.w3-5-offset,
+	.w60-offset {
+		margin-left: 60%;
+	}
+.w55 {
+	width: 55%;
+}
+	.w55-offset {
+		margin-left: 55%;
+	}
+.w1-2,
+.w50 {
+	width: 50%;
+}
+	.w1-2-offset,
+	.w50-offset {
+		margin-left: 50%;
+	}
+.w45 {
+	width: 45%;
+}
+	.w45-offset {
+		margin-left: 45%;
+	}
+.w2-5,
+.w40 {
+	width: 40%;
+}
+	.w2-5-offset,
+	.w40-offset {
+		margin-left: 40%;
+	}
+.w35 {
+	width: 35%;
+}
+	.w35-offset {
+		margin-left: 35%;
+	}
+.w1-3,
+.w33 {
+	width: 33.33%;
+}
+	.w1-3-offset,
+	.w33-offset {
+		margin-left: 33.33%;
+	}
+	.w1-3.last,
+	.w33.last {
+		width: 33.34%;
+	}
+.w30 {
+	width: 30%;
+}
+	.w30-offset {
+		margin-left: 30%;
+	}
+.w1-4,
+.w25 {
+	width: 25%;
+}
+	.w1-4-offset,
+	.w25-offset {
+		margin-left: 25%;
+	}
+.w1-5,
+.w20 {
+	width: 20%;
+}
+	.w1-5-offset,
+	.w20-offset {
+		margin-left: 20%;
+	}
+.w1-6 {
+	width: 16.66%;
+}
+	.w1-6-offset {
+		margin-left: 16.66%;
+	}
+	.w1-6.last {
+		width: 16.70%;
+	}
+.w15 {
+	width: 15%;
+}
+	.w15-offset {
+		margin-left: 15%;
+	}
+.w1-7 {
+	width: 14.28%;
+}
+	.w1-7-offset {
+		margin-left: 14.28%;
+	}
+	.w1-7.last {
+		width: 14.32%;
+	}
+.w1-8 {
+	width: 12.50%;
+}
+	.w1-8-offset {
+		margin-left: 12.50%;
+	}
+.w1-9 {
+	width: 11.11%;
+}
+	.w1-9-offset {
+		margin-left: 11.11%;
+	}
+	.w1-9.last {
+		width: 11.12%;
+	}
+.w1-10,
+.w10 {
+	width: 10%;
+}
+	.w1-10-offset,
+	.w10-offset {
+		margin-left: 10%;
+	}
+.w1-11 {
+	width: 9.09%;
+}
+	.w1-11-offset {
+		margin-left: 9.09%;
+	}
+	.w1-11.last {
+		width: 9.10%;
+	}
+.w1-12 {
+	width: 8.33%;
+}
+	.w1-12-offset {
+		margin-left: 8.33%;
+	}
+	.w1-12.last {
+		width: 8.34%;
+	}
+.w5 {
+	width: 5%;
+}
+	.w5-offset {
+		margin-left: 5%;
+	}
 
-/* 
-	Width - Percent widths
----------------------------------------- */
-.p100 {width: 100%;}
-	.p100-offset {margin-left: 100%;}
-.p95 {width: 95%;}
-	.p95-offset {margin-left: 95%;}
-.p90 {width: 90%;}
-	.p90-offset {margin-left: 90%;}
-.p85 {width: 85%;}
-	.p85-offset {margin-left: 85%;}
-.p80 {width: 80%;}
-	.p80-offset {margin-left: 80%;}
-.p75 {width: 75%;}
-	.p75-offset {margin-left: 75%;}
-.p70 {width: 70%;}
-	.p70-offset {margin-left: 70%;}
-.p66 {width: 66.66%;}
-	.p66-offset {margin-left: 66.66%;}
-	.p66.last {width: 66.67%;}
-.p65 {width: 65%;}
-	.p65-offset {margin-left: 65%;}
-.p60 {width: 60%;}
-	.p60-offset {margin-left: 60%;}
-.p55 {width: 55%;}
-	.p55-offset {margin-left: 55%;}
-.p50 {width: 50%;}
-	.p50-offset {margin-left: 50%;}
-.p45 {width: 45%;}
-	.p45-offset {margin-left: 45%;}
-.p40 {width: 40%;}
-	.p40-offset {margin-left: 40%;}
-.p35 {width: 35%;}
-	.p35-offset {margin-left: 35%;}
-.p33 {width: 33.33%;}
-	.p33-offset {margin-left: 33.33%;}
-	.p33.last {width: 33.34%;}
-.p30 {width: 30%;}
-	.p30-offset {margin-left: 30%;}
-.p25 {width: 25%;}
-	.p25-offset {margin-left: 25%;}
-.p20 {width: 20%;}
-	.p20-offset {margin-left: 20%;}
-.p15 {width: 15%;}
-	.p15-offset {margin-left: 15%;}
-.p10 {width: 10%;}
-	.p10-offset {margin-left: 10%;}
-.p5 {width: 5%;}
-	.p5-offset {margin-left: 5%;}
 
 /* ------------------------------------------------------------
 	Gradient
@@ -2854,7 +3012,7 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 /* http://www.colorzilla.com/gradient-editor/
 Support for full multi-stop gradients with IE9 (using SVG). */
 .gte-ie9 .gradient {
-	filter: none;
+	filter: none !important;
 }
 
 .gradient_transparent-to-black {
@@ -2871,20 +3029,83 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 	Block formatting
 ------------------------------------------------------------ */
 
-.background-repeat-none {
-	background-repeat: no-repeat;
+.bg-fixed,
+.bg-attachment-fixed {
+	background-attachment: fixed !important;
 }
-.background-size-cover {
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+.bg-local,
+.bg-attachment-local {
+	background-attachment: local !important;
 }
-.background-size-contain {
-	-webkit-background-size: contain;
-	-moz-background-size: contain;
-	-o-background-size: contain;
-	background-size: contain;
+.bg-scroll,
+.bg-attachment-scroll {
+	background-attachment: scroll !important;
+}
+
+.bg-lt,
+.bg-left-top {
+	background-position: left top !important;
+}
+.bg-t,
+.bg-top {
+	background-position: center top !important;
+}
+.bg-rt,
+.bg-right-top {
+	background-position: right top !important;
+}
+.bg-l,
+.bg-left {
+	background-position: left center !important;
+}
+.bg-c,
+.bg-center {
+	background-position: center center !important;
+}
+.bg-r,
+.bg-right {
+	background-position: right center !important;
+}
+.bg-lb,
+.bg-left-bottom {
+	background-position: left bottom !important;
+}
+.bg-b,
+.bg-bottom {
+	background-position: center bottom !important;
+}
+.bg-rb,
+.bg-right-bottom {
+	background-position: right bottom !important;
+}
+
+.bg-nr,
+.bg-no-repeat,
+.bg-repeat-none {
+	background-repeat: no-repeat !important;
+}
+.bg-rx,
+.bg-repeat-x {
+	background-repeat: repeat-x !important;
+}
+.bg-ry,
+.bg-repeat-y {
+	background-repeat: repeat-y !important;
+}
+
+.bg-contain,
+.bg-size-contain {
+	-webkit-background-size: contain !important;
+	-moz-background-size: contain !important;
+	-o-background-size: contain !important;
+	background-size: contain !important;
+}
+.bg-cover,
+.bg-size-cover {
+	-webkit-background-size: cover !important;
+	-moz-background-size: cover !important;
+	-o-background-size: cover !important;
+	background-size: cover !important;
 }
 
 /* ------------------------------------------------------------
@@ -2916,27 +3137,27 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 	text-transform: capitalize !important;
 }
 
-.text-larger {
-	font-size: 140%;
+.text-xl {
+	font-size: 140% !important;
 }
-.text-large {
-	font-size: 120%;
+.text-l {
+	font-size: 120% !important;
 }
-.text-small {
-	font-size: 80%;
+.text-s {
+	font-size: 80% !important;
 }
-.text-smaller {
-	font-size: 60%;
+.text-xs {
+	font-size: 60% !important;
 }
 
 .text-meta {
-	font-size: 80%;
+	font-size: 80% !important;
 }
 .text-dim {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";/* IE 8 */
 	filter: alpha(opacity=80);/* IE 5-7 */
-	-moz-opacity: 0.8;/* Netscape */
 	-khtml-opacity: 0.8;/* Safari 1.x */
+	-moz-opacity: 0.8;/* Netscape */
 	opacity: 0.8;/* Good browsers */
 }
 .text-dropcap {
@@ -2947,85 +3168,61 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 	padding-right: 0.05em;
 }
 
+/* <span data-icon="&#x25a8;"></span><span class="screen-reader-text">RSS</span> */
+.text-screen-reader {
+	/* Reusable, toolbox kind of class */
+	left: -9999px;
+	position: absolute;
+	top: -9999px;
+}
+
 /* <span data-icon="&#x25a8;"></span> */
 [data-icon]:before {
 	font-family: icons;/* BYO icon font, mapped smartly */
 	content: attr(data-icon);
 	speak: none;/* Not to be trusted, but hey. */
 }
-/* <span data-icon="&#x25a8;"></span><span class="screen-reader-text">RSS</span> */
-.text-screen-reader {
-	/* Reusable, toolbox kind of class */
-	position: absolute;
-	top: -9999px;
-	left: -9999px;
-}
 
-.nowrap {
-	white-space: nowrap;
+.nowrap,
+.no-wrap {
+	white-space: nowrap !important;
 }
 /* Put on body to prevent background scrolling */
 .no-scroll {
-	overflow: hidden;
+	overflow: hidden !important;
 }
 /* Prevent text selection */
 .no-select {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+	-webkit-touch-callout: none !important;
+	-webkit-user-select: none !important;
+	-khtml-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+	user-select: none !important;
 }
 
 /* ------------------------------------------------------------
 	Hiding
 ------------------------------------------------------------ */
 
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hide,
+.hidden,
 /* Address styling not present in IE 7/8/9, Firefox 3, and Safari 4. Known issue: no IE 6 support. */
 [hidden] {
-	display: none;
-}
-
-/* Hide from both screenreaders and browsers: h5bp.com/u */
-.hidden {
 	display: none !important;
-	visibility: hidden;
-}
-/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
-.visuallyhidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-}
-/* Extends the .visuallyhidden class to allow the element to be focusable 
-when navigated to via the keyboard: h5bp.com/p */
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-	clip: auto;
-	height: auto;
-	margin: 0;
-	overflow: visible;
-	position: static;
-	width: auto;
+	visibility: hidden !important;
 }
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible {
-	visibility: hidden;
+	visibility: hidden !important;
 }
 
 /* Accessible Hiding */
-.hide {
-	display: none !important;
-}
 .hide-offpage {
-	position: absolute;
 	left: -9999px;
+	position: absolute;
+	top: -9999px;
 }
 .hide-squish {
 	/* don't do display:none for screen readers and devices */
@@ -3048,82 +3245,27 @@ when navigated to via the keyboard: h5bp.com/p */
 	text-shadow: none;
 }
 
-/* 
-	Device hiding
----------------------------------------- */
-.desktop-only {
-	display: inherit !important;
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.hide-visually {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
-.mobile-only {
-	display: none !important;
-}
-.mobile-only.block {
-	display: block !important;
-}
-
-.visible-phone {
-	display: none !important;
-}
-.visible-tablet {
-	display: none !important;
-}
-.hidden-desktop {
-	display: none !important;
-}
-.visible-desktop {
-	display: inherit !important;
-}
-/* Tablet : Design for a width of 768px (0px - 959px) */
-@media only screen and (max-width: 59.99em) {
-}
-/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
-@media only screen and (max-width: 47.99em) {
-	.hidden-desktop {
-		display: inherit !important;
-	}
-	.visible-desktop {
-		display: none !important ;
-	}
-	.visible-tablet {
-		display: inherit !important;
-	}
-	.hidden-tablet {
-		display: none !important;
-	}
-}
-/* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
-@media only screen and (max-width: 29.99em) {
-	.desktop-only {
-		display: none !important;
-	}
-	.mobile-only {
-		display: inherit !important;
-	}
-	
-	.hidden-desktop {
-		display: inherit !important;
-	}
-	.visible-desktop {
-		display: none !important;
-	}
-	.visible-phone {
-		display: inherit !important;
-	}
-	.hidden-phone {
-		display: none !important;
-	}
-}
-
-.visible-print {
-	display: none !important;
-}
-@media print {
-	.visible-print {
-		display: inherit !important;
-	}
-	.hidden-print {
-		display: none !important;
-	}
+/* Extends the .hide-visually class to allow the element to be focusable 
+when navigated to via the keyboard: h5bp.com/p */
+.hide-visually.focusable:active,
+.hide-visually.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 /* 
@@ -3131,73 +3273,84 @@ when navigated to via the keyboard: h5bp.com/p */
 ---------------------------------------- */
 /* Desktop : Design for a width of 960px (960px+) */
 @media only screen and (min-width: 60.00em) {
-	.show-medium,
-	.show-small,
-	.show-xsmall,
-	.show-medium-down,
-	.show-small-down,
-	.show-xsmall-down,
+	.show-xs,
+	.show-s,
+	.show-m,
+	.show-xs-down,
+	.show-s-down,
+	.show-m-down,
 	
-	.hide-large,
-	.hide-large-up,
-	.hide-medium-up,
-	.hide-small-up,
-	.hide-xsmall-up,
-	.hide-large-down {
+	.hide-l,
+	.hide-xs-up,
+	.hide-s-up,
+	.hide-m-up,
+	.hide-l-up,
+	.hide-l-down {
 		display: none !important;
 	}
 }
 /* Tablet : Design for a width of 768px (0px - 959px) */
 @media only screen and (min-width: 48.00em) and (max-width: 59.99em) {
-	.show-large,
-	.show-small,
-	.show-xsmall,
-	.show-large-up,
-	.show-small-down,
-	.show-xsmall-down,
+	.show-xs,
+	.show-s,
+	.show-l,
+	.show-l-up,
+	.show-xs-down,
+	.show-s-down,
 	
-	.hide-medium,
-	.hide-medium-up,
-	.hide-small-up,
-	.hide-xsmall-up,
-	.hide-large-down,
-	.hide-medium-down {
+	.hide-m,
+	.hide-xs-up,
+	.hide-s-up,
+	.hide-m-up,
+	.hide-m-down,
+	.hide-l-down {
 		display: none !important;
 	}
 }
 /* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
 @media only screen and (min-width: 30.00em) and (max-width: 47.99em) {
-	.show-large,
-	.show-medium,
-	.show-xsmall,
-	.show-large-up,
-	.show-medium-up,
-	.show-xsmall-down,
+	.show-xs,
+	.show-m,
+	.show-l,
+	.show-m-up,
+	.show-l-up,
+	.show-xs-down,
 	
-	.hide-small,
-	.hide-small-up,
-	.hide-xsmall-up,
-	.hide-large-down,
-	.hide-medium-down,
-	.hide-small-down {
+	.hide-s,
+	.hide-xs-up,
+	.hide-s-up,
+	.hide-s-down,
+	.hide-m-down,
+	.hide-l-down {
 		display: none !important;
 	}
 }
 /* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
 @media only screen and (max-width: 29.99em) {
-	.show-large,
-	.show-medium,
-	.show-small,
-	.show-large-up,
-	.show-medium-up,
-	.show-small-up,
+	.show-s,
+	.show-m,
+	.show-l,
+	.show-s-up,
+	.show-m-up,
+	.show-l-up,
 	
-	.hide-xsmall,
-	.hide-xsmall-up,
-	.hide-large-down,
-	.hide-medium-down,
-	.hide-small-down,
-	.hide-xsmall-down {
+	.hide-xs,
+	.hide-xs-up,
+	.hide-xs-down,
+	.hide-s-down,
+	.hide-m-down,
+	.hide-l-down {
+		display: none !important;
+	}
+}
+/* Print */
+@media not print {
+	.show-print {
+		display: none !important;
+	}
+}
+@media print {
+	.hide-print {
 		display: none !important;
 	}
 }
