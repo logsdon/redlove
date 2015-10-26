@@ -1,0 +1,45 @@
+/**
+* @version 0.0.0
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+*/
+
+/* ------------------------------------------------------------
+	Redlove Tabs
+------------------------------------------------------------ */
+
+.tab-container > * {
+	cursor: pointer;
+}
+
+/* Hide/show effect */
+.tab-content-container > * {
+	display: none;
+}
+.tab-content-container > *.active {
+	display: block;
+}
+
+/* Fade effect */
+/*
+.data-tab-content-container {
+	position: relative;
+}
+.data-tab-content {
+	opacity: 0.0;
+	position: absolute;
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+	visibility: hidden;
+	width: 100%;
+	z-index: 0;
+}
+.data-tab-content.active {
+	opacity: 1.0;
+	visibility: visible;
+}
+*/
+

@@ -704,7 +704,6 @@ input[type="submit"] {
 }
 .form-row.spacer {
 	height: 2.0em;
-	
 	/* hide text */
 	color: transparent;
 	font: 0/0 a;
@@ -811,14 +810,14 @@ input[type="submit"] {
 .form-row-pill select,
 .form-row-pill input[type="email"],
 .form-row-pill input[type="text"] {
-	-khtml-top-right-border-radius: 0;
 	-khtml-bottom-right-border-radius: 0;
-	-moz-border-radius-topright: 0;
+	-khtml-top-right-border-radius: 0;
 	-moz-border-radius-bottomright: 0;
-	-webkit-top-right-border-radius: 0;
+	-moz-border-radius-topright: 0;
 	-webkit-bottom-right-border-radius: 0;
-	border-top-right-radius: 0;
+	-webkit-top-right-border-radius: 0;
 	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
 }
 .form-row-pill * + button,
 .form-row-pill * + input,
@@ -830,16 +829,15 @@ input[type="submit"] {
 }
 .form-row-pill .form-submit,
 .form-row-pill input[type="submit"] {
-	-khtml-top-left-border-radius: 0;
-	-khtml-bottom-left-border-radius: 0;
-	-moz-border-radius-topleft: 0;
-	-moz-border-radius-bottomleft: 0;
-	-webkit-top-left-border-radius: 0;
-	-webkit-bottom-left-border-radius: 0;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	
 	background: #e6e6e6;
+	-khtml-bottom-left-border-radius: 0;
+	-khtml-top-left-border-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+	-moz-border-radius-topleft: 0;
+	-webkit-bottom-left-border-radius: 0;
+	-webkit-top-left-border-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
 	border-left: 0;
 }
 .form-row-pill .form-submit:hover,
@@ -936,10 +934,10 @@ input[type="submit"] {
 }
 .input_file-hide {
 	height: auto;
-	-moz-opacity: 0 ;
-	opacity: 0;
-	filter: alpha(opacity: 0);
 	left: 0;
+	-moz-opacity: 0.0;
+	opacity: 0.0;
+	filter: alpha(opacity: 0);
 	position: absolute;
 	text-align: right;
 	top: 0;
@@ -949,17 +947,15 @@ input[type="submit"] {
 }
 
 .input_file-hide_file {
+	height: auto;
+	-moz-opacity: 0.0;
+	opacity: 0.0;
+	filter:alpha(opacity: 0);
 	position: relative;
+	text-align: right;
+	width: 100%;
 	z-index: 2;
 	*zoom: 1;
-	width: 100%;
-	height: auto;
-	
-	-moz-opacity: 0 ;
-	opacity: 0;
-	filter:alpha(opacity: 0);
-	
-	text-align: right;
 }
 .input_file-hide_fake {
 	position: absolute;
@@ -970,10 +966,10 @@ input[type="submit"] {
 
 .input_file_hide {
 	height: 0;
-	-moz-opacity: 0 ;
-	opacity: 0;
-	filter: alpha(opacity: 0);
 	left: 0;
+	-moz-opacity: 0s;
+	opacity: 0.0;
+	filter: alpha(opacity: 0);
 	position: absolute;
 	top: 0;
 	width: 0;
@@ -1216,9 +1212,13 @@ select.error:focus {
 .button.disabled,
 .button[disabled],
 fieldset[disabled] .button {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
 	box-shadow: none;
 	cursor: not-allowed;
+	-moz-opacity: 0.65;
 	opacity: 0.65;
+	filter: alpha(opacity: 65);
 	pointer-events: none;
 }
 
@@ -1730,9 +1730,9 @@ fieldset[disabled] .button-link {
 	-khtml-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	-webkit-box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
-	-moz-box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
-	box-shadow:0 0 18px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
 	display: inline-block;
 	padding: 2.0em;
 }
@@ -1900,7 +1900,7 @@ body {
 	overflow: hidden;
 	
 	/* Transition from */
-	opacity: 0;/* for transition, problem with nesting in IE8 */
+	opacity: 0.0;/* for transition, problem with nesting in IE8 */
 	/*filter: alpha(opacity=0);*/
 	
 	/* Transition */
@@ -1955,7 +1955,7 @@ body {
 }
 .mobile-menu {
 	height: 100%;
-	opacity: 1;
+	opacity: 1.0;
 	position: relative;
 	white-space: nowrap;
 	z-index: 9999999;
@@ -2036,7 +2036,7 @@ body {
 	display: block;
 	height: 100%;
 	left: 100%;
-	opacity: 1;
+	opacity: 1.0;
 	overflow: hidden;
 	position: fixed;
 	top: 0;
@@ -2959,12 +2959,12 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	padding-top: 6.0em;
 }
 .ptb-xxl,
-.padding-tbxxl {
+.padding-tb-xxl {
 	padding-bottom: 8.0em;
 	padding-top: 8.0em;
 }
 .ptb-xxxl,
-.padding-tbxxxl {
+.padding-tb-xxxl {
 	padding-bottom: 33vh;
 	padding-top: 33vh;
 }
