@@ -94,6 +94,7 @@
 		this.update();
 		var self = this;
 		this.data.$window.one('load.' + proto.name, function(){self.update();});
+		this.data.$window.on('resize.' + proto.name, function(){self.update();});
 		
 		var throttle_options = {
 			interval : this.options.throttle,
@@ -125,8 +126,15 @@
 		this.data.start_right = this.$element.css('right');
 		this.data.start_top = this.$element.css('top');
 		this.data.start_bottom = this.$element.css('bottom');
-		this.data.start_offset = this.$element.offset();
 		this.data.element_height = this.$element.outerHeight();
+		
+		var has_class = this.$element.hasClass(this.options.affixed_class);
+		this.$element.removeClass(this.options.affixed_class);
+		this.data.start_offset = this.$element.offset();
+		if ( has_class )
+		{
+			this.$element.addClass(this.options.affixed_class);
+		}
 		
 		this.options.until = this.options.until !== null ? this.options.until : this.data.document_height;
 		
@@ -168,6 +176,17 @@
 		// Check scroll position
 		var trigger = scroll_top + this.options.trigger_offset;
 		var target_top = this.data.start_offset.top + this.options.offset;
+		
+		if ( this.options.debug )
+		{
+			console.log(
+				proto.name + ' check_scroll: ' +
+				'trigger: ' + trigger + 
+				'target_top: ' + target_top + 
+				'until: ' + this.options.until
+			);
+		}
+		
 		if ( trigger >= target_top && trigger <= this.options.until )
 		{
 			// If already affixed, stop

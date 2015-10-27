@@ -1416,4 +1416,53 @@ pre.line-counter span:before {
 }
 .meter-indicators a {
 	display: block;
+	height: 100%;
+}
+
+/* -------------------------------------------------------
+	Dots
+------------------------------------------------------- */
+
+.dot-box {
+	position: absolute;
+	z-index: 1;
+}
+.dot {
+	background: #00a9e0;
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	cursor: pointer;
+	display: block;
+	height: 24px;
+	outline: 0;
+	position: absolute;
+	width: 24px;
+	z-index: 1;
+}
+.dot span {
+	border: 3px solid #FFFFFF;
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	height: 42%;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 42%;
+}
+.dot-line {
+	border-top: 2px solid #00a9e0;
+	left: 12px;
+	pointer-events: none;
+	position: absolute;
+	top: 12px;
+	width: 50px;
 }

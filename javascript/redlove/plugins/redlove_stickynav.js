@@ -105,6 +105,7 @@
 		this.update();
 		var self = this;
 		this.data.$window.one('load.' + proto.name, function(){self.update();});
+		this.data.$window.on('resize.' + proto.name, function(){self.update();});
 		
 		var throttle_options = {
 			interval : this.options.throttle,
