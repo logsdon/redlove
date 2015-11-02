@@ -48,12 +48,14 @@
 	left: 50%;
 	line-height: 1;
 	position: absolute;
+	text-align: center;
 	top: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	-moz-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
 	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+	width: 1.28571em;
 }
 .redlove_form-replacement_input_checkbox:after {
 	content: "\f096";
