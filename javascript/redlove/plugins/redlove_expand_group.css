@@ -1,0 +1,17 @@
+
+/* Expand Group */
+.redlove_expand-group > a,
+.redlove_expand-group .redlove_expander {
+	cursor: pointer;
+	margin: 0;
+}
+.redlove_expand-group > a + *,
+.redlove_expand-group .redlove_expander + * {
+	max-height: 0;
+	overflow: hidden;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	-ms-transition: all 0.4s ease-in-out 0s;
+	-o-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+}

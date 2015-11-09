@@ -115,7 +115,7 @@
 <script type="text/javascript">
 jQuery(document).ready(function($)
 {
-	$('#testimonials .redlove_carousel').redlove_carousel({debug:true});
+	$('#testimonials .redlove_carousel').redlove_carousel({debug : true});
 	
 	$('#panel-scroller .redlove_carousel').on('show_item', function ( event, obj )
 	{
@@ -212,8 +212,6 @@ jQuery(document).ready(function($)
 		
 		inst.cur_index = 0;
 		inst.num_items = 0;
-		inst.max_item_width = 0;
-		inst.max_item_height = 0;
 		
 		inst.$carousel = $(inst.element);
 		inst.$content_wrapper = inst.$carousel.find(inst.options.content_wrapper_selector);
@@ -379,7 +377,7 @@ jQuery(document).ready(function($)
 		inst.$content_wrapper.css({
 			height : 'auto',
 			left : 0,
-			width : 999999
+			width : 'auto'//999999
 		});
 		
 		inst.$carousel
@@ -392,28 +390,29 @@ jQuery(document).ready(function($)
 		
 		// Take off inline styles
 		inst.$carousel
+		.add(inst.$content_wrapper)
 		.css({
 			width : '',
 			height : ''
 		});
 		
 		// Get the max dimensions of items
-		var max_item_width = 0;
-		var max_item_height = 0;
+		inst.max_item_width = 0;
+		inst.max_item_height = 0;
 		$items.each(function ( index )
 		{
 			var $item = $(this);
-			max_item_width = Math.max($item.outerWidth(), max_item_width);
-			max_item_height = Math.max($item.outerHeight(), max_item_height);
+			inst.max_item_width = Math.max($item.outerWidth(), inst.max_item_width);
+			inst.max_item_height = Math.max($item.outerHeight(), inst.max_item_height);
 		});
-		max_item_width = Math.ceil(max_item_width);
-		max_item_height = Math.ceil(max_item_height);
+		inst.max_item_width = Math.ceil(inst.max_item_width);
+		inst.max_item_height = Math.ceil(inst.max_item_height);
 		
 		// Figure items per viewport
 		inst.items_per_view = parseInt(inst.options.per_view) || 0;
 		if ( inst.items_per_view == 0 )
 		{
-			inst.items_per_view = Math.floor(inst.viewport_width / max_item_width);
+			inst.items_per_view = Math.floor(inst.viewport_width / inst.max_item_width);
 		}
 		
 		var target_item_width = inst.viewport_width / inst.items_per_view;
@@ -429,7 +428,12 @@ jQuery(document).ready(function($)
 		{
 			var $item = $(this);
 			var item_width = $item.outerWidth();
-			var difference_x = target_item_width - item_width;
+			
+			var difference_x = 0;
+			if ( item_width > 0 )
+			{
+				difference_x = target_item_width - item_width; 
+			}
 			
 			var css = {};
 			
@@ -452,7 +456,7 @@ jQuery(document).ready(function($)
 			if ( inst.options.center_vertical )
 			{
 				var item_height = $item.outerHeight();
-				var difference_y = max_item_height - item_height;
+				var difference_y = inst.max_item_height - item_height;
 				var margin_y = Math.ceil(difference_y / 2);
 				
 				css.marginTop = margin_y;
@@ -486,8 +490,8 @@ jQuery(document).ready(function($)
 			console.log({
 				$element : inst.$element.parent().attr('id') + ' ' + inst.$element.attr('class'),
 				running_total_width : running_total_width,
-				max_item_width : max_item_width,
-				max_item_height : max_item_height,
+				max_item_width : inst.max_item_width,
+				max_item_height : inst.max_item_height,
 				items_per_view : inst.items_per_view,
 				target_item_width : target_item_width,
 				content_width : inst.content_width,
