@@ -1,0 +1,223 @@
+
+/* Carousel */
+.redlove_carousel {
+	overflow: hidden;
+	position: relative;
+}
+.redlove_carousel-cover:before {
+	background: -moz-linear-gradient(left,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,1)), color-stop(50%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%); /* IE10+ */
+	background: linear-gradient(to right,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+	
+	display: block;
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+.redlove_carousel-cover-white:before {
+	background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* IE10+ */
+	background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#FFFFFF',GradientType=1 ); /* IE6-9 */
+}
+
+.redlove_carousel-content-wrapper {
+	position: relative;
+	width: 999999px;
+}
+.redlove_carousel-item {
+	position: relative;
+	float: left;
+}
+.redlove_carousel-item-liner {
+	display: table;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+}
+.redlove_carousel-item-caption {
+	bottom: 0;
+	left: 0;
+	margin: 0 auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+.redlove_carousel-item-caption .caption {
+	max-width: 60%;
+	position: absolute;
+	top: auto;
+	bottom: 4.5em;
+	left: 5.0em;
+	right: auto;
+	z-index: 2;
+}
+
+/* Nav */
+.redlove_carousel-nav {
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	margin: 0 auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+.redlove_carousel-nav_next,
+a.redlove_carousel-nav_next,
+.redlove_carousel-nav_prev,
+a.redlove_carousel-nav_prev {
+	outline: 0 none;
+	text-decoration: none;
+}
+.redlove_carousel-nav_next,
+.redlove_carousel-nav_prev {
+	left: 10%;
+	position: absolute;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	-ms-transition: all 0.4s ease-in-out 0s;
+	-o-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+	z-index: 0;
+	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-khtml-opacity: 0.0;
+	-moz-opacity: 0.0;
+	opacity: 0.0;
+}
+.redlove_carousel-nav_next {
+	left: auto;
+	right: 10%;
+}
+/* Nav - :hover */
+.redlove_carousel:hover .redlove_carousel-nav_prev,
+.redlove_carousel:hover .redlove_carousel-nav_next {
+	left: 0;
+	z-index: 4;
+	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	-khtml-opacity: 1.0;
+	-moz-opacity: 1.0;
+	opacity: 1.0;
+}
+.redlove_carousel:hover .redlove_carousel-nav_next {
+	left: auto;
+	right: 0;
+}
+/* Nav - :before */
+.redlove_carousel-nav_prev:before,
+.redlove_carousel-nav_next:before {
+	content: '\f053';
+	cursor: pointer;
+	display: inline-block;
+	font-family: FontAwesome;
+	font-size: 1.0em;
+	line-height: 1.0;
+	padding: 0.5em;
+	text-align: center;
+	white-space: nowrap;
+}
+.redlove_carousel-nav_next:before {
+	content: '\f054';
+}
+/* Nav - available/unavailable */
+.available {
+	visibility: visible;
+}
+.unavailable {
+	visibility: hidden;
+}
+
+/* Paging */
+.redlove_carousel-paging {
+	bottom: 0;
+	font-family: 'FontAwesome';
+	position: absolute;
+	text-align: center;
+	top: auto;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	-ms-transition: all 0.4s ease-in-out 0s;
+	-o-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+	width: 100%;
+	z-index: 3;
+	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+	filter: alpha(opacity=60);
+	-khtml-opacity: 0.6;
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+/* Paging - :hover */
+.redlove_carousel:hover .redlove_carousel-paging {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	-khtml-opacity: 1.0;
+	-moz-opacity: 1.0;
+	opacity: 1.0;
+}
+/* Paging - List */
+.redlove_carousel-paging ol {
+	display: inline-block;
+}
+.redlove_carousel-paging ol,
+.redlove_carousel-paging li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.redlove_carousel-paging li {
+	display: block;
+	float: left;
+	position: relative;
+}
+.redlove_carousel-paging a {
+	display: inline-block;
+	outline: 0 none;
+	text-decoration: none;
+}
+.redlove_carousel-paging a:before {
+	content: '\f1db';
+	cursor: pointer;
+	display: inline-block;
+	font-family: FontAwesome;
+	font-size: 1.0em;
+	line-height: 1.0;
+	padding: 0 0.25em;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	-ms-transition: all 0.4s ease-in-out 0s;
+	-o-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+	white-space: nowrap;
+}
+.redlove_carousel-paging .active a:before,
+.redlove_carousel-paging a:hover:before {
+	content: '\f111';
+}
