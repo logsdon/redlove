@@ -198,7 +198,7 @@ jQuery(document).ready(function($)
 		inst.options = options;
 		
 		// Extend default options
-		inst.metadata = {};//this.$element.data('plugin-options');//$(element).data();
+		inst.metadata = {};//inst.$element.data('plugin-options');//$(element).data();
 		inst.options = $.extend( {}, inst.default_options, inst.options, inst.metadata );
 		
 		// Plugin properties
@@ -296,17 +296,30 @@ jQuery(document).ready(function($)
 			inst.show_item(paging_index);
 		});
 		
+		inst.update();
+		
+		// Use timeout to help with responsiveness and not fire before DOM resizes
+		inst.update_timeout = null;
 		// Update on page load
 		$(window).one('load.' + proto.name, function ( event )
 		{
-			inst.update(inst.options);
+			if ( inst.update_timeout )
+			{
+				clearTimeout(inst.update_timeout);
+				inst.update_timeout = null;// Eliminate the chance of creating concurrent timeouts
+			}
+			inst.update_timeout = setTimeout(function(){inst.update();}, 100);
 		});
 		// Update on page resize
 		$(window).on('resize.' + proto.name, function ( event )
 		{
-			inst.update();
+			if ( inst.update_timeout )
+			{
+				clearTimeout(inst.update_timeout);
+				inst.update_timeout = null;// Eliminate the chance of creating concurrent timeouts
+			}
+			inst.update_timeout = setTimeout(function(){inst.update();}, 100);
 		});
-		inst.update(inst.options);
 		
 		// Preload images
 		if ( inst.options.preload )

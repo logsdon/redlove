@@ -84,40 +84,58 @@
 	*/
 	proto.init = function ( el, options )
 	{
-		this.element = el;
-		this.$element = $(el);
-		this.options = options;
+		var inst = this;
+		inst.element = el;
+		inst.$element = $(el);
+		inst.options = options;
 		
 		// Extend default options
-		this.metadata = {};//this.$element.data('plugin-options');//$(element).data();
-		this.options = $.extend( {}, this.default_options, this.options, this.metadata );
+		inst.metadata = {};//inst.$element.data('plugin-options');//$(element).data();
+		inst.options = $.extend( {}, inst.default_options, inst.options, inst.metadata );
 		
 		// Plugin properties
-		this.data = this.data || {
-			$window : $(window),
-			$document : $(document),
-			scroll_targets : [],
-			trigger_offset : 0,
-			'' : ''
-		};
+		inst.$window = $(window);
+		inst.$document = $(document);
+		inst.scroll_targets = [];
+		inst.trigger_offset = 0;
 		
 		// Plugin implementation code
-		this.update();
-		var self = this;
-		this.data.$window.one('load.' + proto.name, function(){self.update();});
-		this.data.$window.on('resize.' + proto.name, function(){self.update();});
+		inst.update();
+		
+		// Use timeout to help with responsiveness and not fire before DOM resizes
+		inst.update_timeout = null;
+		// Update on page load
+		inst.$window.one('load.' + proto.name, function ( event )
+		{
+			if ( inst.update_timeout )
+			{
+				clearTimeout(inst.update_timeout);
+				inst.update_timeout = null;// Eliminate the chance of creating concurrent timeouts
+			}
+			inst.update_timeout = setTimeout(function(){inst.update();}, 100);
+		});
+		// Update on page resize
+		inst.$window.on('resize.' + proto.name, function ( event )
+		{
+			if ( inst.update_timeout )
+			{
+				clearTimeout(inst.update_timeout);
+				inst.update_timeout = null;// Eliminate the chance of creating concurrent timeouts
+			}
+			inst.update_timeout = setTimeout(function(){inst.update();}, 100);
+		});
 		
 		var throttle_options = {
-			interval : this.options.throttle,
+			interval : inst.options.throttle,
 			run_at_start : true,
 			run_at_end : true,
 			callback : function ()
 			{
-				self.check_scroll();
+				inst.check_scroll();
 			}
 		};
-		this.data.throttle = new redlove_throttle(throttle_options);
-		this.data.$window.on('scroll.' + proto.name, this.data.throttle.handler);
+		inst.throttle = new redlove_throttle(throttle_options);
+		inst.$window.on('scroll.' + proto.name, inst.throttle.handler);
 	};
 	
 	/**
@@ -127,28 +145,34 @@
 	*/
 	proto.update = function ()
 	{
-		// Update dimensions and positioning
-		this.data.document_height = this.data.$document.height();
-		this.data.window_height = this.data.$window.height();
-		this.data.scroll_top_last = this.data.$window.scrollTop();
+		var inst = this;
 		
-		this.data.trigger_offset = this.options.offset;
-		if ( this.options.trigger_offset !== null )
+		if ( inst.options.debug )
 		{
-			if ( this.options.trigger_offset <= 1 )
+			console.log(proto.name + ' update()');
+		}
+		
+		// Update dimensions and positioning
+		inst.document_height = inst.$document.height();
+		inst.window_height = inst.$window.height();
+		inst.scroll_top_last = inst.$window.scrollTop();
+		
+		inst.trigger_offset = inst.options.offset;
+		if ( inst.options.trigger_offset !== null )
+		{
+			if ( inst.options.trigger_offset <= 1 )
 			{
-				this.data.trigger_offset = this.data.window_height * this.options.trigger_offset;
+				inst.trigger_offset = inst.window_height * inst.options.trigger_offset;
 			}
 			else
 			{
-				this.data.trigger_offset = this.options.trigger_offset;
+				inst.trigger_offset = inst.options.trigger_offset;
 			}
 		}
 		
 		// Gather scroll targets
-		var self = this;
 		var scroll_targets = [];
-		var $targets = this.$element.find('a[href^="#"]');
+		var $targets = inst.$element.find('a[href^="#"]');
 		$targets.each(function ( index, el )
 		{
 			// Get anchor hash
@@ -166,13 +190,13 @@
 				el : el,
 				hash : hash,
 				top : $target.offset().top,
-				bottom : self.data.document_height
+				bottom : inst.document_height
 			});
 			var cur_index = scroll_targets.length - 1;
 			var prev_index = scroll_targets.length - 2;
 			
 			// Adjust top
-			//scroll_targets[cur_index].top -= self.options.offset;
+			//scroll_targets[cur_index].top -= inst.options.offset;
 			scroll_targets[cur_index].top = Math.round( scroll_targets[cur_index].top );
 			
 			// Adjust bottom
@@ -180,35 +204,35 @@
 			{
 				scroll_targets[prev_index].bottom = scroll_targets[cur_index].top - 0.01;
 			}
-			//scroll_targets[cur_index].bottom -= self.options.offset;
+			//scroll_targets[cur_index].bottom -= inst.options.offset;
 			scroll_targets[cur_index].bottom = Math.round( scroll_targets[cur_index].bottom );
 		});
-		this.data.scroll_targets = scroll_targets;
+		inst.scroll_targets = scroll_targets;
 		
 		// Set up smooth scrolling
-		if ( this.options.smooth_scroll )
+		if ( inst.options.smooth_scroll )
 		{
 			var selector = 'click.' + proto.name + ' vclick.' + proto.name;
-			this.$element.find('a[href^="#"]')
+			inst.$element.find('a[href^="#"]')
 			.off(selector).on(selector, function ( event )
 			{
 				event.preventDefault();
 				event.stopImmediatePropagation();
 				
-				var hash = this.hash.replace('#', '');
+				var hash = inst.hash.replace('#', '');
 				var $target = $('#' + hash);
 				if ( $target.length > 0 )
 				{
-					var target_top = Math.ceil( $target.offset().top - self.options.offset );
+					var target_top = Math.ceil( $target.offset().top - inst.options.offset );
 					$('html,body').animate(
 						{
 							scrollTop : target_top
 						},
-						self.options.smooth_scroll_time,
+						inst.options.smooth_scroll_time,
 						function ()
 						{
 							// Make sure last scroll is checked
-							self.check_scroll();
+							inst.check_scroll();
 						}
 					);
 				}
@@ -218,7 +242,7 @@
 		}
 		
 		// Run at start
-		this.check_scroll();
+		inst.check_scroll();
 	};
 	
 	/**
@@ -234,17 +258,19 @@
 			return;
 		}
 		
+		var inst = this;
+		
 		// Get scroll position and direction
-		var scroll_top = this.data.$window.scrollTop();
-		var delta_v = ( scroll_top > this.data.scroll_top_last ) ? 1 : -1;
-		this.data.scroll_top_last = scroll_top;
+		var scroll_top = inst.$window.scrollTop();
+		var delta_v = ( scroll_top > inst.scroll_top_last ) ? 1 : -1;
+		inst.scroll_top_last = scroll_top;
 		
 		// Check scroll position
-		var trigger = scroll_top + this.data.trigger_offset;
-		var scroll_targets = this.data.scroll_targets;
+		var trigger = scroll_top + inst.trigger_offset;
+		var scroll_targets = inst.scroll_targets;
 		for ( var index = 0; index < scroll_targets.length; index++ )
 		{
-			if ( this.options.debug )
+			if ( inst.options.debug )
 			{
 				console.log(
 					'index: ' + index + 
@@ -258,18 +284,18 @@
 			if ( trigger >= scroll_targets[index].top && trigger <= scroll_targets[index].bottom )
 			{
 				// If already active, stop iterating
-				if ( $(scroll_targets[index].el).parent().hasClass(this.options.active_class) )
+				if ( $(scroll_targets[index].el).parent().hasClass(inst.options.active_class) )
 				{
 					break;
 				}
 				
-				$(scroll_targets[index].el).parent().addClass(this.options.active_class);
-				this.options.in_view.call(this);
+				$(scroll_targets[index].el).parent().addClass(inst.options.active_class);
+				inst.options.in_view.call(inst);
 			}
 			else
 			{
-				$(scroll_targets[index].el).parent().removeClass(this.options.active_class);
-				this.options.out_view.call(this);
+				$(scroll_targets[index].el).parent().removeClass(inst.options.active_class);
+				inst.options.out_view.call(inst);
 			}
 		}
 	};

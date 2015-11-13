@@ -113,17 +113,30 @@ jQuery(document).ready(function($)
 			}
 		});
 		
+		inst.update();
+		
+		// Use timeout to help with responsiveness and not fire before DOM resizes
+		inst.update_timeout = null;
 		// Update on page load
 		$(window).one('load.' + proto.name, function ( event )
 		{
-			inst.update(inst.options);
+			if ( inst.update_timeout )
+			{
+				clearTimeout(inst.update_timeout);
+				inst.update_timeout = null;// Eliminate the chance of creating concurrent timeouts
+			}
+			inst.update_timeout = setTimeout(function(){inst.update();}, 100);
 		});
 		// Update on page resize
 		$(window).on('resize.' + proto.name, function ( event )
 		{
-			inst.update();
+			if ( inst.update_timeout )
+			{
+				clearTimeout(inst.update_timeout);
+				inst.update_timeout = null;// Eliminate the chance of creating concurrent timeouts
+			}
+			inst.update_timeout = setTimeout(function(){inst.update();}, 100);
 		});
-		inst.update(inst.options);
 		
 		return inst;
 	};

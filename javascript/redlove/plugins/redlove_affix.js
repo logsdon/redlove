@@ -74,39 +74,57 @@
 	*/
 	proto.init = function ( el, options )
 	{
-		this.element = el;
-		this.$element = $(el);
-		this.options = options;
+		var inst = this;
+		inst.element = el;
+		inst.$element = $(el);
+		inst.options = options;
 		
 		// Extend default options
-		this.metadata = {};//this.$element.data('plugin-options');//$(element).data();
-		this.options = $.extend( {}, this.default_options, this.options, this.metadata );
+		inst.metadata = {};//inst.$element.data('plugin-options');//$(element).data();
+		inst.options = $.extend( {}, inst.default_options, inst.options, inst.metadata );
 		
 		// Plugin properties
-		this.data = this.data || {
-			$window : $(window),
-			$document : $(document),
-			trigger_offset : 0,
-			'' : ''
-		};
+		inst.$window = $(window);
+		inst.$document = $(document);
+		inst.trigger_offset = 0;
 		
 		// Plugin implementation code
-		this.update();
-		var self = this;
-		this.data.$window.one('load.' + proto.name, function(){self.update();});
-		this.data.$window.on('resize.' + proto.name, function(){self.update();});
+		inst.update();
+		
+		// Use timeout to help with responsiveness and not fire before DOM resizes
+		inst.update_timeout = null;
+		// Update on page load
+		inst.$window.one('load.' + proto.name, function ( event )
+		{
+			if ( inst.update_timeout )
+			{
+				clearTimeout(inst.update_timeout);
+				inst.update_timeout = null;// Eliminate the chance of creating concurrent timeouts
+			}
+			inst.update_timeout = setTimeout(function(){inst.update();}, 100);
+		});
+		// Update on page resize
+		inst.$window.on('resize.' + proto.name, function ( event )
+		{
+			if ( inst.update_timeout )
+			{
+				clearTimeout(inst.update_timeout);
+				inst.update_timeout = null;// Eliminate the chance of creating concurrent timeouts
+			}
+			inst.update_timeout = setTimeout(function(){inst.update();}, 100);
+		});
 		
 		var throttle_options = {
-			interval : this.options.throttle,
+			interval : inst.options.throttle,
 			run_at_start : true,
 			run_at_end : true,
 			callback : function ()
 			{
-				self.check_scroll();
+				inst.check_scroll();
 			}
 		};
-		this.data.throttle = new redlove_throttle(throttle_options);
-		this.data.$window.on('scroll.' + proto.name, this.data.throttle.handler);
+		inst.throttle = new redlove_throttle(throttle_options);
+		inst.$window.on('scroll.' + proto.name, inst.throttle.handler);
 	};
 	
 	/**
@@ -116,43 +134,50 @@
 	*/
 	proto.update = function ()
 	{
-		// Update dimensions and positioning
-		this.data.window_height = this.data.$window.height();
-		this.data.scroll_top_last = this.data.$window.scrollTop();
-		this.data.document_height = this.data.$document.height();
+		var inst = this;
 		
-		this.data.start_left = this.$element.css('left');
-		this.data.start_position = this.$element.css('position');
-		this.data.start_right = this.$element.css('right');
-		this.data.start_top = this.$element.css('top');
-		this.data.start_bottom = this.$element.css('bottom');
-		this.data.element_height = this.$element.outerHeight();
-		
-		var has_class = this.$element.hasClass(this.options.affixed_class);
-		this.$element.removeClass(this.options.affixed_class);
-		this.data.start_offset = this.$element.offset();
-		if ( has_class )
+		if ( inst.options.debug )
 		{
-			this.$element.addClass(this.options.affixed_class);
+			console.log(proto.name + ' update()');
 		}
 		
-		this.options.until = this.options.until !== null ? this.options.until : this.data.document_height;
+		// Update dimensions and positioning
+		inst.window_height = inst.$window.height();
+		inst.scroll_top_last = inst.$window.scrollTop();
+		inst.document_height = inst.$document.height();
 		
-		this.data.trigger_offset = this.options.offset;
-		if ( this.options.trigger_offset !== null )
+		inst.start_left = inst.$element.css('left');
+		inst.start_position = inst.$element.css('position');
+		inst.start_right = inst.$element.css('right');
+		inst.start_top = inst.$element.css('top');
+		inst.start_bottom = inst.$element.css('bottom');
+		inst.element_height = inst.$element.outerHeight();
+		
+		var has_class = inst.$element.hasClass(inst.options.affixed_class);
+		inst.$element.removeClass(inst.options.affixed_class);
+		inst.start_offset = inst.$element.offset();
+		if ( has_class )
 		{
-			if ( this.options.trigger_offset <= 1 )
+			inst.$element.addClass(inst.options.affixed_class);
+		}
+		
+		inst.until = inst.options.until !== null ? inst.options.until : inst.document_height;
+		
+		inst.trigger_offset = inst.options.offset;
+		if ( inst.options.trigger_offset !== null )
+		{
+			if ( inst.options.trigger_offset <= 1 )
 			{
-				this.data.trigger_offset = this.data.window_height * this.options.trigger_offset;
+				inst.trigger_offset = inst.window_height * inst.options.trigger_offset;
 			}
 			else
 			{
-				this.data.trigger_offset = this.options.trigger_offset;
+				inst.trigger_offset = inst.options.trigger_offset;
 			}
 		}
 		
 		// Check scroll position
-		this.check_scroll();
+		inst.check_scroll();
 	};
 	
 	/**
@@ -168,56 +193,60 @@
 			return;
 		}
 		
+		var inst = this;
+		
 		// Get scroll position and direction
-		var scroll_top = this.data.$window.scrollTop();
-		var delta_v = ( scroll_top > this.data.scroll_top_last ) ? 1 : -1;
-		this.data.scroll_top_last = scroll_top;
+		var scroll_top = inst.$window.scrollTop();
+		var delta_v = ( scroll_top > inst.scroll_top_last ) ? 1 : -1;
+		inst.scroll_top_last = scroll_top;
 		
 		// Check scroll position
-		var trigger = scroll_top + this.options.trigger_offset;
-		var target_top = this.data.start_offset.top + this.options.offset;
+		var trigger = scroll_top + inst.trigger_offset;
+		var target_top = inst.start_offset.top + inst.options.offset;
 		
-		if ( this.options.debug )
+		if ( inst.options.debug )
 		{
 			console.log(
 				proto.name + ' check_scroll: ' +
 				'trigger: ' + trigger + 
 				'target_top: ' + target_top + 
-				'until: ' + this.options.until
+				'until: ' + inst.until + 
+				'inst.document_height: ' + inst.$document.height() + 
+				'$(document).height(): ' + $(document).height()
 			);
 		}
 		
-		if ( trigger >= target_top && trigger <= this.options.until )
+		if ( trigger >= target_top && trigger <= inst.until )
 		{
 			// If already affixed, stop
-			if ( this.$element.hasClass(this.options.affixed_class) )
+			if ( inst.$element.hasClass(inst.options.affixed_class) )
 			{
 				return;
 			}
 			
-			this.$element.addClass(this.options.affixed_class)
+			inst.$element.addClass(inst.options.affixed_class)
 			.css({
-				left : this.data.start_offset.left,
+				left : inst.start_offset.left,
 				right : 'auto',
-				top : this.options.offset,
+				top : inst.options.offset,
 				bottom : 'auto'
 			});
 			
-			$('<div class="' + this.options.placeholder_class + '"></div>')
-			.css('height', this.data.element_height)
-			.insertAfter(this.$element);
+			$('<div class="' + inst.options.placeholder_class + '"></div>')
+			.css('height', inst.element_height)
+			.insertAfter(inst.$element);
 		}
-		else if ( this.$element.hasClass(this.options.affixed_class) )
+		else if ( inst.$element.hasClass(inst.options.affixed_class) )
 		{
-			this.$element.removeClass(this.options.affixed_class)
+			inst.$element.removeClass(inst.options.affixed_class)
 			.css({
-				left : this.data.start_left,
-				right : this.data.start_right,
-				top : this.data.start_top,
-				bottom : this.data.start_bottom
+				left : inst.start_left,
+				right : inst.start_right,
+				top : inst.start_top,
+				bottom : inst.start_bottom
 			});
 			
-			this.$element.next('.' + this.options.placeholder_class).remove();
+			inst.$element.next('.' + inst.options.placeholder_class).remove();
 		}
 	};
 	
