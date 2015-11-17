@@ -219,7 +219,7 @@
 				event.preventDefault();
 				event.stopImmediatePropagation();
 				
-				var hash = inst.hash.replace('#', '');
+				var hash = this.hash.replace('#', '');
 				var $target = $('#' + hash);
 				if ( $target.length > 0 )
 				{
