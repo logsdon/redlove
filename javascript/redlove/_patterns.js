@@ -248,16 +248,16 @@ window.GLOBAL_OBJECT = $.extend(window.GLOBAL_OBJECT, {
 		console.log(plugin_name + ' init()');
 		
 		// Create an anonymous function to run later using plugin data
-		var self = this;
+		var instance = this;
 		this.handler = function ()
 		{
-			self.now = new Date().getTime();
+			instance.now = new Date().getTime();
 			
-			if ( self.options.debug )
+			if ( instance.options.debug )
 			{
 				console.log('Running at start');
 			}
-			self.run(arguments);
+			instance.run(arguments);
 		};
 		
 		return this;
@@ -307,6 +307,7 @@ window.GLOBAL_OBJECT = $.extend(window.GLOBAL_OBJECT, {
 	var proto = Plugin.prototype;
 	// Plugin properties
 	proto.name = 'javascript_advanced_plugin';
+	proto.namespace = '.' + proto.name;
 	proto.data_key = proto.name;
 	proto.num_instances = 0;
 	proto.default_options = {
@@ -339,16 +340,16 @@ window.GLOBAL_OBJECT = $.extend(window.GLOBAL_OBJECT, {
 		this.time_last_run = 0;
 		
 		// Create an anonymous function to run later using plugin data
-		var self = this;
+		var instance = this;
 		this.handler = function ()
 		{
-			self.now = new Date().getTime();
+			instance.now = new Date().getTime();
 			
-			if ( self.options.debug )
+			if ( instance.options.debug )
 			{
 				console.log('Running at start');
 			}
-			self.run(arguments);
+			instance.run(arguments);
 		};
 		
 		// Plugin implementation code
@@ -506,6 +507,7 @@ window.GLOBAL_OBJECT = $.extend(window.GLOBAL_OBJECT, {
 	var proto = Plugin.prototype;
 	// Plugin properties
 	proto.name = 'jquery_advanced_plugin';
+	proto.namespace = '.' + proto.name;
 	proto.data_key = proto.name;
 	proto.num_instances = 0;
 	proto.default_options = {
