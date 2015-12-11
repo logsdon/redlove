@@ -305,7 +305,7 @@ jQuery(document).ready(function ( $ )
 	// --------------------------------------------------------------------
 	
 	// Close and remove element
-	$(document).on('click', '.alert, .notification', function(event)
+	$(document).on('click', '.notification[data-mode="box"]', function(event)
 	{
 		var $element = $(this);
 		var offset = $element.offset();

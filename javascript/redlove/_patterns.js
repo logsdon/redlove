@@ -137,7 +137,7 @@ jQuery(document).ready(function($)
 	console.log('// ------------------------------------------------------------');
 	console.log('Wait for resources to become available...');
 	// If objects do not exist, check again shortly
-	if ( typeof jQuery === 'undefined' )
+	if ( document.readyState == 'loading' || typeof jQuery === 'undefined' )
 	{
 		console.log('Still waiting...');
 		return setTimeout(arguments.callee, 250);
@@ -159,6 +159,20 @@ jQuery(document).ready(function($)
 		});
 	});
 	
+})();// End function closure
+
+;(function ()// Begin function closure; avoid collisions
+{
+	// If objects do not exist, check again shortly
+	if ( typeof jQuery === 'undefined' )
+	{
+		return setTimeout(arguments.callee, 250);
+	}
+	
+	// Plugin code here
+	;(function ( $, window, document, undefined )// Begin function closure; avoid collisions
+	{
+	})( jQuery, window, document );// End function closure
 })();// End function closure
 
 // ------------------------------------------------------------

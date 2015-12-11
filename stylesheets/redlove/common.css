@@ -1528,51 +1528,60 @@ fieldset[disabled] .button-link {
 ------------------------------------------------------------ */
 
 /* 
-	Feedback
+	Notifications
 	
-	<div class="feedback success">
-		<p>Success: Here is some feedback.</p>
+	<div class="notification" data-type="success">
+		<p><strong>Success!</strong> Here is a notification <a href="">with a link</a>.</p>
+	</div>
+	
+	<div class="notification" data-mode="box" data-type="success">
+		<p><strong>Success!</strong> Here is a notification <a href="">with a link</a>.</p>
+	</div>
+	
+	<div class="notification" data-mode="box" data-type="messages">
+		<div class="notification-message">
+			<h3>Message <span>Heading</span></h3>
+			<p>Here is a message <a href="">with a link</a>.</p>
+		</div>
 	</div>
 ---------------------------------------- */
-.feedback {
-	color: #999999;
-	font-size: 1.0em;
+.notification {
+	clear: both;
+	color: #333333;
 	margin-bottom: 1.0em;
-	width: 100%;
+	position: relative;
 }
-.feedback-success {
-	color: green;
+.notification *:last-child {
+	margin-bottom: 0;
+}
+
+.notification[data-type="success"] {
 	color: #468847;
 }
-.feedback-error {
-	color: #e0162c;
+.notification[data-type="error"] {
 	color: #B94A48;
 }
-.feedback-warning {
+.notification[data-type="warning"] {
 	color: #C09853;
 }
-.feedback-info {
+.notification[data-type="info"] {
 	color: #3A87AD;
 }
 
-/* 
-	Alerts
-	
-	<div class="alert alert-error alert-dismissable" role="alert">
-		<strong>Error!</strong> Here is an alert <a href="" class="alert-link">with a link</a>.
-	</div>
----------------------------------------- */
-.alert {
+/* Handle data-mode = box */
+
+.notification[data-mode="box"] {
+	background-position: 1.0em 50%;
+	background-repeat: no-repeat;
 	border: 1px solid transparent;
 	-webkit-border-radius: 4px;
 	-khtml-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-	margin-bottom: 1.5em;
 	padding: 1.0em;
-	position: relative;
+	padding-left: 3.0em;
 }
-.alert:after {
+.notification[data-mode="box"]:after {
 	color: inherit;
 	content: "\00D7";/*2716 or 00D7*/
 	cursor: pointer;
@@ -1586,78 +1595,7 @@ fieldset[disabled] .button-link {
 	text-decoration: none;
 	top: 0;
 }
-	.alert-link {
-		font-weight: 700;
-		text-decoration: none;
-	}
-	.alert-link:hover {
-		text-decoration: underline;
-	}
-.alert-success {
-	background-color: #dff0d8;
-	border-color: #d6e9c6;
-	color: #3c763d;
-}
-	.alert-success .alert-link {
-		color: #2b542c;
-	}
-.alert-error {
-	background-color: #f2dede;
-	border-color: #ebccd1;
-	color: #a94442;
-}
-	.alert-error .alert-link {
-		color: #843534;
-	}
-.alert-warning {
-	background-color: #fcf8e3;
-	border-color: #faebcc;
-	color: #8a6d3b;
-}
-	.alert-warning .alert-link {
-		color: #66512c;
-	}
-.alert-info {
-	background-color: #d9edf7;
-	border-color: #bce8f1;
-	color: #31708f;
-}
-	.alert-info .alert-link {
-		color: #245269;
-	}
-
-/* 
-	Notifications
-	
-	<div class="notification notification-success">
-		<a href="#" class="notification-close"></a>
-		<p><strong>Success!</strong> Here is a notification <a href="">with a link</a>.</p>
-	</div>
-	
-	<div class="notification notification-messages">
-		<a href="#" class="notification-close"></a>
-		<div class="notification-message">
-			<h3>Message <span>Heading</span></h3>
-			<p>Here is a message <a href="">with a link</a>.</p>
-		</div>
-	</div>
----------------------------------------- */
-.notification {
-	background-position: 1.0em 50%;
-	background-repeat: no-repeat;
-	border: 2px solid transparent;
-	-webkit-border-radius: 5px;
-	-khtml-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	clear: both;
-	font-weight: normal;
-	margin-bottom: 1.0em;
-	padding: 1.0em;
-	padding-left: 3.0em;
-	position: relative;
-}
-.notification:before {
+.notification[data-mode="box"]:before {
 	content: "";
 	font-family: FontAwesome;
 	left: 1.8em;
@@ -1669,99 +1607,81 @@ fieldset[disabled] .button-link {
 	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
-.notification:after {
-	color: inherit;
-	content: "\00D7";/*2716 or 00D7*/
-	cursor: pointer;
-	font-size: 18px;
-	left: auto;
-	line-height: 1.0;
-	outline: 0 none;
-	padding: 0.25em 0.5em;
-	position: absolute;
-	right: 0;
-	text-decoration: none;
-	top: 0;
-}
 
-	.notification p {
-		color: #333;
-		padding: 0;
-	}
-	.notification p:last-child {
-		margin-bottom: 0;
-	}
-
-.notification-warning {
-	background-color: #FFDB91;
-	background-color: #FEEFCB;
-	/*background-image: url(../images/icondock/error.png);*/
-	border-color: #FFC44A;
-}
-.notification-warning:before {
-	color: #FFC44A;
-	content: '\f071';
-}
-
-.notification-success {
+.notification[data-mode="box"][data-type="success"] {
 	background-color: #E2FF7D;
 	/*background-image: url(../images/icondock/accept.png);*/
 	border-color: #99C600;
+	color: #4A5F00;
 }
-.notification-success:before {
+.notification[data-mode="box"][data-type="success"]:before {
 	color: #99C600;
 	content: '\f00c';
 	content: '\f058';
 }
 
-.notification-error {
+.notification[data-mode="box"][data-type="error"] {
 	background-color: #F5B5A9;
 	/*background-image: url(../images/icondock/exclamation.png);*/
 	border-color: #EB5339;
+	color: #8F3223;
 }
-.notification-error:before {
+.notification[data-mode="box"][data-type="error"]:before {
 	color: #EB5339;
 	content: '\f06a';
 }
 
-.notification-info {
-	background-color: #B3CFEA;
+.notification[data-mode="box"][data-type="warning"] {
+	background-color: #FEEFCB;
+	/*background-image: url(../images/icondock/error.png);*/
+	border-color: #EFB53B;
+	color: #8F6D23;
+}
+.notification[data-mode="box"][data-type="warning"]:before {
+	color: #EFB53B;
+	content: '\f071';
+}
+
+.notification[data-mode="box"][data-type="info"] {
+	background-color: #C2DAEF;
 	/*background-image: url(../images/icondock/information.png);*/
 	border-color: #418ACC;
+	color: #224B6F;
 }
-.notification-info:before {
+.notification[data-mode="box"][data-type="info"]:before {
 	color: #418ACC;
 	content: '\f05a';
 }
 
-.notification-lightbulb {
+.notification[data-mode="box"][data-type="lightbulb"] {
 	background-color: #FEEFCB;
 	/*background-image: url(../images/icondock/lightbulb.png);*/
 	border-color: #D3A350;
+	color: #6F5529;
 }
-.notification-lightbulb:before {
+.notification[data-mode="box"][data-type="lightbulb"]:before {
 	color: #D3A350;
 	content: '\f0eb';
 }
 
-.notification-messages {
-	background-color: #9DDFFF;
-	/*background-image: url(../images/icondock/email.png);*/
-	border-color: #42B4FF;
-}
-.notification-messages:before {
-	color: #42B4FF;
+.notification[data-mode="box"][data-type="message"]:before {
+	color: #c6c6c6;
 	content: '\f0e0';
+	top: 0;
+	-webkit-transform: translate(-50%, 1.15em);
+	-moz-transform: translate(-50%, 1.15em);
+	-ms-transform: translate(-50%, 1.15em);
+	-o-transform: translate(-50%, 1.15em);
+	transform: translate(-50%, 1.15em);
 }
-	
-	.notification-message h3 {
-		border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-		font-size: 120%;
-		padding-bottom: 0.5em;
-	}
-	.notification-message h3 span {
-		font-style: italic;
-	}
+.notification[data-type="message"] h3 {
+	color: #767676;
+	font-size: 120%;
+	margin-bottom: 0.25em;
+}
+.notification[data-type="message"] h3 span {
+	font-style: italic;
+}
 
 /* ------------------------------------------------------------
 	Site Loading Overlay
