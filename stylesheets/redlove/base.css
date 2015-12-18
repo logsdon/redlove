@@ -128,19 +128,27 @@ body {
 /* 
 	Add dimensions to the inside of the element and not the outside
 	(borders and padding do not effect widths and heights)
+	
+	Change from body * to inherit: https://github.com/AllThingsSmitty/css-protips
 ---------------------------------------- */
-body,
-body * {
+html {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: inherit;
+	-moz-box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 /* 
 	Help fix choppy scrolling on elements with overflow scrolling
 	http://stackoverflow.com/questions/12845892/ios-overflow-x-or-position-absolute-makes-scrolling-choppy
 ---------------------------------------- */
-body * {
+* {
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -331,6 +339,8 @@ a:focus {
 a:hover,
 a:active {
 	outline: 0;
+}
+a[href]:not([class]) {
 }
 a[rel="external"],
 a[target="_blank"] {

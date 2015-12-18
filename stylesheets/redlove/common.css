@@ -2643,7 +2643,11 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 
 /* Add dimensions to the inside of the element and not the outside (borders and padding do not effect widths and heights) */
 .border-box,
-.border-box * {
+.border-box:before,
+.border-box:after,
+.border-box *,
+.border-box *:before,
+.border-box *:after {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
