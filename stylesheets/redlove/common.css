@@ -863,7 +863,7 @@ input[type="submit"] {
 	vertical-align: middle;
 }
 .select-wrapper:before {
-	content: '\f0d7';
+	content: "\f0d7";
 	display: inline-block;
 	font-family: FontAwesome;
 	left: auto;
@@ -1774,8 +1774,8 @@ fieldset[disabled] .button-link {
 }
 .notification[data-mode="box"][data-type="success"]:before {
 	color: #99C600;
-	content: '\f00c';
-	content: '\f058';
+	content: "\f00c";
+	content: "\f058";
 }
 
 .notification[data-mode="box"][data-type="error"] {
@@ -1786,7 +1786,7 @@ fieldset[disabled] .button-link {
 }
 .notification[data-mode="box"][data-type="error"]:before {
 	color: #EB5339;
-	content: '\f06a';
+	content: "\f06a";
 }
 
 .notification[data-mode="box"][data-type="warning"] {
@@ -1797,7 +1797,7 @@ fieldset[disabled] .button-link {
 }
 .notification[data-mode="box"][data-type="warning"]:before {
 	color: #EFB53B;
-	content: '\f071';
+	content: "\f071";
 }
 
 .notification[data-mode="box"][data-type="info"] {
@@ -1808,7 +1808,7 @@ fieldset[disabled] .button-link {
 }
 .notification[data-mode="box"][data-type="info"]:before {
 	color: #418ACC;
-	content: '\f05a';
+	content: "\f05a";
 }
 
 .notification[data-mode="box"][data-type="lightbulb"] {
@@ -1819,12 +1819,12 @@ fieldset[disabled] .button-link {
 }
 .notification[data-mode="box"][data-type="lightbulb"]:before {
 	color: #D3A350;
-	content: '\f0eb';
+	content: "\f0eb";
 }
 
 .notification[data-mode="box"][data-type="message"]:before {
 	color: #c6c6c6;
-	content: '\f0e0';
+	content: "\f0e0";
 	top: 0;
 	-webkit-transform: translate(-50%, 1.15em);
 	-moz-transform: translate(-50%, 1.15em);
@@ -2104,26 +2104,31 @@ body {
 
 /* ------------------------------------------------------------
 	Mobile menu
+	
+	<input id="mobile-menu_cb_height-top" type="checkbox" class="mobile-menu-checkbox" data-type="height-top">
+	<label for="mobile-menu_cb_height-top" class="mobile-menu-button">Menu Button - Height Top</label>
+	<nav class="mobile-menu" data-type="height-top">
+		<ul>
+			<li><label for="mobile-menu_cb_height-top" class="mobile-menu-button">Menu Button - Height Top</label></li>
+			<li><a href="">Home</a></li>
+			<li><a href="">Option</a></li>
+			<li><a href="">Option</a>
+				<ul>
+					<li><a href="">Sub-Option</a></li>
+					<li><a href="">Sub-Option</a></li>
+					<li><a href="">Sub-Option</a></li>
+				</ul>
+			</li>
+			<li><a href="">Option</a></li>
+		</ul>
+	</nav>
 ------------------------------------------------------------ */
 
-.mobile-body-liner {
-	position: relative;
-	left: 0;
-	top: 0;
-	
-	-webkit-transition: all 0.4s ease-out 0s;
-	-moz-transition: all 0.4s ease-out 0s;
-	-ms-transition: all 0.4s ease-out 0s;
-	-o-transition: all 0.4s ease-out 0s;
-	transition: all 0.4s ease-out 0s;
-}
-
-.mobile-menu_container {
-	text-align: left;
-}
 .mobile-menu {
 	height: 100%;
 	opacity: 1.0;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
 	position: relative;
 	white-space: nowrap;
 	z-index: 9999999;
@@ -2173,7 +2178,7 @@ body {
 			font-weight: normal;
 		}
 		.mobile-menu li li a:before {
-			/*content: '- ';*/
+			/*content: "- ";*/
 		}
 /* Custom override */
 .mobile-menu > ul {
@@ -2197,96 +2202,33 @@ body {
 }
 
 /* 
-	Mobile menu - Fixed right
+	Mobile menu liner - Use on body if pushing page content
 ---------------------------------------- */
-.mobile-menu.fixed-right {
-	bottom: 0;
-	display: block;
-	height: 100%;
-	left: 100%;
-	opacity: 1.0;
-	overflow: hidden;
-	position: fixed;
-	top: 0;
-	width: 80%;
-}
-.mobile-menu_checkbox.fixed-right:checked ~ .mobile-menu.fixed-right,
-.mobile-menu_checkbox.fixed-right:checked ~ div .mobile-menu.fixed-right {
-	left: 20%;
-	overflow: visible;
-	overflow-y: auto;
-	
-	-moz-box-shadow: 
-		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
-	-webkit-box-shadow: 
-		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
-	box-shadow: 
-		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
-}
-
-/* 
-	Mobile menu - Push fixed menu left
----------------------------------------- */
-.mobile-menu_checkbox.push-left:checked ~ .body-liner {
-	left: -80%;
-}
-
-/* 
-	Mobile menu - Left fixed menu
------------------------------------ */
-.mobile-menu.left-fixed {
-	position: fixed;
-	width: 80%;
-	left: -100%;
-	overflow: hidden;
-	top: 0;
-	bottom: 0;
-	
-	-moz-box-shadow: 
-		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
-	-webkit-box-shadow: 
-		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
-	box-shadow: 
-		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
-}
-#mobile-menu-toggle_left-fixed:checked ~ .mobile-menu.left-fixed,
-#mobile-menu-toggle_left-fixed:checked ~ div .mobile-menu.left-fixed {
+.mobile-menu-liner {
 	left: 0;
-	overflow: visible;
-	overflow-y: auto;
+	position: relative;
+	top: 0;
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
 }
 
 /* 
-	Mobile menu - Top height menu
+	Mobile menu - Checkbox toggle - Checkbox at sibling level to menu
 ---------------------------------------- */
-.mobile-menu.top-height {
-	height: auto;
-	max-height: 0px;
-	overflow: hidden;
-}
-#mobile-menu-toggle_top-height:checked ~ .mobile-menu.top-height,
-#mobile-menu-toggle_top-height:checked ~ div .mobile-menu.top-height {
-	max-height: 1000px;
-}
-
-/* ------------------------------------------------------------
-	Mobile menu controls
------------------------------------------------------------- */
-
-/* 
-	Mobile menu controls - Checkbox toggle - Checkbox after opening <body>
----------------------------------------- */
-.mobile-menu_checkbox {
+.mobile-menu-checkbox {
 	display: none !important;
 	text-rendering: geometricPrecision;
 }
 
 /* 
-	Mobile menu controls - Checkbox toggle - Button to toggle checkbox
+	Mobile menu - Checkbox toggle - Button to toggle checkbox
 ---------------------------------------- */
-.mobile-menu_button {
+.mobile-menu-button {
 	cursor: pointer;
-	display: none;
 	margin: 0;
 	padding: 1.0em;
 	text-align: center;
@@ -2299,31 +2241,262 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 }
-/* Tablet : Design for a width of 768px (0px - 959px) 
-@media only screen and (max-width: 59.99em) {
-	.nav-primary {
-		display: none !important;
-	}
-	.mobile-menu_button {
-		display: block !important;
-	}
-}
-*/
-/* Custom override */
-.mobile-menu_button {
-	padding: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-	z-index: 99999999;
-}
-.mobile-menu_button:after {
-	content: '\f0c9';
+.mobile-menu-button:after {
+	content: "\f0c9";
 	display: block;
 	font-family: FontAwesome;
 	font-size: 1.88em;
 	line-height: 1;
 	padding: 0.5em;
+}
+
+/* ------------------------------------------------------------
+	Mobile menu positions
+------------------------------------------------------------ */
+
+/* 
+	Mobile menu - Top height menu
+---------------------------------------- */
+.mobile-menu[data-type="height-top"] {
+	height: auto;
+	max-height: 0px;
+	overflow: hidden;
+}
+.mobile-menu-active[data-type="height-top"] .mobile-menu[data-type="height-top"],
+.mobile-menu-checkbox[data-type="height-top"]:checked ~ .mobile-menu[data-type="height-top"],
+.mobile-menu-checkbox[data-type="height-top"]:checked ~ * .mobile-menu[data-type="height-top"] {
+	max-height: 1000px;
+}
+
+/* 
+	Mobile menu - Fixed top
+----------------------------------- */
+.mobile-menu[data-type="fixed-top"] {
+	bottom: 0;
+	height: 90%;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: -100%;
+	width: 100%;
+}
+.mobile-menu-active[data-type="fixed-top"] .mobile-menu[data-type="fixed-top"],
+.mobile-menu-checkbox[data-type="fixed-top"]:checked ~ .mobile-menu[data-type="fixed-top"],
+.mobile-menu-checkbox[data-type="fixed-top"]:checked ~ * .mobile-menu[data-type="fixed-top"] {
+	-moz-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	
+	top: 0;
+	overflow: visible;
+	overflow-y: auto;
+}
+
+/* 
+	Mobile menu - Fixed bottom
+----------------------------------- */
+.mobile-menu[data-type="fixed-bottom"] {
+	bottom: 0;
+	height: 90%;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 100%;
+	width: 100%;
+}
+.mobile-menu-active[data-type="fixed-bottom"] .mobile-menu[data-type="fixed-bottom"],
+.mobile-menu-checkbox[data-type="fixed-bottom"]:checked ~ .mobile-menu[data-type="fixed-bottom"],
+.mobile-menu-checkbox[data-type="fixed-bottom"]:checked ~ * .mobile-menu[data-type="fixed-bottom"] {
+	-moz-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	
+	top: 10%;
+	overflow: visible;
+	overflow-y: auto;
+}
+
+/* 
+	Mobile menu - Fixed left
+----------------------------------- */
+.mobile-menu[data-type="fixed-left"] {
+	bottom: 0;
+	left: -100%;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 80%;
+}
+.mobile-menu-active[data-type="fixed-left"] .mobile-menu[data-type="fixed-left"],
+.mobile-menu-checkbox[data-type="fixed-left"]:checked ~ .mobile-menu[data-type="fixed-left"],
+.mobile-menu-checkbox[data-type="fixed-left"]:checked ~ * .mobile-menu[data-type="fixed-left"] {
+	-moz-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	
+	left: 0;
+	overflow: visible;
+	overflow-y: auto;
+}
+
+/* 
+	Mobile menu - Fixed right
+---------------------------------------- */
+.mobile-menu[data-type="fixed-right"] {
+	bottom: 0;
+	display: block;
+	height: 100%;
+	left: 100%;
+	opacity: 1.0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 80%;
+}
+.mobile-menu-active[data-type="fixed-right"] .mobile-menu[data-type="fixed-right"],
+.mobile-menu-checkbox[data-type="fixed-right"]:checked ~ .mobile-menu[data-type="fixed-right"],
+.mobile-menu-checkbox[data-type="fixed-right"]:checked ~ * .mobile-menu[data-type="fixed-right"] {
+	-moz-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	
+	left: 20%;
+	overflow: visible;
+	overflow-y: auto;
+}
+
+/* 
+	Mobile menu - Push fixed menu top
+---------------------------------------- */
+.mobile-menu[data-type="push-top"] {
+	bottom: 0;
+	height: 90%;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: -100%;
+	width: 100%;
+}
+.mobile-menu-active[data-type="push-top"] .mobile-menu[data-type="push-top"],
+.mobile-menu-checkbox[data-type="push-top"]:checked ~ .mobile-menu[data-type="push-top"],
+.mobile-menu-checkbox[data-type="push-top"]:checked ~ * .mobile-menu[data-type="push-top"] {
+	-moz-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	
+	top: 0%;
+	overflow: visible;
+	overflow-y: auto;
+}
+.mobile-menu-active[data-type="push-top"].mobile-menu-liner,
+.mobile-menu-active[data-type="push-top"] .mobile-menu-liner {
+	top: 90%;
+}
+
+/* 
+	Mobile menu - Push fixed menu bottom
+---------------------------------------- */
+.mobile-menu[data-type="push-bottom"] {
+	bottom: 0;
+	height: 90%;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 100%;
+	width: 100%;
+}
+.mobile-menu-active[data-type="push-bottom"] .mobile-menu[data-type="push-bottom"],
+.mobile-menu-checkbox[data-type="push-bottom"]:checked ~ .mobile-menu[data-type="push-bottom"],
+.mobile-menu-checkbox[data-type="push-bottom"]:checked ~ * .mobile-menu[data-type="push-bottom"] {
+	-moz-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	
+	top: 10%;
+	overflow: visible;
+	overflow-y: auto;
+}
+.mobile-menu-active[data-type="push-bottom"].mobile-menu-liner,
+.mobile-menu-active[data-type="push-bottom"] .mobile-menu-liner {
+	top: -90%;
+}
+
+/* 
+	Mobile menu - Push fixed menu left
+---------------------------------------- */
+.mobile-menu[data-type="push-left"] {
+	bottom: 0;
+	left: 100%;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 80%;
+}
+.mobile-menu-active[data-type="push-left"] .mobile-menu[data-type="push-left"],
+.mobile-menu-checkbox[data-type="push-left"]:checked ~ .mobile-menu[data-type="push-left"],
+.mobile-menu-checkbox[data-type="push-left"]:checked ~ * .mobile-menu[data-type="push-left"] {
+	-moz-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		-5px 0px 10px 0px rgba(0, 0, 0, 0.6);
+	
+	left: 20%;
+	overflow: visible;
+	overflow-y: auto;
+}
+.mobile-menu-active[data-type="push-left"].mobile-menu-liner,
+.mobile-menu-active[data-type="push-left"] .mobile-menu-liner {
+	left: -80%;
+}
+
+/* 
+	Mobile menu - Push fixed menu right
+---------------------------------------- */
+.mobile-menu[data-type="push-right"] {
+	bottom: 0;
+	left: -80%;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 80%;
+}
+.mobile-menu-active[data-type="push-right"] .mobile-menu[data-type="push-right"],
+.mobile-menu-checkbox[data-type="push-right"]:checked ~ .mobile-menu[data-type="push-right"],
+.mobile-menu-checkbox[data-type="push-right"]:checked ~ * .mobile-menu[data-type="push-right"] {
+	-moz-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 
+		5px 0px 5px 0px rgba(0, 0, 0, 0.6);
+	
+	left: 0%;
+	overflow: visible;
+	overflow-y: auto;
+}
+.mobile-menu-active[data-type="push-right"].mobile-menu-liner,
+.mobile-menu-active[data-type="push-right"] .mobile-menu-liner {
+	left: 80%;
 }
 
 /* ------------------------------------------------------------
@@ -4303,6 +4476,7 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 .pre {
 	white-space: pre !important;
 }
+
 /* Put on body to prevent background scrolling */
 .no-scroll {
 	overflow: hidden !important;
@@ -4316,6 +4490,7 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 	-ms-user-select: none !important;
 	user-select: none !important;
 }
+/* Prevent mouse interaction */
 .no-pointer-events {
 	pointer-events: none !important;
 }
