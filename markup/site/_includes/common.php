@@ -131,12 +131,12 @@ if ( ! defined('ENVIRONMENT') )
 
 	/* LOGSDON - http://en.wikipedia.org/wiki/Development_environment */
 	// Development server
-	if ( $config['environment']['is_development'] )
+	if ( ! empty($config['environment']['is_development']) )
 	{
 		define('ENVIRONMENT', 'development');
 	}
 	// Testing server
-	elseif ( $config['environment']['is_testing'] )
+	elseif ( ! empty($config['environment']['is_testing']) )
 	{
 		define('ENVIRONMENT', 'testing');
 	}
