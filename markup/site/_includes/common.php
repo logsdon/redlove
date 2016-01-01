@@ -1,6 +1,22 @@
 <?php
 /**
-* Include this file at the top of page files like so:
+* Initialize common resources
+*
+* @package RedLove
+* @subpackage PHP
+* @category 
+* @author Joshua Logsdon <joshua@joshualogsdon.com>
+* @author Various from CodeIgniter to Internet
+* @copyright Copyright (c) 2015, Joshua Logsdon (http://joshualogsdon.com/)
+* @license http://opensource.org/licenses/MIT MIT License
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+* @version 0.0.0
+* 
+* Usage:
+* 
+
+Include this file at the top of page files like so:
 
 <?php
 // Require common functionality
@@ -17,6 +33,7 @@ if ( file_exists($file) )
 }
 ?>
 
+* 
 */
 
 // --------------------------------------------------------------------
