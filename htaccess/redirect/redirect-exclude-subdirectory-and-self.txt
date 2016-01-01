@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+	
+    Options +FollowSymLinks
+    RewriteOptions MaxRedirects=15
+    RewriteEngine On
+	
+    # Redirect entire site
+    # RewriteRule (.*) http://www.example.com/ [R=301,L]
+	
+	# If not going to this area
+	RewriteCond %{REQUEST_URI} !^/subdir1/subdir2(/.*)?
+	
+	# If referrer is not from the same domain
+	RewriteCond %{HTTP_REFERER} !^http://(.+\.)?example2\.com/ [NC]
+	
+    # Redirect
+	RewriteRule ^(.*)$ http://www.example.com/?q=$1 [R=301,L,QSA]
+	
+</IfModule>

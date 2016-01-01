@@ -1,4 +1,19 @@
 <?php
+/**
+* Request helper functions
+*
+* @package RedLove
+* @subpackage PHP
+* @category Functions
+* @author Joshua Logsdon <joshua@joshualogsdon.com>
+* @author Various from CodeIgniter to Internet
+* @copyright Copyright (c) 2015, Joshua Logsdon (http://joshualogsdon.com/)
+* @license http://opensource.org/licenses/MIT MIT License
+* @link https://github.com/logsdon/redlove
+* @link http://redlove.org
+* @version 0.0.0
+* 
+*/
 
 // --------------------------------------------------------------------
 

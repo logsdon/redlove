@@ -1,0 +1,81 @@
+If using portable, everything is expected to run at the root \xampp\
+
+Curl giving issues with self-signed certicifcates? Update php.ini by pointing to a legit certificate...
+curl.cainfo=C:\xampp\perl\vendor\lib\Mozilla\CA\cacert.pem
+Or set at runtime
+http://stackoverflow.com/questions/6400300/https-and-ssl3-get-server-certificatecertificate-verify-failed-ca-is-ok
+
+To transfer databases, you can't just copy folders from/to the mysql/data/ directory. The system tables won't be updated with their info. Copying the whole data folder is frowned upon.
+Instead you can dump and import via command line after you SSH into the remote server...
+mysqldump -u [username] -p [database_name] > [dumpfilename.sql]
+tar zcf dumpfilename.tar.gz dumpfilename.sql
+
+tar zxf dumpfilename.tar.gz
+mysql -u [username] -p [database_name] < [dumpfilename.sql]
+
+Alternates...
+mysqldump --add-drop-table -u admin -p`cat /etc/psa/.psa.shadow` dbname > dbname.sql
+mysql -u admin -p`cat /etc/psa/.psa.shadow` dbname < dbname.sql
+or if gzipped...
+gunzip < dbname.gz | mysql -u admin -p`cat /etc/psa/.psa.shadow` dbname
+
+mysqldump -u root -p --opt --all-databases > alldb.sql
+mysqldump -u root -p --all-databases --skip-lock-tables > alldb.sql
+mysql -u root -p --all-databases | gzip > alldb.sql.gz
+mysql -u root -p < alldb.sql
+
+You can also use phpMyAdmin or MySQL Workbench.
+
+
+
+
+
+
+http://stackoverflow.com/questions/9497869/export-and-import-all-mysql-databases-at-one-time
+
+#!/bin/bash
+
+USER="zend"
+PASSWORD=""
+#OUTPUT="/Users/rabino/DBs"
+
+#rm "$OUTPUTDIR/*gz" > /dev/null 2>&1
+
+databases=`mysql -u $USER -p$PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database`
+
+for db in $databases; do
+    if [[ "$db" != "information_schema" ]] && [[ "$db" != "performance_schema" ]] && [[ "$db" != "mysql" ]] && [[ "$db" != _* ]] ; then
+        echo "Dumping database: $db"
+        mysqldump -u $USER -p$PASSWORD --databases $db > `date +%Y%m%d`.$db.sql
+       # gzip $OUTPUT/`date +%Y%m%d`.$db.sql
+    fi
+done
+
+
+
+
+
+
+
+
+
+
+
+
+Having trouble with sites using short tags causing "unexpected" syntax errors. In particular, WordPress plugins.
+
+php.ini
+short_open_tag = On
+
+
+
+
+
+
+
+
+
+Increase file upload details or max execution times
+; Maximum allowed size for uploaded files.
+; http://php.net/upload-max-filesize
+upload_max_filesize = 20M

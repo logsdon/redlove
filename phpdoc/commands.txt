@@ -1,0 +1,4 @@
+
+// http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#using
+php c:/xampp/htdocs/phpDocumentor-2.8.1/bin/phpdoc -d c:/xampp/htdocs/redlove/codeigniter_3.x/ci/application/core
+

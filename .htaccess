@@ -1,0 +1,36 @@
+# If repo resources are used directly in your local web environment, this .htaccess will help route requests for things such as cache busting urls.
+
+# ###########################################################
+# URL REWRITES
+# ###########################################################
+
+# ------------------------------------------------------------------------------
+# | Rewrite engine
+# ------------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+	
+	Options +FollowSymLinks
+	RewriteOptions MaxRedirects=15
+	
+	# Start rewriting
+	RewriteEngine On
+	
+	# Generate rewrite base dynamically
+	RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+	RewriteRule ^(.*)$ - [E=BASE:%1]
+	#%{ENV:BASE}
+	
+	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	
+	# ------------------------------------------------------------------------------
+	# | Filename-based cache busting
+	# ------------------------------------------------------------------------------
+	
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ %{ENV:BASE}$1.$3 [NC,L,R=301]
+	
+	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	
+</IfModule>

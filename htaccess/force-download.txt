@@ -1,0 +1,7 @@
+<IfModule mod_headers.c>
+	<FilesMatch "\.(?i:csv|xls|doc|pdf|avi|mov|mp4|mv4|mp3|mpe?g|jpe?g|png)$">
+		ForceType application/octet-stream
+		Header set Content-Disposition "attachment"
+		Allow from all
+	</FilesMatch>
+</IfModule>

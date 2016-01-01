@@ -1,0 +1,18 @@
+Here's how I can best keep short and informative on what I do to take a design and make it a web site.
+
+After the design process, we create a website by bringing several web technologies together.
+
+1) Markup (http://en.wikipedia.org/wiki/HTML)
+We create markup for every page. Markup is the text building blocks of a web page, the first step in taking a design concept to a page visitors can interact with. When you view the source of a web page, you are looking at markup.
+
+2) Layout, stylesheets, and visuals
+We enhance the markup with layout, stylesheets, and visuals. Layout (restructure markup for formatting), stylesheets (apply visual formatting to markup [http://en.wikipedia.org/wiki/Cascading_Style_Sheets]), and visuals (images and such) are used to recreate the design concept as a web page.
+
+3) Templating
+We create web pages with the resources we have developed, tweaking resources as we go. We link up navigation and other shared resources to create a web site.
+
+4) Testing
+With several popular web browsers and operating systems visitors may use, we test our pages to ensure a consistent and acceptable visitor experience.
+
+5) Launch
+We make sure the web site is set up and available for visitors.

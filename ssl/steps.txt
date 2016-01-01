@@ -1,0 +1,49 @@
+http://www.rackspace.com/knowledge_center/article/rackspace-cloud-sites-first-48-6-3-configuring-ssl-on-your-websites#install_ssl
+
+
+
+Webhost
+
+1. Start a new SSL Certificate
+
+Site Address (Common Name)
+The fully-qualified domain name for your site. This must be an exact match.
+
+Organization
+The legal name of your organization. (Please don't abbreviate.)
+
+Organization Unit
+Section or department of your organization.
+
+City
+
+State or Province
+Please don't abbreviate.
+
+Country 
+
+
+2. This creates a Certificate Request (CSR) or Private Key
+Your CSR was successfully created. You can now use the CSR to purchase an SSL certificate from one of the major certificate providers, such as GeoTrust or VeriSign. 
+
+Certificate Authority
+
+Enter your Certificate Signing Request (CSR)
+http://support.godaddy.com/help/article/5343/generating-a-certificate-signing-request
+
+
+3. Go through verification
+
+4. Once your certificate is issued, download the certificate and intermediate certificate for your server type, most likely Apache + OpenSSL
+
+5. Upload/Enter downloaded certificate (yourdomain.com) and intermediate certificate (bundle) on Webhost
+
+
+
+
+
+
+
+
+
+

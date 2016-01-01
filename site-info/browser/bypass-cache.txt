@@ -1,0 +1,33 @@
+Internet Explorer
+To reload a page and bypass the cache:
+either: Hold the Ctrl key and press the F5 key.
+or: Hold the Ctrl key and click the "Refresh" button on the toolbar.
+
+
+Mozilla Firefox
+To reload a page and bypass the cache:
+either: Hold down both the Ctrl and Shift keys and then press R. On a Mac, use the Cmd key instead of Ctrl.
+or: Hold down the Shift key and click the Reload button on the navigation toolbar.
+
+
+Safari
+To reload a page and bypass the cache:
+for version 4 and newer:
+Hold down the Shift key and click the Reload toolbar button.
+
+for version 3 and older:
+Hold down the Cmd key, and press R. This kind of “regular” reload will usually bypass the cache.
+
+Note that Apple claims that clicking the "Reload" toolbar button has the same effect as Cmd+R, but this is not true; frequently the button will not bypass the cache. In some cases both clearing the cache (see below) and then quitting and relaunching the application is necessary.
+
+To completely clear the cache:
+From the "Safari" menu, choose "Empty Cache..." or hold down the Opt and Cmd keys and press E.
+
+
+Google Chrome
+To reload a page and bypass the cache:
+On Windows: either: Hold down Shift and click the Reload button on the navigation toolbar.
+or: Hold down Ctrl and click the Reload button on the navigation toolbar.
+or: Hold down Shift and press F5.
+or: Hold down Ctrl and press F5.
+On OS X: Hold the Cmd key and press the R key.

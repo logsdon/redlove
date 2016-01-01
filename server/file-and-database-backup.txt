@@ -1,0 +1,74 @@
+http://www.lunarforums.com/web_hosting_tutorials_faqs_and_resources/site_and_mysql_backups_via_cron-t22118.0.html
+http://forum.parallels.com/showthread.php?t=101431
+http://georgi-mitev.com/2010/04/web-development/php/schedule-website-file-system-backup-php-cron-job/
+http://campstamba.com/2010/12/create-your-own-php-backup-solution-complete-tutorial-with-source-files/
+
+
+
+
+
+
+
+
+
+
+#!/bin/sh
+mysqldump -h DB_HOST -u DB_USER -p'DB_PASSWORD' DB_NAME > YOUR_WEB_ROOT/db_backup.sql
+gzip -f YOUR_WEB_ROOT/db_backup.sql
+
+#!/bin/bash
+mysqldump -u user1 -p DatabaseName | gzip > BackupFolder/backup`date +%F_%T`.sql.gz
+
+#!/bin/sh
+mysqldump -h DB_HOST -u DB_USER -p'DB_PASSWORD' DB_NAME | gzip > YOUR_WEB_ROOT/db_backup__$(date +\%Y\%m\%d-\%H\%M\%S).sql.gz
+
+
+
+
+
+
+
+
+
+
+
+http://www.dockstreetmedia.com/2011/03/automatic-site-backups-using-cron-jobs-in-dreamhost/
+
+
+#!/bin/bash
+# specific config variables (EDIT THESE)
+HOME="/home/YOUR_USERNAME"
+SITEDIR="YOUR_SITE_DIRECTORY"
+DBHOST="YOUR_DB_HOSTNAME"
+DBUSER="YOUR_DB_USERNAME"
+DBPASS="YOUR_DB_PASSWORD"
+DBNAME="YOUR_DB_NAME"
+EMAIL="YOUR_EMAIL"
+# other config variables(DO NOT EDIT THESE)
+NOWDATE=$(date +"%y%m%d")
+NOWDAY=$(date +"%d")
+BACKUPDIR="backups"
+MYSQLDUMP="$(which mysqldump)"
+# check to see if target path exists - if so, delete the old one and create a new 
+
+one, otherwise just create it
+TARGETPATH=$HOME/$BACKUPDIR/$SITEDIR/$NOWDAY
+if [ -d $TARGETPATH ]
+then
+rm -r $TARGETPATH
+mkdir -p $TARGETPATH
+else
+mkdir -p $TARGETPATH
+fi
+# create a GZIP of the directory inside the target path
+tar -zcf $TARGETPATH/${SITEDIR}_$NOWDATE.tar.gz ./$SITEDIR
+# dump the data into a SQL file inside the target path
+$MYSQLDUMP -u $DBUSER -h $DBHOST -p$DBPASS $DBNAME | gzip > 
+
+$TARGETPATH/${DBNAME}_$NOWDATE.sql.gz
+# email the GZIP files
+mutt $EMAIL -a $TARGETPATH/${SITEDIR}_$NOWDATE.tar.gz -a 
+
+$TARGETPATH/${DBNAME}_$NOWDATE.sql.gz -s "FULL Backup for $SITEDIR"
+# print a message for the logfile / output email
+printf "t$SITEDIR has been backed upn" | tee -a $LOGFILE

@@ -1,0 +1,29 @@
+
+# --------------------
+# URL REWRITING
+# --------------------
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteOptions MaxRedirects=15
+	
+	# Start rewriting
+	RewriteEngine On
+	
+	# This allows you to redirect your entire website to any other domain
+	
+	# Redirect entire site
+	RewriteRule (.*) http://www.newdomain.com/$1 [R=301,L]
+	
+	# Redirect entire site
+	Redirect 301 / http://example.com/
+	
+	# Redirect old domain to new domain
+	RewriteCond %{HTTP_HOST} ^olddomain.com$ [OR]
+	RewriteCond %{HTTP_HOST} ^www.olddomain.com$
+	RewriteRule (.*)$ http://www.newdomain.com/$1 [R=301,L]
+	
+	# Redirect certain pages
+	Redirect 301 /oldpage.html http://www.yoursite.com/newpage.html
+	Redirect 301 /oldpage2.html http://www.yoursite.com/folder/
+	
+</IfModule>

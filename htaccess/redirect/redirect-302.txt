@@ -1,0 +1,20 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+## Found Temporary Redirects
+# Catch any url starting with "subdir" after the domain name
+RewriteRule ^subdir(.*) http://www.example.com/subdir$1 [R=302,L]
+
+
+
+# --------------------
+# URL REWRITING
+# --------------------
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteOptions MaxRedirects=15
+	
+	# Start rewriting
+	RewriteEngine On
+	RewriteRule ^(.*)$ http://www.example.com/$1 [R=302,QSA,L]
+</IfModule>

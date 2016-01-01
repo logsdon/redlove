@@ -1,0 +1,21 @@
+# http://forums.devshed.com/apache-development-15/mod-rewrite-for-fake-subdomain-390093.html
+RewriteCond %{HTTP_HOST} ^([^.]+)\.domain\.com$
+RewriteRule .* http://domain.com/somescript.php?var=%1 [R,L]
+
+
+
+# http://www.experts-exchange.com/Software/Server_Software/Web_Servers/Apache/Q_24535802.html
+# You need to allow wildcard dns *.example.com in your DNS by creating a wildcard A record that points to your IP.
+# Then in .htaccess you need something like:
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^subdomain\.example\.com
+RewriteRule ^(.*)$ http://www.example.com/deneme.php?inc=$1 [R=permanent,L] 
+
+
+
+# http://forums.somethingawful.com/showthread.php?threadid=3379430
+# I use this on my site for ensuring that all URLs have http://www. in front of them.
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^example.com [NC]
+RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301]
