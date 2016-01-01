@@ -310,7 +310,7 @@ jQuery(document).ready(function($)
 					
 					inst.auto = false;
 					
-					var original_element = event.srcElement || event.originalTarget;
+					var original_element = event.srcElement || event.originalTarget || this;
 					original_element.blur();
 					
 					// Go to the paging index

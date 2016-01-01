@@ -1,0 +1,54 @@
+# www.robotstxt.org/
+# www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449
+# Comments appear after the "#" symbol at the start of a line, or after a directive
+
+# Match all bots
+User-agent: *
+# Keep them out of everything
+# Disallow: /
+Disallow: /_*/
+Disallow: /_bak/
+Disallow: /_data/
+Disallow: /_db/
+Disallow: /_inc/
+Disallow: /_include/
+Disallow: /_includes/
+Disallow: /_info/
+Disallow: /_markup/
+Disallow: /_old/
+Disallow: /_prev/
+Disallow: /_previous/
+Disallow: /_temp/
+Disallow: /ci/
+#Disallow: /css/
+Disallow: /docs/
+Disallow: /documents/
+Disallow: /editor_content/
+Disallow: /flash/
+Disallow: /fonts/
+#Disallow: /images/
+Disallow: /inc/
+Disallow: /include/
+Disallow: /includes/
+#Disallow: /javascript/
+#Disallow: /javascripts/
+#Disallow: /js/
+Disallow: /photo/
+Disallow: /photos/
+Disallow: /private*/
+#Disallow: /scripts/
+#Disallow: /styles/
+#Disallow: /stylesheet/
+#Disallow: /stylesheets/
+Disallow: /temp/
+Disallow: /templates/
+Disallow: /index.php/
+Disallow: /ci.php/
+Disallow: /_ajax.php
+Disallow: /_process.php
+
+# Allow: /
+
+Crawl-delay: 10
+
+Sitemap: http://www.example.com/sitemap.xml

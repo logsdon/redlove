@@ -2255,6 +2255,30 @@ body {
 ------------------------------------------------------------ */
 
 /* 
+	Mobile menu - Fade menu
+---------------------------------------- */
+.mobile-menu[data-type="fade"] {
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	right: 0;
+	opacity: 0.0;
+	width: 100%;
+	z-index: -9999999;
+}
+.mobile-menu-active[data-type="fade"] .mobile-menu[data-type="fade"],
+.mobile-menu-checkbox[data-type="fade"]:checked ~ .mobile-menu[data-type="fade"],
+.mobile-menu-checkbox[data-type="fade"]:checked ~ * .mobile-menu[data-type="fade"] {
+	display: block;
+	opacity: 1.0;
+	overflow: visible;
+	overflow-y: auto;
+	z-index: 9999999;
+}
+
+/* 
 	Mobile menu - Top height menu
 ---------------------------------------- */
 .mobile-menu[data-type="height-top"] {

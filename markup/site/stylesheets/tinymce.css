@@ -1,0 +1,19 @@
+/*
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Lusitana:400,700);
+*/
+
+body#tinymce,
+body#mceTemplatePreview {
+	background: #FFFFFF;
+}
+
+body#tinymce *,
+body#mceTemplatePreview * {
+	-webkit-user-select: text !important; /* Chrome all / Safari all */
+	-moz-user-select: text !important; /* Firefox all */
+	-ms-user-select: text !important; /* IE 10+ */
+
+	/* No support for these yet, use at own risk */
+	-o-user-select: text !important;
+	user-select: text !important;
+}
