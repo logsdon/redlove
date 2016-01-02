@@ -37,25 +37,11 @@ if ( file_exists($file) )
 */
 
 // --------------------------------------------------------------------
-// Make the timezone consistent on the server and audience location
-// http://stackoverflow.com/questions/1646171/mysql-datetime-fields-and-daylight-savings-time-how-do-i-reference-the-extra
-if ( 
-	function_exists('date_default_timezone_set') && 
-	function_exists('date_default_timezone_get') /*&& 
-	@date_default_timezone_get() != 'America/New_York' */
-)
-{
-	//@date_default_timezone_set(@date_default_timezone_get());
-	@date_default_timezone_set('America/New_York');
-}
-// --------------------------------------------------------------------
-
-// --------------------------------------------------------------------
 // Setup global paths
 if ( ! defined('ROOTPATH') )
 {
 
-	/* LOGSDON
+	/* REDLOVE
 	|--------------------------------------------------------------------------
 	| DEFINE DOCUMENT ROOT
 	|--------------------------------------------------------------------------
@@ -109,7 +95,7 @@ if ( ! defined('ROOTPATH') )
 	define('PAGE', $page);
 	$PAGE_segments = explode('/', PAGE);
 	
-	// LOGSDON
+	// REDLOVE
 	// Assuming a web request, let the base url set itself
 	$protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 	if ( ! empty($_SERVER['HTTP_X_FORWARDED_PROTO']) )
@@ -132,6 +118,22 @@ if ( ! defined('ROOTPATH') )
 // --------------------------------------------------------------------
 
 // --------------------------------------------------------------------
+// REDLOVE
+// Make the timezone consistent on the server and audience location
+// http://stackoverflow.com/questions/1646171/mysql-datetime-fields-and-daylight-savings-time-how-do-i-reference-the-extra
+if ( 
+	function_exists('date_default_timezone_set') && 
+	function_exists('date_default_timezone_get') /*&& 
+	@date_default_timezone_get() != 'America/New_York' */
+)
+{
+	//@date_default_timezone_set(@date_default_timezone_get());
+	@date_default_timezone_set('America/New_York');
+}
+// --------------------------------------------------------------------
+
+// --------------------------------------------------------------------
+// REDLOVE
 // Autoload environment include if it exists
 $file = INCLUDESPATH . 'config/environment.php';
 if ( file_exists($file) )
@@ -141,12 +143,11 @@ if ( file_exists($file) )
 // ------------------------------------------------------------
 
 // --------------------------------------------------------------------
+// REDLOVE
 // Set up environment constant for reference
 // http://en.wikipedia.org/wiki/Development_environment
 if ( ! defined('ENVIRONMENT') )
 {
-
-	/* LOGSDON - http://en.wikipedia.org/wiki/Development_environment */
 	// Development server
 	if ( ! empty($config['environment']['is_development']) )
 	{

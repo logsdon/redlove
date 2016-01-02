@@ -1,0 +1,7 @@
+Deny from all
+
+#Redirect 301 /subdir/ /
+
+#Options +FollowSymLinks
+#RewriteEngine on
+#RewriteRule (.*) http://www.example.com/$1 [R=301,L]
