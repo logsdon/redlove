@@ -8,21 +8,21 @@
 	Redlove Tabs
 ------------------------------------------------------------ */
 
-.tab-container > * {
+.tab-collection > * {
 	cursor: pointer;
 }
 
 /* Hide/show effect */
-.tab-content-container > * {
+.tab-content-collection > * {
 	display: none;
 }
-.tab-content-container > *.active {
+.tab-content-collection > *.active {
 	display: block;
 }
 
 /* Fade effect */
 /*
-.data-tab-content-container {
+.data-tab-content-collection {
 	position: relative;
 }
 .data-tab-content {

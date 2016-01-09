@@ -1,6 +1,6 @@
 //<![CDATA[
 /**
-* Tabs functionality using tab/tab content container classes or predictable markup structure
+* Tabs functionality using tab/tab content collection classes or predictable markup structure
 * 
 * @version 0.0.0
 * @link https://github.com/logsdon/redlove
@@ -11,12 +11,12 @@
 <h3>Tabs</h3>
 
 <div class="tabs1">
-	<ul class="tab-container">
+	<ul class="tab-collection">
 		<li class="active">Tab One</li>
 		<li>Tab Two</li>
 		<li>Tab Three</li>
 	</ul>
-	<ul class="tab-content-container">
+	<ul class="tab-content-collection">
 		<li>Tab One content</li>
 		<li>Tab Two content</li>
 		<li>Tab Three content</li>
@@ -26,12 +26,12 @@
 <hr>
 
 <div class="tabs2">
-	<ul class="tab-container">
+	<ul class="tab-collection">
 		<li class="active">Tab One</li>
 		<li>Tab Two</li>
 		<li>Tab Three</li>
 	</ul>
-	<ul class="tab-content-container">
+	<ul class="tab-content-collection">
 		<li>Tab One content</li>
 		<li>Tab Two content</li>
 		<li>Tab Three content</li>
@@ -41,18 +41,18 @@
 <link rel="stylesheet" type="text/css" href="javascript/redlove/plugins/redlove_tabs.css">
 <script type="text/javascript" src="javascript/redlove/plugins/redlove_tabs.js"></script>
 <style type="text/css">
-	.tab-container {
+	.tab-collection {
 		display: inline-block;
 	}
-	.tab-container ul,
-	.tab-container li,
-	.tab-content-container ul,
-	.tab-content-container li {
+	.tab-collection ul,
+	.tab-collection li,
+	.tab-content-collection ul,
+	.tab-content-collection li {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 	}
-	.tab-container > * {
+	.tab-collection > * {
 		float: left;
 		padding: 0.5em;
 		-webkit-transition: all 0.4s ease-out 0s;
@@ -61,7 +61,7 @@
 		-o-transition: all 0.4s ease-out 0s;
 		transition: all 0.4s ease-out 0s;
 	}
-	.tab-container > *.active {
+	.tab-collection > *.active {
 		color: red;
 		font-weight: bold;
 	}
@@ -83,9 +83,10 @@
 	var plugin_default_options = {
 		active_class : 'active',
 		debug : false,
-		mode : 'selector',
-		tab_container : '.tab-container',
-		tab_content_container : '.tab-content-container',
+		tab_collection : '',
+		tab_content_collection : '',
+		default_tab_collection : '.tab-collection',
+		default_tab_content_collection : '.tab-content-collection',
 		'' : ''// Empty so each property above ends with a comma
 	};
 	
@@ -109,46 +110,51 @@
 			
 			// Plugin implementation code
 			
-			if ( options.mode == 'selector' )
+			// If a collection selector exists, use selectors
+			if ( options.tab_collection.length > 0 )
 			{
-				var $tab_container = $element.find(options.tab_container);
-				var $tab_content_container = $element.find(options.tab_content_container);
+				var $tab_collection = $element.find(options.tab_collection);
+				var $tab_content_collection = $element.find(options.tab_content_collection);
 			}
+			// Else from the element passed, 
+			// use the first element as the tab collection 
+			// and the second as the tab content collection
 			else
 			{
 				var $children = $element.children();
-				var $tab_container = $children.eq(0);
-				var $tab_content_container = $children.eq(1);
+				var $tab_collection = $children.eq(0);
+				var $tab_content_collection = $children.eq(1);
 			}
 			
-			var $tabs = $tab_container.children();
-			var $tab_contents = $tab_content_container.children();
+			var $tabs = $tab_collection.children();
+			var $tab_contents = $tab_content_collection.children();
 			
 			// Show clicked tab content
-			$tabs.on('click' + plugin_namespace, function ( event )
+			$tabs
+			.on('click' + plugin_namespace, function ( event )
 			{
 				event.preventDefault();
 				event.stopImmediatePropagation();
 				
-				var cur_index = $tabs.index( $tabs.filter('.' + options.active_class) );
-				var new_index = $tabs.index(this);
+				var active_index = $tabs.index( $tabs.filter('.' + options.active_class) );
+				var index = $tabs.index(this);
 				
 				// If there is a previous selection
-				if ( cur_index > -1 )
+				if ( active_index > -1 )
 				{
 					// Hide previous tab
-					$tabs.eq(cur_index)
-					.add( $tab_contents.eq(cur_index) )
+					$tabs.eq(active_index)
+					.add( $tab_contents.eq(active_index) )
 					.removeClass(options.active_class);
 				}
 				
 				// Show the tab content
-				$tabs.eq(new_index)
-				.add( $tab_contents.eq(new_index) )
+				$tabs.eq(index)
+				.add( $tab_contents.eq(index) )
 				.addClass(options.active_class);
-			});
-			
-			$tabs.filter('.' + options.active_class).trigger('click' + plugin_namespace);
+			})
+			.filter('.' + options.active_class)
+			.trigger('click' + plugin_namespace);
 		});
 	};
 	

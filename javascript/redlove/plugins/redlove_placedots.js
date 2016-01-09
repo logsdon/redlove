@@ -94,16 +94,24 @@
 {
 	// Private variables
 	var plugin_name = 'redlove_placedots';
+	var plugin_default_options = {
+		center : true,
+		'' : ''// Empty so each property above ends with a comma
+	};
 	
 	// jQuery plugin definition
 	
 	/**
 	* jQuery plugin constructor
 	* 
+	* @param mixed options Plugin options object
 	* @return object jQuery object
 	*/
-	$.fn[plugin_name] = function ()
+	$.fn[plugin_name] = function ( options )
 	{
+		options = $.extend( {}, plugin_default_options, options );
+		
+		// Plugin implementation code
 		// Plugin code for each element
 		return this.each(function ( index )
 		{
@@ -124,18 +132,23 @@
 			
 			var dot_width = dimensions[0];
 			var dot_height = dimensions[1];
-			var dot_left = coords[0] - (dimensions[0] / 2);
-			var dot_top = coords[1] - (dimensions[1] / 2);
+			var dot_left = coords[0] - ( options.center ? (dimensions[0] / 2) : 0 );
+			var dot_top = coords[1] - ( options.center ? (dimensions[1] / 2) : 0 );
 			var dot_right = dot_left + dot_width;
 			var dot_bottom = dot_top + dot_height;
 			
 			// Set the element style
-			$this.css({
+			var obj = {
 				'left' : dot_left + 'px',
-				'top' : dot_top + 'px',
-				'width' : dot_width,
-				'height' : dot_height
-			});
+				'top' : dot_top + 'px'
+			};
+			if ( dot_width > 0 )
+			{
+				obj.width = dot_width;
+				obj.height = dot_height;
+			}
+			
+			$this.css(obj);
 		});
 	};
 	
