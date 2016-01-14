@@ -123,34 +123,43 @@
 			// Get the data- on the element and cast numeric
 			var coords = $this.data('coords') || '0,0';
 			coords = coords.split(',');
-			coords[0] *= 1;
-			coords[1] *= 1;
-			var dimensions = $this.data('dim') || $this.width() + ',' + $this.height();
-			dimensions = dimensions.split(',');
-			dimensions[0] *= 1;
-			dimensions[1] *= 1;
+			var dimensions = $this.data('dim') || '';//$this.width() + ',' + $this.height();
+			dimensions = String( dimensions ).indexOf(',') > -1 ? dimensions.split(',') : [dimensions];
+			dimensions[0] = is_numeric(dimensions[0]) ? dimensions[0] * 1 : '';
+			dimensions[1] = is_numeric(dimensions[1]) ? dimensions[1] * 1 : '';
 			
 			var dot_width = dimensions[0];
 			var dot_height = dimensions[1];
-			var dot_left = coords[0] - ( options.center ? (dimensions[0] / 2) : 0 );
-			var dot_top = coords[1] - ( options.center ? (dimensions[1] / 2) : 0 );
-			var dot_right = dot_left + dot_width;
-			var dot_bottom = dot_top + dot_height;
+			var dot_left = options.center ? (coords[0] * 1) - (dimensions[0] / 2) : coords[0];
+			var dot_top = options.center ? (coords[1] * 1) - (dimensions[1] / 2) : coords[1];
+			var dot_right = is_numeric(dot_width) ? dot_left + dot_width : '';
+			var dot_bottom = is_numeric(dot_height) ? dot_top + dot_height : '';
 			
 			// Set the element style
 			var obj = {
-				'left' : dot_left + 'px',
-				'top' : dot_top + 'px'
+				'left' : is_numeric(dot_left) ? dot_left + 'px' : dot_left,
+				'top' : is_numeric(dot_top) ? dot_top + 'px' : dot_top
 			};
-			if ( dot_width > 0 )
+			if ( is_numeric(dot_width) )
 			{
-				obj.width = dot_width;
-				obj.height = dot_height;
+				obj.width = is_numeric(dot_width) ? dot_width + 'px' : dot_width;
+			}
+			if ( is_numeric(dot_height) )
+			{
+				obj.height = is_numeric(dot_height) ? dot_height + 'px' : dot_height;
 			}
 			
 			$this.css(obj);
 		});
 	};
+	
+	/**
+	* http://stackoverflow.com/questions/9716468/is-there-any-function-like-isnumeric-in-javascript-to-validate-numbers
+	*/
+	function is_numeric ( n )
+	{
+		return ! isNaN(parseFloat(n)) && isFinite(n);
+	}
 	
 })( jQuery, window, document );// End function closure
 //]]>
