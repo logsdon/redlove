@@ -1262,7 +1262,7 @@ select.error:focus {
 		<div class="flex-cell w50">
 			<p>Column 50%</p>
 		</div>
-		<div class="flex-cell p50">
+		<div class="flex-cell w50">
 			<p>Column 50%</p>
 		</div>
 	</div>
@@ -1348,6 +1348,16 @@ select.error:focus {
 	margin: 0.25em;
 	padding: 0.25em;
 	text-align: center;
+}
+
+/* Justification per row */
+.flex-row--justify-flex-start {
+	/* Vertical centering for legacy, horizontal centering for modern */
+	-webkit-box-pack: flex-start;
+	-moz-box-pack: flex-start;
+	-ms-flex-pack: flex-start;
+	-webkit-justify-content: flex-start;
+	justify-content: flex-start;
 }
 
 /* Alignment per row */

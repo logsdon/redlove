@@ -67,7 +67,8 @@
 						}
 					}
 				};
-				var validation = $form.redlove_validate(validate_options);
+				$form.redlove_validate(validate_options);
+				var validation = $form.data('redlove_validate').validation;
 				
 				// If invalid, stop
 				if ( ! validation.valid )
@@ -201,8 +202,8 @@
 			// Extend default options
 			inst.metadata = {};//inst.$element.data('plugin-options');//$(element).data();
 			inst.options = $.extend( {}, inst.default_options, inst.options, inst.metadata );
-			
-			return inst.validate_form(inst.$element, inst.options);
+			inst.validation = inst.validate_form(inst.$element, inst.options);
+			return inst;
 		};
 		
 		/**
@@ -351,7 +352,7 @@
 					}
 					
 					// Check validation function
-					else if ( typeof proto.validation_methods[rule] !== 'undefined' )
+					else if ( typeof proto.validation_methods[rule] === 'function' )
 					{
 						if ( ! proto.validation_methods[rule]($field.val(), rule_options) )
 						{
