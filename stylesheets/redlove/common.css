@@ -188,23 +188,6 @@ h6 {
 	Text elements - Paragraphs
 ---------------------------------------- */
 
-p.lead {
-	font-size: 105%;
-	font-weight: bold;
-}
-
-/* http://css-tricks.com/minimum-paragraph-widths/
-Minimum paragraph width*/
-p.min:before {
-	content: "";
-	display: block;
-	overflow: hidden;
-	width: 10.0em;
-	
-	/* For demonstration */
-	border: 1px solid green;
-}
-
 /* 
 	Text elements - Marks
 ---------------------------------------- */
@@ -1478,6 +1461,34 @@ fieldset[disabled] .button {
 	opacity: 0.65;
 	filter: alpha(opacity: 65);
 	pointer-events: none;
+}
+
+.button-group .button {
+	-webkit-border-radius: 0px;
+	-khtml-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	display: table-cell;
+}
+.button-group .button:first-child {
+	-webkit-bottom-left-border-radius: 4px;
+	-webkit-top-left-border-radius: 4px;
+	-khtml-bottom-left-border-radius: 4px;
+	-khtml-top-left-border-radius: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-topleft: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+.button-group .button:last-child {
+	-webkit-bottom-right-border-radius: 4px;
+	-webkit-top-right-border-radius: 4px;
+	-khtml-bottom-right-border-radius: 4px;
+	-khtml-top-right-border-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-topright: 4px;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
 }
 
 .button-xl {
@@ -4470,9 +4481,24 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 	font-size: 60% !important;
 }
 
+.text-lead {
+	font-size: 110%;
+	font-weight: bold;
+}
 .text-meta {
 	font-size: 80% !important;
 }
+.text-micro {
+	font-size: 60% !important;
+}
+.text-dropcap {
+	float: left;
+	font-size: 280%;
+	font-weight: 700;
+	line-height: 1.0;
+	padding-right: 0.1em;
+}
+
 .text-dim {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";/* IE 8 */
 	filter: alpha(opacity=80);/* IE 5-7 */
@@ -4480,13 +4506,29 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 	-moz-opacity: 0.8;/* Netscape */
 	opacity: 0.8;/* Good browsers */
 }
-.text-dropcap {
-	float: left;
-	font-size: 280%;
-	font-weight: 700;
-	line-height: 1.0;
-	padding-right: 0.05em;
+.text-card {
+	background: #fcfcfc;
+	
+	-webkit-box-shadow: 0px 1px 2px 1px rgba(167, 164, 164, 0.25);
+	-moz-box-shadow: 0px 1px 2px 1px rgba(167, 164, 164, 0.25);
+	box-shadow: 0px 1px 2px 1px rgba(167, 164, 164, 0.25);
+	
+	margin-left: 2px;
+	margin-right: 2px;
+	padding: 1.25rem;
 }
+/* http://css-tricks.com/minimum-paragraph-widths/
+Minimum paragraph width*/
+.text-min-width:before {
+	content: "";
+	display: block;
+	overflow: hidden;
+	width: 10.0em;
+	
+	/* For demonstration */
+	border: 1px solid green;
+}
+
 
 /* <span data-icon="&#x25a8;"></span><span class="screen-reader-text">RSS</span> */
 .text-screen-reader {

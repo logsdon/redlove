@@ -55,14 +55,14 @@
 }
 
 .border-radius {
-	-webkit-top-left-border-radius: 10px;
 	-webkit-top-right-border-radius: 10px;
-	-khtml-top-left-border-radius: 10px;
+	-webkit-top-left-border-radius: 10px;
 	-khtml-top-right-border-radius: 10px;
-	-moz-border-radius-topleft: 10px;
+	-khtml-top-left-border-radius: 10px;
 	-moz-border-radius-topright: 10px;
-	border-top-left-radius: 10px;
+	-moz-border-radius-topleft: 10px;
 	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
 	
 	-webkit-border-radius: 50%;
 	-khtml-border-radius: 50%;
