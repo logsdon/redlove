@@ -22,11 +22,11 @@ Include this file at the top of page files like so:
 // Require common functionality
 if ( ! defined('ENVIRONMENT') )
 {
-	require_once('_includes/common.php');
+	require_once('includes/common.php');
 }
 // Or
 // Require common functionality
-$file = dirname(__FILE__) . '/' . '_includes/common.php';
+$file = dirname(__FILE__) . '/' . 'includes/common.php';
 if ( file_exists($file) )
 {
 	require_once($file);
@@ -56,7 +56,8 @@ if ( ! defined('ROOTPATH') )
 	*/
 	
 	// ROOTPATH - The server path to this file.
-	$dirs_to_rootpath = str_repeat('../', 1);
+	$num_paths_from_root = 1;
+	$dirs_to_rootpath = str_repeat('../', $num_paths_from_root);
 	$dirs_to_rootpath = isset($dirs_to_rootpath[0]) ? '/' . $dirs_to_rootpath : '';
 	$realpath = realpath(dirname(__FILE__) . $dirs_to_rootpath);
 	$rootpath = str_replace('\\', '/', $realpath);// Swap directory separators to Unix style for consistency
@@ -112,7 +113,7 @@ if ( ! defined('ROOTPATH') )
 	define('BASE_URL', $base_url);
 	
 	define('VIEWPATH', ROOTPATH);
-	define('INCLUDESPATH', VIEWPATH . '_includes/');
+	define('INCLUDESPATH', VIEWPATH . 'includes/');
 	define('THEMEPATH', INCLUDESPATH . 'theme/');
 }
 // --------------------------------------------------------------------

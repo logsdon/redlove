@@ -136,7 +136,7 @@ jQuery(document).ready(function($)
 	console.log('// ------------------------------------------------------------');
 	console.log('Wait for resources to become available...');
 	// If objects do not exist, check again shortly
-	if ( typeof jQuery === 'undefined' )
+	if ( document.readyState == 'loading' || typeof jQuery === 'undefined' )
 	{
 		console.log('Still waiting...');
 		return setTimeout(arguments.callee, 250);

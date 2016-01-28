@@ -2,7 +2,7 @@
 // Require common functionality
 if ( ! defined('ENVIRONMENT') )
 {
-	require_once('../_includes/common.php');
+	require_once('../includes/common.php');
 }
 ?>
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ if ( ! defined('ENVIRONMENT') )
 <!--[if (gte IE 10)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 
-	<title></title>
 	<meta charset="utf-8">
+	<title></title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 

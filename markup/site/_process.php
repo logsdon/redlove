@@ -2,7 +2,7 @@
 // Require common functionality
 if ( ! defined('ENVIRONMENT') )
 {
-	require_once('_includes/common.php');
+	require_once('includes/common.php');
 }
 
 // Check access key

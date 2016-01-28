@@ -2,7 +2,7 @@
 // Require common functionality
 if ( ! defined('ENVIRONMENT') )
 {
-	require_once('_includes/common.php');
+	require_once('includes/common.php');
 }
 ?><!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="loading no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
@@ -12,8 +12,8 @@ if ( ! defined('ENVIRONMENT') )
 <!--[if (gte IE 10)|!(IE)]><!--><html class="loading no-js" lang="en"> <!--<![endif]-->
 <head>
 
-	<title><?php echo ! empty($page_data['meta_title']) ? $page_data['meta_title'] : ''; ?></title>
 	<meta charset="utf-8">
+	<title><?php echo ! empty($page_data['meta_title']) ? $page_data['meta_title'] : ''; ?></title>
 	<meta name="description" content="<?php echo ! empty($page_data['meta_description']) ? $page_data['meta_description'] : ''; ?>">
 	<meta name="keywords" content="<?php echo ! empty($page_data['meta_keywords']) ? $page_data['meta_keywords'] : ''; ?>">
 

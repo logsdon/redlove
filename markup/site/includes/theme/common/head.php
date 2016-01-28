@@ -45,12 +45,12 @@
 	-->
 
 	<!-- StyleSheets -->
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('../../stylesheets/redlove/base.css'); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('../../stylesheets/redlove/common.css'); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('../../stylesheets/redlove/examples.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'stylesheets/redlove/base.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'stylesheets/redlove/common.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'stylesheets/redlove/examples.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('stylesheets/site.css'); ?>">
 
-	<!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+	<!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
 	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('stylesheets/font-awesome/css/font-awesome.min.css'); ?>">
 
 	<!-- JavaScript -->
@@ -63,9 +63,10 @@
 	
 	<script type="text/javascript" src="<?php echo base_url(); ?>javascript/holder.js"></script>
 	
-	<script type="text/javascript" src="<?php echo cb_url('../../javascript/redlove/base.js'); ?>"></script>
-	<script type="text/javascript" src="<?php echo cb_url('../../javascript/redlove/common.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/base.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/common.js'); ?>"></script>
 	<script type="text/javascript">
+	//<![CDATA[
 		// Save common data
 		window.REDLOVE = window.REDLOVE || {fn : {}};
 		$.extend(window.REDLOVE, {
@@ -96,6 +97,7 @@
 			},
 			'' : ''// Empty so each real property set above has a comma after it
 		});
+	//]]>
 	</script>
 
 	<!-- Favicons -->

@@ -2,7 +2,7 @@
 // Require common functionality
 if ( ! defined('ENVIRONMENT') )
 {
-	require_once('../_includes/common.php');
+	require_once('../includes/common.php');
 }
 ?>
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ if ( ! defined('ENVIRONMENT') )
 <!--[if (gte IE 10)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 
-	<title></title>
 	<meta charset="utf-8">
+	<title></title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 
@@ -84,9 +84,23 @@ output_code($code);
 
 <?php
 $code = <<< CODE
-<p class="lead">Lead paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text.</p>
+<h6>Lead Text</h6>
+<p class="text-lead">Lead paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text.</p>
 
+<h6>Drop cap and normal Text</h6>
 <p><span class="text-dropcap">D</span>rop cap. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text.</p>
+
+<h6>Meta Text</h6>
+<p class="text-meta">Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text.</p>
+
+<h6>Micro Text</h6>
+<p class="text-micro">Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text.</p>
+
+<h6>Dim Text</h6>
+<p class="text-dim">Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text.</p>
+
+<h6>Card Text</h6>
+<p class="text-card">Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text. Paragraph of text.</p>
 CODE;
 output_code($code);
 ?>
@@ -1574,14 +1588,23 @@ $code = <<< CODE
 <a href="" class="button">Button</a>
 <a href="" class="button button-link">Button Link</a>
 <br>
+<br>
 <a href="" class="button button-default">Button Default</a>
 <a href="" class="button button-default" disabled="disabled">Button Default Disabled</a>
 <a href="" class="button button-message">Button Message</a>
+<br>
 <br>
 <a href="" class="button button-success">Button Success</a>
 <a href="" class="button button-error">Button Error</a>
 <a href="" class="button button-warning">Button Warning</a>
 <a href="" class="button button-info">Button Info</a>
+<br>
+<br>
+<div class="button-group">
+	<a href="" class="button">Button Group</a>
+	<a href="" class="button">Button Group</a>
+	<a href="" class="button">Button Group</a>
+</div>
 CODE;
 output_code($code);
 ?>
