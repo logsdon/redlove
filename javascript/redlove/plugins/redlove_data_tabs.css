@@ -13,16 +13,16 @@
 }
 
 /* Hide/show effect */
-.data-tab-content-container > * {
+.data-tab-content-collection > * {
 	display: none;
 }
-.data-tab-content-container > *.active {
+.data-tab-content-collection > *.active {
 	display: block;
 }
 
 /* Fade effect */
 /*
-.data-tab-content-container {
+.data-tab-content-collection {
 	position: relative;
 }
 .data-tab-content {

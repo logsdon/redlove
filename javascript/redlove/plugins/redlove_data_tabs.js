@@ -11,12 +11,12 @@
 <h3>Data Tabs</h3>
 
 <div>
-	<ul class="data-tab-container">
+	<ul class="data-tab-collection">
 		<li class="active" data-tab="data-tabs1-1">Tab One</li>
 		<li data-tab="data-tabs1-2">Tab Two</li>
 		<li data-tab="data-tabs1-3">Tab Three</li>
 	</ul>
-	<ul class="data-tab-content-container">
+	<ul class="data-tab-content-collection">
 		<li id="data-tabs1-1">Tab One content</li>
 		<li id="data-tabs1-2">Tab Two content</li>
 		<li id="data-tabs1-3">Tab Three content</li>
@@ -31,7 +31,7 @@
 	<a href="#data-tabs2-1" data-tab>Tab One</a>
 	<a href="#data-tabs2-2" data-tab>Tab Two</a>
 	<a href="#data-tabs2-3" data-tab>Tab Three</a>
-	<div class="data-tab-content-container">
+	<div class="data-tab-content-collection">
 		<div id="data-tabs2-1">Tab One content</div>
 		<div id="data-tabs2-2">Tab Two content</div>
 		<div id="data-tabs2-3">Tab Three content</div>
@@ -41,18 +41,18 @@
 <link rel="stylesheet" type="text/css" href="javascript/redlove/plugins/redlove_data_tabs.css">
 <script type="text/javascript" src="javascript/redlove/plugins/redlove_data_tabs.js"></script>
 <style type="text/css">
-	.data-tab-container {
+	.data-tab-collection {
 		display: inline-block;
 	}
-	.data-tab-container ul,
-	.data-tab-container li,
-	.data-tab-content-container ul,
-	.data-tab-content-container li {
+	.data-tab-collection ul,
+	.data-tab-collection li,
+	.data-tab-content-collection ul,
+	.data-tab-content-collection li {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 	}
-	.data-tab-container > * {
+	.data-tab-collection > * {
 		float: left;
 		padding: 0.5em;
 		-webkit-transition: all 0.4s ease-out 0s;
