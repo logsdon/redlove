@@ -1161,7 +1161,6 @@ select.error:focus {
 .columns-table .column-row > .column {
 	display: table-cell;
 	float: none;
-	vertical-align: top;
 }
 .columns-table.align-middle > .column,
 .columns-table.align-middle .column-row > .column,
@@ -1463,6 +1462,13 @@ fieldset[disabled] .button {
 	pointer-events: none;
 }
 
+.button-pill {
+	-webkit-border-radius: 1.5em;
+	-khtml-border-radius: 1.5em;
+	-moz-border-radius: 1.5em;
+	border-radius: 1.5em;
+}
+
 .button-group .button {
 	-webkit-border-radius: 0px;
 	-khtml-border-radius: 0px;
@@ -1489,6 +1495,26 @@ fieldset[disabled] .button {
 	-moz-border-radius-topright: 4px;
 	border-bottom-right-radius: 4px;
 	border-top-right-radius: 4px;
+}
+.button-group .button-pill:first-child {
+	-webkit-bottom-left-border-radius: 1.5em;
+	-webkit-top-left-border-radius: 1.5em;
+	-khtml-bottom-left-border-radius: 1.5em;
+	-khtml-top-left-border-radius: 1.5em;
+	-moz-border-radius-bottomleft: 1.5em;
+	-moz-border-radius-topleft: 1.5em;
+	border-bottom-left-radius: 1.5em;
+	border-top-left-radius: 1.5em;
+}
+.button-group .button-pill:last-child {
+	-webkit-bottom-right-border-radius: 1.5em;
+	-webkit-top-right-border-radius: 1.5em;
+	-khtml-bottom-right-border-radius: 1.5em;
+	-khtml-top-right-border-radius: 1.5em;
+	-moz-border-radius-bottomright: 1.5em;
+	-moz-border-radius-topright: 1.5em;
+	border-bottom-right-radius: 1.5em;
+	border-top-right-radius: 1.5em;
 }
 
 .button-xl {
@@ -3035,8 +3061,15 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	.display-table-cell {
 		display: table-cell;
 	}
-	.display-table-cell.middle {
+	.display-table-cell.middle,
+	.table-cell--middle {
 		vertical-align: middle;
+	}
+	.table-cell--bottom {
+		vertical-align: bottom;
+	}
+	.table-cell--top {
+		vertical-align: top;
 	}
 .display-block {
 	display: block;
@@ -4441,6 +4474,16 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 }
 .color-transparent {
 	color: transparent;
+}
+
+.text-bold {
+	font-weight: bold !important;
+}
+.text-normal {
+	font-weight: normal !important;
+}
+.text-italic {
+	font-style: italic !important;
 }
 
 .text-center {

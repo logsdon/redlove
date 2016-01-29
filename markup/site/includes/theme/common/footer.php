@@ -4,7 +4,7 @@
 <div class="band-liner">
 
 	<div class="columns">
-		<div class="columns-row">
+		<div class="column-row">
 			<div class="column w33">
 				Column
 			</div>
@@ -18,7 +18,7 @@
 	</div>
 	<!-- /columns -->
 	
-	<footer class="primary column-gutter">
+	<footer class="primary grid-gutter">
 		
 		<nav class="footer">
 			<ul>

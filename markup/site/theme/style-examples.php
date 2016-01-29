@@ -2357,7 +2357,7 @@ jQuery(document).ready(function($)
 
 <hr class="w80 center">
 
-<div class="columns column-no-gutters columns-slideshows">
+<div class="columns columns-slideshows">
 	
 	<div class="column-row">
 		<div class="column w1">

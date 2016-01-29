@@ -1587,6 +1587,7 @@ output_code($code);
 $code = <<< CODE
 <a href="" class="button">Button</a>
 <a href="" class="button button-link">Button Link</a>
+<a href="" class="button button-pill">Button Pill</a>
 <br>
 <br>
 <a href="" class="button button-default">Button Default</a>
@@ -1604,6 +1605,12 @@ $code = <<< CODE
 	<a href="" class="button">Button Group</a>
 	<a href="" class="button">Button Group</a>
 	<a href="" class="button">Button Group</a>
+</div>
+<br>
+<div class="button-group">
+	<a href="" class="button button-pill">Button Pill Group</a>
+	<a href="" class="button button-pill">Button Pill Group</a>
+	<a href="" class="button button-pill">Button Pill Group</a>
 </div>
 CODE;
 output_code($code);

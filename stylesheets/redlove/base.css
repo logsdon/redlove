@@ -328,10 +328,11 @@ hr {
 	Text elements - Links
 ---------------------------------------- */
 a {
-	color:blue;
+	color: blue;
+	color: currentColor;
 	color: inherit;
-	text-decoration:underline;
-	outline:0;
+	text-decoration: underline;
+	outline: 0;
 }
 a:focus {
 	outline: thin dotted;

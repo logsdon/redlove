@@ -87,7 +87,7 @@ include(THEMEPATH . 'common/header.php');
 		
 		<div class="columns">
 			
-			<div class="columns-row">
+			<div class="column-row">
 				
 				<div class="column w2-3">
 					
@@ -125,7 +125,7 @@ include(THEMEPATH . 'common/header.php');
 				<!-- /column -->
 			
 			</div>
-			<!-- /columns-row -->
+			<!-- /column-row -->
 			
 		</div>
 		<!-- /columns -->

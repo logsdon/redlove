@@ -1,6 +1,6 @@
 
 <div class="band-wrap">
-<div class="band header padding-tbm column-gutter">
+<div class="band header padding-tbm grid-gutter">
 <div class="band-liner">
 
 	<header class="primary">
