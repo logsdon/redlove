@@ -115,6 +115,12 @@ if ( ! defined('ROOTPATH') )
 	define('VIEWPATH', ROOTPATH);
 	define('INCLUDESPATH', VIEWPATH . 'includes/');
 	define('THEMEPATH', INCLUDESPATH . 'theme/');
+	
+	define('REDLOVE_ROOTPATH', realpath(ROOTPATH . str_repeat('../', 2)));
+	$redlove_root = substr(REDLOVE_ROOTPATH, strlen($document_root));
+	$redlove_root = str_replace('\\', '/', $redlove_root);
+	$redlove_root = trim( $redlove_root, '/') . '/';
+	define('REDLOVE_ROOT', str_repeat('../', 3) . $redlove_root);
 }
 // --------------------------------------------------------------------
 

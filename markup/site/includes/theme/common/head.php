@@ -1,4 +1,9 @@
 
+	<meta charset="utf-8">
+	<title><?php echo ! empty($page_data['meta_title']) ? $page_data['meta_title'] : ''; ?></title>
+	<meta name="description" content="<?php echo ! empty($page_data['meta_description']) ? $page_data['meta_description'] : ''; ?>">
+	<meta name="keywords" content="<?php echo ! empty($page_data['meta_keywords']) ? $page_data['meta_keywords'] : ''; ?>">
+
 	<meta name="robots" content="index,follow" />
 	<meta name="MSSmartTagsPreventParsing" content="true" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -45,9 +50,9 @@
 	-->
 
 	<!-- StyleSheets -->
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'stylesheets/redlove/base.css'); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'stylesheets/redlove/common.css'); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'stylesheets/redlove/examples.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/base.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/common.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/examples.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('stylesheets/site.css'); ?>">
 
 	<!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
@@ -63,8 +68,8 @@
 	
 	<script type="text/javascript" src="<?php echo base_url(); ?>javascript/holder.js"></script>
 	
-	<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/base.js'); ?>"></script>
-	<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/common.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/base.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/common.js'); ?>"></script>
 	<script type="text/javascript">
 	//<![CDATA[
 		// Save common data

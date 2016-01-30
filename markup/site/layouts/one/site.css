@@ -1,0 +1,108 @@
+/* ------------------------------------------------------------
+	Body
+------------------------------------------------------------ */
+
+body {
+	color: #666666;
+}
+.body-liner {
+	background: #ffffff;
+}
+
+/* ------------------------------------------------------------
+	Header
+------------------------------------------------------------ */
+
+.band-header {
+	background: #16A8EA url("../../images/layouts/blue-abstract-background.jpg") scroll no-repeat 0 0;
+	color: #ffffff;
+}
+
+.logo {
+	font-size: 2.2em;
+}
+.logo a {
+	text-decoration: none;
+}
+
+.nav-primary {
+	text-align: right;
+	vertical-align: middle;
+}
+.nav-primary a {
+	text-decoration: none;
+}
+.nav-primary > ul > li {
+	margin-right: 2.0em;
+}
+.nav-primary > ul > li:last-child {
+	margin-right: 0;
+}
+
+/* ------------------------------------------------------------
+	Bands
+------------------------------------------------------------ */
+
+.band--zebra {
+	background: #f5f5f5;
+	border-bottom: 1px solid #e1e8ed;
+	border-top: 1px solid #e1e8ed;
+}
+
+/* ------------------------------------------------------------
+	Lead-in Band
+------------------------------------------------------------ */
+
+/* ------------------------------------------------------------
+	Content
+------------------------------------------------------------ */
+
+section.content h2 {
+	color: #afafaf;
+	margin-bottom: 0.75em;
+}
+section.content p {
+	line-height: 1.8;
+}
+
+/* ------------------------------------------------------------
+	Topic Columns
+------------------------------------------------------------ */
+
+.band-topics i {
+	font-size: 8.0rem;
+}
+
+/* ------------------------------------------------------------
+	Background Band
+------------------------------------------------------------ */
+
+.band-background {
+	background: #16A8EA url("../../images/layouts/blue-abstract-background.jpg") scroll no-repeat 50% 50%;
+	color: #ffffff;
+}
+
+/* ------------------------------------------------------------
+	Images Band
+------------------------------------------------------------ */
+
+.band-images i {
+	border: 1px solid #cccccc;
+	
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	
+	font-size: 3.5em;
+	padding: 1.0em;
+}
+
+/* ------------------------------------------------------------
+	Footer
+------------------------------------------------------------ */
+
+body,
+.band-footer {
+	background: #e6e6e6;
+}

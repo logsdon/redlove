@@ -2,21 +2,15 @@
 // Require common functionality
 if ( ! defined('ENVIRONMENT') )
 {
-	require_once('../includes/common.php');
+	require_once(str_repeat('../', 1) . 'includes/common.php');
 }
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="no-js ie lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js ie lt-ie10 ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 10)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-
-	<meta charset="utf-8">
-	<title></title>
-	<meta name="description" content="">
-	<meta name="keywords" content="">
 
 	<?php
 	// Head common tags and resources
