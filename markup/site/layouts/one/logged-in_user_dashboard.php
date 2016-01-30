@@ -17,7 +17,7 @@ if ( ! defined('ENVIRONMENT') )
 	include(THEMEPATH . 'common/head.php');
 	?>
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('site.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="site.css">
 
 </head>
 <body class="mobile-menu-liner">
