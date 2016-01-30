@@ -11,26 +11,10 @@
 		
 		<nav class="nav-dropdown-setup nav-primary display-table-cell table-cell--middle">
 			<ul>
+				<?php require_once('header_nav-items_common.php'); ?>
 				<li>
-					<a href="<?php echo site_url(); ?>">Home</a>
-				</li>
-				<li class="<?php echo page_is('', true) || strpos(PAGE, '') === 0 ? 'active' : ''; ?>">
-					<a href="">Menu Item</a>
-					<ul>
-						<li>
-							<a href="">Submenu Item</a>
-						</li>
-						<li>
-							<a href="">Submenu Item</a>
-						</li>
-						<li>
-							<a href="">Submenu Item</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<img src="<?php echo base_url(); ?>images/layouts/bookkeeping-615384_800.jpg" alt=" " class="img-scale img-circle" style="height: 30px; width: 30px; vertical-align: top; border: 2px solid #ffffff; top: -6px; position: relative;">
-					<a href="<?php echo site_url(); ?>">My Stuff</a>
+					<img src="<?php echo base_url(); ?>images/layouts/bookkeeping-615384_800.jpg" alt=" " class="img-scale img-circle" style="height: 30px; width: 30px; vertical-align: top; border: 2px solid #ffffff; top: 3px; position: relative;">
+					<a href="<?php echo site_url(); ?>">My Account</a>
 					<ul>
 						<li>
 							<a href="">My account</a>

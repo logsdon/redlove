@@ -30,13 +30,19 @@ body {
 	vertical-align: middle;
 }
 .nav-primary a {
+	display: inline-block;
+	padding: 0.5em;
 	text-decoration: none;
+	vertical-align: top;
 }
 .nav-primary > ul > li {
 	margin-right: 2.0em;
 }
 .nav-primary > ul > li:last-child {
 	margin-right: 0;
+}
+.nav-primary > ul > li > ul {
+	background-color: rgba(22, 168, 234, 0.8);
 }
 
 /* ------------------------------------------------------------

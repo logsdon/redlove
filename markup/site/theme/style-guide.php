@@ -16,7 +16,10 @@ if ( ! defined('ENVIRONMENT') )
 	// Head common tags and resources
 	include(THEMEPATH . 'common/head.php');
 	?>
-
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/examples.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('stylesheets/site.css'); ?>">
+	
 </head>
 <body>
 <?php

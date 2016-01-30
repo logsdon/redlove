@@ -16,7 +16,9 @@ if ( ! defined('ENVIRONMENT') )
 	// Head common tags and resources
 	include(THEMEPATH . 'common/head.php');
 	?>
-
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('stylesheets/site.css'); ?>">
+	
 </head>
 <body>
 <?php
@@ -82,7 +84,7 @@ include(THEMEPATH . 'common/header.php');
 </div>
 <!-- /band-wrap -->
 
-<script type="text/javascript" src="<?php echo base_url('../../javascript/redlove/_patterns.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/_patterns.js'); ?>"></script>
 
 
 <?php

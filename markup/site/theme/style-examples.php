@@ -16,7 +16,10 @@ if ( ! defined('ENVIRONMENT') )
 	// Head common tags and resources
 	include(THEMEPATH . 'common/head.php');
 	?>
-
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/examples.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('stylesheets/site.css'); ?>">
+	
 </head>
 <body class="mobile-menu-liner">
 <?php
@@ -37,8 +40,6 @@ include(THEMEPATH . 'common/header.php');
 
 	<section class="content">
 
-
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'stylesheets/redlove/examples.css'); ?>">
 
 <h1>Style References</h1>
 
@@ -1370,7 +1371,7 @@ output_code($code);
 
 <h3>Toggle Value</h3>
 
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_toggle_value.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_toggle_value.js'); ?>"></script>
 <script type="text/javascript">//<!--
 jQuery(document).ready(function($){
 
@@ -1439,7 +1440,7 @@ output_code($code, false);
 
 <h3>Validation</h3>
 
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_validate.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_validate.js'); ?>"></script>
 <script type="text/javascript">//<!--
 jQuery(document).ready(function($){
 
@@ -1478,8 +1479,8 @@ CODE;
 output_code($code, false);
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_modal.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_modal.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_modal.css'); ?>">
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_modal.js'); ?>"></script>
 <script type="text/javascript">
 
 jQuery(document).ready(function($)
@@ -1503,7 +1504,7 @@ $code = <<< CODE
 CODE;
 output_code($code, false);
 ?>
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_equal.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_equal.js'); ?>"></script>
 
 <h3>RedLove Preload Images</h3>
 
@@ -1519,7 +1520,7 @@ output_code($code, false);
 	<img src="<?php echo base_url(); ?>images/test/medium-0.jpg" style="width: 50px; height: auto;">
 </div>
 
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_preload_images.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_preload_images.js'); ?>"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($)
 {
@@ -1548,8 +1549,8 @@ jQuery(document).ready(function($)
 
 <h3>Growl messages</h3>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_growl.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_growl.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_growl.css'); ?>">
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_growl.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -1561,8 +1562,8 @@ jQuery(document).ready(function($)
 <h3>Return to Top</h3>
 <p>Check the bottom right of the viewport when scrolling down.</p>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_return_to_top.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_return_to_top.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_return_to_top.css'); ?>">
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_return_to_top.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -1585,7 +1586,7 @@ jQuery(document).ready(function($)
 		top: auto;
 	}
 </style>
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_throttle.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_throttle.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -1664,8 +1665,8 @@ jQuery(document).ready(function($)
 	<option value="option-3">Option 3</option>
 </select>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_form_replacement.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_form_replacement.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_form_replacement.css'); ?>">
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_form_replacement.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -1703,8 +1704,8 @@ jQuery(document).ready(function($)
 	</div>
 </div>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_data_tabs.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_data_tabs.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_data_tabs.css'); ?>">
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_data_tabs.js'); ?>"></script>
 <style type="text/css">
 	.data-tab-collection {
 		display: inline-block;
@@ -1762,8 +1763,8 @@ jQuery(document).ready(function($)
 	</ul>
 </div>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_tabs.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_tabs.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_tabs.css'); ?>">
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_tabs.js'); ?>"></script>
 <style type="text/css">
 	.tab-collection {
 		display: inline-block;
@@ -1800,8 +1801,8 @@ jQuery(document).ready(function($)
 
 <h3>FAQ/Info Toggle</h3>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_expand_group.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_expand_group.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_expand_group.css'); ?>">
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_expand_group.js'); ?>"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($)
 {
@@ -2134,8 +2135,8 @@ jQuery(document).ready(function($)
 
 <h3>Carousel</h3>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_carousel.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(str_repeat('../', 2) . 'javascript/redlove/plugins/redlove_carousel.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_carousel.css'); ?>">
+<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_carousel.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{

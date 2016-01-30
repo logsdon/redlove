@@ -38,23 +38,7 @@ if ( ! defined('ENVIRONMENT') )
 		
 		<nav class="nav-dropdown-setup nav-primary display-table-cell table-cell--middle">
 			<ul>
-				<li>
-					<a href="<?php echo site_url(); ?>">Home</a>
-				</li>
-				<li class="<?php echo page_is('', true) || strpos(PAGE, '') === 0 ? 'active' : ''; ?>">
-					<a href="">Menu Item</a>
-					<ul>
-						<li>
-							<a href="">Submenu Item</a>
-						</li>
-						<li>
-							<a href="">Submenu Item</a>
-						</li>
-						<li>
-							<a href="">Submenu Item</a>
-						</li>
-					</ul>
-				</li>
+				<?php require_once('common/header_nav-items_common.php'); ?>
 			</ul>
 		</nav>
 
