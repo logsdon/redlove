@@ -22,8 +22,8 @@
 			// Facebook uses property attributes
 			'og:title' => ! empty($page_data['meta_title']) ? $page_data['meta_title'] : 'Page Title &mdash; Example.com',
 			'og:type' => 'website',
-			'og:url' => site_url(),
-			'og:image' => base_url() . 'images/favicon.png',
+			'og:url' => site_url(THEME_NAV_ROOT),
+			'og:image' => base_url(THEME_ROOT) . 'images/favicon.png',
 			'og:site_name' => ! empty($page_data['site_name']) ? $page_data['site_name'] : 'Example Site',
 			'og:locale' => 'en_US',
 			'og:description' => ! empty($page_data['meta_description']) ? $page_data['meta_description'] : 'The description of the example site.',
@@ -33,7 +33,7 @@
 			'twitter:site' => '@username',
 			'twitter:title' => ! empty($page_data['meta_title']) ? $page_data['meta_title'] : 'Page Title &mdash; Example.com',
 			'twitter:description' => ! empty($page_data['meta_description']) ? $page_data['meta_description'] : 'The description of the example site.',
-			'twitter:image' => base_url() . 'images/favicon.png',
+			'twitter:image' => base_url(THEME_ROOT) . 'images/favicon.png',
 		);
 		$open_graph = array_merge($open_graph_defaults, $open_graph);
 		foreach ( $open_graph as $key => $value )
@@ -52,6 +52,7 @@
 	<!-- StyleSheets -->
 	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/base.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/common.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(THEME_ROOT . 'stylesheets/site.css'); ?>">
 
 	<!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
 	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('stylesheets/font-awesome/css/font-awesome.min.css'); ?>">
@@ -85,7 +86,7 @@
 				?>
 				ajax : 1
 			},
-			base_url : '<?php echo function_exists('base_url') ? base_url() : ''; ?>',
+			base_url : '<?php echo function_exists('base_url') ? base_url(THEME_NAV_ROOT) : ''; ?>',
 			page_start_time : <?php echo time(); ?>,
 			server_timezone_offset : <?php echo date('Z'); ?>,
 			client_timezone_offset : - new Date().getTimezoneOffset() * 60,
@@ -104,15 +105,15 @@
 	</script>
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>images/favicon.ico" />
-	<link rel="icon" type="image/x-icon" href="<?php echo base_url(); ?>images/favicon.ico" />
-	<link rel="image_src" href="<?php echo base_url(); ?>images/favicon.png" />
-	<link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>images/favicon_152x152.png">
-	<meta name="msapplication-TileImage" content="<?php echo base_url(); ?>images/favicon_144x144.png">
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(THEME_ROOT); ?>images/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="<?php echo base_url(THEME_ROOT); ?>images/favicon.ico" />
+	<link rel="image_src" href="<?php echo base_url(THEME_ROOT); ?>images/favicon.png" />
+	<link rel="apple-touch-icon-precomposed" href="<?php echo base_url(THEME_ROOT); ?>images/favicon_152x152.png">
+	<meta name="msapplication-TileImage" content="<?php echo base_url(THEME_ROOT); ?>images/favicon_144x144.png">
 	<meta name="msapplication-TileColor" content="#FFFFFF">
 
 	<!-- Feeds 
-	<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="<?php echo site_url(); ?>">
+	<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="<?php echo site_url(THEME_NAV_ROOT); ?>">
 	-->
 
 <?php

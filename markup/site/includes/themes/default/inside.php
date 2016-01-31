@@ -2,7 +2,7 @@
 // Require common functionality
 if ( ! defined('ENVIRONMENT') )
 {
-	require_once(str_repeat('../', 1) . 'includes/common.php');
+	require_once(str_repeat('../', 3) . 'includes/common.php');
 }
 ?><!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
@@ -14,10 +14,8 @@ if ( ! defined('ENVIRONMENT') )
 
 	<?php
 	// Head common tags and resources
-	include(THEMEPATH . 'common/head.php');
+	include(THEME_PATH . 'common/head.php');
 	?>
-	
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url('stylesheets/site.css'); ?>">
 	
 </head>
 <body>
@@ -26,7 +24,7 @@ if ( ! defined('ENVIRONMENT') )
 
 <?php
 // Header
-include(THEMEPATH . 'common/header.php');
+include(THEME_PATH . 'common/header.php');
 ?>
 
 <div class="band-wrap">
@@ -139,7 +137,7 @@ include(THEMEPATH . 'common/header.php');
 
 <?php
 // Footer
-include(THEMEPATH . 'common/footer.php');
+include(THEME_PATH . 'common/footer.php');
 ?>
 
 
@@ -148,7 +146,7 @@ include(THEMEPATH . 'common/footer.php');
 
 <?php
 // Body Append
-include(THEMEPATH . 'common/body.append.php');
+include(THEME_PATH . 'common/body.append.php');
 ?>
 </body>
 </html>

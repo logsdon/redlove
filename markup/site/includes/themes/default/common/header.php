@@ -6,25 +6,25 @@
 	<header class="primary">
 		
 		<h1 class="logo">
-			<a href="<?php echo site_url(''); ?>">[Logo]<!--<img src="<?php echo base_url(); ?>images/header__logo.jpg" alt="[Logo]" class="scale-with-grid" />--></a>
+			<a href="<?php echo site_url(THEME_NAV_ROOT); ?>">[Logo]<!--<img src="<?php echo base_url(THEME_ROOT); ?>images/header__logo.jpg" alt="[Logo]" class="scale-with-grid" />--></a>
 		</h1>
 		
 		<nav class="nav-dropdown-setup nav-primary">
 			<ul>
 				<li>
-					<a href="<?php echo site_url(); ?>">Home</a>
+					<a href="<?php echo site_url(THEME_NAV_ROOT); ?>">Home</a>
 				</li>
 				<li class="<?php echo page_is('', true) || strpos(PAGE, '') === 0 ? 'active' : ''; ?>">
 					<a href="">Theme</a>
 					<ul>
 						<li>
-							<a href="<?php echo site_url('theme/inside'); ?>">Inside variations</a>
+							<a href="<?php echo site_url(THEME_NAV_ROOT . 'inside'); ?>">Inside variations</a>
 						</li>
 						<li>
-							<a href="<?php echo site_url('theme/style-guide'); ?>">Style Guide</a>
+							<a href="<?php echo site_url(THEME_NAV_ROOT . 'style-guide'); ?>">Style Guide</a>
 						</li>
 						<li>
-							<a href="<?php echo site_url('theme/style-examples'); ?>">Style Examples</a>
+							<a href="<?php echo site_url(THEME_NAV_ROOT . 'style-examples'); ?>">Style Examples</a>
 						</li>
 					</ul>
 				</li>

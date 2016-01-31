@@ -14,7 +14,7 @@ body {
 ------------------------------------------------------------ */
 
 .band-header {
-	background: #16A8EA url("../../images/layouts/blue-abstract-background.jpg") scroll no-repeat 0 0;
+	background: #16A8EA url("../images/blue-abstract-background.jpg") scroll no-repeat 0 0;
 	color: #ffffff;
 }
 
@@ -84,7 +84,7 @@ section.content p {
 ------------------------------------------------------------ */
 
 .band-background {
-	background: #16A8EA url("../../images/layouts/blue-abstract-background.jpg") scroll no-repeat 50% 50%;
+	background: #16A8EA url("../images/blue-abstract-background.jpg") scroll no-repeat 50% 50%;
 	color: #ffffff;
 }
 

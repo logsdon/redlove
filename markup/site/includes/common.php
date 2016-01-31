@@ -56,37 +56,38 @@ if ( ! defined('ROOTPATH') )
 	*/
 	
 	// ROOTPATH - The server path to this file.
-	$num_paths_from_root = 1;
-	$dirs_to_rootpath = str_repeat('../', $num_paths_from_root);
+	$num_dirs_from_root = 1;
+	$dirs_to_rootpath = str_repeat('../', $num_dirs_from_root);
 	$dirs_to_rootpath = isset($dirs_to_rootpath[0]) ? '/' . $dirs_to_rootpath : '';
 	$realpath = realpath(dirname(__FILE__) . $dirs_to_rootpath);
 	$rootpath = str_replace('\\', '/', $realpath);// Swap directory separators to Unix style for consistency
-	$rootpath = rtrim($rootpath, '/') . '/';// Make sure the path has a trailing slash
+	$rootpath = rtrim($rootpath, '/') . '/';// Make sure the path has a trailing slashx
 	define('ROOTPATH', $rootpath);
 	
 	// ROOT - The relative web path to this file.
-	$root = '/';//Default
 	$document_root = ( ! empty($_SERVER['PHP_DOCUMENT_ROOT']) ) ? $_SERVER['PHP_DOCUMENT_ROOT'] : $_SERVER['DOCUMENT_ROOT'];
 	$document_root = realpath($document_root);
-	if ( $realpath != $document_root )
-	{
-		// Swap directory separators to Unix style for consistency
-		$root = str_replace('\\', '/', substr($rootpath, strlen($document_root)));
-		$root = '/' . trim($root, '/') . '/';// Make sure the path has a trailing slash
-		$root = str_replace('//', '/', $root);
-	}
+	$document_root = str_replace('\\', '/', $document_root);
+	$document_root = rtrim($document_root, '/') . '/';
+	$root = str_replace($document_root, '', ROOTPATH);
+	//$root = ( strlen($root) == 0 ) ? '/' : '';
 	define('ROOT', $root);
 	
 	// Get the server request
 	$request = ( ! empty($_SERVER['REQUEST_URI']) ) ? $_SERVER['REQUEST_URI'] : '';// Apache
-	$request = ( ! $request && ! empty($_SERVER['PATH_INFO']) ) ? $_SERVER['PATH_INFO'] : $request;// IIS
+	$request = ( strlen($request) > 0 && ! empty($_SERVER['PATH_INFO']) ) ? $_SERVER['PATH_INFO'] : $request;// IIS
 	// REQUEST_URI - The relative server request URI.
-	$request_uri = ( strpos($request, ROOT) === 0 ) ? substr($request, strlen(ROOT)) : $request;
+	$request_uri = ( strlen(ROOT) > 0 && strpos($request, ROOT) === 1 ) ? substr($request, strlen(ROOT)) : $request;
 	define('REQUEST_URI', $request_uri);
 	
 	// PAGE - Cleaned up REQUEST_URI.
 	//define('PAGE', trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/'));
 	$page = trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/');
+	if ( strpos($page, '/') !== false )
+	{
+		$page = ( substr(REQUEST_URI, -1) != '/' ) ? basename(REQUEST_URI) : '';
+	}
+	$page = ( strpos($page, '/') !== false ) ? '' : $page;
 	$page_ext = strtolower( substr((string)strrchr($page, '.'), 1) );// Lowercase, get text after dot, get text dot and after
 	$page_filename = substr($page, 0, strlen($page) - strlen($page_ext));// Remove file extension
 	if ( $page_ext == 'php' )
@@ -109,18 +110,96 @@ if ( ! defined('ROOTPATH') )
 		$visitor = json_decode($_SERVER['HTTP_CF_VISITOR']);
 		$protocol = $visitor->scheme . '://';
 	}
-	$base_url = $protocol . $_SERVER['HTTP_HOST'] . ROOT;
+	$base_url = $protocol . $_SERVER['HTTP_HOST'] . '/' . ROOT;
 	define('BASE_URL', $base_url);
 	
 	define('VIEWPATH', ROOTPATH);
 	define('INCLUDESPATH', VIEWPATH . 'includes/');
-	define('THEMEPATH', INCLUDESPATH . 'theme/');
 	
-	define('REDLOVE_ROOTPATH', realpath(ROOTPATH . str_repeat('../', 2)));
-	$redlove_root = substr(REDLOVE_ROOTPATH, strlen($document_root));
+	// Load site config and set template
+	$file = INCLUDESPATH . 'config/site_settings.php';
+	if ( file_exists($file) )
+	{
+		include_once($file);
+	}
+	else
+	{
+		$config['themes_path'] = '';
+		$config['theme'] = '';
+	}
+	$themes_path = rtrim(INCLUDESPATH . $config['themes_path'], '/');
+	$themes_path .= ( strlen($themes_path) > 0 ) ? '/' : '';
+	define('THEMES_PATH', $themes_path);
+	$themes_root = str_replace(ROOTPATH, '', THEMES_PATH);
+	$themes_root = str_replace('\\', '/', $themes_root);
+	$themes_root = rtrim($themes_root, '/');
+	$themes_root .= ( strlen($themes_root) > 0 ) ? '/' : '';
+	define('THEMES_ROOT', $themes_root);
+	
+	$theme = $config['theme'];
+	// If directly browsing a theme via the themes directory, switch resources over to it
+	$is_directly_browsing_theme = ( strpos(REQUEST_URI, THEMES_ROOT) === 1 );
+	if ( $is_directly_browsing_theme )
+	{
+		$theme = strtok(str_replace(THEMES_ROOT, '', REQUEST_URI), '/');
+	}
+	$theme_path = rtrim(THEMES_PATH . $theme, '/');
+	$theme_path .= ( strlen($theme_path) > 0 ) ? '/' : '';
+	define('THEME_PATH', $theme_path);
+	$theme_root = rtrim(THEMES_ROOT . $theme, '/');
+	$theme_root .= ( strlen($theme_root) > 0 ) ? '/' : '';
+	define('THEME_ROOT', $theme_root);
+	$theme_nav_root = '';
+	if ( $is_directly_browsing_theme )
+	{
+		$theme_nav_root = THEME_ROOT;
+	}
+	define('THEME_NAV_ROOT', $theme_nav_root);
+	$theme_url = BASE_URL;
+	if ( $is_directly_browsing_theme )
+	{
+		$theme_url = BASE_URL . $theme_root;
+	}
+	define('THEME_URL', $theme_url);
+	
+	$redlove_path = realpath(ROOTPATH . str_repeat('../', 2));
+	$redlove_path = str_replace('\\', '/', $redlove_path);
+	$redlove_path = rtrim($redlove_path, '/') . '/';
+	define('REDLOVE_PATH', $redlove_path);
+	$redlove_root = substr(REDLOVE_PATH, strlen($document_root));
 	$redlove_root = str_replace('\\', '/', $redlove_root);
-	$redlove_root = trim( $redlove_root, '/') . '/';
+	$redlove_root = trim($redlove_root, '/') . '/';
 	define('REDLOVE_ROOT', str_repeat('../', 3) . $redlove_root);
+	$redlove_url = $protocol . $_SERVER['HTTP_HOST'] . '/' . str_replace($document_root, '', REDLOVE_PATH);
+	define('REDLOVE_URL', $redlove_url);
+	
+	/*
+	// Debugging
+	echo '<pre>';
+	print_r(array(
+		'$document_root' => $document_root,
+		'ROOTPATH' => ROOTPATH,
+		'ROOT' => ROOT,
+		'$_SERVER[REQUEST_URI]' => $_SERVER['REQUEST_URI'],
+		'REQUEST_URI' => REQUEST_URI,
+		'PAGE' => PAGE,
+		'BASE_URL' => BASE_URL,
+		'VIEWPATH' => VIEWPATH,
+		'INCLUDESPATH' => INCLUDESPATH,
+		'$theme' => $theme,
+		'$is_directly_browsing_theme' => (int)$is_directly_browsing_theme,
+		'THEMES_PATH' => THEMES_PATH,
+		'THEMES_ROOT' => THEMES_ROOT,
+		'THEME_PATH' => THEME_PATH,
+		'THEME_ROOT' => THEME_ROOT,
+		'THEME_NAV_ROOT' => THEME_NAV_ROOT,
+		'THEME_URL' => THEME_URL,
+		'REDLOVE_PATH' => REDLOVE_PATH,
+		'REDLOVE_ROOT' => REDLOVE_ROOT,
+		'REDLOVE_URL' => REDLOVE_URL,
+	));
+	echo '</pre>';
+	*/
 }
 // --------------------------------------------------------------------
 

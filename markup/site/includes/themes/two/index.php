@@ -2,7 +2,7 @@
 // Require common functionality
 if ( ! defined('ENVIRONMENT') )
 {
-	require_once(str_repeat('../', 2) . 'includes/common.php');
+	require_once(str_repeat('../', 3) . 'includes/common.php');
 }
 ?><!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
@@ -14,11 +14,9 @@ if ( ! defined('ENVIRONMENT') )
 
 	<?php
 	// Head common tags and resources
-	include(THEMEPATH . 'common/head.php');
+	include(THEME_PATH . 'common/head.php');
 	?>
 	
-	<link rel="stylesheet" type="text/css" href="site.css">
-
 </head>
 <body class="mobile-menu-liner">
 
@@ -33,12 +31,12 @@ if ( ! defined('ENVIRONMENT') )
 	<header class="primary">
 		
 		<h1 class="logo display-table-cell">
-			<a href="<?php echo site_url(''); ?>">Logo<!--<img src="<?php echo base_url(); ?>images/header__logo.jpg" alt="[Logo]" class="scale-with-grid" />--></a>
+			<a href="">Logo</a>
 		</h1>
 		
 		<nav class="nav-dropdown-setup nav-primary display-table-cell table-cell--middle">
 			<ul>
-				<?php require_once('common/header_nav-items_common.php'); ?>
+				<?php require_once(THEME_PATH . 'common/header_nav-items_common.php'); ?>
 			</ul>
 		</nav>
 
@@ -122,7 +120,7 @@ if ( ! defined('ENVIRONMENT') )
 					<p>Splendide philosophia est, cum at probo minimu omesque, fali libris has id. Ad facer pertinax vel, eum nevelni molestie euripidi consectu. Taleni noluise signiferumque te vix, grae titur temporibus his uta, vis ne nulla nemore splendide.</p>
 				</div>
 				<div class="column w1-2 table-cell--middle">
-					<img src="<?php echo base_url(); ?>images/layouts/bookkeeping-615384_800.jpg" alt=" " class="img-scale">
+					<img src="images/bookkeeping-615384_800.jpg" alt=" " class="img-scale">
 				</div>
 			</div>
 		</div>
@@ -209,7 +207,7 @@ if ( ! defined('ENVIRONMENT') )
 
 
 
-<?php require_once('common/footer.php'); ?>
+<?php require_once(THEME_PATH . 'common/footer.php'); ?>
 
 </div>
 <!-- /body-liner -->
