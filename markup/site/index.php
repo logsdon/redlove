@@ -17,6 +17,19 @@ if ( file_exists($view_file) )
 }
 else
 {
-	require_once(THEME_PATH . 'error_404.php');
+	header('HTTP/1.0 404 Not Found', true, 404);
+	
+	$view_file = THEME_PATH . 'error_404.php';
+	if ( file_exists($view_file) )
+	{
+		require_once($view_file);
+	}
+	else
+	{
+	?>
+	<h1>404 Not Found</h1>
+	<p>We can't find what you are looking for.</p>
+	<?php
+	}
 }
 

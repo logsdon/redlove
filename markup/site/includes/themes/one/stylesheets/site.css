@@ -45,6 +45,18 @@ body {
 	background-color: rgba(22, 168, 234, 0.8);
 }
 
+.mobile-menu {
+	color: #666666;
+}
+.mobile-menu .mobile-menu-button {
+	display: block;
+	padding-left: 1.0em;
+	text-align: left;
+}
+.mobile-menu-button {
+	font-size: 1.5em;
+}
+
 /* ------------------------------------------------------------
 	Bands
 ------------------------------------------------------------ */

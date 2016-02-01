@@ -82,12 +82,11 @@ if ( ! defined('ROOTPATH') )
 	
 	// PAGE - Cleaned up REQUEST_URI.
 	//define('PAGE', trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/'));
-	$page = trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/');
+	$page = ltrim(parse_url(REQUEST_URI, PHP_URL_PATH), '/');
 	if ( strpos($page, '/') !== false )
 	{
 		$page = ( substr(REQUEST_URI, -1) != '/' ) ? basename(REQUEST_URI) : '';
 	}
-	$page = ( strpos($page, '/') !== false ) ? '' : $page;
 	$page_ext = strtolower( substr((string)strrchr($page, '.'), 1) );// Lowercase, get text after dot, get text dot and after
 	$page_filename = substr($page, 0, strlen($page) - strlen($page_ext));// Remove file extension
 	if ( $page_ext == 'php' )

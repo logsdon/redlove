@@ -4,6 +4,8 @@ if ( ! defined('ENVIRONMENT') )
 {
 	require_once(str_repeat('../', 3) . 'includes/common.php');
 }
+
+$user = true;
 ?><!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
@@ -24,7 +26,7 @@ if ( ! defined('ENVIRONMENT') )
 
 
 
-<?php require_once(THEME_PATH . 'common/header-inside.php'); ?>
+<?php require_once(THEME_PATH . 'common/header-band_inside.php'); ?>
 
 
 

@@ -5,15 +5,6 @@
 						<li>
 							<a href="<?php echo site_url(THEME_NAV_ROOT . 'contact'); ?>">Contact</a>
 						</li>
-						<li>
-							<a href="<?php echo site_url(THEME_NAV_ROOT . 'logged-in_user_dashboard'); ?>">Logged-in User Dashboard</a>
-						</li>
-						<li>
-							<a href="<?php echo site_url(THEME_NAV_ROOT . 'logged-in_user_applications'); ?>">Logged-in User Applications</a>
-						</li>
-						<li>
-							<a href="<?php echo site_url(THEME_NAV_ROOT . 'logged-in_user_new-application'); ?>">Logged-in User New Application</a>
-						</li>
 					</ul>
 				</li>
 				<li class="">
@@ -30,3 +21,22 @@
 						</li>
 					</ul>
 				</li>
+				<?php
+				if ( ! empty($user) )
+				{
+				?>
+				<li>
+					<img src="images/bookkeeping-615384_800.jpg" alt=" " class="img-scale img-circle" style="height: 30px; width: 30px; vertical-align: top; border: 2px solid #ffffff; top: 3px; position: relative;">
+					<a href="">My Account</a>
+					<ul>
+						<li>
+							<a href="">My account</a>
+						</li>
+						<li>
+							<a href="">Help</a>
+						</li>
+					</ul>
+				</li>
+				<?php
+				}
+				?>
