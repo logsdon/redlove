@@ -63,7 +63,7 @@ if ( ! function_exists('cb_url') )
 	*/
 	function cb_url( $file, $bypass = false )
 	{
-		return base_url() . get_cache_busting_filename($file, $bypass);
+		return base_url() . ltrim(get_cache_busting_filename($file, $bypass), '/');
 	}
 }
 
@@ -207,6 +207,406 @@ if ( ! function_exists('array_to_csv') )
 		{
 			return $output;
 		}
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('sanitize_file_path') )
+{
+	/**
+	* Sanitize the file path
+	* 
+	* http://cubiq.org/the-perfect-php-clean-url-generator
+	* 
+	* @param string $path Directory path
+	* @param string $beginning_base_path (optional) Path base that must be in the path
+	* @return bool|string False (if bad path or doesn't begin with base) or sanitized path
+	*/
+	//setlocale(LC_ALL, 'en_US.UTF8');
+	function sanitize_file_path ( $path, $beginning_base_path = null )
+	{
+		$realpath = realpath($path);
+		
+		if ( $realpath === false )
+		{
+			return false;
+		}
+		
+		// Normalize path
+		$realpath = rtrim( str_replace('\\', '/', $realpath), '/' ) . '/';
+		
+		// If passed, ensure base starts the path
+		if ( isset($beginning_base_path) && strpos($realpath, $beginning_base_path) === false )
+		{
+			return false;
+		}
+		
+		return $realpath;
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('sanitize_filename') )
+{
+	/**
+	* Sanitize the filename
+	* 
+	* http://cubiq.org/the-perfect-php-clean-url-generator
+	* 
+	* @param string $string The filename
+	* @return string Sanitized filename
+	*/
+	//setlocale(LC_ALL, 'en_US.UTF8');
+	function sanitize_filename ( $string )
+	{
+		// Whitelist
+		$cleaned = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
+		//$cleaned = preg_replace('/[^a-zA-Z0-9_-.+|\/ ]/g', '', $string);
+		$cleaned = preg_replace('/[^a-zA-Z0-9_\-\.\s]/', ' ', $cleaned);
+		// Turn spaces (condense multiples) to dashes
+		$cleaned = preg_replace('/\s+/', '-', $cleaned);
+		// Maximum of 2 consecutive dashes
+		$cleaned = preg_replace('/\-{3,}/', '--', $cleaned);
+		// Trim dashes
+		$cleaned = trim($cleaned, '-');//strtolower()
+		
+		//$this->file_name = preg_replace('/[^a-z0-9_\-\.@\s]/gi', '', $this->file_name);
+		
+		return $cleaned;
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('create_directory') )
+{
+	/**
+	* Create a directory
+	* Thanks to http://stackoverflow.com/questions/2303372/create-a-folder-if-it-doesnt-already-exist
+	* 
+	* @param string $path Directory path to create
+	* @param int $permissions The permissions for the new directory
+	* @param bool $recursive Recursively create missing directories in the new path
+	* @return bool
+	*/
+	function create_directory ( $path, $permissions = null, $recursive = true )
+	{
+		// Normalize path
+		$path = rtrim( str_replace('\\', '/', $path) , '/' ) . '/';
+		
+		// If directory already exists
+		if ( is_dir($path) )
+		{
+			return true;
+		}
+		
+		// Iterate down the path until the parent or root directory is found
+		$parent_depth = 1;
+		$parent = dirname( $path );
+		$root = realpath('/');
+		while ( $parent != $root && ! is_dir( $parent ) )
+		{
+			$parent = dirname( $parent );
+			$parent_depth++;
+		}
+		
+		// If parent directory is not writable
+		if ( ! is_writable($parent) )
+		{
+			return false;
+		}
+		
+		// Get the parent permissions
+		$permissions = isset($permissions) ? $permissions : substr(sprintf('%o', fileperms($parent)), -4);
+		
+		return mkdir($path, $permissions, $recursive);// Use @mkdir to suppress warnings/errors
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('delete_directory_recursive') )
+{
+	/**
+	* Recursively delete a directory and all of it's contents - e.g.the equivalent of `rm -r` on the command-line.
+	* Consistent with `rmdir()` and `unlink()`, an E_WARNING level error will be generated on failure.
+	* 
+	* https://gist.github.com/mindplay-dk/a4aad91f5a4f1283a5e2
+	* http://stackoverflow.com/a/3352564/283851
+	* 
+	* @param string $dir absolute path to directory to delete
+	* @return bool true on success; false on failure
+	*/
+	function delete_directory_recursive ( $dir )
+	{
+		if ( ! file_exists($dir) )
+		{
+			return false;
+		}
+
+		$it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
+		$files = new RecursiveIteratorIterator($it, RecursiveIteratorIterator::CHILD_FIRST);
+		
+		foreach ( $files as $fileinfo )
+		{
+			$run_function = $fileinfo->isDir() ? 'rmdir' : 'unlink';
+			$success = $run_function($fileinfo->getRealPath());
+			/*
+			// or
+			if ( $fileinfo->isDir() )
+			{
+				$success = rmdir($fileinfo->getRealPath());
+			}
+			else
+			{
+				$success = unlink($fileinfo->getRealPath());
+			}
+			*/
+			
+			if ( ! $success )
+			{
+				return false;
+			}
+		}
+		
+		return rmdir($dir);
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('recurse_dir') )
+{
+	/**
+	* Recurse directory contents
+	* 
+	* http://www.sitepoint.com/list-files-and-directories-with-php/
+	* http://stackoverflow.com/questions/24783862/list-all-the-files-and-folders-in-a-directory-with-php-recursive-function
+	* 
+	* @version 0.0.0
+	* @param mixed $params An array of parameters or list of arguments
+	*/
+	function recurse_dir ( $params = '' )
+	{
+		// Set default values for missing keys
+		$default_params = array(
+			'path' => '',
+			'path_root' => '',
+			'blacklist_files' => '',
+			'blacklist_file_extensions' => '',
+			'blacklist_directories' => '',
+			'datetime_format' => 'Y-m-d H:i:s',
+			'max_depth' => -1,
+			'directories_only' => false,
+			'files_only' => false,
+		);
+		
+		// Get arguments
+		$args = func_get_args();
+		$num_args = count($args);
+		//$args0 = isset($args[0]) ? $args[0] : null;
+		// Check for alternate argument patterns
+		if ( is_string($params) )
+		{
+			// Correspond each passed argument with the order of the default parameters
+			$params = array();
+			$default_param_keys = array_keys($default_params);
+			for ( $arg_i = 0; $arg_i < $num_args; $arg_i++ )
+			{
+				// Stop if there are no more corresponding default parameters
+				if ( ! isset($default_param_keys[ $arg_i ]) )
+				{
+					break;
+				}
+				
+				$params[ $default_param_keys[$arg_i] ] = $args[ $arg_i ];
+			}
+		}
+		
+		// Merge default and passed parameters
+		$params = array_merge($default_params, $params);
+		extract($params);
+		
+		// Stop if the path does not exist
+		if ( ! is_dir($path) )
+		{
+			return false;
+		}
+		
+		// Normalize arguments
+		if ( ! is_array($blacklist_files) )
+		{
+			$blacklist_files = explode(',', $blacklist_files);
+			$blacklist_files = array_filter($blacklist_files);
+		}
+		
+		if ( ! is_array($blacklist_file_extensions) )
+		{
+			$blacklist_file_extensions = explode(',', $blacklist_file_extensions);
+			$blacklist_file_extensions = array_filter($blacklist_file_extensions);
+		}
+		
+		if ( ! is_array($blacklist_directories) )
+		{
+			$blacklist_directories = explode(',', $blacklist_directories);
+			$blacklist_directories = array_filter($blacklist_directories);
+		}
+		
+		// Initialize directory data
+		$data = array(
+			'files' => array(),
+			'directories' => array(),
+		);
+		
+		// If no path root is set, use the path
+		if ( strlen($path_root) == 0 )
+		{
+			$path_root = $path;
+		}
+		
+		// Setting FilesystemIterator will include depth in file spl info
+		$directory = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS | FilesystemIterator::KEY_AS_PATHNAME | FilesystemIterator::CURRENT_AS_SELF);
+		$iterator = new RecursiveIteratorIterator($directory, RecursiveIteratorIterator::SELF_FIRST);
+		$iterator->setMaxDepth($max_depth);
+		
+		foreach ( $iterator as $file_pathname => $spl_file_info )
+		{
+			// Skip if file is a link
+			if ( $spl_file_info->isLink() )
+			{
+				continue;
+			}
+			
+			// Normalize directory path
+			$file_pathname = str_ireplace('\\', '/', $file_pathname);//$spl_file_info->getPathName()
+			// Normalize directory path
+			$file_path = rtrim( str_ireplace('\\', '/', $spl_file_info->getPath()), '/' ) . '/';
+			$file_path_basename = basename($file_path);//$pathinfo = pathinfo($path);
+			$file_path_from_root = str_ireplace($path_root, '', $file_path);
+			
+			$filename = $spl_file_info->getFileName();
+			$depth = $iterator->getDepth();
+			$permissions = substr(sprintf('%o', $spl_file_info->getPerms()), -4);
+			$created_time = $spl_file_info->getCTime();
+			$created_datetime = date($datetime_format, $created_time);
+			$modified_time = $spl_file_info->getMTime();
+			$modified_datetime = date($datetime_format, $created_time);
+			
+			$data_piece = array(
+				'pathname' => $file_pathname,
+				'relative_absolute_pathname' => str_ireplace(ROOTPATH, ROOT, $file_pathname),
+				'path' => $file_path,
+				'relative_absolute_path' => str_ireplace(ROOTPATH, ROOT, $file_path),
+				'path_basename' => $file_path_basename,
+				'path_from_root' => $file_path_from_root,
+				'filename' => $filename,
+				'depth' => $depth,
+				'depth_filename' => str_repeat(' - ', $depth) . $filename,
+				'permissions' => $permissions,
+				'created_time' => $created_time,
+				'created_datetime' => $created_datetime,
+				'modified_time' => $modified_time,
+				'modified_datetime' => $modified_datetime,
+			);
+			
+			// If directory
+			if ( $spl_file_info->isDir() )
+			{
+				// Skip if only gathering files
+				if ( $files_only )
+				{
+					continue;
+				}
+				
+				// Skip if blacklisted
+				if ( in_array($filename, $blacklist_directories) )
+				{
+					continue;
+				}
+				
+				$data_piece['path'] .= $filename;
+				$data_piece['relative_absolute_path'] .= $filename;
+				$data_piece['path_basename'] = $filename;
+				$data_piece['path_from_root'] .= $filename;
+				$data['directories'][ $file_pathname ] = $data_piece;
+			}
+			// If file
+			else
+			{
+				// Skip if only gathering directories
+				if ( $directories_only )
+				{
+					continue;
+				}
+				
+				// Skip if blacklisted
+				if ( in_array($file_path_basename, $blacklist_directories) )
+				{
+					continue;
+				}
+				
+				// Skip if blacklisted
+				if ( in_array($filename, $blacklist_files) )
+				{
+					continue;
+				}
+				
+				$file_extension = $spl_file_info->getExtension();
+				
+				// Skip if blacklisted
+				if ( in_array($file_extension, $blacklist_file_extensions) )
+				{
+					continue;
+				}
+				
+				// Calculate file size from bytes
+				$file_size = $spl_file_info->getSize();
+				$file_size = bytes_to_string($file_size);
+				
+				$data_piece['size'] = $file_size;
+				$data_piece['extension'] = $file_extension;
+				
+				$dimensions = @getimagesize($file_pathname);
+				if ( $dimensions )
+				{
+					$data_piece['width'] = $dimensions['0'];
+					$data_piece['height'] = $dimensions['1'];
+					$data_piece['size_str'] = $dimensions['3'];
+					$data_piece['image_type'] = $dimensions['2'];
+				}
+				
+				$data['files'][ $file_pathname ] = $data_piece;
+			}
+		}
+		
+		return $data;
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('bytes_to_string') )
+{
+	/**
+	* Present a size (in bytes) as a human-readable value
+	* 
+	* @param int $size Size (in bytes)
+	* @param int $precision The number of digits after the decimal point
+	* @return string
+	*/
+	function bytes_to_string ( $size, $precision = 2 )
+	{
+		$sizes = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+		$num_sizes = count($sizes);
+		
+		for ( $size_i = 0; $size > 1000; $size_i++ )
+		{
+			$size /= 1024;
+		}
+		
+		return number_format($size, $precision, '.', ',') . ( isset($sizes[$size_i]) ? ' ' . $sizes[$size_i] : '' );
 	}
 }
 

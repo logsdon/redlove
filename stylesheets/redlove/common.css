@@ -2197,10 +2197,12 @@ body {
 }
 /* Setup menu items, Item > Subitems */
 .mobile-menu ul {
-	/* Trigger hasLayout for inline-block, contain floats */
-	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
-	vertical-align: top;
-	width: 100%;
+	display: block;
+}
+.mobile-menu ul:after {
+	clear: both;
+s	content: "";
+	display: table;
 }
 	/* Restful state */
 	.mobile-menu a {
@@ -2276,8 +2278,8 @@ body {
 ---------------------------------------- */
 .mobile-menu-button {
 	cursor: pointer;
+	font-size: 1.0em;
 	margin: 0;
-	padding: 1.0em;
 	text-align: center;
 	text-rendering: geometricPrecision;
 	
@@ -2292,9 +2294,7 @@ body {
 	content: "\f0c9";
 	display: block;
 	font-family: FontAwesome;
-	font-size: 1.88em;
 	line-height: 1;
-	padding: 0.5em;
 }
 
 /* ------------------------------------------------------------
@@ -4588,10 +4588,12 @@ Minimum paragraph width*/
 	speak: none;/* Not to be trusted, but hey. */
 }
 
+.text-nowrap,
 .nowrap,
 .no-wrap {
 	white-space: nowrap !important;
 }
+.text-pre,
 .pre {
 	white-space: pre !important;
 }

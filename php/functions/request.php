@@ -42,6 +42,7 @@ if ( ! function_exists('is_ajax') )
 		);
 	}
 }
+
 // --------------------------------------------------------------------
 
 if ( ! function_exists('header_cache') )
