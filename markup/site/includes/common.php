@@ -175,8 +175,8 @@ if ( ! defined('ENVIRONMENT') )
 	// --------------------------------------------------------------------
 	// REDLOVE_PATH - The path to redlove resources
 	$config['environment']['redlove']['num_dirs_from_root_path'] = ! empty($config['environment']['redlove']['num_dirs_from_root_path']) ? $config['environment']['redlove']['num_dirs_from_root_path'] : 0;
-	$num_dirs_from_root_path = ! empty($config['environment']['redlove']['num_dirs_from_root_path']) ? $config['environment']['redlove']['num_dirs_from_root_path'] : 0;
-	$realpath = realpath(ROOT_PATH . str_repeat('../', $num_dirs_from_root_path) . 'redlove/');
+	$num_dirs_redlove_from_root_path = ! empty($config['environment']['redlove']['num_dirs_from_root_path']) ? $config['environment']['redlove']['num_dirs_from_root_path'] : 0;
+	$realpath = realpath(ROOT_PATH . str_repeat('../', $num_dirs_redlove_from_root_path) . 'redlove/');
 	$realpath = str_replace('\\', '/', $realpath);
 	$realpath = rtrim($realpath, '/') . '/';
 	define('REDLOVE_PATH', $realpath);
@@ -184,7 +184,7 @@ if ( ! defined('ENVIRONMENT') )
 	$redlove_root = substr(REDLOVE_PATH, strlen(DOCUMENT_ROOT));
 	$redlove_root = str_replace('\\', '/', $redlove_root);
 	$redlove_root = trim($redlove_root, '/') . '/';
-	define('REDLOVE_ROOT', str_repeat('../', $num_dirs_from_root_path) . $redlove_root);
+	define('REDLOVE_ROOT', str_repeat('../', $num_dirs_redlove_from_root_path) . $redlove_root);
 	// REDLOVE_URL - The url to redlove resources
 	$redlove_url = $protocol . $_SERVER['HTTP_HOST'] . '/' . str_replace(DOCUMENT_ROOT, '', REDLOVE_PATH);
 	define('REDLOVE_URL', $redlove_url);
@@ -297,13 +297,14 @@ if ( ! defined('THEMES_PATH') )
 // Make the timezone consistent on the server and audience location
 // http://stackoverflow.com/questions/1646171/mysql-datetime-fields-and-daylight-savings-time-how-do-i-reference-the-extra
 $config['site']['timezone'] = ! empty($config['site']['timezone']) ? $config['site']['timezone'] : 'America/New_York';
+$timezone = $config['site']['timezone'];
 if ( 
 	function_exists('date_default_timezone_set') && 
 	function_exists('date_default_timezone_get') && 
-	@date_default_timezone_get() != $config['site']['timezone']
+	@date_default_timezone_get() != $timezone
 )
 {
-	@date_default_timezone_set($config['site']['timezone']);
+	@date_default_timezone_set( $timezone );
 }
 // --------------------------------------------------------------------
 

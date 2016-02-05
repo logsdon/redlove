@@ -251,20 +251,33 @@ if ( ! function_exists('sanitize_file_path') )
 if ( ! function_exists('sanitize_filename') )
 {
 	/**
-	* Sanitize the filename
+	* Sanitize the filename and normalize the filename
 	* 
-	* http://cubiq.org/the-perfect-php-clean-url-generator
+	* Reference: http://cubiq.org/the-perfect-php-clean-url-generator
 	* 
 	* @param string $string The filename
 	* @return string Sanitized filename
 	*/
-	//setlocale(LC_ALL, 'en_US.UTF8');
 	function sanitize_filename ( $string )
 	{
+		//setlocale(LC_ALL, 'en_US.UTF8');
+		
 		// Whitelist
 		$cleaned = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
 		//$cleaned = preg_replace('/[^a-zA-Z0-9_-.+|\/ ]/g', '', $string);
-		$cleaned = preg_replace('/[^a-zA-Z0-9_\-\.\s]/', ' ', $cleaned);
+		$cleaned = trim(preg_replace('/[^a-zA-Z0-9_\-\.\s]/', ' ', $cleaned));
+		
+		// Trim space individually around the file name and extension
+		$file = $cleaned;
+		$file_ext = strtolower( substr((string)strrchr($file, '.'), 1) );// Lowercase, get text after dot, get text dot and after
+		$file_name = substr($file, 0, strlen($file) - strlen($file_ext));// Remove file extension
+		if ( strlen($file_ext) > 0 )
+		{
+			$file_name = substr($file_name, 0, -1);
+			$file = trim($file_name) . '.' . trim($file_ext);
+		}
+		$cleaned = $file;
+		
 		// Turn spaces (condense multiples) to dashes
 		$cleaned = preg_replace('/\s+/', '-', $cleaned);
 		// Maximum of 2 consecutive dashes
