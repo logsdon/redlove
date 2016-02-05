@@ -194,7 +194,7 @@ if ( strlen($email_vars['email']) > 0 && ! valid_email($email_vars['email']) )
 
 if ( $valid )
 {
-	require_once(ROOTPATH . 'inc/class.email.php');
+	require_once(ROOT_PATH . 'inc/class.email.php');
 	$EMAIL = new Email();
 	
 	// Clean up data for key > val output

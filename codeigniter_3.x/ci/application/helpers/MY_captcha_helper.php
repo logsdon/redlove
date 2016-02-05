@@ -17,7 +17,7 @@ if ( ! isset($data) || $data['code'] !== TRUE )
 {
 	$captcha_params = array(
 		'word' => create_safe_captcha_word(),
-		'img_path' => ROOTPATH . 'images/captcha/',
+		'img_path' => ROOT_PATH . 'images/captcha/',
 		'img_url' => base_url() . 'images/captcha/',
 		'font_path' => APPPATH . 'fonts/VeraSe.ttf',
 		'img_width' => '100',

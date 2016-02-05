@@ -2,6 +2,7 @@
 $config['autoload'] = array(
 	'config' => array(
 		'path' => INCLUDESPATH . 'config/',
+		// The environment config file is loaded before autoload
 		'filenames' => 'site',
 	),
 	'data' => array(
@@ -9,11 +10,11 @@ $config['autoload'] = array(
 		'filenames' => '',
 	),
 	'external_classes' => array(
-		'path' => ROOTPATH . '../../php/classes/',
+		'path' => REDLOVE_PATH . 'php/classes/',
 		'filenames' => '',
 	),
 	'external_functions' => array(
-		'path' => ROOTPATH . '../../php/functions/',
+		'path' => REDLOVE_PATH . 'php/functions/',
 		'filenames' => 'file,form,request,url',
 	),
 	'functions' => array(

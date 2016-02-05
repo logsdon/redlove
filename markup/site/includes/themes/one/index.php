@@ -94,7 +94,7 @@ if ( ! defined('ENVIRONMENT') )
 					<p>Splendide philosophia est, cum at probo minimu omesque, fali libris has id. Ad facer pertinax vel, eum nevelni molestie euripidi consectu. Taleni noluise signiferumque te vix, grae titur temporibus his uta, vis ne nulla nemore splendide.</p>
 				</div>
 				<div class="column w1-2 table-cell--middle">
-					<img src="images/bookkeeping-615384_800.jpg" alt=" " class="img-scale">
+					<img src="<?php echo base_url(THEME_ROOT); ?>images/bookkeeping-615384_800.jpg" alt=" " class="img-scale">
 				</div>
 			</div>
 		</div>

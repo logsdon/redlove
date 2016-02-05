@@ -236,20 +236,20 @@
 	|
 	| http://codeigniter.com/wiki/Dynamic_Base_Url/
 	| http://codeigniter.com/wiki/Automatic_configbase_url/
-	| ROOTPATH	- The server path to this file.
+	| ROOT_PATH	- The server path to this file.
 	| ROOT		- The relative web path to this file.
 	| REQUEST_URI - The relative server request URI.
 	| PAGE - Cleaned up REQUEST_URI.
 	|
 	*/
 	
-	// ROOTPATH - The server path to this file.
-	$dirs_to_rootpath = str_repeat('../', 0);
-	$dirs_to_rootpath = isset($dirs_to_rootpath[0]) ? '/' . $dirs_to_rootpath : '';
-	$realpath = realpath(dirname(__FILE__) . $dirs_to_rootpath);
-	$rootpath = str_replace('\\', '/', $realpath);// Swap directory separators to Unix style for consistency
-	$rootpath = rtrim($rootpath, '/') . '/';// Make sure the path has a trailing slash
-	define('ROOTPATH', $rootpath);
+	// ROOT_PATH - The server path to this file.
+	$dirs_to_root_path = str_repeat('../', 0);
+	$dirs_to_root_path = isset($dirs_to_root_path[0]) ? '/' . $dirs_to_root_path : '';
+	$realpath = realpath(dirname(__FILE__) . $dirs_to_root_path);
+	$root_path = str_replace('\\', '/', $realpath);// Swap directory separators to Unix style for consistency
+	$root_path = rtrim($root_path, '/') . '/';// Make sure the path has a trailing slash
+	define('ROOT_PATH', $root_path);
 	
 	// ROOT - The relative web path to this file.
 	$root = '/';//Default
@@ -258,7 +258,7 @@
 	if ( $realpath != $document_root )
 	{
 		// Swap directory separators to Unix style for consistency
-		$root = str_replace('\\', '/', substr($rootpath, strlen($document_root)));
+		$root = str_replace('\\', '/', substr($root_path, strlen($document_root)));
 		$root = '/' . trim($root, '/') . '/';// Make sure the path has a trailing slash
 		$root = str_replace('//', '/', $root);
 	}

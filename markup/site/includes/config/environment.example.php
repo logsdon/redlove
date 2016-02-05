@@ -27,3 +27,4 @@ $config['environment']['is_production'] = (
 	! $config['environment']['is_testing']
 );
 
+$config['environment']['redlove']['num_dirs_from_root_path'] = 1;

@@ -252,7 +252,7 @@ if ( ! function_exists('get_full_path') )
 	function get_full_path( $relative_path = '' )
 	{
 		$relative_path = normalize_path($relative_path);
-		$absolute_path = ROOTPATH . $relative_path;
+		$absolute_path = ROOT_PATH . $relative_path;
 		$absolute_path = realpath($absolute_path);
 		
 		// In case a relative directory was passed
@@ -431,7 +431,7 @@ if ( ! function_exists('get_cache_busting_filename') )
 		$mtime = 0;
 		$file_ext = (string)strrchr($file, '.');
 		$filename = substr($file, 0, strlen($file) - strlen($file_ext));
-		$absolute_file = ROOTPATH . $file;
+		$absolute_file = ROOT_PATH . $file;
 		
 		// Get the last modified time and append it to the filename
 		$file_exists = ( $file && file_exists($absolute_file) && is_file($absolute_file) );

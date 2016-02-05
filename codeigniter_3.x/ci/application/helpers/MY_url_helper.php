@@ -316,7 +316,7 @@ if ( ! function_exists('get_cache_busting_filename') )
 		$mtime = 0;
 		$file_ext = (string)strrchr($file, '.');
 		$filename = substr($file, 0, strlen($file) - strlen($file_ext));
-		$absolute_file = ROOTPATH . $file;
+		$absolute_file = ROOT_PATH . $file;
 		
 		// Get the last modified time and append it to the filename
 		$file_exists = ( $file && file_exists($absolute_file) && is_file($absolute_file) );
