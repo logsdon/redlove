@@ -37,7 +37,7 @@ if ( ! function_exists('get_cache_busting_filename') )
 		$mtime = 0;
 		$file_ext = (string)strrchr($file, '.');
 		$filename = substr($file, 0, strlen($file) - strlen($file_ext));
-		$absolute_file = ROOTPATH . $file;
+		$absolute_file = ROOT_PATH . $file;
 		
 		// Get the last modified time and append it to the filename
 		$file_exists = ( $file && file_exists($absolute_file) && is_file($absolute_file) );
@@ -496,9 +496,9 @@ if ( ! function_exists('recurse_dir') )
 			
 			$data_piece = array(
 				'pathname' => $file_pathname,
-				'relative_absolute_pathname' => str_ireplace(ROOTPATH, ROOT, $file_pathname),
+				'relative_absolute_pathname' => str_ireplace(ROOT_PATH, ROOT, $file_pathname),
 				'path' => $file_path,
-				'relative_absolute_path' => str_ireplace(ROOTPATH, ROOT, $file_path),
+				'relative_absolute_path' => str_ireplace(ROOT_PATH, ROOT, $file_path),
 				'path_basename' => $file_path_basename,
 				'path_from_root' => $file_path_from_root,
 				'filename' => $filename,
