@@ -443,7 +443,7 @@ jQuery(document).ready(function ( $ )
 		// ----------------------------------------
 		
 		// Send request
-		//$.ajax($.extend({}, COMMON.common_ajax_options, {}));
+		//$.ajax($.extend({}, REDLOVE.common_ajax_options, {}));
 		$.ajax({
 			cache : false,
 			context : $form,

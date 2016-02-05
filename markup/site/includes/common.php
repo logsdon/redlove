@@ -56,8 +56,8 @@ if ( ! defined('ROOTPATH') )
 	*/
 	
 	// ROOTPATH - The server path to this file.
-	$num_dirs_from_root = 1;
-	$dirs_to_rootpath = str_repeat('../', $num_dirs_from_root);
+	$num_dirs_from_rootpath = 1;
+	$dirs_to_rootpath = str_repeat('../', $num_dirs_from_rootpath);
 	$dirs_to_rootpath = isset($dirs_to_rootpath[0]) ? '/' . $dirs_to_rootpath : '';
 	$realpath = realpath(dirname(__FILE__) . $dirs_to_rootpath);
 	$rootpath = str_replace('\\', '/', $realpath);// Swap directory separators to Unix style for consistency
@@ -161,7 +161,8 @@ if ( ! defined('ROOTPATH') )
 	}
 	define('THEME_URL', $theme_url);
 	
-	$redlove_path = realpath(ROOTPATH . str_repeat('../', 2));
+	$num_dirs_from_rootpath = 2;
+	$redlove_path = realpath(ROOTPATH . str_repeat('../', $num_dirs_from_rootpath));
 	$redlove_path = str_replace('\\', '/', $redlove_path);
 	$redlove_path = rtrim($redlove_path, '/') . '/';
 	define('REDLOVE_PATH', $redlove_path);
