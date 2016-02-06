@@ -249,7 +249,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 		/*
 		// CSRF check
 		$this->load->library('utility/csrf');
-		require_once(INCLUDESPATH . 'php/classes/Csrf.php');
+		require_once(INCLUDES_PATH . 'php/classes/Csrf.php');
 		$CSRF = new Csrf();
 		$CSRF->verify_session();
 		*/
@@ -312,7 +312,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 		// Get CSRF
 		elseif ( $action == 'get_csrf' )
 		{
-			require_once(INCLUDESPATH . 'php/classes/Csrf.php');
+			require_once(INCLUDES_PATH . 'php/classes/Csrf.php');
 			$CSRF = new Csrf();
 			
 			$return_data['code'] = 1;
@@ -359,7 +359,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 			}
 			
 			// CSRF check
-			require_once(INCLUDESPATH . 'php/classes/Csrf.php');
+			require_once(INCLUDES_PATH . 'php/classes/Csrf.php');
 			$CSRF = new Csrf();
 			
 			// Gather data
@@ -413,7 +413,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 			if ( $valid )
 			{
 				// Insert data
-				include_once(INCLUDESPATH . 'php/classes/Database_mysqli.php');
+				include_once(INCLUDES_PATH . 'php/classes/Database_mysqli.php');
 				$sql = "
 					INSERT INTO
 						entry

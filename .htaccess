@@ -1,5 +1,8 @@
 # If repo resources are used directly in your local web environment, this .htaccess will help route requests for things such as cache busting urls.
 
+# Initially deny access to all resources, later overriding with allow in specific directories
+Deny from all
+
 # ###########################################################
 # URL REWRITES
 # ###########################################################

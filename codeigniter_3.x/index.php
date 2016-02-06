@@ -229,63 +229,78 @@
 
 	define('VIEWPATH', $view_folder);
 
-	/* REDLOVE
-	|--------------------------------------------------------------------------
-	| DEFINE DOCUMENT ROOT
-	|--------------------------------------------------------------------------
-	|
-	| http://codeigniter.com/wiki/Dynamic_Base_Url/
-	| http://codeigniter.com/wiki/Automatic_configbase_url/
-	| ROOT_PATH	- The server path to this file.
-	| ROOT		- The relative web path to this file.
-	| REQUEST_URI - The relative server request URI.
-	| PAGE - Cleaned up REQUEST_URI.
-	|
-	*/
+// --------------------------------------------------------------------
+/* REDLOVE
+	Setup global paths
 	
-	// ROOT_PATH - The server path to this file.
-	$dirs_to_root_path = str_repeat('../', 0);
-	$dirs_to_root_path = isset($dirs_to_root_path[0]) ? '/' . $dirs_to_root_path : '';
+	http://codeigniter.com/wiki/Dynamic_Base_Url/
+	http://codeigniter.com/wiki/Automatic_configbase_url/
+*/
+if ( ! defined('ROOT_PATH') )
+{
+	// ROOT_PATH - The server path to this file
+	$num_dirs_from_root_path = 0;
+	$dirs_to_root_path = '/' . str_repeat('../', $num_dirs_from_root_path);
 	$realpath = realpath(dirname(__FILE__) . $dirs_to_root_path);
-	$root_path = str_replace('\\', '/', $realpath);// Swap directory separators to Unix style for consistency
-	$root_path = rtrim($root_path, '/') . '/';// Make sure the path has a trailing slash
-	define('ROOT_PATH', $root_path);
+	$realpath = str_replace('\\', '/', $realpath);// Swap directory separators to Unix style for consistency
+	$realpath = rtrim($realpath, '/') . '/';// Make sure the path has a trailing slashx
+	define('ROOT_PATH', $realpath);
 	
-	// ROOT - The relative web path to this file.
-	$root = '/';//Default
-	$document_root = ( ! empty($_SERVER['PHP_DOCUMENT_ROOT']) ) ? $_SERVER['PHP_DOCUMENT_ROOT'] : $_SERVER['DOCUMENT_ROOT'];
-	$document_root = realpath($document_root);
-	if ( $realpath != $document_root )
-	{
-		// Swap directory separators to Unix style for consistency
-		$root = str_replace('\\', '/', substr($root_path, strlen($document_root)));
-		$root = '/' . trim($root, '/') . '/';// Make sure the path has a trailing slash
-		$root = str_replace('//', '/', $root);
-	}
+	// DOCUMENT_ROOT - The server path to the site root
+	$document_root = ! empty($_SERVER['PHP_DOCUMENT_ROOT']) ? $_SERVER['PHP_DOCUMENT_ROOT'] : $_SERVER['DOCUMENT_ROOT'];
+	$realpath = realpath($document_root);
+	$realpath = str_replace('\\', '/', $realpath);
+	$realpath = rtrim($realpath, '/') . '/';
+	define('DOCUMENT_ROOT', $realpath);
+	
+	// ROOT - The relative web path to this file
+	$root = str_replace(DOCUMENT_ROOT, '', ROOT_PATH);
 	define('ROOT', $root);
 	
-	// Get the server request
-	$request = ( ! empty($_SERVER['REQUEST_URI']) ) ? $_SERVER['REQUEST_URI'] : '';// Apache
-	$request = ( ! $request && ! empty($_SERVER['PATH_INFO']) ) ? $_SERVER['PATH_INFO'] : $request;// IIS
-	// REQUEST_URI - The relative server request URI.
-	$request_uri = ( strpos($request, ROOT) === 0 ) ? substr($request, strlen(ROOT)) : $request;
+	// REQUEST - Get the server request
+	$request = ! empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';// Apache
+	$request = ( strlen($request) > 0 && ! empty($_SERVER['PATH_INFO']) ) ? $_SERVER['PATH_INFO'] : $request;// IIS
+	define('REQUEST', $request);
+	// REQUEST_URI - The relative server request URI
+	$request_uri = ( strlen(ROOT) > 0 && strpos(REQUEST, ROOT) === 1 ) ? substr(REQUEST, strlen(ROOT)) : REQUEST;
 	define('REQUEST_URI', $request_uri);
 	
-	// PAGE - Cleaned up REQUEST_URI.
-	//define('PAGE', trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/'));
-	$page = trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/');
-	$page_ext = strtolower( substr((string)strrchr($page, '.'), 1) );// Lowercase, get text after dot, get text dot and after
-	$page_filename = substr($page, 0, strlen($page) - strlen($page_ext));// Remove file extension
-	if ( $page_ext == 'php' )
+	// BASE_URL - The base url to the site
+	// Assuming a web request, let the base url set itself
+	$protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+	if ( ! empty($_SERVER['HTTP_X_FORWARDED_PROTO']) )
 	{
-		$page = substr($page_filename, 0, -1);
+		$protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'] . '://';
+	}
+	// Handle CloudFlare request
+	elseif ( ! empty($_SERVER['HTTP_CF_VISITOR']) )
+	{
+		$visitor = json_decode($_SERVER['HTTP_CF_VISITOR']);
+		$protocol = $visitor->scheme . '://';
+	}
+	$base_url = $protocol . $_SERVER['HTTP_HOST'] . '/' . ROOT;
+	define('BASE_URL', $base_url);
+	
+	// INCLUDES_PATH - The path to includes
+	define ('INCLUDES_PATH', APPPATH . 'views/_includes/');
+	define ('THEME_PATH', INCLUDES_PATH . 'theme/');
+	
+	// PAGE - The cleaned up REQUEST_URI
+	//define('PAGE', trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/'));
+	$page = ltrim(parse_url(REQUEST_URI, PHP_URL_PATH), '/');
+	$page .= ( substr(REQUEST_URI, -1) == '/' ) ? 'index' : '';
+	$page_ext = strtolower( substr((string)strrchr($page, '.'), 1) );// Lowercase, get text after dot, get text dot and after
+	$page = substr($page, 0, strlen($page) - strlen($page_ext));// Remove file extension
+	if ( strlen($page_ext) > 0 )
+	{
+		$page = substr($page, 0, -1);
 	}
 	define('PAGE', $page);
+	$page_filename = basename($page);// Remove file extension
+	define('PAGE_FILENAME', $page_filename);
+	define('PAGE_EXTENSION', $page_ext);
 	$PAGE_segments = explode('/', PAGE);
-
-	define ('INCLUDESPATH', APPPATH.'views/_includes/');
-	define ('THEMEPATH', INCLUDESPATH.'theme/');
-
+}
 
 /*
  *---------------------------------------------------------------
@@ -310,14 +325,15 @@
 // REDLOVE
 // Make the timezone consistent on the server and audience location
 // http://stackoverflow.com/questions/1646171/mysql-datetime-fields-and-daylight-savings-time-how-do-i-reference-the-extra
+$config['site']['timezone'] = ! empty($config['site']['timezone']) ? $config['site']['timezone'] : 'America/New_York';
+$timezone = $config['site']['timezone'];
 if ( 
 	function_exists('date_default_timezone_set') && 
-	function_exists('date_default_timezone_get') /*&& 
-	@date_default_timezone_get() != 'America/New_York' */
+	function_exists('date_default_timezone_get') && 
+	@date_default_timezone_get() != $timezone
 )
 {
-	//@date_default_timezone_set(@date_default_timezone_get());
-	@date_default_timezone_set('America/New_York');
+	@date_default_timezone_set( $timezone );
 }
 // --------------------------------------------------------------------
 

@@ -90,8 +90,8 @@ if ( ! defined('ROOT_PATH') )
 	
 	// VIEWPATH - The path to view files
 	define('VIEWPATH', ROOT_PATH);
-	// INCLUDESPATH - The path to includes
-	define('INCLUDESPATH', VIEWPATH . 'includes/');
+	// INCLUDES_PATH - The path to includes
+	define('INCLUDES_PATH', VIEWPATH . 'includes/');
 }
 // --------------------------------------------------------------------
 
@@ -104,7 +104,7 @@ if ( ! defined('ENVIRONMENT') )
 	// --------------------------------------------------------------------
 	// REDLOVE
 	// Autoload environment include if it exists
-	$file = INCLUDESPATH . 'config/environment.php';
+	$file = INCLUDES_PATH . 'config/environment.php';
 	if ( file_exists($file) )
 	{
 		include_once($file);
@@ -195,7 +195,7 @@ if ( ! defined('ENVIRONMENT') )
 // --------------------------------------------------------------------
 // REDLOVE
 // Autoload includes
-$file = INCLUDESPATH . 'config/autoload.php';
+$file = INCLUDES_PATH . 'config/autoload.php';
 if ( file_exists($file) )
 {
 	include_once($file);
@@ -225,7 +225,7 @@ if ( ! defined('THEMES_PATH') )
 	// THEMES_PATH - The path to themes
 	$config['site']['themes_path'] = ! empty($config['site']['themes_path']) ? $config['site']['themes_path'] : '';
 	$themes_path = $config['site']['themes_path'];
-	$themes_path = rtrim(INCLUDESPATH . $themes_path, '/');
+	$themes_path = rtrim(INCLUDES_PATH . $themes_path, '/');
 	$themes_path .= ( strlen($themes_path) > 0 ) ? '/' : '';
 	define('THEMES_PATH', $themes_path);
 	// THEMES_ROOT - The web root to themes
@@ -330,7 +330,7 @@ print_r(array(
 	'PAGE_EXTENSION' => PAGE_EXTENSION,
 	'BASE_URL' => BASE_URL,
 	'VIEWPATH' => VIEWPATH,
-	'INCLUDESPATH' => INCLUDESPATH,
+	'INCLUDES_PATH' => INCLUDES_PATH,
 	'THEME' => THEME,
 	'THEME_DIRECT' => THEME_DIRECT,
 	'THEMES_PATH' => THEMES_PATH,
