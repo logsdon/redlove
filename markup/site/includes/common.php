@@ -61,7 +61,8 @@ if ( ! defined('ROOT_PATH') )
 	define('DOCUMENT_ROOT', $realpath);
 	
 	// ROOT - The relative web path to this file
-	$root = str_replace(DOCUMENT_ROOT, '', ROOT_PATH);
+	$root = str_replace(DOCUMENT_ROOT, '/', ROOT_PATH);
+	$root = rtrim($root, '/') . '/';
 	define('ROOT', $root);
 	
 	// REQUEST - Get the server request
@@ -69,7 +70,7 @@ if ( ! defined('ROOT_PATH') )
 	$request = ( strlen($request) > 0 && ! empty($_SERVER['PATH_INFO']) ) ? $_SERVER['PATH_INFO'] : $request;// IIS
 	define('REQUEST', $request);
 	// REQUEST_URI - The relative server request URI
-	$request_uri = ( strlen(ROOT) > 0 && strpos(REQUEST, ROOT) === 1 ) ? substr(REQUEST, strlen(ROOT)) : REQUEST;
+	$request_uri = ( strlen(ROOT) > 0 && strpos(REQUEST, ROOT) === 0 ) ? substr(REQUEST, strlen(ROOT)) : REQUEST;
 	define('REQUEST_URI', $request_uri);
 	
 	// BASE_URL - The base url to the site
@@ -85,7 +86,7 @@ if ( ! defined('ROOT_PATH') )
 		$visitor = json_decode($_SERVER['HTTP_CF_VISITOR']);
 		$protocol = $visitor->scheme . '://';
 	}
-	$base_url = $protocol . $_SERVER['HTTP_HOST'] . '/' . ROOT;
+	$base_url = $protocol . $_SERVER['HTTP_HOST'] . ROOT;
 	define('BASE_URL', $base_url);
 	
 	// VIEWPATH - The path to view files
@@ -237,7 +238,7 @@ if ( ! defined('THEMES_PATH') )
 
 	// THEME_DIRECT - If directly browsing the include theme
 	// If directly browsing a theme via the themes directory, switch resources over to it
-	$is_directly_browsing_theme = ( strpos(REQUEST_URI, THEMES_ROOT) === 1 );
+	$is_directly_browsing_theme = ( strpos(REQUEST_URI, THEMES_ROOT) === 0 );
 	define('THEME_DIRECT', (int)$is_directly_browsing_theme);
 	// THEME - The theme
 	$config['site']['theme'] = ! empty($config['site']['theme']) ? $config['site']['theme'] : '';

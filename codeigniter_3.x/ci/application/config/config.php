@@ -38,7 +38,7 @@ elseif ( ! empty($_SERVER['HTTP_CF_VISITOR']) )
 	$visitor = json_decode($_SERVER['HTTP_CF_VISITOR']);
 	$protocol = $visitor->scheme . '://';
 }
-$config['base_url'] = $protocol . $_SERVER['HTTP_HOST'] . '/' . ROOT;
+$config['base_url'] = $protocol . $_SERVER['HTTP_HOST'] . ROOT;
 
 /*
 |--------------------------------------------------------------------------
