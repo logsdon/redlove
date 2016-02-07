@@ -631,6 +631,11 @@ input[type="submit"] {
 	padding-right: 1.5em;
 }
 
+/*::-webkit-input-placeholder { color:rgba(0,0,0,0.80);}
+::-moz-placeholder { color:rgba(0,0,0,0.80) ;}
+:-ms-input-placeholder { color:rgba(0,0,0,0.80) ;}
+input:-moz-placeholder { color:rgba(0,0,0,0.80) ;}*/
+
 /* 
 	Forms - Rows
 
@@ -1176,6 +1181,10 @@ select.error:focus {
 	margin-left: -1.0em;
 	margin-right: -1.0em;
 }
+.grid-flush > .column-row {
+	margin-left: -2.0em;
+	margin-right: -2.0em;
+}
 .grid-undo .column-row {
 	margin-left: 0.0em;
 	margin-right: 0.0em;
@@ -1198,12 +1207,10 @@ select.error:focus {
 }
 /* Prevent first/last column gutters */
 /* Prevent edge gutters on first columns, making the grid flush against the layout */
-.grid .column.alpha,
-.grid-flush > .column-row .column:first-child {
+.grid .column.alpha {
 	border-left: 0;
 }
-.grid .column.omega,
-.grid-flush > .column-row .column:last-child {
+.grid .column.omega {
 	border-right: 0;
 }
 
@@ -1219,9 +1226,9 @@ select.error:focus {
 /* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
 @media only screen and (max-width: 29.99em) {
 	/* Turn columns into rows */
-	.columns-table > .column:not(.column-unresponsive),
-	.columns-table .column-row > .column:not(.column-unresponsive),
-	.column:not(.column-unresponsive) {
+	.columns-table > .column:not(.column--no-break),
+	.columns-table .column-row > .column:not(.column--no-break),
+	.column:not(.column--no-break) {
 		/*border-left: 0;
 		border-right: 0;*/
 		display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
@@ -1230,6 +1237,33 @@ select.error:focus {
 		margin-right: 0;
 		vertical-align: bottom;
 		width: 100% !important;
+	}
+	
+	/* When columns pass breakpoint, set a margin beneath them */
+	.column--break-margin-b1 {
+		margin-bottom: 1.0em;
+	}
+	.column--break-margin-b2 {
+		margin-bottom: 2.0em;
+	}
+	.column--break-margin-b3 {
+		margin-bottom: 3.0em;
+	}
+	.column--break-margin-b4 {
+		margin-bottom: 4.0em;
+	}
+	
+	.columns--break-margin-b1 .column:not(:last-child) {
+		margin-bottom: 1.0em;
+	}
+	.columns--break-margin-b2 .column:not(:last-child) {
+		margin-bottom: 2.0em;
+	}
+	.columns--break-margin-b3 .column:not(:last-child) {
+		margin-bottom: 3.0em;
+	}
+	.columns--break-margin-b4 .column:not(:last-child) {
+		margin-bottom: 4.0em;
 	}
 }
 
@@ -4484,6 +4518,12 @@ Support for full multi-stop gradients with IE9 (using SVG). */
 }
 .text-italic {
 	font-style: italic !important;
+}
+.text-strike {
+	text-decoration: line-through !important;
+}
+.text-decoration-none {
+	text-decoration: none !important;
 }
 
 .text-center {
