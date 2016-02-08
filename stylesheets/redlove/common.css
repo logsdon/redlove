@@ -1181,6 +1181,16 @@ select.error:focus {
 	margin-left: -1.0em;
 	margin-right: -1.0em;
 }
+
+.grid.columns-table {
+	border-left: 0;
+	border-right: 0;
+}
+.grid.columns-table .column-row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
 .grid-flush > .column-row {
 	margin-left: -2.0em;
 	margin-right: -2.0em;
@@ -1239,7 +1249,7 @@ select.error:focus {
 		width: 100% !important;
 	}
 	
-	/* When columns pass breakpoint, set a margin beneath them */
+	/* Modifiers: When columns pass breakpoint, set a margin beneath them */
 	.column--break-margin-b1 {
 		margin-bottom: 1.0em;
 	}
