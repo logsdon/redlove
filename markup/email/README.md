@@ -1,6 +1,6 @@
 ## Email Markup Resources
 
-* http://htmlemailboilerplate.com/
+* http://htmlemailboilerplate.com/ (https://github.com/seanpowell/Email-Boilerplate)
 * CampaignMonitor
 	* http://www.campaignmonitor.com/resources/will-it-work/
 	* http://www.campaignmonitor.com/guides/

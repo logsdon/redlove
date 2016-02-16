@@ -1579,6 +1579,17 @@ fieldset[disabled] .button {
 	text-transform: uppercase;
 }
 
+.button-inverse {
+	background-color: #555;
+	border-color: #555;
+	color: #fff;
+}
+.button-inverse:hover,
+.button-inverse:focus {
+	background-color: #666;
+	color: #fff;
+}
+
 .button-default {
 	background-color: #fff;
 	border-color: #ccc;

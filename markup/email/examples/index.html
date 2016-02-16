@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Your Message Subject or Title</title>
+	<style type="text/css">
+		/* Based on The MailChimp Reset INLINE: Yes. */
+		/* Client-specific Styles */
+		#outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
+		body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;} 
+		/* Prevent Webkit and Windows Mobile platforms from changing default font sizes.*/ 
+		.ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */  
+		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+		/* Forces Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */ 
+		#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+		/* End reset */
+		/* Some sensible defaults for images
+		Bring inline: Yes. */
+		img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;} 
+		a img {border:none;} 
+		.image_fix {display:block;}
+		/* Yahoo paragraph fix
+		Bring inline: Yes. */
+		p {margin: 1em 0;}
+		/* Hotmail header color reset
+		Bring inline: Yes. */
+		h1, h2, h3, h4, h5, h6 {color: black !important;}
+		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color: blue !important;}
+		h1 a:active, h2 a:active,  h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+		color: red !important; /* Preferably not the same color as the normal header link color.  There is limited support for psuedo classes in email clients, this was added just for good measure. */
+		}
+		h1 a:visited, h2 a:visited,  h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+		color: purple !important; /* Preferably not the same color as the normal header link color. There is limited support for psuedo classes in email clients, this was added just for good measure. */
+		}
+		/* Outlook 07, 10 Padding issue fix
+		Bring inline: No.*/
+		table td {border-collapse: collapse;}
+		/* Remove spacing around Outlook 07, 10 tables
+		Bring inline: Yes */
+		table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+		/* Styling your links has become much simpler with the new Yahoo.  In fact, it falls in line with the main credo of styling in email and make sure to bring your styles inline.  Your link colors will be uniform across clients when brought inline.
+		Bring inline: Yes. */
+		a {color: orange;}
+		/***************************************************
+		****************************************************
+		MOBILE TARGETING
+		****************************************************
+		***************************************************/
+		@media only screen and (max-device-width: 480px) {
+			/* Part one of controlling phone number linking for mobile. */
+			a[href^="tel"], a[href^="sms"] {
+						text-decoration: none;
+						color: blue; /* or whatever your want */
+						pointer-events: none;
+						cursor: default;
+					}
+			.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+						text-decoration: default;
+						color: orange !important;
+						pointer-events: auto;
+						cursor: default;
+					}
+		}
+		/* More Specific Targeting */
+		@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+		/* You guessed it, ipad (tablets, smaller screens, etc) */
+			/* repeating for the ipad */
+			a[href^="tel"], a[href^="sms"] {
+						text-decoration: none;
+						color: blue; /* or whatever your want */
+						pointer-events: none;
+						cursor: default;
+					}
+			.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+						text-decoration: default;
+						color: orange !important;
+						pointer-events: auto;
+						cursor: default;
+					}
+		}
+		@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+		/* Put your iPhone 4g styles in here */ 
+		}
+		/* Android targeting */
+		@media only screen and (-webkit-device-pixel-ratio:.75){
+		/* Put CSS for low density (ldpi) Android layouts in here */
+		}
+		@media only screen and (-webkit-device-pixel-ratio:1){
+		/* Put CSS for medium density (mdpi) Android layouts in here */
+		}
+		@media only screen and (-webkit-device-pixel-ratio:1.5){
+		/* Put CSS for high density (hdpi) Android layouts in here */
+		}
+		/* end Android targeting */
+	</style>
+	
+	<!-- Targeting Windows Mobile -->
+	<!--[if IEMobile 7]>
+	<style type="text/css">
+
+	</style>
+	<![endif]-->
+
+	<!-- ***********************************************
+	****************************************************
+	END MOBILE TARGETING
+	****************************************************
+	************************************************ -->
+
+	<!--[if gte mso 9]>
+	<style>
+		/* Target Outlook 2007 and 2010 */
+	</style>
+	<![endif]-->
+	
+	<style type="text/css">
+		/* Style utilities */
+		
+		a {
+			color: blue;
+		}
+		
+		.common-font {
+			font-family: Arial, Helvetica, sans-serif;
+			line-height: 1.4;
+		}
+		.wrapper {
+			max-width: 600px;
+		}
+		.spacer {
+			font-size: 1px;
+			line-height: 1.0;
+		}
+		.white-text {
+			color: #FFFFFF;
+		}
+		.no-decoration {
+			text-decoration: none;
+		}
+		
+		#background-table {
+			background-color: #ffffff;
+			font-size: 14px;
+			padding: 0;
+			width: 100%;
+		}
+		
+		.row {
+			display: block;
+			padding-bottom: 20px;
+		}
+		.row-padding {
+			padding: 20px 0;
+		}
+		
+		@media only screen and (max-width: 479px) {
+			
+			#background-table {
+				font-size: 12px;
+			}
+			
+			.wrapper {
+				min-width: 320px !important;
+			}
+			.flexible {
+				width: 100% !important;
+			}
+			.flex {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				
+				display: block !important;
+				height: auto !important;
+				width: 100% !important;
+			}
+			.flex-table > tbody > tr > td {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				
+				display: block !important;
+				height: auto !important;
+				width: 100% !important;
+			}
+			.flex-inline-block-table > tbody > tr > td {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				
+				display: inline-block !important;
+				height: auto !important;
+			}
+			.flex-margin-center {
+				margin: 0 auto;
+			}
+			.flex-row {
+				margin-bottom: 15px;
+			}
+			.flex-center,
+			.text-center {
+				text-align:center !important;
+			}
+			
+			.crop-center-holder {
+				overflow: hidden;
+				position: relative;
+				width: 100%;
+			}
+			.crop-center {
+				left: 50%;
+				position: absolute;
+				top: 0;
+			}
+			
+			.img-fluid {
+				height: auto !important;
+				width: 100% !important;
+			}
+			.img-scale {
+				height: auto !important;
+				max-width: 100% !important;
+			}
+			.img-fluid-width {
+				width: 100% !important;
+			}
+			.img-scale-width {
+				max-width: 100% !important;
+			}
+			
+			.hide,
+			.fix-gmail {
+				display: none !important;
+				font-size: 0 !important;
+				height: 0 !important;
+				line-height: 0 !important;
+				padding: 0 !important;
+				width: 0 !important;
+			}
+			
+			.break {
+				clear: both;
+				display: block;
+				width: 100%;
+			}
+		}
+	</style>
+	
+	<!-- Custom fonts for supporting browsers -->
+	<!--<link type="text/css" rel="stylesheet" href="resources/fonts.css">-->
+	
+	<style type="text/css">
+		/* Custom styling */
+		
+		a,
+		.link {
+			color: #00a9e0;
+			text-decoration: none;
+		}
+		
+		.welcome-table {
+			font-size: 12px;
+		}
+		
+		.header-links-table,
+		.header-links-table td {
+			background-color: #eaeaea;
+		}
+		
+		.blue-inverse-link {
+			color: #ffffff;
+			font-size: 12px;
+		}
+		.blue-inverse-cell {
+			background-color: #12a3d8;
+			padding: 12px 0;
+			text-align: center;
+		}
+		
+		.footer-table {
+			font-size: 11px;
+		}
+		.footer-table,
+		.footer-table a,
+		.footer-table .link {
+			color: #5e5d5d;
+		}
+		.footer-email-links,
+		.footer-email-links a,
+		.footer-email-links .link {
+			color: #222222;
+		}
+		
+		
+		.font-family--trebuchet {
+			font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+		}
+		
+	</style>
+	
+</head>
+<body>
+<!-- Wrapper/Container Table: Use a wrapper table to control the width and the background color consistently of your email. Use this approach instead of setting attributes on the body tag. -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="background-table" class="common-font">
+	<tbody>
+		<tr>
+			<td align="center" valign="top">
+			
+			
+				<!-- Container table to keep content within 600px -->
+				<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" class="wrapper flexible">
+					<tbody>
+						<tr>
+							<td>
+							
+							
+								<h1>Basic Content Examples</h1>
+								
+								<p>Tables are the most common way to format your email consistently. Set your table widths inside cells and in most cases reset cellpadding, cellspacing, and border to zero. Use nested tables as a way to space effectively in your message.</p>
+								<!-- Tables are the most common way to format your email consistently. Set your table widths inside cells and in most cases reset cellpadding, cellspacing, and border to zero. Use nested tables as a way to space effectively in your message. -->
+								<table align="center" border="0" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td valign="top" width="200"></td>
+											<td valign="top" width="200"></td>
+											<td valign="top" width="200"></td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- End example table -->
+								
+								<p>Yahoo Link color fix updated: Simply bring your link styling inline.</p>
+								<!-- Yahoo Link color fix updated: Simply bring your link styling inline. -->
+								<a href="http://htmlemailboilerplate.com" target ="_blank" title="Styling Links" style="color: orange; text-decoration: none;">Coloring Links appropriately</a>
+								
+								<p>Gmail/Hotmail image display fix: Gmail and Hotmail unwantedly adds in an extra space below images when using non IE browsers.  This can be especially painful when you putting images on top of each other or putting back together an image you spliced for formatting reasons.  Either way, you can add the 'image_fix' class to remove that space below the image.  Make sure to set alignment (don't use float) on your images if you are placing them inline with text.</p>
+								<!-- Gmail/Hotmail image display fix: Gmail and Hotmail unwantedly adds in an extra space below images when using non IE browsers.  This can be especially painful when you putting images on top of each other or putting back together an image you spliced for formatting reasons.  Either way, you can add the 'image_fix' class to remove that space below the image.  Make sure to set alignment (don't use float) on your images if you are placing them inline with text. -->
+								<img class="image_fix" src="full path to image" alt="Your alt text" title="Your title text" width="x" height="x" />
+								
+								<p>Working with telephone numbers (including sms prompts).  Use the "mobile_link" class with a span tag to control what number links and what doesn't in mobile clients.</p>
+								<!-- Step 2: Working with telephone numbers (including sms prompts).  Use the "mobile_link" class with a span tag to control what number links and what doesn't in mobile clients. -->
+								<span class="mobile_link">123-456-7890</span>
+								
+								
+								<h1>Content Examples</h1>
+
+								<h2>Aligning content across columns</h2>
+								
+								<table align="left" border="0" cellpadding="20" cellspacing="0" width="100%" class="welcome-table common-font">
+									<tbody>
+										<tr>
+											<td align="left">
+												Welcome <a href="" target="_blank" class="link">[first_name,fallback=friend</a>!
+											</td>
+											<td align="right" valign="bottom" nowrap="nowrap">
+												<webversion class="link">View online</webversion>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								<h2>Spacers and Dividers</h2>
+								
+								<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
+								<div class="spacer"><img src="images/divider-8a8787.gif" height="1" width="560" class="image_fix img-scale-width" style="width: 560px;" /></div>
+								<div class="spacer hide"><img src="images/pixel/transparent.gif" height="5" width="5" alt="" class="image_fix" /></div>
+								
+								<h2>Header links and flexing tables at breakpoints</h2>
+								
+								<h3>Inline Block</h3>
+								
+								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="flex-inline-block-table common-font">
+									<tbody>
+										<tr>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/logo.jpg" alt="Company, LLC" class="image_fix" /></a>
+											</td>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/link-1.jpg" alt="Link 1" class="image_fix" /></a>
+											</td>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/link-2.jpg" alt="Link 2" class="image_fix" /></a>
+											</td>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/link-3.jpg" alt="Link 3" class="image_fix" /></a>
+											</td>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/link-4.jpg" alt="Link 4" class="image_fix" /></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								<h3>Block</h3>
+								
+								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="flex-table common-font">
+									<tbody>
+										<tr>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/logo.jpg" alt="Company, LLC" class="image_fix" /></a>
+											</td>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/link-1.jpg" alt="Link 1" class="image_fix" /></a>
+											</td>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/link-2.jpg" alt="Link 2" class="image_fix" /></a>
+											</td>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/link-3.jpg" alt="Link 3" class="image_fix" /></a>
+											</td>
+											<td align="center" valign="middle" nowrap="nowrap">
+												<a href="" target="_blank" class="link"><img src="images/header/link-4.jpg" alt="Link 4" class="image_fix" /></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								<h2>Fluid and scale images</h2>
+								
+								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="common-font">
+									<tbody>
+										<tr>
+											<td align="left" valign="top">
+												<img src="images/my-image.jpg" border="0" alt="[My Image]" class="image_fix img-fluid" />
+												<p>Here is a fluid image.</p>
+												<img src="images/my-image.jpg" border="0" alt="[My Image]" class="image_fix img-scale" />
+												<p>Here is a scale image.</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								<h2>Table cells for consistent padding</h2>
+								
+								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="common-font">
+									<tbody>
+										<tr>
+											<td align="center" valign="middle" class="blue-inverse-cell">
+												<a href="" target="_blank" class="blue-inverse-link white-text no-decoration">My Link</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								
+								<h1>Content Containers</h1>
+								
+								<h2>Table cellpadding</h1>
+								
+								<table align="left" border="0" cellpadding="20" cellspacing="0" width="100%" bgcolor="#343434" class="common-font">
+									<tbody>
+										<tr>
+											<td align="left" valign="middle" class="white-text">
+												
+												A container with table cellpadding around all sides.
+												
+												<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="common-font">
+													<tbody>
+														<tr>
+															<td>
+																Welcome [first_name,fallback=friend], thank you for subscribing. <a href="" target="_blank">Visit us</a> again soon.
+															</td>
+															<td valign="bottom" nowrap="nowrap">
+																<webversion class="">View online</webversion>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								<h2>Table cells for padding</h2>
+								
+								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="common-font">
+									<tbody>
+										<tr>
+											<td valign="top">
+												<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
+											</td>
+											<td valign="top">
+												
+												Content with cells on the sides for padding.
+												
+											</td>
+											<td valign="top">
+												<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
+											</td>
+										</tr>
+										<tr>
+											<td valign="top" colspan="3">
+												<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+								
+								<h1>Footer Tables</h1>
+								
+								<h2>Footer Table 1</h2>
+								
+								<table width="100%" cellpadding="0" cellspacing="0" class="common-font flex-table footer-table">
+									<tbody>
+										<tr>
+											<td align="center" valign="middle" class="row">
+												
+												This email and all of its contents are &copy;2016 Company, LLC.<br />
+												All rights reserved. <a href="" target="_blank">Privacy Policy</a><br />
+												<br />
+												123 Business Avenue, City, State 90210
+											</td>
+										</tr>
+										<tr>
+											<td align="center" valign="middle">
+												
+												<table align="center" border="0" cellpadding="0" cellspacing="0" class="common-font">
+													<tbody>
+														<tr>
+															<td>
+																<a href="https://www.facebook.com/" target="_blank" class="link"><img src="images/social/facebook.png" border="0" alt="Facebook" editable="true" /></a>
+															</td>
+															<td width="4"></td>
+															<td>
+																<a href="https://twitter.com/" target="_blank" class="link"><img src="images/social/twitter.png" border="0" alt="Twitter" editable="true" /></a>
+															</td>
+															<td width="4"></td>
+															<td>
+																<a href="https://www.pinterest.com/" target="_blank" class="link"><img src="images/social/pinterest.png" border="0" alt="Pinterest" editable="true" /></a>
+															</td>
+															<td width="4"></td>
+															<td>
+																<a href="https://www.youtube.com/" target="_blank" class="link"><img src="images/social/youtube.png" border="0" alt="YouTube" editable="true" /></a>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												
+											</td>
+										</tr>
+										<tr>
+											<td align="left">
+												<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
+											</td>
+										</tr>
+										<tr>
+											<td align="center" valign="middle" class="footer-email-links">
+												<webversion class="link">Trouble reading this email?</webversion>
+												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
+												<span>This email was sent to: <span class="link">[email]</a></span>
+												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
+												<unsubscribe class="link">Unsubscribe</unsubscribe>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								
+								<h2>Footer Table 2</h2>
+								
+								<table width="100%" cellpadding="0" cellspacing="0" class="common-font flex-table footer-table">
+									<tbody>
+										<tr>
+											<td align="left" valign="middle" class="flex-center flex-row">
+												&copy;2016 Company, LLC. All rights reserved.<br />
+												123 My Street, My City, State 90210
+											</td>
+											<td align="right" valign="middle" class="flex-center">
+												<table cellpadding="0" cellspacing="0" class="common-font flex-margin-center">
+													<tbody>
+														<tr>
+															<td>
+																<a href="https://www.facebook.com/" target="_blank" class="link"><img src="images/social/facebook.png" border="0" alt="Facebook" editable="true" /></a>
+															</td>
+															<td width="4"></td>
+															<td>
+																<a href="https://twitter.com/" target="_blank" class="link"><img src="images/social/twitter.png" border="0" alt="Twitter" editable="true" /></a>
+															</td>
+															<td width="4"></td>
+															<td>
+																<a href="https://www.pinterest.com/" target="_blank" class="link"><img src="images/social/pinterest.png" border="0" alt="Pinterest" editable="true" /></a>
+															</td>
+															<td width="4"></td>
+															<td>
+																<a href="https://www.youtube.com/" target="_blank" class="link"><img src="images/social/youtube.png" border="0" alt="YouTube" editable="true" /></a>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td align="center" valign="middle" colspan="2" class="footer-email-links row-padding">
+												<webversion class="link">Trouble reading this email?</webversion>
+												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
+												<span>This email was sent to: <span class="link">[email]</a></span>
+												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
+												<unsubscribe class="link">Unsubscribe</unsubscribe>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							
+							
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			
+			
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!-- End of wrapper table -->
+</body>
+</html>
