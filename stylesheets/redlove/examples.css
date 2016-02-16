@@ -1483,3 +1483,83 @@ pre.line-counter span:before {
 	top: 12px;
 	width: 50px;
 }
+
+/* -------------------------------------------------------
+	Figures
+	
+	<div class="figure-container">
+		<figure>
+			<div>
+				<img src="images/figure-1.jpg" title="Figure 1" alt="Figure 1">
+			</div>
+			<figcaption>Fig. 1 - My caption</figcaption>
+		</figure>
+	</div>
+------------------------------------------------------- */
+
+.figure-container {
+	float: right;
+}
+.figure-container:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+.figure-container figure {
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	clear: both;
+	display: inline-block;
+	float: left;
+	margin: 0 0 20px;
+	vertical-align: top;
+}
+.figure-container figure > div {
+	background-color: #ffffff;
+	border: 1px solid #c1c1c1;
+	
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	-webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+	
+	display: inline-block;
+	line-height: 1;
+	padding: 4px;
+	vertical-align: top;
+}
+.figure-container figure img {
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.figure-container figure figcaption {
+	background-color: #eeeeee;
+	border: 1px solid #c1c1c1;
+	border-top: 0;
+	
+	-webkit-bottom-right-border-radius: 5px;
+	-webkit-bottom-left-border-radius: 5px;
+	-khtml-bottom-right-border-radius: 5px;
+	-khtml-bottom-left-border-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	
+	color: #9b9b9b;
+	font-weight: 700;
+	margin-top: -5px;
+	padding: 13px 0 8px;
+	text-align: center;
+}
+

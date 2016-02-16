@@ -33,7 +33,6 @@
 // Global common data object
 window.REDLOVE = window.REDLOVE || {fn : {}};
 $.extend(window.REDLOVE, {
-	debug : false,
 	form_data : {
 		<?php
 		if ( isset($this) && property_exists($this, 'csrf') )
@@ -42,15 +41,34 @@ $.extend(window.REDLOVE, {
 			'<?php echo $this->csrf->get_token_name(); ?>' : '<?php echo $this->csrf->get_hash(); ?>',
 		<?php
 		}
+		elseif ( class_exists('Csrf') )
+		{
+			$CSRF = new Csrf();
+		?>
+			'<?php echo $CSRF->get_token_name(); ?>' : '<?php echo $CSRF->get_hash(); ?>',
+		<?php
+		}
 		?>
 		ajax : 1
 	},
 	base_url : '<?php echo function_exists('base_url') ? base_url() : ''; ?>',
+	// or
+	base_url : '<?php echo function_exists('theme_nav_url') ? theme_nav_url() : ''; ?>',
 	site_theme : '<?php echo isset($this->site_theme) ? $this->site_theme : ''; ?>',
 	site_theme_path : '<?php echo isset($this->site_theme_path) ? $this->site_theme_path : ''; ?>',
 	site_theme_url : '<?php echo isset($this->site_theme_url) ? $this->site_theme_url : ''; ?>',
 	page_start_time : <?php echo time(); ?>,
 	server_timezone_offset : <?php echo date('Z'); ?>,
+	'' : ''// Empty so each real property set above has a comma after it
+});
+//]]></script>
+<script style="text/javascript" src="javascript/site.js"></script>
+*/
+
+window.REDLOVE = window.REDLOVE || {fn : {}};
+
+$.extend(window.REDLOVE, {
+	base_url : '',
 	client_timezone_offset : - new Date().getTimezoneOffset() * 60,
 	common_ajax_options : {
 		cache : false,
@@ -61,13 +79,13 @@ $.extend(window.REDLOVE, {
 		beforeSend : REDLOVE.fn.ajax_beforesend_handler,
 		complete : REDLOVE.fn.ajax_complete_handler
 	},
+	debug : false,
+	form_data : {},
+	html_newline : '<br>',
+	newline : "\n",
 	'' : ''// Empty so each real property set above has a comma after it
 });
-//]]></script>
-<script style="text/javascript" src="javascript/site.js"></script>
-*/
 
-window.REDLOVE = window.REDLOVE || {fn : {}};
 $.extend(window.REDLOVE.fn, {
 	
 	// --------------------------------------------------------------------

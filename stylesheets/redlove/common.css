@@ -1056,7 +1056,7 @@ input:-moz-placeholder { color:rgba(0,0,0,0.80) ;}*/
 	AJAX loading
 ---------------------------------------- */
 .ajax-loader {
-	background: transparent url('../images/ajax-loader.gif') scroll no-repeat 0 0;
+	background: transparent url('images/icons/ajax-loader.gif') scroll no-repeat 0 0;
 	display: inline-block;
 	margin-left: 10px;
 	width: 16px;
@@ -1506,6 +1506,9 @@ fieldset[disabled] .button {
 	pointer-events: none;
 }
 
+/* 
+	Pill Button
+---------------------------------------- */
 .button-pill {
 	-webkit-border-radius: 1.5em;
 	-khtml-border-radius: 1.5em;
@@ -1513,6 +1516,9 @@ fieldset[disabled] .button {
 	border-radius: 1.5em;
 }
 
+/* 
+	Button Group
+---------------------------------------- */
 .button-group .button {
 	-webkit-border-radius: 0px;
 	-khtml-border-radius: 0px;
@@ -1561,6 +1567,9 @@ fieldset[disabled] .button {
 	border-top-right-radius: 1.5em;
 }
 
+/* 
+	Button Sizes
+---------------------------------------- */
 .button-xl {
 	font-size: 1.8em;
 	text-transform: uppercase;
@@ -1579,6 +1588,9 @@ fieldset[disabled] .button {
 	text-transform: uppercase;
 }
 
+/* 
+	Inverse Buttons
+---------------------------------------- */
 .button-inverse {
 	background-color: #555;
 	border-color: #555;
@@ -1590,6 +1602,9 @@ fieldset[disabled] .button {
 	color: #fff;
 }
 
+/* 
+	Button Styles
+---------------------------------------- */
 .button-default {
 	background-color: #fff;
 	border-color: #ccc;
@@ -1710,6 +1725,9 @@ fieldset[disabled] .button-message {
 	border-color: #357ebd;
 }
 
+/* 
+	Turn button back into a link
+---------------------------------------- */
 .button-link {
 }
 .button-link:hover,
@@ -1722,6 +1740,114 @@ fieldset[disabled] .button-message {
 .button-link[disabled],
 fieldset[disabled] .button-link {
 	text-decoration: none;
+}
+
+/* 
+	Options Button
+	
+	<div class="options-button options-button--on">
+		<span class="button-filter">Filter is on</span>
+		<a href="?filter=off"></a>
+	</div>
+	
+	<div class="options-button button-filter--off">
+		<span class="button-filter">Filter is off</span>
+	</div>
+---------------------------------------- */
+.options-button {
+	background-color: rgb(160, 160, 160);
+	
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	
+	color: #ffffff;
+	display: inline-block;
+	margin-right: 2.0em;
+	
+	-webkit-transition: all 0.4s ease-in-out 0.0s;
+	-moz-transition: all 0.4s ease-in-out 0.0s;
+	-ms-transition: all 0.4s ease-in-out 0.0s;
+	-o-transition: all 0.4s ease-in-out 0.0s;
+	transition: all 0.4s ease-in-out 0.0s;
+	
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.options-button.options-button--on:hover {
+	background-color: rgb(169, 68, 66);
+}
+
+.options-button span {
+	display: table-cell;
+	padding: 0.5em 1.0em;
+}
+.options-button span:last-of-type {
+	padding-right: 0;
+}
+.options-button span:first-child {
+	-webkit-bottom-left-border-radius: 4px;
+	-webkit-top-left-border-radius: 4px;
+	-khtml-bottom-left-border-radius: 4px;
+	-khtml-top-left-border-radius: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-topleft: 4px;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+.options-button span:last-child {
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	
+	padding: 0.5em 1.0em;
+}
+
+.options-button a {
+	color: inherit;
+	display: table-cell;
+	line-height: 1;
+	outline: 0 none;
+	padding: 0.5em;
+	text-decoration: none;
+	vertical-align: middle;
+}
+.options-button a:last-of-type {
+	-webkit-bottom-right-border-radius: 4px;
+	-webkit-top-right-border-radius: 4px;
+	-khtml-bottom-right-border-radius: 4px;
+	-khtml-top-right-border-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-topright: 4px;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.options-button a:after {
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	
+	content: "\f00d";
+	display: inline-block;
+	font-family: FontAwesome;
+	font-size: 0.8em;
+	height: 1.0em;
+	padding: 0.3em;
+	text-align: center;
+	text-indent: -0.05em;
+	vertical-align: middle;
+	width: 1.0em;
+}
+
+.options-button--on {
+	background-color: rgb(122, 148, 96);
+}
+.options-button--on a:after {
+	background-color: rgba(255, 255, 255, 0.4);
+	content: "\f00d";
 }
 
 /* ------------------------------------------------------------
@@ -2256,7 +2382,7 @@ body {
 }
 .mobile-menu ul:after {
 	clear: both;
-s	content: "";
+	content: "";
 	display: table;
 }
 	/* Restful state */
@@ -2264,11 +2390,6 @@ s	content: "";
 		display: block;
 		padding: 0.5em;
 		padding-left: 1.0em;
-		text-decoration: none;
-	}
-	.mobile-menu a.active,
-	.mobile-menu a:hover {
-		text-decoration: underline;
 	}
 
 .mobile-menu li ul {
@@ -2294,15 +2415,13 @@ s	content: "";
 .mobile-menu li li {
 	background-color: rgba(255, 255, 255, 0.2);
 }
+
 .mobile-menu a {
 	font-size: 1.2em;
+	text-decoration: none;
 }
-.mobile-menu .active > a {
-	font-weight: 700;
+.mobile-menu a:hover {
 	text-decoration: underline;
-}
-.mobile-menu > ul > li > a {
-	text-transform: uppercase;
 }
 
 /* 
@@ -2792,7 +2911,7 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 .img-png {/* * html .png { */
 	behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none",
 	this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
-	this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
+	this.src = "images/pixel/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
 	this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')",
 	this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
 }

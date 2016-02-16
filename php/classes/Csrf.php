@@ -74,7 +74,7 @@ class Csrf
 	{
 		// Set default values for missing keys
 		$default_params = array(
-			'auto_verify' => true,
+			'auto_verify' => false,
 		);
 		$params = array_merge($default_params, $params);
 		//extract($params);
@@ -108,7 +108,7 @@ class Csrf
 		}
 		else
 		{
-			// Start the standalone PHP session
+			// Start the native PHP session
 			if ( ! function_exists('get_instance') && ! session_id() )
 			{
 				session_start();
@@ -287,7 +287,7 @@ class Csrf
 		}
 		
 		// If the token was not submitted, stop
-		if ( empty($_POST[$this->_token_name]) )
+		if ( ! isset($_POST[$this->_token_name]) )
 		{
 			return $this->show_error($show_error);
 		}

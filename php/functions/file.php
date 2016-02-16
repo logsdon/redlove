@@ -52,23 +52,6 @@ if ( ! function_exists('get_cache_busting_filename') )
 
 // --------------------------------------------------------------------
 
-if ( ! function_exists('cb_url') )
-{
-	/**
-	* Get cache busting url
-	* 
-	* @param string $file
-	* @param bool $bypass (optional)
-	* @return string Url with cache busting versioning applied
-	*/
-	function cb_url( $file, $bypass = false )
-	{
-		return base_url() . ltrim(get_cache_busting_filename($file, $bypass), '/');
-	}
-}
-
-// --------------------------------------------------------------------
-
 if ( ! function_exists('check_file_cache') )
 {
 	/**

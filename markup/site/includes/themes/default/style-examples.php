@@ -5,32 +5,32 @@ if ( ! defined('ENVIRONMENT') )
 	require_once(str_repeat('../', 3) . 'includes/common.php');
 }
 ?><!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="no-js ie lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js ie lt-ie10 ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 10)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7 ]><html class="loading no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="loading no-js ie lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="loading no-js ie lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="loading no-js ie lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--><html class="loading no-js" lang="en"> <!--<![endif]-->
 <head>
 
 	<?php
 	// Head common tags and resources
-	include(THEME_PATH . 'common/head.php');
+	include(THEME_PATH . 'includes/common/head.php');
 	?>
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/examples.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('stylesheets/redlove/examples.css'); ?>">
 	
 </head>
 <body class="mobile-menu-liner">
 <?php
 // Body Prepend
-include(THEME_PATH . 'common/body.prepend.php');
+include(THEME_PATH . 'includes/common/body.prepend.php');
 ?>
 
 <div class="body-liner">
 
 <?php
 // Header
-include(THEME_PATH . 'common/header.php');
+include(THEME_PATH . 'includes/common/header.php');
 ?>
 
 <div class="band-wrap">
@@ -98,7 +98,7 @@ output_code($code);
 $code = <<< CODE
 <div class="card">
 	<h5>Hover over me&hellip;</h5>
-	<img data-src="<?php echo base_url(); ?>javascript/holder.js/100x100/auto" alt="" title="" class="img img-scale img-row">
+	<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100x100/auto" alt="" title="" class="img img-scale img-row">
 	<p>&hellip; and hidden content will appear</p>
 	<div class="card-hover-content">
 		<div class="card-table">
@@ -119,7 +119,7 @@ $code = <<< CODE
 
 <div class="card">
 	<h5>Hover over me&hellip;</h5>
-	<img data-src="<?php echo base_url(); ?>javascript/holder.js/100x100/auto" alt="" title="" class="img img-scale img-row">
+	<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100x100/auto" alt="" title="" class="img img-scale img-row">
 	<p>&hellip; and hidden content will appear</p>
 	<div class="card-hover-content">
 		<div class="position-center">
@@ -1370,7 +1370,7 @@ output_code($code);
 
 <h3>Toggle Value</h3>
 
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_toggle_value.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_toggle_value.js'); ?>"></script>
 <script type="text/javascript">//<!--
 jQuery(document).ready(function($){
 
@@ -1439,7 +1439,7 @@ output_code($code, false);
 
 <h3>Validation</h3>
 
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_validate.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_validate.js'); ?>"></script>
 <script type="text/javascript">//<!--
 jQuery(document).ready(function($){
 
@@ -1478,8 +1478,8 @@ CODE;
 output_code($code, false);
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_modal.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_modal.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_modal.css'); ?>">
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_modal.js'); ?>"></script>
 <script type="text/javascript">
 
 jQuery(document).ready(function($)
@@ -1503,7 +1503,7 @@ $code = <<< CODE
 CODE;
 output_code($code, false);
 ?>
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_equal.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_equal.js'); ?>"></script>
 
 <h3>RedLove Preload Images</h3>
 
@@ -1519,7 +1519,7 @@ output_code($code, false);
 	<img src="<?php echo base_url(); ?>images/test/medium-0.jpg" style="width: 50px; height: auto;">
 </div>
 
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_preload_images.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_preload_images.js'); ?>"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($)
 {
@@ -1548,8 +1548,8 @@ jQuery(document).ready(function($)
 
 <h3>Growl messages</h3>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_growl.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_growl.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_growl.css'); ?>">
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_growl.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -1561,8 +1561,8 @@ jQuery(document).ready(function($)
 <h3>Return to Top</h3>
 <p>Check the bottom right of the viewport when scrolling down.</p>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_return_to_top.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_return_to_top.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_return_to_top.css'); ?>">
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_return_to_top.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -1585,7 +1585,7 @@ jQuery(document).ready(function($)
 		top: auto;
 	}
 </style>
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_throttle.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_throttle.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -1664,8 +1664,8 @@ jQuery(document).ready(function($)
 	<option value="option-3">Option 3</option>
 </select>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_form_replacement.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_form_replacement.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_form_replacement.css'); ?>">
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_form_replacement.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -1703,8 +1703,8 @@ jQuery(document).ready(function($)
 	</div>
 </div>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_data_tabs.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_data_tabs.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_data_tabs.css'); ?>">
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_data_tabs.js'); ?>"></script>
 <style type="text/css">
 	.data-tab-collection {
 		display: inline-block;
@@ -1762,8 +1762,8 @@ jQuery(document).ready(function($)
 	</ul>
 </div>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_tabs.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_tabs.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_tabs.css'); ?>">
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_tabs.js'); ?>"></script>
 <style type="text/css">
 	.tab-collection {
 		display: inline-block;
@@ -1800,8 +1800,8 @@ jQuery(document).ready(function($)
 
 <h3>FAQ/Info Toggle</h3>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_expand_group.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_expand_group.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_expand_group.css'); ?>">
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_expand_group.js'); ?>"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($)
 {
@@ -2134,8 +2134,8 @@ jQuery(document).ready(function($)
 
 <h3>Carousel</h3>
 
-<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_carousel.css'); ?>">
-<script type="text/javascript" src="<?php echo cb_url(REDLOVE_ROOT . 'javascript/redlove/plugins/redlove_carousel.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_carousel.css'); ?>">
+<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_carousel.js'); ?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -2297,49 +2297,49 @@ jQuery(document).ready(function($)
 		<div class="redlove_carousel-content-wrapper">
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x120" alt="" title="">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x120" alt="" title="">
 				<h5>1 Food Pantry</h5>
 				<p>Here can be three lines of text with no need for a "Read More" link because what you say what you need.</p>
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x120" alt="" title="">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x120" alt="" title="">
 				<h5>2 Fellowship</h5>
 				<p>Then each following item should have equal or less line length to keep things consistent.</p>
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x120" alt="" title="">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x120" alt="" title="">
 				<h5>3 Addiction Struggles?</h5>
 				<p>If you need to link to something, you can <a href="">put the link</a> in the text.</p>
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x120" alt="" title="">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x120" alt="" title="">
 				<h5>4 Food Pantry</h5>
 				<p>Here can be three lines of text with no need for a "Read More" link because what you say what you need.</p>
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x120" alt="" title="">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x120" alt="" title="">
 				<h5>5 Fellowship</h5>
 				<p>Then each following item should have equal or less line length to keep things consistent.</p>
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x120" alt="" title="">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x120" alt="" title="">
 				<h5>6 Food Pantry</h5>
 				<p>Here can be three lines of text with no need for a "Read More" link because what you say what you need.</p>
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x120" alt="" title="">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x120" alt="" title="">
 				<h5>7 Fellowship</h5>
 				<p>Then each following item should have equal or less line length to keep things consistent.</p>
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x120" alt="" title="">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x120" alt="" title="">
 				<h5>8 Addiction Struggles?</h5>
 				<p>If you need to link to something, you can <a href="">put the link</a> in the text.</p>
 			</div>
@@ -2359,13 +2359,13 @@ jQuery(document).ready(function($)
 			<div class="redlove_carousel">
 				<div class="redlove_carousel-content-wrapper">
 					<div class="redlove_carousel-item">
-						<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/auto" alt="" title="">
+						<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/auto" alt="" title="">
 					</div>
 					<div class="redlove_carousel-item">
-						<a href=""><img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/auto" alt="" title=""></a>
+						<a href=""><img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/auto" alt="" title=""></a>
 					</div>
 					<div class="redlove_carousel-item">
-						<a href=""><img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/auto" alt="" title=""></a>
+						<a href=""><img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/auto" alt="" title=""></a>
 					</div>
 				</div>
 			</div>
@@ -2379,13 +2379,13 @@ jQuery(document).ready(function($)
 			<div class="redlove_carousel">
 				<div class="redlove_carousel-content-wrapper">
 					<div class="redlove_carousel-item">
-						<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/auto" alt="" title="">
+						<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/auto" alt="" title="">
 					</div>
 					<div class="redlove_carousel-item">
-						<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/text:Slide 2" alt="" title="">
+						<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/text:Slide 2" alt="" title="">
 					</div>
 					<div class="redlove_carousel-item">
-						<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/text:Slide 3" alt="" title="">
+						<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/text:Slide 3" alt="" title="">
 					</div>
 				</div>
 			</div>
@@ -2397,13 +2397,13 @@ jQuery(document).ready(function($)
 			<div class="redlove_carousel">
 				<div class="redlove_carousel-content-wrapper">
 					<div class="redlove_carousel-item">
-						<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/auto" alt="" title="">
+						<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/auto" alt="" title="">
 					</div>
 					<div class="redlove_carousel-item">
-						<a href=""><img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/text:Slide 2" alt="" title=""></a>
+						<a href=""><img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/text:Slide 2" alt="" title=""></a>
 					</div>
 					<div class="redlove_carousel-item">
-						<a href=""><img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x360/text:Slide 3" alt="" title=""></a>
+						<a href=""><img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x360/text:Slide 3" alt="" title=""></a>
 					</div>
 				</div>
 			</div>
@@ -2496,7 +2496,7 @@ jQuery(document).ready(function($)
 		<div class="redlove_carousel-content-wrapper">
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x480" alt="" title="" class="img fluid">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x480" alt="" title="" class="img fluid">
 				<div class="redlove_carousel-item-caption">
 					<div class="caption">
 						<h2>Slide Heading</h4>
@@ -2508,7 +2508,7 @@ jQuery(document).ready(function($)
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x480" alt="" title="" class="img fluid">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x480" alt="" title="" class="img fluid">
 				<div class="redlove_carousel-item-caption">
 					<div class="caption">
 						<h2>Slide Heading</h4>
@@ -2520,7 +2520,7 @@ jQuery(document).ready(function($)
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x480" alt="" title="" class="img fluid">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x480" alt="" title="" class="img fluid">
 				<div class="redlove_carousel-item-caption">
 					<div class="caption">
 						<h2>Slide Heading</h4>
@@ -2532,7 +2532,7 @@ jQuery(document).ready(function($)
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x480" alt="" title="" class="img fluid">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x480" alt="" title="" class="img fluid">
 				<div class="redlove_carousel-item-caption">
 					<div class="caption">
 						<h2>Slide Heading</h4>
@@ -2544,7 +2544,7 @@ jQuery(document).ready(function($)
 			</div>
 			
 			<div class="redlove_carousel-item">
-				<img data-src="<?php echo base_url(); ?>javascript/holder.js/100%x480" alt="" title="" class="img fluid">
+				<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/100%x480" alt="" title="" class="img fluid">
 				<div class="redlove_carousel-item-caption">
 					<div class="caption">
 						<h2>Slide Heading</h4>
@@ -2858,9 +2858,9 @@ jQuery(document).ready( function ( $ )
 	<a href="#" class="viewsource">view source</a>
 </div>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>javascript/greensock/TweenMax.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>javascript/jquery.scrollmagic.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>javascript/jquery.scrollmagic.debug.js"></script>
+<script type="text/javascript" src="<?php echo cb_url('javascript/greensock/TweenMax.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo cb_url('javascript/jquery/jquery.scrollmagic.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo cb_url('javascript/jquery/jquery.scrollmagic.debug.js'); ?>"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($)
 {
@@ -3037,7 +3037,7 @@ jQuery(document).ready(function($)
 
 <?php
 // Footer
-include(THEME_PATH . 'common/footer.php');
+include(THEME_PATH . 'includes/common/footer.php');
 ?>
 
 </div>
@@ -3045,7 +3045,7 @@ include(THEME_PATH . 'common/footer.php');
 
 <?php
 // Body Append
-include(THEME_PATH . 'common/body.append.php');
+include(THEME_PATH . 'includes/common/body.append.php');
 ?>
 </body>
 </html>

@@ -5,32 +5,32 @@ if ( ! defined('ENVIRONMENT') )
 	require_once(str_repeat('../', 3) . 'includes/common.php');
 }
 ?><!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="no-js ie lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js ie lt-ie10 ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 10)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7 ]><html class="loading no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="loading no-js ie lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="loading no-js ie lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="loading no-js ie lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--><html class="loading no-js" lang="en"> <!--<![endif]-->
 <head>
 
 	<?php
 	// Head common tags and resources
-	include(THEME_PATH . 'common/head.php');
+	include(THEME_PATH . 'includes/common/head.php');
 	?>
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo cb_url(REDLOVE_ROOT . 'stylesheets/redlove/examples.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('stylesheets/redlove/examples.css'); ?>">
 	
 </head>
 <body>
 <?php
 // Body Prepend
-include(THEME_PATH . 'common/body.prepend.php');
+include(THEME_PATH . 'includes/common/body.prepend.php');
 ?>
 
 <div class="body-liner">
 
 <?php
 // Header
-include(THEME_PATH . 'common/header.php');
+include(THEME_PATH . 'includes/common/header.php');
 ?>
 
 <div class="band-wrap">
@@ -1719,14 +1719,14 @@ output_code($code);
 
 <?php
 $code = <<< CODE
-<img data-src="<?php echo base_url(); ?>javascript/holder.js/200x200/text:Rounded" alt="" title="" class="img img-fluid img-row img-rounded">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:Rounded" alt="" title="" class="img img-fluid img-row img-rounded">
 
-<img data-src="<?php echo base_url(); ?>javascript/holder.js/200x200/text:Circle" alt="" title="" class="img img-fluid img-row img-circle ">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:Circle" alt="" title="" class="img img-fluid img-row img-circle ">
 
-<img data-src="<?php echo base_url(); ?>javascript/holder.js/200x200/text:Thumbnail" alt="" title="" class="img img-fluid img-row img-thumbnail">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:Thumbnail" alt="" title="" class="img img-fluid img-row img-thumbnail">
 
 <a href="" class="img-thumbnail img-dropshadow">
-	<img data-src="<?php echo base_url(); ?>javascript/holder.js/200x200/text:<a> Thumbnail Dropshadow" alt="" title="">
+	<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:<a> Thumbnail Dropshadow" alt="" title="">
 </a>
 CODE;
 output_code($code);
@@ -1734,11 +1734,11 @@ output_code($code);
 
 <?php
 $code = <<< CODE
-<img data-src="<?php echo base_url(); ?>javascript/holder.js/200x200/text:img-left" alt="" title="" class="img-left">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:img-left" alt="" title="" class="img-left">
 
-<img data-src="<?php echo base_url(); ?>javascript/holder.js/200x200/text:img-right img-right-clear" alt="" title="" class="img-right img-right-clear">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:img-right img-right-clear" alt="" title="" class="img-right img-right-clear">
 
-<img data-src="<?php echo base_url(); ?>javascript/holder.js/200x200/text:img-center" alt="" title="" class="img-center">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:img-center" alt="" title="" class="img-center">
 CODE;
 output_code($code);
 ?>
@@ -1849,7 +1849,7 @@ output_code($code);
 
 <?php
 // Footer
-include(THEME_PATH . 'common/footer.php');
+include(THEME_PATH . 'includes/common/footer.php');
 ?>
 
 </div>
@@ -1857,7 +1857,7 @@ include(THEME_PATH . 'common/footer.php');
 
 <?php
 // Body Append
-include(THEME_PATH . 'common/body.append.php');
+include(THEME_PATH . 'includes/common/body.append.php');
 ?>
 </body>
 </html>

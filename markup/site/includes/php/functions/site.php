@@ -2,108 +2,12 @@
 
 // --------------------------------------------------------------------
 
-if ( ! function_exists('output_code') )
-{
-	/**
-	* 
-	*/
-	function output_code ( $code, $full = true )
-	{
-		if ( $full )
-		{
-?>
-<div class="redlove_code-example">
-<span class="redlove_code-example_toggle"></span>
-<div class="redlove_code-example_liner">
-<?php
-	$delimiter_begin = '{{';
-	$delimiter_end = '}}';
-	$delimiter_begin = '<\?php';
-	$delimiter_end = '\?>';
-	
-	$new_code = $code;
-	/*
-	// http://www.regexr.com/3a1bt
-	// Parse through possible shortcodes indiscriminately, e.g. [shortcode attribute="value"] or [shortcode]Test[/shortcode]
-	// |\[([\w\d\-_]+)([^\]]*)\](?:(.*)(\[/\1\]))?|is
-	$pattern = $delimiter_begin . '([\w\d\-_]+)([^' . $delimiter_end . ']*)' . $delimiter_end;
-	$pattern .= '(?:(.*)(' . $delimiter_begin . '/\1' . $delimiter_end . '))?';
-	*/
-	$pattern = $delimiter_begin . '([\w\d\-_]+)[^' . $delimiter_end . ']*' . $delimiter_end;
-	$pattern = $delimiter_begin . '([^' . $delimiter_end . ']*)' . $delimiter_end;
-	$has_matches = preg_match_all('|' . $pattern . '|is', $new_code, $matches,  PREG_SET_ORDER);
-	$matched_patterns = array();
-	foreach ( $matches as $match )
-	{
-		$matched_pattern = $match[0];
-		$matched_result = $match[1];
-		
-		if ( in_array($matched_pattern, $matched_patterns) )
-		{
-			continue;
-		}
-		$matched_patterns[] = $matched_pattern;
-		
-		$result = $matched_pattern;
-		if ( function_exists($matched_result) )
-		{
-			$args = array();
-			$result = call_user_func_array($matched_result, $args);
-		}
-		else
-		{
-			// This is unsafe and is only intended for internal demo/example code use
-			ob_start();
-			$result = eval($matched_result);
-			$output = ob_get_contents();
-			ob_end_clean();
-			$result = isset($result) ? $result : $output;
-		}
-		$new_code = str_ireplace($matched_pattern, $result, $new_code);
-	}
-	echo $new_code;
-?>
-</div>
-</div>
-<hr class="default w60 center">
-<?php
-		}
-		else
-		{
-?>
-<?php echo $code; ?>
-<div class="redlove_code-example redlove_code-example-shown">
-<span class="redlove_code-example_toggle"></span>
-<div class="redlove_code-example_liner">
- <pre><?php echo htmlentities(trim($code)); ?></pre>
-</div>
-</div>
-<hr class="default w60 center">
-<?php
-		}
-		
-		return;
-?>
-<div class="columns">
-	<div class="column w100">
-		<?php echo $code; ?>
-	</div>
-	<div class="column w100">
-		<pre class="code" style="max-height: 20em; overflow-y: auto;"><?php echo htmlentities($code); ?></pre>
-	</div>
-</div>
-<?php
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('check_access') )
+if ( ! function_exists('check_access__USE_FOR_REFERENCE') )
 {
 	/**
 	* Check user access to site
 	*/
-	function check_access ()
+	function check_access__USE_FOR_REFERENCE ()
 	{
 		global $config;
 		
@@ -171,10 +75,13 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 		// ------------------------------------------------------------
 		// Check if referrering domain is allowed
 		
-		// Set allowed domains
 		$domain = '';
-		$allowed_domains = array( parse_url(site_url(), PHP_URL_HOST) );
+		// Set allowed domains
+		$allowed_domains = array();
+		// Allow self
+		$allowed_domains[] = parse_url(site_url(), PHP_URL_HOST);
 		/*
+		// Set environment-specific allowed domains
 		if ( ENVIRONMENT == 'production' )
 		{
 			$allowed_domains[] = 'example.com';
@@ -201,16 +108,26 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 		$is_ajax = is_ajax();
 		if ( strlen($domain) == 0 )
 		{
-			/*
-			redirect($referrer)
-			// Or
-			header('Location: http://' . $referrer_domain);
-			*/
-			
+			// Stop execution if AJAX request
 			if ( $is_ajax )
 			{
 				exit;
 			}
+			
+			/*
+			// Redirect
+			redirect($referrer)
+			
+			// or
+			
+			header('Location: http://' . $referrer_domain);
+			
+			// or
+			
+			// Return if this process is part of a normal page load
+			return;
+			*/
+			// Return if this process is part of a normal page load
 			return;
 		}
 		
@@ -221,6 +138,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 		}
 		parse_str($referrer_parsed['query'], $querystring_vars);
 		/*
+		// Example: Update querystring and reset referrer after processing
 		$querystring_vars['code'] = $return_data['code'];
 		$querystring_vars['action'] = 'thank-you';
 		$querystring_vars['form_id'] = 0;
@@ -231,15 +149,16 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 		
 		// ------------------------------------------------------------
 		// Set process action
-		$action = isset($_REQUEST['action']) ? trim(rawurldecode(check_array($_REQUEST, 'action'))) : $args0;
+		$action = isset($_REQUEST['action']) ? trim(rawurldecode(strip_tags(stripslashes( check_array($_REQUEST, 'action') )))) : $args0;
 
-		// Stop if no data submitted
+		// Stop if no data submitted or action to take
 		if ( strlen($action) == 0 )//empty($_POST)
 		{
 			if ( $is_ajax )
 			{
 				exit;
 			}
+			
 			return;
 		}
 		
@@ -248,24 +167,45 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 		
 		/*
 		// CSRF check
-		$this->load->library('utility/csrf');
-		require_once(INCLUDES_PATH . 'php/classes/Csrf.php');
+		require_once(REDLOVE_PATH . 'php/classes/Csrf.php');//$this->load->library('utility/csrf');
 		$CSRF = new Csrf();
-		$CSRF->verify_session();
+		$CSRF->verify();
 		*/
 		
+		// ------------------------------------------------------------
 		// Initialize return data
 		$return_data = array(
 			'code' => 0,
 			'value' => '',
 			'message' => array(),
 		);
+		// ------------------------------------------------------------
 		
 		// ------------------------------------------------------------
 		// Validate data
 		$valid = true;
 		$success = false;
 		// ------------------------------------------------------------
+		
+		/*
+		// ------------------------------------------------------------
+		// Get user agent info
+		$ip_address = $this->input->ip_address();
+		$user_agent_type = '';
+		$user_agent_device = '';
+		$this->load->library('user_agent');
+		if ( $this->agent->is_mobile() )
+		{
+			$user_agent_type = 'mobile';
+			$user_agent_device = $this->agent->mobile();
+		}
+		elseif ( $this->agent->is_browser() )
+		{
+			$user_agent_type = 'browser';
+			$user_agent_device = $this->agent->browser() . ' ' . $this->agent->version() . ' on ' . $this->agent->platform();
+		}
+		// ------------------------------------------------------------
+		*/
 		
 		// ------------------------------------------------------------
 		// Process actions
@@ -280,39 +220,56 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 			}
 			
 			/*
+			// ------------------------------------------------------------
 			// CSRF check
-			$this->load->library('utility/csrf');
+			require_once(REDLOVE_PATH . 'php/classes/Csrf.php');//$this->load->library('utility/csrf');
+			$CSRF = new Csrf();
+			$CSRF->verify();
+			// ------------------------------------------------------------
 			*/
 			
+			// ------------------------------------------------------------
 			// Gather data
+			$created_time = time();
+			$something = (string)check_post('something');
+			// ------------------------------------------------------------
 			
+			// ------------------------------------------------------------
 			// Validate data
-			if ( strlen($something) > 0 )
+			
+			// Example: Check required field
+			if ( strlen($something) == 0 )
 			{
 				$valid = false;
-				$return_data['message'][] = 'Please leave fields blank where asked to do so.';
+				$return_data['message'][] = 'Please enter something.';
 			}
+			// ------------------------------------------------------------
 			
+			// ------------------------------------------------------------
 			// Process data
 			if ( $valid )
 			{
 				$success = do_something();
-				if ( $success )
-				{
-					$return_data['code'] = 1;
-					$return_data['message'][] = 'Success!';
-				}
-				else
+				
+				// If NOT successful
+				if ( ! $success )
 				{
 					$return_data['code'] = 0;
 					$return_data['message'][] = 'Error, please try again!';
 				}
+				else
+				{
+					$return_data['code'] = 1;
+					$return_data['message'][] = 'Success!';
+				}
 			}
+			// ------------------------------------------------------------
 		}
+		
 		// Get CSRF
 		elseif ( $action == 'get_csrf' )
 		{
-			require_once(INCLUDES_PATH . 'php/classes/Csrf.php');
+			require_once(REDLOVE_PATH . 'php/classes/Csrf.php');
 			$CSRF = new Csrf();
 			
 			$return_data['code'] = 1;
@@ -320,6 +277,39 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 				$CSRF->get_token_name() => $CSRF->get_hash(),
 			);
 		}
+		
+		// Set silent visitor data from AJAX requests
+		elseif ( $action == 'set_data' )
+		{
+			// Stop if no data submitted
+			if ( empty($_POST) )
+			{
+				exit;
+			}
+			
+			// CSRF check
+			//$this->load->library('utility/csrf');
+			
+			// Set data
+			
+			// User timezone offset
+			if ( isset($_POST['client_timezone_offset']) )
+			{
+				// User passed timezone offset or default to server's timezone offset
+				$client_timezone_offset = ! empty($_POST['client_timezone_offset']) ? $this->input->post('client_timezone_offset', true) : date('Z');
+				/*
+				session_start();
+				$_SESSION['client_timezone_offset'] = $this->input->post('client_timezone_offset', true);
+				
+				// or
+				
+				$this->session->set_userdata('user__client_timezone_offset', $client_timezone_offset);
+				*/
+			}
+			
+			exit;
+		}
+		
 		// Ask
 		elseif ( $action == 'ask' )
 		{
@@ -349,6 +339,151 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 			$this->notify->add($return_data);
 			redirect($referrer);
 		}
+		
+		// Contact
+		elseif ( $action == 'contact' )
+		{
+			// Stop if no data submitted
+			if ( empty($_POST) )
+			{
+				exit;
+			}
+			
+			/*
+			// ------------------------------------------------------------
+			// CSRF check
+			require_once(REDLOVE_PATH . 'php/classes/Csrf.php');//$this->load->library('utility/csrf');
+			$CSRF = new Csrf();
+			$CSRF->verify();
+			// ------------------------------------------------------------
+			*/
+			
+			// ------------------------------------------------------------
+			// Gather data
+			// ------------------------------------------------------------
+			
+			// ------------------------------------------------------------
+			// Validate data
+			
+			/*
+			// Example: Form fields for processing
+			<input type="hidden" name="action" value="contact" />
+			<input type="hidden" name="origin" value="Contact Form" />
+			<input type="hidden" name="form_fields_required" value="first_name,last_name" />
+			<input type="hidden" name="form_fields_url_whitelist" value="message" />
+			<input type="hidden" name="form_fields_email" value="email" />
+			<input type="hidden" name="form_fields_honeypot" value="email" />
+			*/
+			require_once(REDLOVE_PATH . 'php/classes/Email.php');
+			$EMAIL = new Email(INCLUDES_PATH . 'config/email.php');
+			$email_vars = $_POST;
+			$process_form_fields_data = $EMAIL->process_form_fields($email_vars);
+			$email_vars = $process_form_fields_data['value'];
+			if ( $process_form_fields_data['code'] <= 0 )
+			{
+				$valid = false;
+				$return_data['message'] = array_merge($return_data['message'], $process_form_fields_data['message']);
+			}
+			// ------------------------------------------------------------
+			
+			// ------------------------------------------------------------
+			// Process data
+			if ( $valid )
+			{
+				// ----------------------------------------
+				// Send email
+				
+				// Gather email fields
+				$email_fields = array(
+					'name' => trim($_POST['first_name']) . ' ' . trim($_POST['last_name']),
+					'first_name' => trim($_POST['first_name']),
+					'last_name' => trim($_POST['last_name']),
+					'phone' => trim($_POST['phone']),
+					'email' => trim($_POST['email']),
+					'subject' => trim($_POST['subject']),
+					'message' => trim(preg_replace('/[\r\n]+/', "\n", $_POST['message'])),
+				);
+				// Clean email fields
+				$email_fields = $EMAIL->clean_fields($email_fields);
+
+				// Build message
+				/*
+				// Build message from fields
+					$email_newline = '<br />';
+					$email_body = $EMAIL->build_body($email_fields, $email_newline);
+				
+				// or
+				
+				// Build message from variables
+					$email_body = nl2br(trim("Submitted form data...{$email_newline}{$email_newline}{$email_body}{$email_newline}{$email_newline}[ END OF MESSAGE ]"));
+				
+				// or
+				
+				// Build message from html using passed variables
+					$email_body = $this->load->view('learning-center/staff/email__invite.html', $email_fields, true);
+				
+				// or
+				
+				// Build message from html using local variables
+					$email_body = file_get_contents(APPPATH . 'views/email/spiritual-gifts-results.html');
+				
+				// or
+				
+				// Build message from html using local variables and buffered output
+					// Start buffering
+					ob_start();
+					include(THEME_PATH . 'includes/email/contact.html');
+					// Get buffer
+					$email_body = ob_get_contents();
+					// Stop buffering
+					ob_end_clean();
+				*/
+				// Build message from html using local variables and buffered output
+				// Start buffering
+				ob_start();
+				include(THEME_PATH . 'includes/email/contact.html');
+				// Get buffer
+				$email_body = ob_get_contents();
+				// Stop buffering
+				ob_end_clean();
+				
+				// Gather email params
+				$host = ( ENVIRONMENT != 'development' ) ? parse_url(site_url(), PHP_URL_HOST) : 'example.com';
+				$email_params = array(
+					'from_email' => 'admin@' . $host,//'do-not-reply@example.com'
+					'from_name' => 'Do Not Reply',
+					'to_email' => ( ENVIRONMENT != 'development' ) ? $email_fields['email'] : 'example@example.com',
+					'to_name' => 'Example Name',//trim($name)
+					'subject' => 'Example Subject',
+					'body' => $email_body,
+				);
+				if ( ENVIRONMENT != 'development' )
+				{
+					$email_params['bcc_addresses'] = array(
+						'example@example.com' => 'Example Name',
+					);
+				}
+				
+				// Send the email
+				$email_data = $EMAIL->send($email_params);
+				$success = ( $email_data['code'] > 0 );
+				// ----------------------------------------
+				
+				// If NOT successful
+				if (  ! $success )
+				{
+					$return_data['code'] = 0;
+					$return_data['message'][] = 'Your message could not be sent. Please try again.';
+				}
+				else
+				{
+					$return_data['code'] = 1;
+					$return_data['message'][] = 'Your message has been sent.';
+				}
+			}
+			// ------------------------------------------------------------
+		}
+		
 		// Enter
 		elseif ( $action == 'enter' )
 		{
@@ -358,14 +493,20 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 				exit;
 			}
 			
+			/*
+			// ------------------------------------------------------------
 			// CSRF check
-			require_once(INCLUDES_PATH . 'php/classes/Csrf.php');
+			require_once(REDLOVE_PATH . 'php/classes/Csrf.php');//$this->load->library('utility/csrf');
 			$CSRF = new Csrf();
+			$CSRF->verify();
+			// ------------------------------------------------------------
+			*/
 			
+			// ------------------------------------------------------------
 			// Gather data
-			$name = (string)check_post('name');
 			$created_time = time();
 			
+			$name = (string)check_post('name');
 			// Get separate names
 			// Explode limit 3 to get first, middle, and last
 			$names = explode(' ', preg_replace('/\s+/', ' ', trim($name)), 2);//Remove multiple whitespaces
@@ -380,6 +521,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 				'email' => (string)check_post('gobbledy-gook'),
 				'email_honeypot' => (string)check_post('email'),
 			);
+			// ------------------------------------------------------------
 			
 			// ------------------------------------------------------------
 			// Validate data
@@ -409,6 +551,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 			}
 			// ------------------------------------------------------------
 			
+			// ------------------------------------------------------------
 			// Process data
 			if ( $valid )
 			{
@@ -435,17 +578,19 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 				";
 				$success = $DB->query($sql);
 				
+				// If NOT successful
 				if ( $success )
-				{
-					$return_data['code'] = 1;
-					$return_data['message'][] = 'Thank you!';
-				}
-				else
 				{
 					$return_data['code'] = 0;
 					$return_data['message'][] = 'Please try again.';
 				}
+				else
+				{
+					$return_data['code'] = 1;
+					$return_data['message'][] = 'Thank you!';
+				}
 			}
+			// ------------------------------------------------------------
 		}
 		// ------------------------------------------------------------
 		
@@ -454,6 +599,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 		if ( $is_ajax )
 		{
 			/*
+			// Format data as necessary
 			$return_data['message'] = implode(' ', $return_data['message']);
 			*/
 			
@@ -461,7 +607,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 			// Iframe form handling
 			
 			// Event from "AJAX/form target to iframe/callback to top window" file upload
-			$event = $this->input->get_post('event', true);
+			$event = check_array($_REQUEST, 'event');//$this->input->get_post('event', true);
 			if ( strlen($event) > 0 )
 			{
 				echo '<script type="text/javascript">window.top.window.jQuery(window.top.document).trigger("' . 
@@ -471,7 +617,7 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 			}
 			
 			// Callback from "AJAX/form target to iframe/callback to top window" file upload
-			$callback = $this->input->get_post('callback', true);
+			$callback = check_array($_REQUEST, 'callbacks');//$this->input->get_post('callback', true);
 			if ( strlen($callback) > 0 )
 			{
 				echo '<script type="text/javascript">window.top.window.' . 
@@ -485,19 +631,31 @@ if ( ! function_exists('process__USE_FOR_REFERENCE') )
 			// Give end response if request type detected, e.g. AJAX
 			$this->load->library('utility/request');
 			$this->request->response($return_data, 'json');
+			
+			// or
+			
+			// Explicitly return data type
+			echo json_encode($return_data);
+			exit;
 			*/
+			// Explicitly return data type
 			echo json_encode($return_data);
 			exit;
 		}
 		
 		/*
 		// Return to referrer
+		// Example: // header('Location: ' . $referrer . '?code=' . rawurlencode($return_data['code']) . '&message=' . rawurlencode(implode(' ', $return_data['message'])));
 		header('Location: ' . $referrer);
-		header('Location: ' . $referrer . '?code=' . rawurlencode($return_data['code']) . '&message=' . rawurlencode(implode(' ', $return_data['message']))) ;
 		exit;
-		*/
 		
-		return $return_data;//exit;
+		// or
+		
+		// Return data
+		return $return_data;
+		*/
+		// Return data
+		return $return_data;
 	}
 }
 

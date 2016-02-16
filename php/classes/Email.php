@@ -459,16 +459,34 @@ class Email
 	/**
 	* Class constructor
 	*/
-	public function __construct()
+	public function __construct ( $params = '' )
 	{
-		$config_file = dirname(__FILE__) . '/../../config/email.php';
-		if ( file_exists($config_file) )
+		// If no parameters passed, try autoloading config
+		if ( $params === '' )
 		{
-			require($config_file);
-			$this->config = array_merge($this->config, $config['email']);
+			$config_file = dirname(__FILE__) . '/../../config/email.php';
+			if ( file_exists($config_file) )
+			{
+				require($config_file);
+				$this->config = array_merge($this->config, $config['email']);
+			}
+		}
+		// If array passed, use for config
+		elseif ( is_array($params) )
+		{
+			$this->config = array_merge($this->config, $params);
+		}
+		// Else assume config file path passed
+		else
+		{
+			if ( file_exists($params) )
+			{
+				require($params);
+				$this->config = array_merge($this->config, $config['email']);
+			}
 		}
 		
-		if ( function_exists('log_message') )
+		if ( function_exists('get_instance') )
 		{
 			log_message('info', __CLASS__ . ' class initialized.');
 		}
@@ -483,7 +501,7 @@ class Email
 	* @return bool If failure
 	* @return int If success
 	*/
-	public function send( $params = array() )
+	public function send ( $params = array() )
 	{
 		// Set default values for missing keys
 		$default_params = array(
@@ -566,22 +584,27 @@ class Email
 		$pop->Authorise('hostname', 110, 30, 'username', 'password', 1);
 		*/
 		
-		if ( ! class_exists('PHPMailer') && defined('INCLUDESPATH') )
+		if ( ! class_exists('PHPMailer') && defined('INCLUDES_PATH') )
 		{
-			$file = INCLUDESPATH . 'php/libraries/third_party/phpmailer/PHPMailerAutoload.php';
-			if ( file_exists($file) )
+			if ( defined('APPPATH') )
 			{
-				require_once($file);
+				$file = APPPATH . 'libraries/third_party/phpmailer/PHPMailerAutoload.php';
 			}
-		}
-		
-		if ( ! class_exists('PHPMailer') && defined('APPPATH') )
-		{
-			$file = APPPATH . 'libraries/third_party/phpmailer/PHPMailerAutoload.php';
-			if ( file_exists($file) )
+			elseif ( defined('REDLOVE_PATH') )
 			{
-				require_once($file);
+				$file = REDLOVE_PATH . 'php/third_party/phpmailer/PHPMailerAutoload.php';
 			}
+			elseif ( defined('INCLUDES_PATH') )
+			{
+				$file = INCLUDES_PATH . 'php/libraries/third_party/phpmailer/PHPMailerAutoload.php';
+			}
+			
+			if ( ! file_exists($file) )
+			{
+				die('PHPMailer cannot be loaded.');
+			}
+			
+			require_once($file);
 		}
 		
 		$PM = new PHPMailer(true);// true will catch exceptions

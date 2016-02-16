@@ -24,7 +24,9 @@ if ( ! defined('ENVIRONMENT') )
 {
 	require_once('includes/common.php');
 }
-// Or
+
+// or
+
 // Require common functionality
 $file = dirname(__FILE__) . '/' . 'includes/common.php';
 if ( file_exists($file) )
@@ -98,20 +100,36 @@ if ( ! defined('ROOT_PATH') )
 
 // --------------------------------------------------------------------
 // REDLOVE
+// Postload includes
+$filename = 'preload';
+$file = INCLUDES_PATH . 'config/' . $filename . '.php';
+if ( file_exists($file) )
+{
+	include_once($file);
+	if ( ! empty($config[$filename]) )
+	{
+		foreach ( $config[$filename] as $key => $value )
+		{
+			$filenames = is_array($value['filenames']) ? $value['filenames'] : array_filter(array_map('trim', explode(',', $value['filenames'])));
+			foreach ( $filenames as $filename )
+			{
+				$file = $value['path'] . $filename . '.php';
+				if ( file_exists($file) )
+				{
+					include_once($file);
+				}
+			}
+		}
+	}
+}
+// --------------------------------------------------------------------
+
+// --------------------------------------------------------------------
+// REDLOVE
 // Set up environment constant for reference
 // http://en.wikipedia.org/wiki/Development_environment
 if ( ! defined('ENVIRONMENT') )
 {
-	// --------------------------------------------------------------------
-	// REDLOVE
-	// Autoload environment include if it exists
-	$file = INCLUDES_PATH . 'config/environment.php';
-	if ( file_exists($file) )
-	{
-		include_once($file);
-	}
-	// --------------------------------------------------------------------
-	
 	// Development server
 	if ( ! empty($config['environment']['is_development']) )
 	{
@@ -181,6 +199,10 @@ if ( ! defined('ENVIRONMENT') )
 	$realpath = str_replace('\\', '/', $realpath);
 	$realpath = rtrim($realpath, '/') . '/';
 	define('REDLOVE_PATH', $realpath);
+	if ( defined('REDLOVE_PATH') && ! is_dir(REDLOVE_PATH) )
+	{
+		die('RedLove path does not exist.');
+	}
 	// REDLOVE_ROOT - The web root to redlove resources
 	$redlove_root = substr(REDLOVE_PATH, strlen(DOCUMENT_ROOT));
 	$redlove_root = str_replace('\\', '/', $redlove_root);
@@ -190,31 +212,6 @@ if ( ! defined('ENVIRONMENT') )
 	$redlove_url = $protocol . $_SERVER['HTTP_HOST'] . '/' . str_replace(DOCUMENT_ROOT, '', REDLOVE_PATH);
 	define('REDLOVE_URL', $redlove_url);
 	// --------------------------------------------------------------------
-}
-// --------------------------------------------------------------------
-
-// --------------------------------------------------------------------
-// REDLOVE
-// Autoload includes
-$file = INCLUDES_PATH . 'config/autoload.php';
-if ( file_exists($file) )
-{
-	include_once($file);
-	if ( ! empty($config['autoload']) )
-	{
-		foreach ( $config['autoload'] as $key => $value )
-		{
-			$filenames = is_array($value['filenames']) ? $value['filenames'] : array_filter(array_map('trim', explode(',', $value['filenames'])));
-			foreach ( $filenames as $filename )
-			{
-				$file = $value['path'] . $filename . '.php';
-				if ( file_exists($file) )
-				{
-					include_once($file);
-				}
-			}
-		}
-	}
 }
 // --------------------------------------------------------------------
 
@@ -278,7 +275,7 @@ if ( ! defined('THEMES_PATH') )
 	{
 		$page = str_replace(THEME_ROOT, '', $page);
 	}
-	$page .= ( substr(REQUEST_URI, -1) == '/' ) ? 'index' : '';
+	$page .= ( REQUEST_URI == '' || substr(REQUEST_URI, -1) == '/' ) ? 'index' : '';
 	$page_ext = strtolower( substr((string)strrchr($page, '.'), 1) );// Lowercase, get text after dot, get text dot and after
 	$page = substr($page, 0, strlen($page) - strlen($page_ext));// Remove file extension
 	if ( strlen($page_ext) > 0 )
@@ -315,6 +312,54 @@ if (
 // If overriding the session via querystring
 $now_time = ! empty($_REQUEST['now']) ? strtotime($_REQUEST['now'] . ' ' . $timezone) : time();
 $now = gmdate('Y-m-d H:i:s', $now_time);
+// --------------------------------------------------------------------
+
+// --------------------------------------------------------------------
+// REDLOVE
+// Autoload includes
+$filename = 'autoload';
+$file = THEME_PATH . 'includes/config/' . $filename . '.php';
+if ( file_exists($file) )
+{
+	include_once($file);
+	if ( ! empty($config[$filename]) )
+	{
+		foreach ( $config[$filename] as $key => $value )
+		{
+			$filenames = is_array($value['filenames']) ? $value['filenames'] : array_filter(array_map('trim', explode(',', $value['filenames'])));
+			foreach ( $filenames as $filename )
+			{
+				$file = $value['path'] . $filename . '.php';
+				if ( file_exists($file) )
+				{
+					include_once($file);
+				}
+			}
+		}
+	}
+}
+
+$filename = 'autoload';
+$file = INCLUDES_PATH . 'config/' . $filename . '.php';
+if ( file_exists($file) )
+{
+	include_once($file);
+	if ( ! empty($config[$filename]) )
+	{
+		foreach ( $config[$filename] as $key => $value )
+		{
+			$filenames = is_array($value['filenames']) ? $value['filenames'] : array_filter(array_map('trim', explode(',', $value['filenames'])));
+			foreach ( $filenames as $filename )
+			{
+				$file = $value['path'] . $filename . '.php';
+				if ( file_exists($file) )
+				{
+					include_once($file);
+				}
+			}
+		}
+	}
+}
 // --------------------------------------------------------------------
 
 /*

@@ -14,21 +14,21 @@ if ( ! defined('ENVIRONMENT') )
 
 	<?php
 	// Head common tags and resources
-	include(THEME_PATH . 'common/head.php');
+	include(THEME_PATH . 'includes/common/head.php');
 	?>
 	
 </head>
 <body class="home">
 <?php
 // Body Prepend
-include(THEME_PATH . 'common/body.prepend.php');
+include(THEME_PATH . 'includes/common/body.prepend.php');
 ?>
 
 <div class="body-liner">
 
 <?php
 // Header
-include(THEME_PATH . 'common/header.php');
+include(THEME_PATH . 'includes/common/header.php');
 ?>
 
 <div class="band-wrap">
@@ -54,7 +54,7 @@ include(THEME_PATH . 'common/header.php');
 
 <?php
 // Footer
-include(THEME_PATH . 'common/footer.php');
+include(THEME_PATH . 'includes/common/footer.php');
 ?>
 
 </div>
@@ -62,7 +62,7 @@ include(THEME_PATH . 'common/footer.php');
 
 <?php
 // Body Append
-include(THEME_PATH . 'common/body.append.php');
+include(THEME_PATH . 'includes/common/body.append.php');
 ?>
 </body>
 </html>

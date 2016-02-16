@@ -1,0 +1,818 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,300italic,300);
+/*@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);*/
+/* Put real @imports above this line - Google Fonts, etc. */
+
+
+/* ============================================================
+	# Foundation
+============================================================ */
+
+/* --------------------------------------------------------------------------------
+	## Typography
+-------------------------------------------------------------------------------- */
+
+body {
+	color: #292929;
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+/* ============================================================
+	# Color Glossary
+============================================================ */
+
+.theme-color,
+.theme-accent-color {
+	color: #FB4848;
+}
+
+.theme-dark-color {
+	color: #36404b;
+}
+.theme-darker-color {
+	color: #2c343d;
+}
+.theme-darkest-color {
+	color: #1a171b;
+}
+
+.theme-lightest-color {
+	color: #FFFFFF;
+}
+
+.theme-text-color {
+	color: #333333;
+}
+.theme-text-dark-color {
+	color: #292929;
+}
+.theme-text-light-color {
+	color: #A7A7A7;
+}
+
+
+/* ============================================================
+	# Site Styles
+============================================================ */
+
+/* --------------------------------------------------------------------------------
+	## Body and Liner
+-------------------------------------------------------------------------------- */
+
+/* Set as the color of the <footer> so non-scrollable area below it looks like part of the <footer> */
+body,
+.band-footer {
+	background: #2c343d;
+}
+
+/* Set as the desired <body> color; it is layered on top of the real <body> */
+.body-liner {
+	background: #ffffff;
+}
+
+/* --------------------------------------------------------------------------------
+	## Band, Wrap, and Liner
+-------------------------------------------------------------------------------- */
+
+/* 
+	Band modifiers
+---------------------------------------- */
+
+.band--zebra {
+	background: #f5f5f5;
+	border-bottom: 1px solid #e1e8ed;
+	border-top: 1px solid #e1e8ed;
+}
+
+.band--zebra2 {
+	background: #fbfbfb;
+}
+
+/* --------------------------------------------------------------------------------
+	## Navigation
+-------------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------
+	Primary navigation
+------------------------------------------------------------ */
+
+.nav-primary {
+	color: #ffffff;
+	vertical-align: middle;
+}
+.nav-primary a {
+	display: inline-block;
+	padding: 0.5em;
+	text-decoration: none;
+	vertical-align: top;
+}
+.nav-primary a:hover {
+	text-decoration: underline;
+}
+.nav-primary .active a {
+	color: #FB4848;
+}
+.nav-primary > ul > li {
+	margin-right: 2.0em;
+}
+.nav-primary > ul > li:last-child {
+	margin-right: 0;
+}
+.nav-primary > ul > li > ul {
+	background-color: rgba(54, 64, 75, 0.8);
+}
+
+/* ------------------------------------------------------------
+	Mobile menu
+------------------------------------------------------------ */
+
+.mobile-menu {
+	background-color: #36404b;
+	color: #ffffff;
+}
+.mobile-menu > ul > li:nth-child(1) {
+	margin-bottom: 1.0em;
+}
+.mobile-menu .active > a {
+	color: #FB4848;
+}
+
+.mobile-menu-button {
+	color: #36404b;
+	font-size: 1.5em;
+	font-weight: 400;
+}
+.mobile-menu .mobile-menu-button {
+	color: #ffffff;
+	display: block;
+	padding-left: 1.0em;
+	text-align: left;
+}
+
+/* --------------------------------------------------------------------------------
+	## Header
+-------------------------------------------------------------------------------- */
+
+.band-header2 {
+	background-color: #36404b;
+}
+
+header.primary .column:last-child {
+	text-align: right;
+}
+
+.logo {
+	font-size: 2.2em;
+}
+.logo a {
+	text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------------
+	## Footer
+-------------------------------------------------------------------------------- */
+
+.band-footer {
+	color: #FFFFFF;
+}
+
+.band-wrap_footer-secondary {
+	border-top: 3px solid #fb4848;
+}
+.band-footer-secondary {
+	background-color: #2c343d;
+	background-color: #36404b;
+	color: #FFFFFF;
+}
+
+footer.secondary {
+	font-size: 0.9em;
+	line-height: 2.0em;
+}
+footer.secondary h3 {
+	font-size: 1.3em;
+	font-weight: 800;
+	margin-bottom: 1.25em;
+	text-transform: uppercase;
+}
+
+footer.primary .column:last-child {
+	text-align: right;
+}
+
+/* --------------------------------------------------------------------------------
+	## Content
+-------------------------------------------------------------------------------- */
+
+section.content p {
+	color: #565656;
+	line-height: 1.8em;
+}
+
+.content p a {
+	color: #FB4848;
+}
+
+/* ------------------------------------------------------------
+	Info list
+------------------------------------------------------------ */
+
+.info-list,
+.info-list li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.info-list strong {
+	padding-right: 0.6em;
+}
+.info-list a {
+	color: #fb4848;
+	text-decoration: none;
+}
+
+/* ------------------------------------------------------------
+	Services list
+------------------------------------------------------------ */
+
+.services-list,
+.services-list li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.services-list li:before {
+	color: #fb4848;
+	content: "\f058";
+	font-family: FontAwesome;
+	margin-right: 0.5em;
+	font-size: 1.1em;
+	vertical-align: middle;
+}
+
+/* ------------------------------------------------------------
+	Social links
+------------------------------------------------------------ */
+
+.social-links a {
+	background-color: #4a4a4a;
+	display: block;
+	padding: 0.5em 0.6em;
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+}
+.social-links a:hover {
+	background-color: #fb4848;
+}
+
+/* ------------------------------------------------------------
+	Section title boxes
+------------------------------------------------------------ */
+
+.section-title {
+	border-bottom: 1px solid #e0e0e0;
+	margin-bottom: 1.8em;
+	padding-bottom: 0.8em;
+}
+.section-title h3 {
+	font-size: 1.2em;
+	font-weight: 500;
+	margin-bottom: 0;
+	text-transform: capitalize;
+}
+
+/* ------------------------------------------------------------
+	Text boxes
+------------------------------------------------------------ */
+
+.text-box {
+	line-height: 2.0em;
+}
+.text-box p {
+	font-size: 0.9em;
+	padding-left: 1.6em;
+}
+
+/* ------------------------------------------------------------
+	Title boxes
+------------------------------------------------------------ */
+
+.title-box {
+	border-left: 3px solid #fb4848;
+	margin-bottom: 1.0em;
+	padding-left: 1.5em;
+	position: relative;
+}
+.title-box h3 {
+	font-size: 1.6em;
+	line-height: 1.6;
+	margin: 0;
+}
+.title-box h4 {
+	font-size: 1.1em;
+	line-height: 1.8;
+	margin: 0;
+}
+
+/* ------------------------------------------------------------
+	Tab title boxes
+------------------------------------------------------------ */
+
+.tab-title {
+	margin-bottom: 1.2em;
+}
+.tab-title h2 {
+	font-size: 2.3em;
+	margin-bottom: 0.4em;
+}
+.tab-title h3 {
+	color: #fb4848;
+	font-size: 1.4em;
+	margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+	Service boxes
+------------------------------------------------------------ */
+
+.service-box {
+	border: 1px solid #CCCCCC;
+	font-size: 0.9em;
+	line-height: 2.0em;
+	margin-bottom: 1.5em;
+	padding: 1.0em 1.5em;
+	padding-left: 4.5em;
+	position: relative;
+}
+
+.service-box h4 {
+	font-size: 1.2em;
+	line-height: 1.4;
+	margin-bottom: 0.5rem;
+}
+.service-box p {
+	line-height: 1.4;
+	margin: 0;
+}
+.service-box a {
+	text-decoration: none;
+}
+.service-box a:hover,
+.service-box a:focus {
+	text-decoration: underline;
+}
+.service-box--inverted {
+	background-color: #36404b;
+	color: #FFFFFF;
+}
+
+.service-box .icon {
+	left: 1.0em;
+	position: absolute;
+	top: 50%;
+	
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.service-box .icon:before {
+	color: #fb4848;
+	display: block;
+	font-family: FontAwesome;
+	font-size: 2.8em;
+	line-height: 1;
+	text-align: center;
+	vertical-align: baseline;
+	width: 1.28571429em;
+	width: 1.0em;
+}
+
+/* 
+	Icon modifiers
+---------------------------------------- */
+
+.icon--home:before {
+	content: "\f015";
+}
+.icon--certificate:before {
+	content: "\f0a3";
+}
+.icon--pie-chart:before {
+	content: "\f200";
+}
+.icon--money:before {
+	content: "\f155";
+}
+.icon--phone:before {
+	content: "\f098";
+}
+
+/* 
+	Service boxes - header
+---------------------------------------- */
+
+header .service-box {
+	border: 0;
+	display: inline-block;
+	text-align: left;
+	margin: 0 auto;
+}
+header .service-box h4 {
+	font-size: 1.2em;
+	margin: 0;
+}
+header .service-box p {
+	font-size: 1.6em;
+	line-height: 1.0;
+}
+header .service-box .icon {
+	top: 58%;
+}
+
+/* ------------------------------------------------------------
+	Service price boxes
+------------------------------------------------------------ */
+
+.service-price-box {
+	background: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	line-height: 2.0em;
+	margin-bottom: 1.5em;
+	position: relative;
+}
+.service-price-box figure {
+	position: relative;
+}
+.service-price-box figcaption {
+	background-color: #fb4848;
+	bottom: 0;
+	color: #FFFFFF;
+	font-size: 2.0em;
+	font-weight: 600;
+	left: auto;
+	padding: 0.3em;
+	position: absolute;
+	right: 0;
+	top: auto;
+}
+.service-price-box figcaption sup {
+	padding-right: 0.25em;
+}
+.service-price-box .post-content {
+	padding: 1.0em 1.5em;
+	font-size: 0.9em;
+}
+.service-price-box h4 {
+	font-size: 1.2em;
+	line-height: 1.4;
+	margin: 0;
+	text-transform: uppercase;
+}
+.service-price-box p {
+	margin: 0;
+}
+
+/* ------------------------------------------------------------
+	Services list
+------------------------------------------------------------ */
+
+.services-list2,
+.services-list2 li {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+.services-list2 li:before {
+	color: #fb4848;
+	content: "\f00c";
+	font-family: FontAwesome;
+	line-height: 1;
+	margin-right: 0.75em;
+	vertical-align: baseline;
+}
+
+/* ------------------------------------------------------------
+	Rates table
+------------------------------------------------------------ */
+
+.rates-table {
+}
+.rates-table td,
+.rates-table th {
+	padding: 1.0em 2.0em;
+	text-align: center;
+}
+.rates-table th {
+	font-size: 1.1em;
+	font-weight: 700;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+.rates-table td:nth-child(2) {
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+}
+.rates-table td:nth-child(2):after {
+	content: "";
+	display: block;
+	width: 100%;
+	border-top: 1px dashed #CCCCCC;
+}
+.rates-table tr:nth-child(2n+1) td {
+	background: #f6f6f6;
+}
+
+/* ------------------------------------------------------------
+	Price plans
+------------------------------------------------------------ */
+
+.price-plan {
+	text-align: center;
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+}
+.price-plan .table-header {
+	background: #FB4848;
+	color: #FFFFFF;
+	padding: 2.0em 0;
+	text-transform: uppercase;
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+}
+.price-plan .table-header h3 {
+	font-size: 1.2em;
+	margin: 0;
+}
+.price-plan .table-inner {
+	background: #FFFFFF;
+	border: 1px solid #d0d0d0;
+}
+.price-plan .price {
+	padding: 1.8em 0;
+}
+.price-plan .price h4 {
+	font-size: 4.3em;
+	font-weight: 700;
+	line-height: 1.2;
+	margin-bottom: 1.0rem;
+}
+.price-plan .price p {
+	color: #8f8f8f;
+	font-size: 0.9em;
+	margin-bottom: 0;
+	text-transform: uppercase;
+}
+.price-plan .list ul,
+.price-plan .list li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.price-plan .list li {
+	border-bottom: 1px dashed #d0d0d0;
+	color: #7f7f7f;
+	padding: 1.0em 0;
+	text-transform: lowercase;
+}
+.price-plan .list li:first-child {
+	border-top: 1px dashed #d0d0d0;
+}
+.price-plan .list li:before {
+	color: #fb4848;
+	content: "\f00c";
+	font-family: FontAwesome;
+	line-height: 1;
+	margin-right: 0.5em;
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+	
+	vertical-align: baseline;
+}
+.price-plan .read-more {
+	background: #fb4848;
+	color: #FFFFFF;
+	display: inline-block;
+	font-size: 0.9em;
+	line-height: 1;
+	margin: 2.0em 0;
+	padding: 0.8em 1.4em;
+	text-decoration: none;
+	text-transform: uppercase;
+	
+	-webkit-transition: all 0.4s ease-out 0s;
+	-moz-transition: all 0.4s ease-out 0s;
+	-ms-transition: all 0.4s ease-out 0s;
+	-o-transition: all 0.4s ease-out 0s;
+	transition: all 0.4s ease-out 0s;
+}
+.price-plan .read-more span {
+	padding-right: 0.5em;
+}
+
+.price-plan:hover {
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	-o-transform: scale(1.05);
+	transform: scale(1.05);
+}
+.price-plan:hover .table-header,
+.price-plan:hover .read-more {
+	background: #36404b;
+}
+.price-plan:hover .list li:before {
+	color: #36404b;
+}
+
+
+/* ============================================================
+	# Page Styles
+============================================================ */
+
+/* ------------------------------------------------------------
+	Hero
+------------------------------------------------------------ */
+
+/* 
+	Hero promo
+---------------------------------------- */
+
+.band-hero {
+	background: #36404b url("../images/home/hero.jpg") scroll no-repeat 50% 50%;
+	border-bottom: 3px solid #CCCCCC;
+	color: #ffffff;
+}
+
+.hero-promo {
+	text-align: center;
+}
+.hero-promo h6 {
+	background: rgba(54,64,75,0.85);
+	color: #FFFFFF;
+	padding: 0.5rem;
+	display: inline-block;
+	background: rgba(255,255,255,0.85);
+	color: #FB4848;
+	padding: 0.5rem;
+}
+.hero-promo h3 {
+	background: rgba(54,64,75,0.85);
+	color: #FFFFFF;
+	display: inline-block;
+	font-size: 2.8em;
+	font-weight: 300;
+	padding: 1.0rem 2.5rem;
+	text-transform: uppercase;
+}
+.hero-promo h3 + h3 {
+	margin-left: 2.0em;
+}
+.hero-promo h3.inverse {
+	background: rgba(255,255,255,0.85);
+	color: #FB4848;
+}
+.hero-promo p {
+	background: rgba(255,255,255,0.85);
+	color: #FB4848;
+	padding: 0.5rem;
+}
+
+/* ------------------------------------------------------------
+	Background Band
+------------------------------------------------------------ */
+
+.band-background {
+	background: #FB4848 url("../images/home/hero.jpg") fixed no-repeat 50% 50%;
+	color: #ffffff;
+}
+.band-background .band {
+	background-color: rgba(251, 72, 72, 0.85);
+}
+.band-background .band h3 {
+	font-size: 3.8em;
+	margin: 0;
+	text-transform: uppercase;
+}
+.band-background .band h3:after {
+	content: "";
+	display: block;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+	padding-bottom: 0.2em;
+	margin-bottom: 0.2em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+}
+.band-background .band h4 {
+	font-style: italic;
+}
+
+
+/* ============================================================
+	# Responsive / Media Queries / Target Devices
+============================================================ */
+
+/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
+@media only screen and (max-width: 47.99em) {
+	
+	header.primary .column:last-child {
+		text-align: left;
+	}
+	header .service-box {
+		left: 50%;
+		position: relative;
+		
+		-webkit-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}
+	
+	footer.primary,
+	footer.primary .column:last-child	{
+		text-align: center;
+	}
+	
+	.logo {
+		text-align: center;
+	}
+	.hero-promo h3 + h3 {
+		margin-left: 0;
+	}
+	.services-list2 {
+		text-align: center;
+	}
+	.rates-table {
+		width: 100%;
+	}
+	.text-box p {
+		font-size: 1.0em;
+	}
+	
+	/* ------------------------------------------------------------
+		Columns
+	------------------------------------------------------------ */
+
+	/* Turn columns into rows */
+	.columns-table > .column:not(.column--no-break),
+	.columns-table .column-row > .column:not(.column--no-break),
+	.column:not(.column--no-break) {
+		/*border-left: 0;
+		border-right: 0;*/
+		display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
+		float: none;
+		margin-left: 0;
+		margin-right: 0;
+		vertical-align: bottom;
+		width: 100% !important;
+	}
+	
+	/* When columns pass breakpoint, set a margin beneath them */
+	.column--break-margin-b1 {
+		margin-bottom: 1.0em;
+	}
+	.column--break-margin-b2 {
+		margin-bottom: 2.0em;
+	}
+	.column--break-margin-b3 {
+		margin-bottom: 3.0em;
+	}
+	.column--break-margin-b4 {
+		margin-bottom: 4.0em;
+	}
+	
+	.columns--break-margin-b1 .column:not(:last-child) {
+		margin-bottom: 1.0em;
+	}
+	.columns--break-margin-b2 .column:not(:last-child) {
+		margin-bottom: 2.0em;
+	}
+	.columns--break-margin-b3 .column:not(:last-child) {
+		margin-bottom: 3.0em;
+	}
+	.columns--break-margin-b4 .column:not(:last-child) {
+		margin-bottom: 4.0em;
+	}
+	
+}

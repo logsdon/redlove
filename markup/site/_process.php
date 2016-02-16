@@ -6,7 +6,7 @@ if ( ! defined('ENVIRONMENT') )
 }
 
 // Check access key
-check_access();
+//check_access();
 
 $process_data = process();
 

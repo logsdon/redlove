@@ -352,10 +352,21 @@ jQuery(document).ready(function ( $ )
 		$first_field[0].focus();
 	}
 	
-	// Send additional resource entry check
+	// Submit a form
 	$('.form_some-form').on('submit', function ( event )
 	{
 		// If event is an object, prevent default action
+		/*
+		event.preventDefault();
+		
+		// or
+		
+		var event_passed = ( event && typeof event === 'object' );
+		if ( event_passed )
+		{
+			event.preventDefault();
+		}
+		*/
 		var event_passed = ( event && typeof event === 'object' );
 		if ( event_passed )
 		{
@@ -363,20 +374,42 @@ jQuery(document).ready(function ( $ )
 		}
 		
 		// If an event passed, use "this" or else assume form selector passed
-		var $form = event_passed ? $(this) : $(event).eq(0);
+		/*
+		var $this = $(this);
 		
+		// or
+		
+		var $this = event_passed ? $(this) : $(event).eq(0);
+		*/
+		var $this = event_passed ? $(this) : $(event).eq(0);
+		
+		/*
 		// Init messages and loading indicators
-		REDLOVE.fn.show_form_loading($form);
+		REDLOVE.fn.show_form_loading($this);
+		*/
 		
 		// ----------------------------------------
 		// Gather data
-		//var el_data = jQuery.parseJSON( $(this).attr('rel') );//$form.data('data')// Parse JSON data on element
+		/*
+		var data = jQuery.parseJSON( $(this).attr('rel') );//$this.data('data')// Parse JSON data on element
+		
+		// or
+		
 		var data = {};
-		data.name = $('input[name="name"]', $form).val() || '';
-		data.email = $('input[name="gobbledy-gook"]', $form).val() || '';
+		data.action = $this.data('action') || '';
+		data.name = $('input[name="name"]', $this).val() || '';
+		data.email = $('input[name="gobbledy-gook"]', $this).val() || '';
+		
+		var params = $this.data('params') || {};
+		*/
+		var data = {};
+		data.action = $this.data('action') || '';
+		data.name = $('input[name="name"]', $this).val() || '';
+		data.email = $('input[name="gobbledy-gook"]', $this).val() || '';
+		data.question = $('textarea[name="question"]', $form).val() || '';
 		
 		// If clicking on an item with data instead of a form
-		var params = $this.data('editable-params') || {};
+		var params = $this.data('params') || {};
 		params.action_modifier = 'edit-in-place';
 		params.field = $this.attr('property');
 		params.value = $this.html();
@@ -390,6 +423,45 @@ jQuery(document).ready(function ( $ )
 		// Validate data
 		var valid = true;
 		var messages = new Array();
+		
+		/*
+		var validate_options = {
+			fields : {
+				'input[name="client1_name"]' : {
+					rules : 'required',
+					message : 'Please enter your Name.'
+				},
+				'input[name="client1_email"]' : {
+					rules : 'valid_email',
+					message : 'Please enter your Email.',
+					messages : {
+						valid_email : 'Please enter a valid Email.'
+					}
+				},
+				'input[name="client1_date"]' : {
+					rules : 'required',
+					message : 'Please enter the Date.'
+				},
+				'textarea[name="property_address"]' : {
+					rules : 'required',
+					message : 'Please enter your Property Address.'
+				},
+				'input[name="inspection_fee"]' : {
+					rules : 'required',
+					message : 'Please enter your Inspection Fee.'
+				},
+				'input[name="inspection_deposit"]' : {
+					rules : 'required',
+					message : 'Please enter your Inspection Deposit.'
+				}
+			}
+		};
+		$this.redlove_validate(validate_options);
+		var validation = $this.data('redlove_validate').validation;
+		// Set validation
+		valid = validation.valid;
+		messages = validation.messages;
+		*/
 		
 		if ( data.name.length == 0 )
 		{
@@ -406,52 +478,137 @@ jQuery(document).ready(function ( $ )
 		// If not valid, stop processing
 		if ( ! valid )
 		{
+			/*
+			// Add message
 			messages.push('Please enter valid information for all required fields.');
-			REDLOVE.fn.show_form_messages( $form, messages, 'error' );
-			REDLOVE.fn.show_form_loading($form, false);
+			
+			// or
+			
+			// Show generic messages
+			REDLOVE.fn.show_message(messages.join("\n"), 'error');
+			
+			// or
+			
+			// Show form messages
+			REDLOVE.fn.show_form_messages( $this, messages, 'error' );
+			
+			// or
+			
+			// Hide form loading
+			REDLOVE.fn.show_form_loading($this, false);
+			
+			// or
+			
+			// Create messages modal
+			var newline = '<br>';//"\n";
+			var message = messages.join(newline);
+			$.fn.redlove_modal.show('<h3 style="font-weight: 700;">Whoops!</h3><div style="font-size: 1.2em;"><p style="font-weight: 700;">It looks like you forgot to complete all form information.</p><p>' + message + '</p></div>');
+			
+			// or
+			
+			// Move to first error
+			var $error_fields = $this.find('.error');
+			if ( $error_fields.length > 0 )
+			{
+				$('html, body').animate({scrollTop: $error_fields.eq(0).offset().top - 100}, 1000, function () {});
+			}
+			
+			return false;
+			*/
+			
+			messages.push('Please enter valid information for all required fields.');
+			REDLOVE.fn.show_form_messages( $this, messages, 'error' );
+			REDLOVE.fn.show_form_loading($this, false);
+			
 			return false;
 		}
 		// ----------------------------------------
 		
 		// ----------------------------------------
 		// Gather request data
+		/*
 		var request_data = {};
-		request_data = REDLOVE.fn.serialize_multiple(request_data, REDLOVE.form_data, $form.serialize());
-		// Or
+		request_data.action = data.action;
+		request_data.params = JSON.stringify(params);
+		request_data = REDLOVE.fn.serialize_multiple(request_data, REDLOVE.form_data, $this.serialize());
+		
+		// or
+		
 		var request_data = {};
 		// Manual data
-		//request_data.key = value;
-		//request_data.params = JSON.stringify({});
+		request_data.key = value;
+		request_data.params = JSON.stringify({});
 		// Extend with common and security data
 		$.extend(true, request_data, REDLOVE.form_data, REDLOVE.security);
 		// Serialize the data as a string
 		request_data = REDLOVE.fn.serialize_data(request_data);
 		// Add serialized form data
-		request_data += '&' + $form.serialize();
-		/*
+		request_data += '&' + $this.serialize();
 		// Serialize common and security data
-		request_data += serialize_data(REDLOVE.form_data);
-		request_data += serialize_data(REDLOVE.security);
-		*/
-		// Or
+		//request_data += serialize_data(REDLOVE.form_data);
+		//request_data += serialize_data(REDLOVE.security);
+		
+		// or
+		
 		// If clicking on an item with data instead of a form
 		var request_data = {
-			action : $this.data('editable-action'),
+			action : $this.data('action'),
 			params : JSON.stringify(params)
 		};
 		request_data = REDLOVE.fn.serialize_multiple(request_data, REDLOVE.form_data);
+		*/
+		var request_data = {};
+		request_data.action = data.action;
+		request_data.params = JSON.stringify(params);
+		request_data = REDLOVE.fn.serialize_multiple(request_data, REDLOVE.form_data, $this.serialize());
+		
 		// ----------------------------------------
 		
 		// Send request
-		//$.ajax($.extend({}, REDLOVE.common_ajax_options, {}));
+		/*
+		$.ajax($.extend({}, REDLOVE.common_ajax_options, {
+			context : $this,
+			data : request_data,
+			url : $this.attr('action'),
+			success : function ( response, text_status, jq_xhr )
+			{
+				// Check if no or invalid response received
+				if ( ! response || typeof response !== 'object' )
+				{
+					REDLOVE.fn.show_message('Invalid response format.', 'error');
+					return false;
+				}
+				
+				// Normalize response code to numeric
+				var success = response['code'] * 1;
+				// If NOT successful
+				if ( success <= 0 )
+				{
+					REDLOVE.fn.show_message(response['message'], 'error');
+					return false;
+				}//end if not successful
+				else
+				{
+					var data = response['value'];
+					messages = response['message'];
+					
+					// Show form messages
+					REDLOVE.fn.show_message(response['message'], 'success');
+					
+					// Reset form
+					$this[0].reset();
+				}//end if successful
+			}
+		}));//end $.ajax
+		*/
 		$.ajax({
 			cache : false,
-			context : $form,
+			context : $this,
 			data : request_data,
 			dataType : 'json',// Response type
 			timeout : 300000,
 			type : 'POST',
-			url : $form.attr('action'),//base_url + ''//$form.attr('action'),//this.action//this.href// For IE, make sure form action attribute is not empty if used
+			url : $this.attr('action'),//REDLOVE.base_url + ''//this.href//this.action//$this.attr('action'),// For IE, make sure form action attribute is not empty if used
 			
 			success : function ( response, text_status, jq_xhr )
 			{
@@ -470,26 +627,67 @@ jQuery(document).ready(function ( $ )
 				
 				// Normalize response code to numeric
 				var success = response['code'] * 1;
-				// If successful
-				if ( success > 0 )
+				// If NOT successful
+				if ( success <= 0 )
+				{
+					// Show form messages
+					/*
+					REDLOVE.fn.show_message(response['message'], 'error');
+					// or
+					REDLOVE.fn.show_form_messages( $this, response['message'], 'error' );
+					*/
+					REDLOVE.fn.show_message(response['message'], 'error');
+					
+					return false;
+				}//end if not successful
+				else
 				{
 					var data = response['value'];
 					
+					/*
 					// Show form messages
-					REDLOVE.fn.show_form_messages( $form, response['message'], 'success' );
+					REDLOVE.fn.show_message( response['message'], 'success' );
+					// or
+					REDLOVE.fn.show_form_messages( $this, response['message'], 'success' );
+					// or
+					create_growl(response['message'], 'success');
+					// or
+					alert(response['message']);
 					
-					// Send analytics event
-					REDLOVE.fn.send_analytics_hit($form.attr('action'), 'form', 'submit', 'contact');
+					// or
 					
 					// Reset form
-					$form[0].reset();
+					$this[0].reset();
 					
-					// Close modal window
-					$form.closest('.redlove_modal').find('.redlove_modal_controls_close').trigger('click');
+					// or
 					
 					// Reload page
 					window.location.reload();
+					// or
 					window.location.href = 'http://example.com/thank-you?';
+					
+					// or
+					
+					// Create messages modal
+					var newline = '<br>';//"\n";
+					var message = messages.join(newline);
+					$.fn.redlove_modal.show('<h3 style="font-weight: 700;">Thank you!</h3><div style="font-size: 1.2em;"><p>' + message + '</p></div>');
+					
+					// or
+					
+					// Scroll to top
+					$('html, body').animate({scrollTop: 0}, 1000, function () {});
+					*/
+					
+					// Send analytics event
+					REDLOVE.fn.send_analytics_hit($this.attr('action'), 'form', 'submit', 'contact');
+					
+					// or
+					
+					// Close modal window
+					$this.closest('.redlove_modal').find('.redlove_modal_controls_close').trigger('click');
+					
+					// or
 					
 					// Clone elements
 					var $template = $(event.currentTarget);
@@ -498,6 +696,8 @@ jQuery(document).ready(function ( $ )
 					$clone.insertBefore($template);
 					delete($template);
 					delete($clone);
+					
+					// or
 					
 					$('.answer:not(.hidden)').remove();
 					for ( var i in data )
@@ -512,6 +712,8 @@ jQuery(document).ready(function ( $ )
 						delete($template);
 						delete($clone);
 					}
+					
+					// or
 					
 					var $answers = $('.answer');
 					var $answers_container = $('.answers-container');
@@ -530,6 +732,8 @@ jQuery(document).ready(function ( $ )
 					}
 					delete($template);
 					
+					// or
+					
 					// Iterate over response data
 					$('.results').empty();
 					for ( var prop in data )
@@ -544,11 +748,6 @@ jQuery(document).ready(function ( $ )
 					}
 					
 				}//end if successful
-				else
-				{
-					REDLOVE.fn.show_form_messages( $form, response['message'], 'error' );
-					return false;
-				}//end if not successful
 			},
 			
 			error : function ( jq_xhr, text_status, error_thrown )
@@ -578,7 +777,7 @@ jQuery(document).ready(function ( $ )
 			
 			complete : function( jq_xhr, text_status )
 			{
-				REDLOVE.fn.show_form_loading($form, false);
+				REDLOVE.fn.show_form_loading($this, false);
 				REDLOVE.fn.show_site_loading(false);
 			}
 			
@@ -710,97 +909,6 @@ jQuery(document).ready(function ( $ )
 	}
 
 	// --------------------------------------------------------------------
-	
-	
-	
-	$(document).on('submit', '.form_ask', function ( event )
-	{
-		event.preventDefault();
-		
-		var $form = $(this);
-		
-		// ----------------------------------------
-		// Gather data
-		var data = {};
-		data.name = $('input[name="name"]', $form).val() || '';
-		data.email = $('input[name="gobbledy-gook"]', $form).val() || '';
-		data.question = $('textarea[name="question"]', $form).val() || '';
-		// ----------------------------------------
-		
-		// ----------------------------------------
-		// Validate
-		var valid = true;
-		var messages = new Array();
-		
-		if ( data.name.length == 0 )
-		{
-			valid = false;
-			messages.push('Please enter your full name.');
-		}
-		
-		if ( data.email.length == 0 || ! REDLOVE.fn.validation.valid_email(data.email) )
-		{
-			valid = false;
-			messages.push('Please enter a valid email address.');
-		}
-		
-		if ( data.question.length == 0 )
-		{
-			valid = false;
-			messages.push('Please enter your question.');
-		}
-		
-		// If not valid, stop processing
-		if ( ! valid )
-		{
-			//messages.push('Please enter valid information for all required fields.');
-			REDLOVE.fn.show_message(messages.join("\n"), 'error');
-			return false;
-		}
-		// ----------------------------------------
-		
-		// Gather request data
-		var request_data = REDLOVE.fn.serialize_multiple(request_data, REDLOVE.form_data, $form.serialize());
-		
-		// Send request
-		$.ajax($.extend({}, REDLOVE.common_ajax_options, {
-			context : $form,
-			data : request_data,
-			url : $form.attr('action'),
-			success : function ( response, text_status, jq_xhr )
-			{
-				// Check if no or invalid response received
-				if ( ! response || typeof response !== 'object' )
-				{
-					REDLOVE.fn.show_message('Invalid response format.', 'error');
-					return false;
-				}
-				
-				// Normalize response code to numeric
-				var success = response['code'] * 1;
-				// If successful
-				if ( success > 0 )
-				{
-					var data = response['value'];
-					
-					// Reset form
-					$form[0].reset();
-					
-					REDLOVE.fn.send_analytics_hit(REDLOVE.base_url + 'ask/thank-you', 'goal', 'click', 'submit');
-					
-					REDLOVE.fn.show_message(response['message'], 'success');
-					$form.closest('.redlove_modal').find('.redlove_modal_controls_close').trigger('click');
-				}//end if successful
-				else
-				{
-					REDLOVE.fn.show_message(response['message'], 'error');
-					return false;
-				}//end if not successful
-			}
-		}));//end $.ajax
-	});
-	
-	
 	
 	/**
 	* 

@@ -5,26 +5,31 @@ if ( ! defined('ENVIRONMENT') )
 	require_once(str_repeat('../', 3) . 'includes/common.php');
 }
 ?><!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="no-js ie lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="no-js ie lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js ie lt-ie10 ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 10)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7 ]><html class="loading no-js ie lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="loading no-js ie lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="loading no-js ie lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="loading no-js ie lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--><html class="loading no-js" lang="en"> <!--<![endif]-->
 <head>
 
 	<?php
 	// Head common tags and resources
-	include(THEME_PATH . 'common/head.php');
+	include(THEME_PATH . 'includes/common/head.php');
 	?>
 	
 </head>
 <body class="mobile-menu-liner">
+<?php
+// Body Prepend
+include(THEME_PATH . 'includes/common/body.prepend.php');
+?>
+
 
 <div class="body-liner">
 
 
 
-<?php require_once(THEME_PATH . 'common/header-band_home.php'); ?>
+<?php require_once(THEME_PATH . 'includes/common/header-band_home.php'); ?>
 
 
 
@@ -94,7 +99,7 @@ if ( ! defined('ENVIRONMENT') )
 					<p>Splendide philosophia est, cum at probo minimu omesque, fali libris has id. Ad facer pertinax vel, eum nevelni molestie euripidi consectu. Taleni noluise signiferumque te vix, grae titur temporibus his uta, vis ne nulla nemore splendide.</p>
 				</div>
 				<div class="column w1-2 table-cell--middle">
-					<img src="<?php echo base_url(THEME_ROOT); ?>images/bookkeeping-615384_800.jpg" alt=" " class="img-scale">
+					<img src="<?php echo theme_base_url(); ?>images/bookkeeping-615384_800.jpg" alt=" " class="img-scale">
 				</div>
 			</div>
 		</div>
@@ -181,24 +186,15 @@ if ( ! defined('ENVIRONMENT') )
 
 
 
-<?php require_once(THEME_PATH . 'common/footer.php'); ?>
+<?php require_once(THEME_PATH . 'includes/common/footer.php'); ?>
 
 </div>
 <!-- /body-liner -->
 
 
-
-<!-- JavaScript -->
-
-<script type="text/javascript">
-//<![CDATA[
-jQuery(document).ready(function($)
-{
-});
-//]]>
-</script>
-
-
-
+<?php
+// Body Append
+include(THEME_PATH . 'includes/common/body.append.php');
+?>
 </body>
 </html>
