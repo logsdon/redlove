@@ -525,6 +525,35 @@ table.borders > tfoot > tr > td {
 	border-top: 1px solid #ddd;
 }
 
+/* Break table layout for responsive views
+------------------------------ */
+/* Mobile (Portrait) : Design for a width of 320px (0px - 479px) */
+@media only screen and (max-width: 29.99em) {
+	
+	.break-table--block td {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		
+		display: block !important;
+		height: auto !important;
+		width: 100% !important;
+	}
+		.break-table--block tr td:last-child {
+			margin-bottom: 1.0em;
+		}
+	.break-table--inline-block td {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		
+		display: inline-block !important;
+		height: auto !important;
+	}
+	
+}
+
+
 /* --------------------------------------------------------------------------------
 	## Forms
 -------------------------------------------------------------------------------- */
