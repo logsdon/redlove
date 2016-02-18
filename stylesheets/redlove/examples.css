@@ -46,6 +46,82 @@
 	-o-animation: keyframes-example 1s infinite;
 	animation: keyframes-example 1s infinite;
 }
+/*
+@-webkit-keyframes color-pulse {
+	0%, 100% {
+		background-color: #ffaa5d;
+	}
+	20% {
+		background-color: #e8232d;
+	}
+	40% {
+		background-color: #7f3455;
+	}
+	60% {
+		background-color: #424072;
+	}
+	80% {
+		background-color: #66757c;
+	}
+}
+@-moz-keyframes color-pulse {
+	0%, 100% {
+		background-color: #ffaa5d;
+	}
+	20% {
+		background-color: #e8232d;
+	}
+	40% {
+		background-color: #7f3455;
+	}
+	60% {
+		background-color: #424072;
+	}
+	80% {
+		background-color: #66757c;
+	}
+}
+@-o-keyframes color-pulse {
+	0%, 100% {
+		background-color: #ffaa5d;
+	}
+	20% {
+		background-color: #e8232d;
+	}
+	40% {
+		background-color: #7f3455;
+	}
+	60% {
+		background-color: #424072;
+	}
+	80% {
+		background-color: #66757c;
+	}
+}
+@keyframes color-pulse {
+	0%, 100% {
+		background-color: #ffaa5d;
+	}
+	20% {
+		background-color: #e8232d;
+	}
+	40% {
+		background-color: #7f3455;
+	}
+	60% {
+		background-color: #424072;
+	}
+	80% {
+		background-color: #66757c;
+	}
+}
+.animation_color-pulse {
+	-webkit-animation: color-pulse 10s infinite;
+	-moz-animation: color-pulse 10s infinite;
+	-o-animation: color-pulse 10s infinite;
+	animation: color-pulse 10s infinite;
+}
+*/
 
 .background-size {
 	-webkit-background-size: cover;
@@ -1561,5 +1637,44 @@ pre.line-counter span:before {
 	margin-top: -5px;
 	padding: 13px 0 8px;
 	text-align: center;
+}
+
+/* -------------------------------------------------------
+	Badge Band (Fixed item in upper right corner)
+	
+	<div class="badge-band">
+		<span class="no-select">Alpha</span>
+	</div>
+------------------------------------------------------- */
+
+.badge-band {
+	left: 0;
+	position: fixed;
+	right: 0;
+	text-align: right;
+	top: 0;
+	width: 100%;
+}
+.badge-band span {
+	background-color: rgba(0, 0, 0, 0.4);
+	
+	-webkit-box-shadow: 0px 0px 3px 0px rgba(255, 255, 255, 0.6);
+	-moz-box-shadow: 0px 0px 3px 0px rgba(255, 255, 255, 0.6);
+	box-shadow: 0px 0px 3px 0px rgba(255, 255, 255, 0.6);
+	
+	color: rgba(255, 255, 255, 0.8);
+	display: inline-block;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding: 0.5em 4.0em;
+	pointer-events: none;
+	text-align: center;
+	text-transform: uppercase;
+	
+	-webkit-transform: translate(25%, 50%) rotate(45deg);
+	-moz-transform: translate(25%, 50%) rotate(45deg);
+	-ms-transform: translate(25%, 50%) rotate(45deg);
+	-o-transform: translate(25%, 50%) rotate(45deg);
+	transform: translate(25%, 50%) rotate(45deg);
 }
 

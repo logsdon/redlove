@@ -1,8 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Your Message Subject or Title</title>
 	<style type="text/css">
 		/* Based on The MailChimp Reset INLINE: Yes. */
@@ -115,7 +115,7 @@
 	<![endif]-->
 	
 	<style type="text/css">
-		/* Style utilities */
+		/* Utility Helpers */
 		
 		.common-font {
 			font-family: Arial, Helvetica, sans-serif;
@@ -131,8 +131,12 @@
 		.line-height--1px {
 			line-height: 1px;
 		}
-		/*<div style="font-size:10px;line-height:10px;">&nbsp;</div>*/
-		/*<div class="spacer"><img src="images/pixel/transparent.gif" height="10" width="10" alt="" class="image_fix" /></div>*/
+		/*<!--
+		Vertical spacing
+		<td align="center" valign="top" class="spacer"><div style="font-size:10px;line-height:10px;">&nbsp;</div></td>
+		Horizontal and vertical spacing
+		<div class="spacer"><img src="images/pixel/transparent.gif" border="0" width="10" height="10" alt="" class="image_fix" /></div>
+		-->*/
 		.spacer {
 			font-size: 1px;
 			line-height: 1.0;
@@ -140,8 +144,15 @@
 		.white-text {
 			color: #FFFFFF;
 		}
-		.no-decoration {
+		.decoration-underline {
+			text-decoration: underline;
+		}
+		.decoration-none {
 			text-decoration: none;
+		}
+		
+		.display-block {
+			display: block;
 		}
 		
 		.wrapper {
@@ -151,19 +162,30 @@
 			width: 100%;
 		}
 		
-		#background-table {
-			background-color: #ffffff;
-			font-size: 14px;
-			padding: 0;
-			width: 100%;
-		}
-		
 		.row {
 			display: block;
 			padding-bottom: 20px;
 		}
 		.row-padding {
 			padding: 20px 0;
+		}
+		
+		/*<!--
+		Before </body>
+		<div class="gmail-footer-decrunch"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+		-->*/
+		.gmail-footer-decrunch {
+			display: none;
+			font: 15px courier;
+			line-height: 0;
+			white-space: nowrap;
+		}
+		
+		#background-table {
+			background-color: #ffffff;
+			font-size: 14px;
+			padding: 0;
+			width: 100%;
 		}
 		
 		@media only screen and (max-width: 479px) {
@@ -228,11 +250,14 @@
 			
 			.img-fluid {
 				height: auto !important;
+				-ms-interpolation-mode: bicubic !important;
 				width: 100% !important;
 			}
 			.img-scale {
 				height: auto !important;
+				-ms-interpolation-mode: bicubic !important;
 				max-width: 100% !important;
+				width: auto !important;
 			}
 			.img-fluid-width {
 				width: 100% !important;
@@ -264,6 +289,14 @@
 	
 	<style type="text/css">
 		/* Custom styling */
+		
+		div,
+		p,
+		a,
+		li,
+		td {
+			-webkit-text-size-adjust:none;
+		}
 		
 		a,
 		.link {
@@ -308,7 +341,7 @@
 </head>
 <body>
 <!-- Wrapper/Container Table: Use a wrapper table to control the width and the background color consistently of your email. Use this approach instead of setting attributes on the body tag. -->
-<table border="0" cellpadding="0" cellspacing="0" width="100%" id="background-table" class="common-font">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="background-table">
 	<tbody>
 		<tr>
 			<td align="center" valign="top">
@@ -353,13 +386,13 @@
 
 								<h2>Aligning content across columns</h2>
 								
-								<table align="left" border="0" cellpadding="20" cellspacing="0" width="100%" class="full-width welcome-table common-font">
+								<table align="left" border="0" cellpadding="20" cellspacing="0" width="100%" class="full-width welcome-table">
 									<tbody>
 										<tr>
-											<td align="left">
+											<td align="left" class="common-font">
 												Welcome <a href="" target="_blank" class="link">[first_name,fallback=friend</a>!
 											</td>
-											<td align="right" valign="bottom" nowrap="nowrap">
+											<td align="right" valign="bottom" nowrap="nowrap" class="common-font">
 												<webversion class="link">View online</webversion>
 											</td>
 										</tr>
@@ -370,22 +403,22 @@
 								
 								<h3>Images</h3>
 								
-								<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
-								<div class="spacer"><img src="images/divider-8a8787.gif" height="1" width="560" class="image_fix img-scale-width" style="width: 560px;" /></div>
-								<div class="spacer hide"><img src="images/pixel/transparent.gif" height="5" width="5" alt="" class="image_fix" /></div>
+								<div class="spacer"><img src="images/pixel/transparent.gif" border="0" width="20" height="20" alt="" class="image_fix" /></div>
+								<div class="spacer"><img src="images/divider-8a8787.gif" border="0" width="560" height="1" alt="" class="image_fix img-scale-width" style="width: 560px;" /></div>
+								<div class="spacer hide"><img src="images/pixel/transparent.gif" border="0" width="5" height="5" alt="" class="image_fix" /></div>
 								
 								<h3>Font sizes and table cells</h3>
 								
 								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
 									<tbody>
 										<tr>
-											<td align="center" valign="top" class="line-height--1px"><div style="font-size:20px;line-height:20px;">&nbsp;</div></td>
+											<td align="center" valign="top" class="spacer"><div style="font-size:20px;line-height:20px;">&nbsp;</div></td>
 										</tr>
 										<tr>
-											<td align="center" valign="top" bgcolor="#8a8787" class="line-height--1px"><div class="font--1px">&nbsp;</div></td>
+											<td align="center" valign="top" bgcolor="#8a8787" class="spacer">&nbsp;</td>
 										</tr>
 										<tr>
-											<td align="center" valign="top" class="line-height--1px"><div style="font-size:5px;line-height:5px;">&nbsp;</div></td>
+											<td align="center" valign="top" class="spacer"><div style="font-size:5px;line-height:5px;">&nbsp;</div></td>
 										</tr>
 									</tbody>
 								</table>
@@ -394,22 +427,22 @@
 								
 								<h3>Inline Block</h3>
 								
-								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width flex-inline-block-table common-font">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width flex-inline-block-table">
 									<tbody>
 										<tr>
-											<td align="center" valign="middle" nowrap="nowrap">
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
 												<a href="" target="_blank" class="link"><img src="images/header/logo.jpg" border="0" width="100" height="50" alt="Company, LLC" class="image_fix" /></a>
 											</td>
-											<td align="center" valign="middle" nowrap="nowrap">
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
 												<a href="" target="_blank" class="link"><img src="images/header/link-1.jpg" border="0" width="100" height="50" alt="Link 1" class="image_fix" /></a>
 											</td>
-											<td align="center" valign="middle" nowrap="nowrap">
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
 												<a href="" target="_blank" class="link"><img src="images/header/link-2.jpg" border="0" width="100" height="50" alt="Link 2" class="image_fix" /></a>
 											</td>
-											<td align="center" valign="middle" nowrap="nowrap">
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
 												<a href="" target="_blank" class="link"><img src="images/header/link-3.jpg" border="0" width="100" height="50" alt="Link 3" class="image_fix" /></a>
 											</td>
-											<td align="center" valign="middle" nowrap="nowrap">
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
 												<a href="" target="_blank" class="link"><img src="images/header/link-4.jpg" border="0" width="100" height="50" alt="Link 4" class="image_fix" /></a>
 											</td>
 										</tr>
@@ -418,23 +451,23 @@
 								
 								<h3>Block</h3>
 								
-								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width flex-table common-font">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width flex-table">
 									<tbody>
 										<tr>
-											<td align="center" valign="middle" nowrap="nowrap">
-												<a href="" target="_blank" class="link"><img src="images/header/logo.jpg" width="100" height="50" border="0" alt="Company, LLC" class="image_fix" /></a>
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
+												<a href="" target="_blank" class="link"><img src="images/header/logo.jpg" border="0" width="100" height="50" alt="Company, LLC" class="image_fix" /></a>
 											</td>
-											<td align="center" valign="middle" nowrap="nowrap">
-												<a href="" target="_blank" class="link"><img src="images/header/link-1.jpg" width="100" height="50" border="0" alt="Link 1" class="image_fix" /></a>
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
+												<a href="" target="_blank" class="link"><img src="images/header/link-1.jpg" border="0" width="100" height="50" alt="Link 1" class="image_fix" /></a>
 											</td>
-											<td align="center" valign="middle" nowrap="nowrap">
-												<a href="" target="_blank" class="link"><img src="images/header/link-2.jpg" width="100" height="50" border="0" alt="Link 2" class="image_fix" /></a>
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
+												<a href="" target="_blank" class="link"><img src="images/header/link-2.jpg" border="0" width="100" height="50" alt="Link 2" class="image_fix" /></a>
 											</td>
-											<td align="center" valign="middle" nowrap="nowrap">
-												<a href="" target="_blank" class="link"><img src="images/header/link-3.jpg" width="100" height="50" border="0" alt="Link 3" class="image_fix" /></a>
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
+												<a href="" target="_blank" class="link"><img src="images/header/link-3.jpg" border="0" width="100" height="50" alt="Link 3" class="image_fix" /></a>
 											</td>
-											<td align="center" valign="middle" nowrap="nowrap">
-												<a href="" target="_blank" class="link"><img src="images/header/link-4.jpg" width="100" height="50" border="0" alt="Link 4" class="image_fix" /></a>
+											<td align="center" valign="middle" nowrap="nowrap" class="common-font">
+												<a href="" target="_blank" class="link"><img src="images/header/link-4.jpg" border="0" width="100" height="50" alt="Link 4" class="image_fix" /></a>
 											</td>
 										</tr>
 									</tbody>
@@ -442,13 +475,13 @@
 								
 								<h2>Fluid and scale images</h2>
 								
-								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width common-font">
+								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
 									<tbody>
 										<tr>
-											<td align="left" valign="top">
-												<img src="images/my-image.jpg" border="0" width="200" height="200" alt="[My Image]" class="image_fix img-fluid" />
+											<td align="left" valign="top" class="common-font">
+												<img src="images/my-image.jpg" border="0" width="400" height="200" alt="[My Image]" class="image_fix img-fluid" />
 												<p>Here is a fluid image.</p>
-												<img src="images/my-image.jpg" border="0" width="200" height="200" alt="[My Image]" class="image_fix img-scale" />
+												<img src="images/my-image.jpg" border="0" width="400" height="200" alt="[My Image]" class="image_fix img-scale" />
 												<p>Here is a scale image.</p>
 											</td>
 										</tr>
@@ -457,11 +490,11 @@
 								
 								<h2>Table cells for consistent padding</h2>
 								
-								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width common-font">
+								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
 									<tbody>
 										<tr>
-											<td align="center" valign="middle" class="blue-inverse-cell">
-												<a href="" target="_blank" class="blue-inverse-link white-text no-decoration">My Link</a>
+											<td align="center" valign="middle" class="common-font blue-inverse-cell">
+												<a href="" target="_blank" class="blue-inverse-link white-text decoration-none">My Link</a>
 											</td>
 										</tr>
 									</tbody>
@@ -470,22 +503,22 @@
 								
 								<h1>Content Containers</h1>
 								
-								<h2>Table cellpadding</h1>
+								<h2>Table cellpadding</h2>
 								
-								<table align="left" border="0" cellpadding="20" cellspacing="0" bgcolor="#343434" width="100%" class="full-width common-font">
+								<table align="left" border="0" cellpadding="20" cellspacing="0" bgcolor="#343434" width="100%" class="full-width">
 									<tbody>
 										<tr>
-											<td align="left" valign="middle" class="white-text">
+											<td align="left" valign="middle" class="common-font white-text">
 												
 												A container with table cellpadding around all sides.
 												
-												<table align="left" border="0" cellpadding="10" cellspacing="0" bgcolor="#666666" width="100%" class="full-width common-font">
+												<table align="left" border="0" cellpadding="10" cellspacing="0" bgcolor="#666666" width="100%" class="full-width">
 													<tbody>
 														<tr>
-															<td>
+															<td align="left" class="common-font">
 																Welcome [first_name,fallback=friend], thank you for subscribing. <a href="" target="_blank">Visit us</a> again soon.
 															</td>
-															<td valign="bottom" nowrap="nowrap">
+															<td align="right" valign="bottom" nowrap="nowrap" class="common-font">
 																<webversion class="">View online</webversion>
 															</td>
 														</tr>
@@ -499,24 +532,24 @@
 								
 								<h2>Table cells for padding</h2>
 								
-								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width common-font">
+								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
 									<tbody>
 										<tr>
-											<td valign="top">
-												<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
+											<td valign="top" class="spacer">
+												<img src="images/pixel/transparent.gif" border="0" height="20" width="20" alt="" class="image_fix" />
 											</td>
-											<td valign="top">
+											<td align="left" valign="top" class="common-font">
 												
 												Content with cells on the sides for padding.
 												
 											</td>
-											<td valign="top">
-												<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
+											<td valign="top" class="spacer">
+												<img src="images/pixel/transparent.gif" border="0" height="20" width="20" alt="" class="image_fix" />
 											</td>
 										</tr>
 										<tr>
-											<td valign="top" colspan="3">
-												<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
+											<td valign="top" colspan="3" class="spacer">
+												<img src="images/pixel/transparent.gif" border="0" height="20" width="20" alt="" class="image_fix" />
 											</td>
 										</tr>
 									</tbody>
@@ -527,37 +560,37 @@
 								
 								<h2>Footer Table 1</h2>
 								
-								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width common-font flex-table footer-table">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width flex-table footer-table">
 									<tbody>
 										<tr>
-											<td align="center" valign="middle" class="row">
+											<td align="center" valign="middle" class="row common-font">
 												
 												This email and all of its contents are &copy;2016 Company, LLC.<br />
-												All rights reserved. <a href="" target="_blank">Privacy Policy</a><br />
-												<br />
+												All rights reserved. <a href="" target="_blank" class="link">Privacy Policy</a><br />
+												<div style="font-size:14px;line-height:14px;">&nbsp;</div>
 												123 Business Avenue, City, State 90210
 											</td>
 										</tr>
 										<tr>
 											<td align="center" valign="middle">
 												
-												<table align="center" border="0" cellpadding="0" cellspacing="0" class="common-font">
+												<table align="center" border="0" cellpadding="0" cellspacing="0">
 													<tbody>
 														<tr>
-															<td>
-																<a href="https://www.facebook.com/" target="_blank" class="link"><img src="images/social/facebook.png" border="0" width="33" height="33" alt="Facebook" editable="true" /></a>
+															<td class="common-font">
+																<a href="https://www.facebook.com/" target="_blank" class="link"><img src="images/social/facebook.png" border="0" width="33" height="33" alt="Facebook" /></a>
 															</td>
-															<td width="4"></td>
-															<td>
-																<a href="https://twitter.com/" target="_blank" class="link"><img src="images/social/twitter.png" border="0" width="33" height="33" alt="Twitter" editable="true" /></a>
+															<td width="4" class="spacer">&nbsp;</td>
+															<td class="common-font">
+																<a href="https://twitter.com/" target="_blank" class="link"><img src="images/social/twitter.png" border="0" width="33" height="33" alt="Twitter" /></a>
 															</td>
-															<td width="4"></td>
-															<td>
-																<a href="https://www.pinterest.com/" target="_blank" class="link"><img src="images/social/pinterest.png" border="0" width="33" height="33" alt="Pinterest" editable="true" /></a>
+															<td width="4" class="spacer">&nbsp;</td>
+															<td class="common-font">
+																<a href="https://www.pinterest.com/" target="_blank" class="link"><img src="images/social/pinterest.png" border="0" width="33" height="33" alt="Pinterest" /></a>
 															</td>
-															<td width="4"></td>
-															<td>
-																<a href="https://www.youtube.com/" target="_blank" class="link"><img src="images/social/youtube.png" border="0" width="33" height="33" alt="YouTube" editable="true" /></a>
+															<td width="4" class="spacer">&nbsp;</td>
+															<td class="common-font">
+																<a href="https://www.youtube.com/" target="_blank" class="link"><img src="images/social/youtube.png" border="0" width="33" height="33" alt="YouTube" /></a>
 															</td>
 														</tr>
 													</tbody>
@@ -566,12 +599,10 @@
 											</td>
 										</tr>
 										<tr>
-											<td align="left" valign="top">
-												<div class="spacer"><img src="images/pixel/transparent.gif" height="20" width="20" alt="" class="image_fix" /></div>
-											</td>
+											<td align="left" valign="top" class="spacer"><div style="font-size:20px;line-height:20px;">&nbsp;</div></td>
 										</tr>
 										<tr>
-											<td align="center" valign="middle" class="footer-email-links">
+											<td align="center" valign="middle" class="common-font footer-email-links">
 												<webversion class="link">Trouble reading this email?</webversion>
 												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
 												<span>This email was sent to: <span class="link">[email]</span></span>
@@ -584,32 +615,32 @@
 								
 								<h2>Footer Table 2</h2>
 								
-								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width common-font flex-table footer-table">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width flex-table footer-table">
 									<tbody>
 										<tr>
-											<td align="left" valign="middle" class="flex-center flex-row">
+											<td align="left" valign="middle" class="flex-center flex-row common-font">
 												&copy;2016 Company, LLC. All rights reserved.<br />
 												123 My Street, My City, State 90210
 											</td>
 											<td align="right" valign="middle" class="flex-center">
 												
-												<table align="right" border="0" cellpadding="0" cellspacing="0" class="common-font flex-margin-center">
+												<table align="right" border="0" cellpadding="0" cellspacing="0" class="flex-margin-center">
 													<tbody>
 														<tr>
-															<td>
-																<a href="https://www.facebook.com/" target="_blank" class="link"><img src="images/social/facebook.png" border="0" width="33" height="33" alt="Facebook" editable="true" /></a>
+															<td class="common-font">
+																<a href="https://www.facebook.com/" target="_blank" class="link"><img src="images/social/facebook.png" border="0" width="33" height="33" alt="Facebook" /></a>
 															</td>
-															<td width="4"></td>
-															<td>
-																<a href="https://twitter.com/" target="_blank" class="link"><img src="images/social/twitter.png" border="0" width="33" height="33" alt="Twitter" editable="true" /></a>
+															<td width="4" class="spacer">&nbsp;</td>
+															<td class="common-font">
+																<a href="https://twitter.com/" target="_blank" class="link"><img src="images/social/twitter.png" border="0" width="33" height="33" alt="Twitter" /></a>
 															</td>
-															<td width="4"></td>
-															<td>
-																<a href="https://www.pinterest.com/" target="_blank" class="link"><img src="images/social/pinterest.png" border="0" width="33" height="33" alt="Pinterest" editable="true" /></a>
+															<td width="4" class="spacer">&nbsp;</td>
+															<td class="common-font">
+																<a href="https://www.pinterest.com/" target="_blank" class="link"><img src="images/social/pinterest.png" border="0" width="33" height="33" alt="Pinterest" /></a>
 															</td>
-															<td width="4"></td>
-															<td>
-																<a href="https://www.youtube.com/" target="_blank" class="link"><img src="images/social/youtube.png" border="0" width="33" height="33" alt="YouTube" editable="true" /></a>
+															<td width="4" class="spacer">&nbsp;</td>
+															<td class="common-font">
+																<a href="https://www.youtube.com/" target="_blank" class="link"><img src="images/social/youtube.png" border="0" width="33" height="33" alt="YouTube" /></a>
 															</td>
 														</tr>
 													</tbody>
@@ -618,7 +649,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td align="center" valign="middle" colspan="2" class="footer-email-links row-padding">
+											<td align="center" valign="middle" colspan="2" class="footer-email-links row-padding common-font">
 												<webversion class="link">Trouble reading this email?</webversion>
 												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
 												<span>This email was sent to: <span class="link">[email]</span></span>
@@ -643,7 +674,7 @@
 <!-- End of wrapper table -->
 
 <!-- Keep Gmail from crunching end of email -->
-<div style="display:none; white-space:nowrap; font:15px courier; line-height:0;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+<div class="gmail-footer-decrunch"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
 
 </body>
 </html>
