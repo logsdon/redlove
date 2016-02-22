@@ -2817,15 +2817,15 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 .embed {
 	position: relative;
 	padding: 0;
-	padding-bottom: 56.25%; /* 16:9 ratio*/
+	padding-bottom: 56.25%;/* 16:9 ratio */
 	height: 0;
 	overflow: hidden;
 }
 .embed_16-9 {
-	padding-bottom: 56.25%; /* 16:9 ratio*/
+	padding-bottom: 56.25%;/* 16:9 ratio */
 }
 .embed_4-3 {
-	padding-bottom: 75.00%; /* 4:3 ratio*/
+	padding-bottom: 75.00%;/* 4:3 ratio */
 }
 /* Make the embedded content position and scale to dimensions of the container */
 .embed iframe,
@@ -2927,6 +2927,7 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	-ms-interpolation-mode: bicubic;
 	width: 100%;
 }
+.img-responsive,
 .img-scale {
 	height: auto;
 	-ms-interpolation-mode: bicubic;

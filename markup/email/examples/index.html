@@ -150,6 +150,9 @@
 		.decoration-none {
 			text-decoration: none;
 		}
+		.nowrap {
+			white-space: nowrap;
+		}
 		
 		.display-block {
 			display: block;
@@ -170,15 +173,25 @@
 			padding: 20px 0;
 		}
 		
+		.page-break-before {
+			page-break-before: always;
+		}
+		.page-break-after {
+			page-break-after: always;
+		}
 		/*<!--
 		Before </body>
-		<div class="gmail-footer-decrunch"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+		<div class="gmail-body-decrunch"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
 		-->*/
-		.gmail-footer-decrunch {
+		.gmail-body-decrunch {
 			display: none;
 			font: 15px courier;
 			line-height: 0;
 			white-space: nowrap;
+		}
+		
+		.table-fixed {
+			table-layout: fixed;
 		}
 		
 		#background-table {
@@ -290,18 +303,16 @@
 	<style type="text/css">
 		/* Custom styling */
 		
-		div,
-		p,
-		a,
-		li,
-		td {
-			-webkit-text-size-adjust:none;
-		}
-		
 		a,
 		.link {
 			color: blue;
 			text-decoration: none;
+		}
+		
+		.h3 {
+			font-size: 1.8em;
+			font-weight: 700;
+			line-height: 1.4;
 		}
 		
 		.welcome-table {
@@ -386,7 +397,7 @@
 
 								<h2>Aligning content across columns</h2>
 								
-								<table align="left" border="0" cellpadding="20" cellspacing="0" width="100%" class="full-width welcome-table">
+								<table align="center" border="0" cellpadding="20" cellspacing="0" width="100%" class="full-width welcome-table">
 									<tbody>
 										<tr>
 											<td align="left" class="common-font">
@@ -475,7 +486,7 @@
 								
 								<h2>Fluid and scale images</h2>
 								
-								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
 									<tbody>
 										<tr>
 											<td align="left" valign="top" class="common-font">
@@ -490,7 +501,7 @@
 								
 								<h2>Table cells for consistent padding</h2>
 								
-								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
 									<tbody>
 										<tr>
 											<td align="center" valign="middle" class="common-font blue-inverse-cell">
@@ -500,12 +511,79 @@
 									</tbody>
 								</table>
 								
+								<h2>Table with no width inside a full width table to avoid text wrap issues</h2>
+								
+								<table border="0" cellpadding="10" cellspacing="0" width="100%" class="full-width">
+									<tbody>
+										<tr>
+											<td align="left" class="common-font">
+											
+												<p>Dear <?php echo isset($email_fields['first_name']) ? $email_fields['first_name'] : 'friend'; ?>,</p>
+												
+												<p>Thank you for taking the time to share with us. The personal information you provided was:</p>
+												
+												<table border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
+													<tbody>
+														<tr>
+															<td align="left">
+															
+																<table border="0" cellpadding="5" cellspacing="0">
+																	<tbody>
+																		<tr>
+																			<td align="left" valign="top" class="common-font"><b>Name</b></td>
+																			<td align="left" valign="top" class="common-font">&nbsp;</td>
+																			<td align="left" valign="top" class="common-font"><?php echo isset($email_fields['name']) ? $email_fields['name'] : ''; ?></td>
+																		</tr>
+																		<tr>
+																			<td align="left" valign="top" class="common-font"><b>Email</b></td>
+																			<td align="left" valign="top" class="common-font">&nbsp;</td>
+																			<td align="left" valign="top" class="common-font"><?php echo isset($email_fields['email']) ? $email_fields['email'] : ''; ?></td>
+																		</tr>
+																		<tr>
+																			<td align="left" valign="top" class="common-font"><b>Phone</b></td>
+																			<td align="left" valign="top" class="common-font">&nbsp;</td>
+																			<td align="left" valign="top" class="common-font"><?php echo isset($email_fields['phone']) ? $email_fields['phone'] : ''; ?></td>
+																		</tr>
+																		<tr>
+																			<td align="left" valign="top" class="common-font"><b>Birthdate</b></td>
+																			<td align="left" valign="top" class="common-font">&nbsp;</td>
+																			<td align="left" valign="top" class="common-font"><?php echo isset($email_fields['birthdate']) ? $email_fields['birthdate'] : ''; ?></td>
+																		</tr>
+																		<tr>
+																			<td align="left" valign="top" class="common-font"><b>Address</b></td>
+																			<td align="left" valign="top" class="common-font">&nbsp;</td>
+																			<td align="left" valign="top" class="common-font">
+																				<?php echo isset($email_fields['address']) ? $email_fields['address'] . '<br />' : ''; ?>
+																				<?php echo isset($email_fields['city']) ? $email_fields['city'] . ', ' : ''; ?>
+																				<?php echo isset($email_fields['state']) ? $email_fields['state'] . '&nbsp;' : ''; ?>
+																				<?php echo isset($email_fields['zip_code']) ? $email_fields['zip_code'] : ''; ?>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td align="left" valign="top" class="common-font"><b>Comments</b></td>
+																			<td align="left" valign="top" class="common-font">&nbsp;</td>
+																			<td align="left" valign="top" class="common-font"><?php echo isset($email_fields['comments']) ? $email_fields['comments'] : ''; ?></td>
+																		</tr>
+																	</tbody>
+																</table>
+
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												
+												<div class="spacer"><div style="font-size:20px;line-height:20px;">&nbsp;</div></div>
+												
+											</td>
+										</tr>
+									</tbody>
+								</table>
 								
 								<h1>Content Containers</h1>
 								
 								<h2>Table cellpadding</h2>
 								
-								<table align="left" border="0" cellpadding="20" cellspacing="0" bgcolor="#343434" width="100%" class="full-width">
+								<table align="center" border="0" cellpadding="20" cellspacing="0" bgcolor="#343434" width="100%" class="full-width">
 									<tbody>
 										<tr>
 											<td align="left" valign="middle" class="common-font white-text">
@@ -532,7 +610,7 @@
 								
 								<h2>Table cells for padding</h2>
 								
-								<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
 									<tbody>
 										<tr>
 											<td valign="top" class="spacer">
@@ -674,7 +752,7 @@
 <!-- End of wrapper table -->
 
 <!-- Keep Gmail from crunching end of email -->
-<div class="gmail-footer-decrunch"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+<div class="gmail-body-decrunch"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
 
 </body>
 </html>

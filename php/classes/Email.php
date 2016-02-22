@@ -521,6 +521,7 @@ class Email
 			'char_set' => 'UTF-8',
 			'is_html' => true,
 			'attachments' => array(),
+			'string_attachments' => array(),
 			
 			'smtp_debug' => null,
 			'smtp_auth' => null,
@@ -706,6 +707,15 @@ class Email
 				foreach ( $params['attachments'] as $attachment => $attachment_name )
 				{
 					$PM->AddAttachment($attachment, $attachment_name);
+				}
+			}
+			
+			// Add string attachments
+			if ( is_array($params['string_attachments']) && ! empty($params['string_attachments']) )
+			{
+				foreach ( $params['string_attachments'] as $attachment_name => $attachment )
+				{
+					$PM->AddStringAttachment($attachment, $attachment_name);
 				}
 			}
 			
