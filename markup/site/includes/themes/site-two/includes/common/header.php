@@ -9,9 +9,9 @@
 			<div class="column-row">
 				<div class="column w50 table-cell--middle">
 					
-					<h1 class="logo no-wrap">
+					<div class="logo no-wrap">
 						<a href="<?php echo theme_nav_url(); ?>"><img src="<?php echo theme_base_url(); ?>images/logos/top-home-inspections.png" alt="Top Home Inspections" class="img-scale"></a>
-					</h1>
+					</div>
 							
 				</div>
 				<div class="column w50 table-cell--middle">

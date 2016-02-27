@@ -154,7 +154,8 @@
 			white-space: nowrap;
 		}
 		
-		.display-block {
+		.display-block,
+		.img-fix {
 			display: block;
 		}
 		
@@ -315,6 +316,28 @@
 			line-height: 1.4;
 		}
 		
+		/* Outlook likes line-height in pixels */
+		.font-size--large {
+			font-size: 15px;
+			line-height: 24px;
+		}
+		.font-size--small {
+			font-size: 13px;
+			line-height: 22px;
+		}
+		.font-size--smaller {
+			font-size: 11px;
+			line-height: 1.4;
+		}
+		
+		.green-text {
+			color: #32b761;
+		}
+		.gray-text,
+		.gray-text a {
+			color: #666666;
+		}
+		
 		.welcome-table {
 			font-size: 12px;
 		}
@@ -346,6 +369,27 @@
 		.footer-email-links a,
 		.footer-email-links .link {
 			color: #222222;
+		}
+		
+		.social-links-table a,
+		.social-links-table img {
+			color: #7a7a7a;
+			text-decoration: none;
+			vertical-align: top;
+		}
+		.social-links-table a,
+		.social-links-table img {
+			display: block;
+		}
+		
+		.copyright-text {
+			color: #5e5d5d;
+			font-size: 11px;
+			line-height: 14px;
+		}
+		.copyright-link {
+			color: #5e5d5d;
+			text-decoration: underline;
 		}
 	</style>
 	
@@ -410,6 +454,24 @@
 									</tbody>
 								</table>
 								
+								<h2>Divs for paragraph spacing</h2>
+								
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="525">
+									<tr>
+										<td align="left" valign="top" bgcolor="#ffffff" class="common-font">
+											<div style="font-size:24px;line-height:24px;">&nbsp;</div>
+											<div class="gray-text font-size--large">
+												Here is some content text that needs special spacing and not rely on paragraphs! <b><i>Check the code</i></b> to see how this is set up<span class="green-text">*</span>!</i></b>
+											</div>
+											<div style="font-size:24px;line-height:24px;">&nbsp;</div>
+											<div class="gray-text font-size--small">
+												<span class="green-text">*</span> <b><i>Here it is</i></b>, some of that special text below a specific height!
+											</div>
+											<div style="font-size:16px;line-height:16px;">&nbsp;</div>
+										</td>
+									</tr>
+								</table>
+
 								<h2>Spacers and Dividers</h2>
 								
 								<h3>Images</h3>
@@ -683,7 +745,7 @@
 											<td align="center" valign="middle" class="common-font footer-email-links">
 												<webversion class="link">Trouble reading this email?</webversion>
 												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
-												<span>This email was sent to: <span class="link">[email]</span></span>
+												<span>This email was sent to: <a href="mailto:[email]" class="link">[email]</a></span>
 												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
 												<unsubscribe class="link">Unsubscribe</unsubscribe>
 											</td>
@@ -730,7 +792,7 @@
 											<td align="center" valign="middle" colspan="2" class="footer-email-links row-padding common-font">
 												<webversion class="link">Trouble reading this email?</webversion>
 												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
-												<span>This email was sent to: <span class="link">[email]</span></span>
+												<span>This email was sent to: <a href="mailto:[email]" class="link">[email]</a></span>
 												<span class="hide"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
 												<unsubscribe class="link">Unsubscribe</unsubscribe>
 											</td>

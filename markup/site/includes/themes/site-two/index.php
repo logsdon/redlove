@@ -185,7 +185,7 @@ include(THEME_PATH . 'includes/common/body.prepend.php');
 					<p>We're ready to complete your inspection and go over the results in detail with you! To jump start the process after calling and scheduling, you can review and even print the <a href="<?php echo theme_nav_url('disclosure-agreement'); ?>">disclosure agreement</a> that must be signed prior to inspection. Please keep in mind that a typical inspection duration is 3-4 hours and that access to all areas should be available during that time. Please let us know of any special considerations that we should be aware of.</p>
 					
 					<h4>Standard Home Inspection</h4>
-					<div class="responsive-wrap">
+					<div class="table-container">
 						<table border="0" cellpadding="0" cellspacing="0" class="rates-table">
 							<tbody>
 								<tr>

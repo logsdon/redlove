@@ -176,6 +176,7 @@ jQuery(document).ready(function($)
 			paging_default_class : 'redlove_carousel-paging',
 			
 			auto : false,
+			infinite : false,
 			interval : 3000,
 			transition: 'slide_horizontal',//fade,slide_horizontal
 			transition_interval : 500,
@@ -261,6 +262,17 @@ jQuery(document).ready(function($)
 			// Handle mouse enter/leave
 			inst.$carousel.on('mouseenter.' + proto.name, function(){inst.mouseenter();});
 			inst.$carousel.on('mouseleave.' + proto.name, function(){inst.mouseleave();});
+			
+			//http://www.netcu.de/templates/netcu/js/jquery.touchwipe.1.1.1.js
+			inst.touch_start_x = 0;
+			inst.touch_start_y = 0;
+			inst.touch_stop_x = 0;
+			inst.touch_stop_y = 0;
+			inst.touch_min_move_x = 40;
+			inst.touch_min_move_y = 40;
+			inst.touch_moving = false;
+			inst.$carousel.on('touchstart.' + proto.name, inst.touchstart);
+			inst.$carousel.on('touchend.' + proto.name, inst.touchend);
 			
 			// Gather navigation
 			if ( inst.options.nav )
@@ -579,9 +591,9 @@ jQuery(document).ready(function($)
 			if ( inst.options.nav )
 			{
 				inst.$nav_prev.add(inst.$nav_next).removeClass('available unavailable');
-				var visibility_class = ( index == 0 || inst.num_views == 0 ) ? 'unavailable' : 'available';
+				var visibility_class = ( ! inst.options.infinite && (index == 0 || inst.num_views == 0) ) ? 'unavailable' : 'available';
 				inst.$nav_prev.addClass(visibility_class);
-				visibility_class = ( index == inst.num_views - 1 || inst.num_views == 0 ) ? 'unavailable' : 'available';
+				visibility_class = ( ! inst.options.infinite && (index == inst.num_views - 1 || inst.num_views == 0) ) ? 'unavailable' : 'available';
 				inst.$nav_next.addClass(visibility_class);
 			}
 			
@@ -626,7 +638,7 @@ jQuery(document).ready(function($)
 					inst.$items
 					.eq(inst.cur_index)
 					//.animate({opacity : 0.1}, transition_interval, inst.options.easing)
-					.fadeOut(inst.transition_interval);
+					.fadeOut(transition_interval);
 				}
 				
 				// Next
@@ -634,7 +646,7 @@ jQuery(document).ready(function($)
 				.eq(index)
 				//.animate({opacity : 1}, transition_interval, inst.options.easing)
 				.fadeIn(
-					inst.transition_interval,
+					transition_interval,
 					inst.options.easing,
 					function ()
 					{
@@ -710,6 +722,88 @@ jQuery(document).ready(function($)
 			var inst = this;
 			inst.hover = false;
 			inst.start_timer();
+		};
+		
+		/**
+		* Touch start
+		*/
+		proto.touchstart = function ( event )
+		{
+			var inst = $(this).data(proto.data_key);
+			
+			var touches = event.touches || event.originalEvent.touches;
+			if ( touches !== undefined && touches.length == 1 )
+			{
+				inst.touch_start_x = touches[0].pageX;
+				inst.touch_start_y = touches[0].pageY;
+				inst.touch_moving = true;
+				inst.$carousel.on('touchmove.' + proto.name, inst.touchmove);
+				inst.$carousel.on('touchend.' + proto.name, inst.touchend);
+			}
+			
+			//console.log('touchstart ' + inst.touch_start_x + ', ' + inst.touch_start_y);
+		};
+		
+		/**
+		* Touch move
+		*/
+		proto.touchmove = function ( event )
+		{
+			var inst = $(this).data(proto.data_key);
+			
+			if ( inst.touch_moving )
+			{
+				var touches = event.touches || event.originalEvent.touches;
+				if ( touches !== undefined && touches.length == 1 )
+				{
+					inst.touch_stop_x = touches[0].pageX;
+					inst.touch_stop_y = touches[0].pageY;
+					
+					var diff_x = inst.touch_start_x - inst.touch_stop_x;
+					var diff_y = inst.touch_start_y - inst.touch_stop_y;
+					
+					if ( Math.abs(diff_x) >= inst.touch_min_move_x)
+					{
+						//cancelTouch();
+						inst.$carousel.trigger('touchend.' + proto.name);
+						
+						if ( diff_x > 0 )
+						{
+							//config.wipeLeft();
+							inst.show_item( inst.cur_index + 1 );
+						}
+						else
+						{
+							//config.wipeRight();
+							inst.show_item( inst.cur_index - 1 );
+						}
+					}
+					else if ( Math.abs(diff_y) >= inst.touch_min_move_y )
+					{
+						//cancelTouch();
+						inst.$carousel.trigger('touchend.' + proto.name);
+						
+						if ( diff_y > 0 )
+						{
+							//config.wipeDown();
+						}
+						else
+						{
+							//config.wipeUp();
+						}
+					}
+				}
+			}
+		};
+		
+		/**
+		* Touch end
+		*/
+		proto.touchend= function ( event )
+		{
+			var inst = $(this).data(proto.data_key);
+			inst.touch_moving = false;
+			inst.$carousel.off('touchmove.' + proto.name, inst.touchmove);
 		};
 		
 		/**

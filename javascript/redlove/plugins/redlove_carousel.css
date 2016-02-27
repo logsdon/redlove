@@ -36,6 +36,11 @@
 	position: relative;
 	width: 999999px;
 }
+.redlove_carousel-content-wrapper:after {
+	clear: both;
+	content: "";
+	display: table;
+}
 .redlove_carousel-item {
 	position: relative;
 	float: left;

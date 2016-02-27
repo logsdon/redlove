@@ -386,8 +386,8 @@ output_code($code);
 
 <?php
 $code = <<< CODE
-<div class="responsive-wrap">
-	<table border="0" cellpadding="0" cellspacing="0" class="default">
+<div class="table-container">
+	<table border="0" cellpadding="0" cellspacing="0" class="default-table table-striped">
 		<caption>Table Caption</caption>
 		<thead>
 			<tr>
@@ -403,7 +403,7 @@ $code = <<< CODE
 				<th>Table heading</th>
 			</tr>
 		</thead>
-		<tbody class="zebra">
+		<tbody>
 			<tr>
 				<td>Table cell</td>
 				<td>Table cell</td>
@@ -474,8 +474,8 @@ output_code($code);
 
 <?php
 $code = <<< CODE
-<div class="responsive-wrap">
-	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="default text-left">
+<div class="table-container">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="default-table text-left">
 		<tbody>
 			<tr>
 				<th align="left" valign="top" scope="col" nowrap="nowrap">Date:</th>
@@ -491,9 +491,9 @@ $code = <<< CODE
 		</tbody>
 	</table>
 	<h3>Invoice Details</h3>
-	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="default text-left">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="default-table text-left">
 		<thead>
-			<tr class="row">
+			<tr class="border-row">
 				<th align="left" valign="top" scope="col">Item</th>
 				<th align="right" valign="top" scope="col">Price</th>
 				<th align="right" valign="top" scope="col">Quantity</th>
@@ -507,19 +507,19 @@ $code = <<< CODE
 					Event Participants
 				</th>
 			</tr>
-			<tr class="row">
+			<tr class="border-row">
 				<td align="left" valign="top">Children</td>
 				<td align="right" valign="top">$80.00</td>
 				<td align="right" valign="top">1</td>
 				<td align="right" valign="top">$80.00</td>
 			</tr>
-			<tr class="row">
+			<tr class="border-row">
 				<td align="left" valign="top">Teens</td>
 				<td align="right" valign="top">$160.00</td>
 				<td align="right" valign="top">10</td>
 				<td align="right" valign="top">$1,600.00</td>
 			</tr>
-			<tr class="row">
+			<tr class="border-row">
 				<td align="left" valign="top">Adult</td>
 				<td align="right" valign="top">$160.00</td>
 				<td align="right" valign="top">2</td>
@@ -533,7 +533,7 @@ $code = <<< CODE
 					Event Lodging
 				</th>
 			</tr>
-			<tr class="row">
+			<tr class="border-row">
 				<td align="left" valign="top">Hotel room (5 person max. occupancy)</td>
 				<td align="right" valign="top">$350.00</td>
 				<td align="right" valign="top">3</td>
@@ -548,21 +548,21 @@ $code = <<< CODE
 				</th>
 			</tr>
 			<tr>
-				<th align="right" valign="top" colspan="3" scope="row" class="normal">Discount</th>
+				<th align="right" valign="top" colspan="3" scope="row" class="normal-cell">Discount</th>
 				<td align="right" valign="top">($0.00)</td>
 			</tr>
 			<tr>
-				<th align="right" valign="top" colspan="3" scope="row" class="normal">Subtotal</th>
+				<th align="right" valign="top" colspan="3" scope="row" class="normal-cell">Subtotal</th>
 				<td align="right" valign="top">$3,300.00</td>
 			</tr>
 			<tr>
-				<th align="right" valign="top" colspan="3" scope="row" class="normal">Payment (11/12/2013)<br />
+				<th align="right" valign="top" colspan="3" scope="row" class="normal-cell">Payment (11/12/2013)<br />
 				<i>Notes: Deposit</i></th>
 				<td align="right" valign="top">($100.00)</td>
 			</tr>
 			<tr>
 				<th align="right" valign="top" colspan="3" scope="row">Balance</th>
-				<td align="right" valign="top" class="total">$3,000.00</td>
+				<td align="right" valign="top" class="total-cell">$3,000.00</td>
 			</tr>
 		</tfoot>
 		
@@ -1293,10 +1293,10 @@ $code = <<< CODE
 
 <hr>
 
-<div class="columns columns-table align-middle demo-columns">
+<div class="columns columns-table valign-middle demo-columns">
 	
 	<div class="column w33">
-		<p>columns-table<br>align-middle</p>
+		<p>columns-table<br>valign-middle</p>
 	</div>
 	<div class="column w33">
 		<p>example</p>
@@ -1473,7 +1473,7 @@ $code = <<< CODE
 <div class="flex-row flex-row--top">
 	
 	<div class="flex-cell flex-cell--center w33" style="background: #e3e3e3;">
-		<p>columns-table<br>align-middle</p>
+		<p>columns-table<br>valign-middle</p>
 	</div>
 	<div class="flex-cell flex-cell--bottom w33" style="background: #f3f3f3;">
 		<p>example</p>
@@ -1665,6 +1665,98 @@ $code = <<< CODE
 CODE;
 output_code($code);
 ?>
+
+<h4>Notification colors</h4>
+
+<style>
+.color-swatches:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+.color-swatches > div {
+	height: 2.0em;
+	float: left;
+	width: 2.0em;
+}
+.color-swatches > br {
+	clear: both;
+}
+</style>
+<div class="color-swatches">
+	<div class="default-lighter"></div>
+	<div class="default-light"></div>
+	<div class="default-medium"></div>
+	<div class="default-dark"></div>
+	<div class="default-darker"></div>
+	<br>
+	<div class="success-lighter"></div>
+	<div class="success-light"></div>
+	<div class="success-medium"></div>
+	<div class="success-dark"></div>
+	<div class="success-darker"></div>	
+	<br>
+	<div class="success-alt-lighter"></div>
+	<div class="success-alt-light"></div>
+	<div class="success-alt-medium"></div>
+	<div class="success-alt-dark"></div>
+	<div class="success-alt-darker"></div>
+	<br>
+	<div class="warning-lighter"></div>
+	<div class="warning-light"></div>
+	<div class="warning-medium"></div>
+	<div class="warning-dark"></div>
+	<div class="warning-darker"></div>
+	<br>
+	<div class="warning-alt-lighter"></div>
+	<div class="warning-alt-light"></div>
+	<div class="warning-alt-medium"></div>
+	<div class="warning-alt-dark"></div>
+	<div class="warning-alt-darker"></div>
+	<br>
+	<div class="error-lighter"></div>
+	<div class="error-light"></div>
+	<div class="error-medium"></div>
+	<div class="error-dark"></div>
+	<div class="error-darker"></div>
+	<br>
+	<div class="error-alt-lighter"></div>
+	<div class="error-alt-light"></div>
+	<div class="error-alt-medium"></div>
+	<div class="error-alt-dark"></div>
+	<div class="error-alt-darker"></div>
+	<br>
+	<div class="danger-lighter"></div>
+	<div class="danger-light"></div>
+	<div class="danger-medium"></div>
+	<div class="danger-dark"></div>
+	<div class="danger-darker"></div>
+	<br>
+	<div class="info-lighter"></div>
+	<div class="info-light"></div>
+	<div class="info-medium"></div>
+	<div class="info-dark"></div>
+	<div class="info-darker"></div>
+	<br>
+	<div class="info-alt-lighter"></div>
+	<div class="info-alt-light"></div>
+	<div class="info-alt-medium"></div>
+	<div class="info-alt-dark"></div>
+	<div class="info-alt-darker"></div>
+	<br>
+	<div class="primary-lighter"></div>
+	<div class="primary-light"></div>
+	<div class="primary-medium"></div>
+	<div class="primary-dark"></div>
+	<div class="primary-darker"></div>
+	<br>
+	<div class="message-lighter"></div>
+	<div class="message-light"></div>
+	<div class="message-medium"></div>
+	<div class="message-dark"></div>
+	<div class="message-darker"></div>
+</div>
+
 
 <h2 id="toc_site-styles">Site Styles</h2>
 

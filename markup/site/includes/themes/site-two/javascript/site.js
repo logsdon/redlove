@@ -5,6 +5,50 @@ jQuery(document).ready(function($)
 	
 	// --------------------------------------------------------------------
 	
+	var $element = $('#return-to-top');
+	$element.on('click', function(event)
+	{
+		event.preventDefault();
+		$('html,body').animate({'scrollTop' : 0}, 'slow', function(){});
+	});
+	
+	var $window = $(window);
+	var $document = $(document);
+	var window_height = $window.height();
+	var scroll_target_top = window_height / 2;//$element.offset().top;
+	var throttle_options = {
+		interval : 250,
+		run_at_start : true,
+		run_at_end : true,
+		callback : function ( self, args )
+		{
+			var window_scroll_top = $window.scrollTop();
+			
+			// Return to top
+			if ( window_scroll_top > scroll_target_top )
+			{
+				$element.addClass('fixed');
+			}
+			else
+			{
+				$element.removeClass('fixed');
+			}
+			
+			/*
+			// Parallax
+			// Treat document_height - window_height as 100% goal window_scroll_top is reaching
+			var goal = $document.height() - window_height;
+			var percent = (window_scroll_top > 0 ) ? window_scroll_top / goal : 0;
+			console.log('parallax: ' + window_scroll_top + ' ' + goal + ' ' + percent);
+			*/
+		}
+	};
+	var my_throttle = new redlove_throttle(throttle_options);
+	my_throttle.handler();
+	$(window).scroll(my_throttle.handler);
+	
+	// --------------------------------------------------------------------
+	
 	$('.agreement-form').on('submit', function ( event )
 	{
 		// If event is an object, prevent default action

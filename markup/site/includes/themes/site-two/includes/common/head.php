@@ -16,23 +16,28 @@
 	<?php
 	if ( ! isset($page__skip_og) )
 	{
+		$open_graph_default_title = ! empty($page_data['meta_title']) ? $page_data['meta_title'] : '';//Page Title &mdash; Example.com
+		$open_graph_default_site_name = ! empty($page_data['site_name']) ? $page_data['site_name'] : $open_graph_default_title;//Example Site
+		$open_graph_default_description = ! empty($page_data['meta_description']) ? $page_data['meta_description'] : '';//The description of the example site
+		$open_graph_default_url = theme_nav_url(PAGE);
+		$open_graph_default_image = theme_base_url() . 'images/favicon/favicon.png';
 		$open_graph = ! empty($open_graph) ? $open_graph : array();
 		$open_graph_defaults = array(
 			// Facebook uses property attributes
-			'og:title' => ! empty($page_data['meta_title']) ? $page_data['meta_title'] : '',//Page Title &mdash; Example.com
+			'og:title' => $open_graph_default_title,
 			'og:type' => 'website',
-			'og:url' => theme_nav_url(),
-			'og:image' => theme_base_url() . 'images/favicon/favicon.png',
-			'og:site_name' => ! empty($page_data['site_name']) ? $page_data['site_name'] : '',//Example Site
+			'og:url' => $open_graph_default_url,
+			'og:image' => $open_graph_default_image,
+			'og:site_name' => $open_graph_default_site_name,
 			'og:locale' => 'en_US',
-			'og:description' => ! empty($page_data['meta_description']) ? $page_data['meta_description'] : '',//The description of the example site.
+			'og:description' => $open_graph_default_description,
 			'fb:app_id' => '',
 			// Twitter uses name attributes
 			'twitter:card' => 'summary',
 			'twitter:site' => '',//@username
-			'twitter:title' => ! empty($page_data['meta_title']) ? $page_data['meta_title'] : '',//Page Title &mdash; Example.com
-			'twitter:description' => ! empty($page_data['meta_description']) ? $page_data['meta_description'] : '',//The description of the example site.
-			'twitter:image' => theme_base_url() . 'images/favicon/favicon.png',
+			'twitter:title' => $open_graph_default_title,
+			'twitter:description' => $open_graph_default_description,
+			'twitter:image' => $open_graph_default_image,
 		);
 		$open_graph = array_merge($open_graph_defaults, $open_graph);
 		foreach ( $open_graph as $key => $value )
@@ -104,11 +109,12 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_modal.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_validate.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/plugins/redlove_throttle.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo theme_cb_url('javascript/site.js'); ?>"></script>
 	
 	
 	<!-- Favicons - http://realfavicongenerator.net/, https://css-tricks.com/favicon-quiz/ -->
-	<link rel="image_src" href="<?php echo theme_base_url(); ?>images/favicon.png">
+	<link rel="image_src" href="<?php echo theme_base_url(); ?>images/favicon/favicon.png">
 	<link rel="apple-touch-icon-precomposed" href="<?php echo theme_base_url(); ?>images/favicon/apple-touch-icon-precomposed.png">
 	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo theme_base_url(); ?>images/favicon/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo theme_base_url(); ?>images/favicon/apple-touch-icon-60x60.png">

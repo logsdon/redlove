@@ -213,7 +213,7 @@ $code = <<< CODE
 
 <span class="fa-stack fa-lg">
 	<i class="fa fa-camera fa-stack-1x"></i>
-	<i class="fa fa-ban fa-stack-2x text-danger"></i>
+	<i class="fa fa-ban fa-stack-2x text-error"></i>
 </span>
 fa-ban on fa-camera
 
