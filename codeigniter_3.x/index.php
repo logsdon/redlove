@@ -282,25 +282,10 @@ if ( ! defined('ROOT_PATH') )
 	$base_url = $protocol . $_SERVER['HTTP_HOST'] . ROOT;
 	define('BASE_URL', $base_url);
 	
+	// VIEWPATH - The path to view files
+	//define('VIEWPATH', ROOT_PATH);
 	// INCLUDES_PATH - The path to includes
-	define ('INCLUDES_PATH', APPPATH . 'views/_includes/');
-	define ('THEME_PATH', INCLUDES_PATH . 'theme/');
-	
-	// PAGE - The cleaned up REQUEST_URI
-	//define('PAGE', trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/'));
-	$page = ltrim(parse_url(REQUEST_URI, PHP_URL_PATH), '/');
-	$page .= ( substr(REQUEST_URI, -1) == '/' ) ? 'index' : '';
-	$page_ext = strtolower( substr((string)strrchr($page, '.'), 1) );// Lowercase, get text after dot, get text dot and after
-	$page = substr($page, 0, strlen($page) - strlen($page_ext));// Remove file extension
-	if ( strlen($page_ext) > 0 )
-	{
-		$page = substr($page, 0, -1);
-	}
-	define('PAGE', $page);
-	$page_filename = basename($page);// Remove file extension
-	define('PAGE_FILENAME', $page_filename);
-	define('PAGE_EXTENSION', $page_ext);
-	$PAGE_segments = explode('/', PAGE);
+	define('INCLUDES_PATH', VIEWPATH . '_includes/');;
 }
 
 /*
@@ -321,37 +306,36 @@ if ( ! defined('ROOT_PATH') )
  * NOTE: If you change these, also change the error_reporting() code below
  */
 	//define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-	
-// --------------------------------------------------------------------
-// REDLOVE
-// Make the timezone consistent on the server and audience location
-// http://stackoverflow.com/questions/1646171/mysql-datetime-fields-and-daylight-savings-time-how-do-i-reference-the-extra
-$config['site']['timezone'] = ! empty($config['site']['timezone']) ? $config['site']['timezone'] : 'America/New_York';
-$timezone = $config['site']['timezone'];
-if ( 
-	function_exists('date_default_timezone_set') && 
-	function_exists('date_default_timezone_get') && 
-	@date_default_timezone_get() != $timezone
-)
-{
-	@date_default_timezone_set( $timezone );
-}
-// --------------------------------------------------------------------
 
 // --------------------------------------------------------------------
 // REDLOVE
-// Autoload environment include if it exists
-$file = APPPATH . 'config/application/environment.php';
+// Preload includes
+$filename = 'preload';
+$file = APPPATH . 'config/application/' . $filename . '.php';
 if ( file_exists($file) )
 {
 	include_once($file);
+	if ( ! empty($config[$filename]) )
+	{
+		foreach ( $config[$filename] as $key => $value )
+		{
+			$filenames = is_array($value['filenames']) ? $value['filenames'] : array_filter(array_map('trim', explode(',', $value['filenames'])));
+			foreach ( $filenames as $filename )
+			{
+				$file = $value['path'] . $filename . '.php';
+				if ( file_exists($file) )
+				{
+					include_once($file);
+				}
+			}
+		}
+	}
 }
-// ------------------------------------------------------------
+// --------------------------------------------------------------------
 
 // REDLOVE
 // Set up environment constant for reference
 // http://en.wikipedia.org/wiki/Development_environment
-
 // Development server
 if ( ! empty($config['environment']['is_development']) )
 {
@@ -367,6 +351,119 @@ else
 {
 	define('ENVIRONMENT', 'production');
 }
+
+// --------------------------------------------------------------------
+// REDLOVE_PATH - The path to redlove resources
+$config['environment']['redlove']['num_dirs_from_root_path'] = ! empty($config['environment']['redlove']['num_dirs_from_root_path']) ? $config['environment']['redlove']['num_dirs_from_root_path'] : 0;
+$num_dirs_redlove_from_root_path = ! empty($config['environment']['redlove']['num_dirs_from_root_path']) ? $config['environment']['redlove']['num_dirs_from_root_path'] : 0;
+$realpath = realpath(ROOT_PATH . str_repeat('../', $num_dirs_redlove_from_root_path) . 'redlove/');
+$realpath = str_replace('\\', '/', $realpath);
+$realpath = rtrim($realpath, '/') . '/';
+define('REDLOVE_PATH', $realpath);
+if ( defined('REDLOVE_PATH') && ! is_dir(REDLOVE_PATH) )
+{
+	die('RedLove path does not exist.');
+}
+// REDLOVE_ROOT - The web root to redlove resources
+$redlove_root = substr(REDLOVE_PATH, strlen(DOCUMENT_ROOT));
+$redlove_root = str_replace('\\', '/', $redlove_root);
+$redlove_root = trim($redlove_root, '/') . '/';
+define('REDLOVE_ROOT', str_repeat('../', $num_dirs_redlove_from_root_path) . $redlove_root);
+// REDLOVE_URL - The url to redlove resources
+$redlove_url = $protocol . $_SERVER['HTTP_HOST'] . '/' . str_replace(DOCUMENT_ROOT, '', REDLOVE_PATH);
+define('REDLOVE_URL', $redlove_url);
+// --------------------------------------------------------------------
+
+// --------------------------------------------------------------------
+// REDLOVE
+// Set theme
+if ( ! defined('THEMES_PATH') )
+{
+	// THEMES_PATH - The path to themes
+	$config['site']['themes_path'] = ! empty($config['site']['themes_path']) ? $config['site']['themes_path'] : '';
+	$themes_path = $config['site']['themes_path'];
+	$themes_path = rtrim(INCLUDES_PATH . $themes_path, '/');
+	$themes_path .= ( strlen($themes_path) > 0 ) ? '/' : '';
+	define('THEMES_PATH', $themes_path);
+	// THEMES_ROOT - The web root to themes
+	$themes_root = str_replace(ROOT_PATH, '', THEMES_PATH);
+	$themes_root = str_replace('\\', '/', $themes_root);
+	$themes_root = rtrim($themes_root, '/');
+	$themes_root .= ( strlen($themes_root) > 0 ) ? '/' : '';
+	define('THEMES_ROOT', $themes_root);
+
+	// THEME_DIRECT - If directly browsing the include theme
+	// If directly browsing a theme via the themes directory, switch resources over to it
+	$is_directly_browsing_theme = ( strpos(REQUEST_URI, THEMES_ROOT) === 0 );
+	define('THEME_DIRECT', (int)$is_directly_browsing_theme);
+	// THEME - The theme
+	$config['site']['theme'] = ! empty($config['site']['theme']) ? $config['site']['theme'] : '';
+	$theme = $config['site']['theme'];
+	if ( THEME_DIRECT )
+	{
+		$theme = strtok(str_replace(THEMES_ROOT, '', REQUEST_URI), '/');
+	}
+	define('THEME', $theme);
+	// THEME_PATH - The path to the theme
+	$theme_path = rtrim(THEMES_PATH . THEME, '/');
+	$theme_path .= ( strlen($theme_path) > 0 ) ? '/' : '';
+	define('THEME_PATH', $theme_path);
+	// THEME_ROOT - The web root to the theme
+	$theme_root = rtrim(THEMES_ROOT . THEME, '/');
+	$theme_root .= ( strlen($theme_root) > 0 ) ? '/' : '';
+	define('THEME_ROOT', $theme_root);
+	// THEME_NAV_ROOT - Depending on how the theme is being browsed, use this web root for navigation
+	$theme_nav_root = '';
+	if ( THEME_DIRECT )
+	{
+		$theme_nav_root = THEME_ROOT;
+	}
+	define('THEME_NAV_ROOT', $theme_nav_root);
+	// THEME_URL - The url to the theme resources
+	$theme_url = BASE_URL;
+	if ( THEME_DIRECT )
+	{
+		$theme_url = BASE_URL . $theme_root;
+	}
+	define('THEME_URL', $theme_url);
+	
+	// PAGE - The cleaned up REQUEST_URI
+	//define('PAGE', trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/'));
+	$page = ltrim(parse_url(REQUEST_URI, PHP_URL_PATH), '/');
+	if ( THEME_DIRECT )
+	{
+		$page = str_replace(THEME_ROOT, '', $page);
+	}
+	$page .= ( REQUEST_URI == '' || substr(REQUEST_URI, -1) == '/' ) ? 'index' : '';
+	$page_ext = strtolower( substr((string)strrchr($page, '.'), 1) );// Lowercase, get text after dot, get text dot and after
+	$page = substr($page, 0, strlen($page) - strlen($page_ext));// Remove file extension
+	if ( strlen($page_ext) > 0 )
+	{
+		$page = substr($page, 0, -1);
+	}
+	define('PAGE', $page);
+	$page_filename = basename($page);// Remove file extension
+	define('PAGE_FILENAME', $page_filename);
+	define('PAGE_EXTENSION', $page_ext);
+	$PAGE_segments = explode('/', PAGE);
+}
+// --------------------------------------------------------------------
+
+// --------------------------------------------------------------------
+// REDLOVE
+// Make the timezone consistent on the server and audience location
+// http://stackoverflow.com/questions/1646171/mysql-datetime-fields-and-daylight-savings-time-how-do-i-reference-the-extra
+$config['site']['timezone'] = ! empty($config['site']['timezone']) ? $config['site']['timezone'] : 'America/New_York';
+$timezone = $config['site']['timezone'];
+if ( 
+	function_exists('date_default_timezone_set') && 
+	function_exists('date_default_timezone_get') && 
+	@date_default_timezone_get() != $timezone
+)
+{
+	@date_default_timezone_set( $timezone );
+}
+// --------------------------------------------------------------------
 
 
 /*

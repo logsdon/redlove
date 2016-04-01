@@ -137,7 +137,7 @@ jQuery(document).ready(function($)
 	console.log('// ------------------------------------------------------------');
 	console.log('Wait for resources to become available...');
 	// If objects do not exist, check again shortly
-	if ( document.readyState == 'loading' || typeof jQuery === 'undefined' )
+	if ( document.readyState == 'loading' || typeof(jQuery) === 'undefined' )
 	{
 		console.log('Still waiting...');
 		return setTimeout(arguments.callee, 250);
@@ -164,7 +164,7 @@ jQuery(document).ready(function($)
 ;(function ()// Begin function closure; avoid collisions
 {
 	// If objects do not exist, check again shortly
-	if ( typeof jQuery === 'undefined' )
+	if ( typeof(jQuery) === 'undefined' )
 	{
 		return setTimeout(arguments.callee, 250);
 	}
@@ -546,7 +546,7 @@ window.GLOBAL_OBJECT = $.extend(window.GLOBAL_OBJECT, {
 		console.log(proto.name + ' init()' + proto.num_instances);
 		
 		// Stop if no arguments
-		if ( arguments.length == 0 || arguments[0] == undefined )
+		if ( arguments.length == 0 || arguments[0] === undefined )
 		{
 			return this;
 		}

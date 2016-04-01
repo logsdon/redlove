@@ -58,11 +58,11 @@
 </div>
 </div>
 
-<input id="mobile-menu_cb" type="checkbox" class="mobile-menu-checkbox" data-type="fixed-right">
-<label for="mobile-menu_cb" class="mobile-menu-button show-m-down position-absolute pin-top pin-right padding-1"></label>
-<nav class="mobile-menu" data-type="fixed-right">
+<input id="responsive-menu_cb" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="fixed-right">
+<label for="responsive-menu_cb" class="responsive-menu-button show-m-down position-absolute pin-top pin-right padding-1"></label>
+<nav class="responsive-menu" data-responsive-menu-type="fixed-right">
 	<ul>
-		<li><label for="mobile-menu_cb" class="mobile-menu-button"></label></li>
+		<li><label for="responsive-menu_cb" class="responsive-menu-button"></label></li>
 		<?php require(THEME_PATH . 'includes/common/header_nav-list-items.php'); ?>
 	</ul>
 </nav>

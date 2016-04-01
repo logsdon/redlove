@@ -4,10 +4,10 @@
 	<meta name="description" content="<?php echo ! empty($page_data['meta_description']) ? $page_data['meta_description'] : ''; ?>">
 	<meta name="keywords" content="<?php echo ! empty($page_data['meta_keywords']) ? $page_data['meta_keywords'] : ''; ?>">
 
-	<meta name="robots" content="index,follow" />
-	<meta name="MSSmartTagsPreventParsing" content="true" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta http-equiv="imagetoolbar" content="false" />
+	<meta name="robots" content="index,follow">
+	<meta name="MSSmartTagsPreventParsing" content="true">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="imagetoolbar" content="false">
 
 	<!-- Mobile-specific Metas , maximum-scale=1-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,14 +59,17 @@
 
 	<!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
 	<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('stylesheets/font-awesome/css/font-awesome.min.css'); ?>">
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('stylesheets/daneden/animate.min.css'); ?>">
 
 	<!-- JavaScript -->
 	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo redlove_cb_url('javascript/etc/html5.js'); ?>"></script><![endif]-->
 	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo redlove_cb_url('javascript/etc/respond.min.js'); ?>"></script><![endif]-->
 	
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/jquery/jquery.min.js'); ?>"><\/script>')</script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript">window.jQuery.ui || document.write('<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/jquery/jquery-ui.min.js'); ?>"><\/script>')</script>
 	
 	<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/etc/holder.js'); ?>"></script>
 	
@@ -131,7 +134,8 @@
 	<!--<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="<?php echo theme_nav_url(); ?>">-->
 
 	<!-- Canonical -->
-	<!--<link rel="canonical" href="<?php echo theme_nav_url(PAGE); ?>">-->
+	<!--<link rel="canonical" href="<?php //echo theme_nav_url(PAGE); ?>">-->
+	<!--<link rel="canonical" href="https://www.example.com/<?php //echo preg_replace('/\\.[^.\\s]{3,4}$/', '', strtok(REQUEST_URI, '?')); ?>">-->
 
 <?php
 if ( ENVIRONMENT == 'production' )

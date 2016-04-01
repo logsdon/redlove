@@ -63,7 +63,7 @@ jQuery(document).ready(function ( $ )
 	
 	// Smooth scroll anchor links
 	// http://css-tricks.com/snippets/jquery/smooth-scrolling/
-	$('.redlove_smooth-scroll a[href*=#]:not([href=#])').click(function ()
+	$('.redlove_smooth-scroll a[href*="#"]:not([href="#"])').click(function ()
 	{
 		if (
 			location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && 
@@ -236,16 +236,16 @@ jQuery(document).ready(function ( $ )
 	// --------------------------------------------------------------------
 	
 	// Register analytics event
-	$(document).on('click', '.analytics_event', function ( event )
+	$(document).on('click touchstart', '.analytics_event', function ( event )
 	{
 		var $this = $(this);
 		var data = $this.data();
-		var category = ( data.category !== undefined ) ? data.category : 'link';
-		var action = ( data.action !== undefined ) ? data.action : 'click';
+		var category = ( data.category !== undefined ) ? data.category : 'Link';
+		var action = ( data.action !== undefined ) ? data.action : 'Click';
 		var label = ( data.label !== undefined ) ? data.label : ( $this.attr('title') || $this.text() );
-		var href = $this.attr('href');
+		var value = ( data.value !== undefined ) ? data.value : 0;
 		
-		REDLOVE.fn.send_analytics_event( href, category, action, label );
+		REDLOVE.fn.send_analytics_event( category, action, label, value );
 	});
 	
 	// Register analytics page hit
@@ -300,12 +300,38 @@ jQuery(document).ready(function ( $ )
 	
 	// --------------------------------------------------------------------
 	
+	// Responsive menu helper
+	var responsive_menu_active_class = 'responsive-menu-active';
+	var responsive_menu_namespace = 'responsive_menu';
+	var responsive_menu_body_classes = responsive_menu_active_class + ' no-scroll no-select';
+	var responsive_menu_click_events = 'click.' + responsive_menu_namespace + ' touchstart.' + responsive_menu_namespace;
+	var responsive_menu_change_events = 'change.' + responsive_menu_namespace;
+	$('.responsive-menu-checkbox')
+	.on(responsive_menu_change_events, function ( event )
+	{
+		var data_type = this.checked ? $(this).data('responsive-menu-type') : '';
+		
+		$('.responsive-menu-liner').toggleClass(responsive_menu_body_classes, this.checked)
+		.attr('data-responsive-menu-type', data_type);
+		
+		if ( this.checked )
+		{
+			if ( data_type == 'height-top' )
+			{
+				$('html, body').animate({scrollTop: $('.responsive-menu[data-responsive-menu-type="height-top"]').offset().top}, 500, function(){});
+			}
+		}
+	})
+	.trigger(responsive_menu_change_events);
+	
+	// --------------------------------------------------------------------
+	
 	// --------------------------------------------------------------------
 	// Alerts and Notifications
 	// --------------------------------------------------------------------
 	
 	// Close and remove element
-	$(document).on('click', '.notification[data-mode="box"]', function(event)
+	$(document).on('click', '.notification[data-notification-mode="box"]', function(event)
 	{
 		var $element = $(this);
 		var offset = $element.offset();

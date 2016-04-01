@@ -12,8 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * @license http://opensource.org/licenses/MIT MIT License
 * @link http://joshualogsdon.com
 * @filesource
-* @since Version 1.0.0
-* @version 1.0.0
+* @since Version 0.0.0
+* @version 0.0.0
 */
 
 /**
@@ -176,7 +176,6 @@ class Auth_controller extends Public_controller
 	public function __construct ()
 	{
 		parent::__construct();// Call parent constructor first
-		log_message('info', __CLASS__ . ' class initialized.');
 		
 		// Load the authentication library
 		$this->load->library('application/auth');
@@ -193,6 +192,8 @@ class Auth_controller extends Public_controller
 			redirect();
 			
 		}
+		
+		log_message('info', __CLASS__ . ' class initialized.');
 	}
 	
 	// --------------------------------------------------------------------

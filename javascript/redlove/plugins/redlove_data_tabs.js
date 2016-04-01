@@ -106,7 +106,7 @@
 			// Find the tab to select
 			var is_href = ( this.href !== undefined );
 			var new_hash = is_href ? this.href.split('#')[1] || $(this).data(options.data_key) : $(this).data(options.data_key);
-			if ( typeof new_hash === undefined )
+			if ( typeof(new_hash) === 'undefined' )
 			{
 				return;
 			}

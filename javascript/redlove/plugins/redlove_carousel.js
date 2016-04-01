@@ -135,7 +135,7 @@ jQuery(document).ready(function($)
 ;(function ()// Begin function closure; avoid collisions
 {
 	// If objects do not exist, check again shortly
-	if ( typeof jQuery === 'undefined' )
+	if ( typeof(jQuery) === 'undefined' )
 	{
 		return setTimeout(arguments.callee, 250);
 	}
@@ -950,5 +950,6 @@ jQuery(document).ready(function($)
 		};
 		
 	})( jQuery, window, document );// End function closure
+	
 })();// End function closure
 //]]>

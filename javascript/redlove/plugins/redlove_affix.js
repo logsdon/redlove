@@ -34,7 +34,7 @@
 ;(function ()// Begin function closure; avoid collisions
 {
 	// If objects do not exist, check again shortly
-	if ( typeof jQuery === 'undefined' )
+	if ( typeof(jQuery) === 'undefined' )
 	{
 		return setTimeout(arguments.callee, 250);
 	}
@@ -162,19 +162,21 @@
 			inst.element_height = inst.$element.outerHeight();
 			
 			var has_class = inst.$element.hasClass(inst.options.affixed_class);
-			inst.$element.removeClass(inst.options.affixed_class);
+			var has_style = inst.$element.css('position');
+			inst.$element.removeClass(inst.options.affixed_class).css({position: 'relative'});
 			inst.start_offset = inst.$element.offset();
 			if ( has_class )
 			{
 				inst.$element.addClass(inst.options.affixed_class);
 			}
+			inst.$element.css({position: has_style});
 			
 			inst.until = inst.options.until !== null ? inst.options.until : inst.document_height;
 			
 			inst.trigger_offset = inst.options.offset;
 			if ( inst.options.trigger_offset !== null )
 			{
-				if ( inst.options.trigger_offset <= 1 )
+				if ( inst.options.trigger_offset >= 0 && inst.options.trigger_offset <= 1 )
 				{
 					inst.trigger_offset = inst.window_height * inst.options.trigger_offset;
 				}

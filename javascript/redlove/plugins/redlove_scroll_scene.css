@@ -1,0 +1,28 @@
+
+/*
+<div class="redlove_scroll_scene_trigger_debug" data-trigger-for="0" style="top: 0px;">Trigger for Scene 0</div>
+*/
+.redlove_scroll_scene_trigger_debug {
+	border-top: 1px solid red;
+	color: #ffffff;
+	font-family: sans-serif;
+	font-size: 10px;
+	position: absolute;
+	text-transform: uppercase;
+	width: 100%;
+	z-index: 9999999;
+}
+
+/*
+<div class="redlove_affixed">
+	<h1>Test content</h1>
+	<p>This is some test content!</p>
+</div>
+*/
+.redlove_affixed {
+	left: 0;
+	position: fixed;
+	top: 0;
+}
+.redlove_affixed_placeholder {
+}

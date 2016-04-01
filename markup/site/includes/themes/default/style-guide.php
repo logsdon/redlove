@@ -756,9 +756,9 @@ $code = <<< CODE
 	
 	<fieldset>
 	
-		<legend>form-row fields-inline</legend>
+		<legend>form-row form-fields-inline</legend>
 		
-		<div class="form-row fields-inline">
+		<div class="form-row form-fields-inline">
 			
 			<label>Your email<em>*</em></label>
 			<input type="text" placeholder="test@mail.com">
@@ -777,12 +777,12 @@ $code = <<< CODE
 		
 		<hr>
 		
-		<div class="form-row fields-inline">
+		<div class="form-row form-fields-inline">
 			<label>Your email<em>*</em></label>
 			<input type="text" placeholder="test@mail.com">
 		</div>
 		
-		<div class="form-row fields-inline">
+		<div class="form-row form-fields-inline">
 			<label>Reason for contacting</label>
 			<select>
 				<option>&mdash; Please select &mdash;</option>
@@ -792,12 +792,12 @@ $code = <<< CODE
 			</select>
 		</div>
 		
-		<div class="form-row fields-inline">
+		<div class="form-row form-fields-inline">
 			<label>Message</label>
 			<textarea placeholder="Your message&hellip;"></textarea>
 		</div>
 		
-		<div class="form-row fields-inline">
+		<div class="form-row form-fields-inline">
 			<label>Label above checkbox</label>
 			<div class="input">
 				<input type="checkbox"> Checkbox input <input type="checkbox"> Checkbox input <input type="checkbox"> Checkbox input
@@ -808,7 +808,7 @@ $code = <<< CODE
 			</div>
 		</div>
 		
-		<div class="form-row fields-inline">
+		<div class="form-row form-fields-inline">
 			<div class="label"></div>
 			<input type="submit" value="Submit">
 		</div>
@@ -1107,23 +1107,23 @@ $code = <<< CODE
 			</select>
 		</div>
 		
-		<legend>Checkbox Wrapper</legend>
+		<legend>Checkbox Replacement</legend>
 		
-		<label class="checkbox-wrapper">
+		<label class="checkbox-replacement">
 			<input type="checkbox" value="">
 			<span></span>
 			This is a custom checkbox
 		</label>
 		
-		<label class="radio-wrapper">
+		<label class="radio-replacement">
 			<input type="radio" value="">
 			<span></span>
 			This is a custom radio button
 		</label>
 		
-		<legend>File Wrapper</legend>
+		<legend>File Replacement</legend>
 		
-		<label class="file-wrapper">
+		<label class="file-replacement">
 			<input type="file" onchange="$(this).parent().find('span').text(this.value.substring(this.value.lastIndexOf('\\')+1));">
 			<span>Choose file...</span>
 		</label>
@@ -1581,33 +1581,69 @@ output_code($code);
 
 <?php
 $code = <<< CODE
+
 <a href="" class="button">Button</a>
 <a href="" class="button button-link">Button Link</a>
 <a href="" class="button button-pill">Button Pill</a>
+
 <br>
 <br>
+
 <a href="" class="button button-default">Button Default</a>
 <a href="" class="button button-default" disabled="disabled">Button Default Disabled</a>
 <a href="" class="button button-message">Button Message</a>
+
 <br>
 <br>
+
+<a href="" class="button button-default">Button Default</a>
+<a href="" class="button button-primary">Button Primary</a>
 <a href="" class="button button-success">Button Success</a>
 <a href="" class="button button-error">Button Error</a>
 <a href="" class="button button-warning">Button Warning</a>
 <a href="" class="button button-info">Button Info</a>
+<a href="" class="button button-danger">Button Danger</a>
+<a href="" class="button button-message">Button Message</a>
+
 <br>
 <br>
+
+<a href="" class="button button-default--inverse">Button Default Inverse</a>
+<a href="" class="button button-primary--inverse">Button Primary Inverse</a>
+<a href="" class="button button-success--inverse">Button Success Inverse</a>
+<a href="" class="button button-error--inverse">Button Error Inverse</a>
+<a href="" class="button button-warning--inverse">Button Warning Inverse</a>
+<a href="" class="button button-info--inverse">Button Info Inverse</a>
+<a href="" class="button button-danger--inverse">Button Danger</a>
+<a href="" class="button button-message--inverse">Button Message</a>
+
+<br>
+<br>
+
 <div class="button-group">
 	<a href="" class="button">Button Group</a>
 	<a href="" class="button">Button Group</a>
 	<a href="" class="button">Button Group</a>
 </div>
+
 <br>
+
 <div class="button-group">
 	<a href="" class="button button-pill">Button Pill Group</a>
 	<a href="" class="button button-pill">Button Pill Group</a>
 	<a href="" class="button button-pill">Button Pill Group</a>
 </div>
+
+<br>
+
+<div class="options-button options-button--on">
+	<span>Filter is on</span>
+	<a href="?filter=off"></a>
+</div>
+<div class="options-button options-button--off">
+	<span>Filter is off</span>
+</div>
+
 CODE;
 output_code($code);
 ?>
@@ -1629,39 +1665,85 @@ output_code($code, false);
 <?php
 $code = <<< CODE
 <div class="notification">
-	<p><strong>Message:</strong> Here is a notification <a href="">with a link</a>.</p>
+	<p><strong>Default!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-type="success">
+<div class="notification" data-notification-mode="box">
+	<p><strong>Default!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+<div class="notification notification--inverse" data-notification-mode="box">
+	<p><strong>Default!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+
+<div class="notification" data-notification-type="primary">
+	<p><strong>Primary!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+<div class="notification" data-notification-mode="box" data-notification-type="primary">
+	<p><strong>Primary!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+<div class="notification notification--inverse" data-notification-mode="box" data-notification-type="primary">
+	<p><strong>Primary!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+
+<div class="notification" data-notification-type="success">
 	<p><strong>Success!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-mode="box" data-type="success">
+<div class="notification" data-notification-mode="box" data-notification-type="success">
 	<p><strong>Success!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-type="error">
+<div class="notification notification--inverse" data-notification-mode="box" data-notification-type="success">
+	<p><strong>Success!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+
+<div class="notification" data-notification-type="error">
 	<p><strong>Error!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-mode="box" data-type="error">
+<div class="notification" data-notification-mode="box" data-notification-type="error">
 	<p><strong>Error!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-type="warning">
+<div class="notification notification--inverse" data-notification-mode="box" data-notification-type="error">
+	<p><strong>Error!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+
+<div class="notification" data-notification-type="danger">
+	<p><strong>Danger!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+<div class="notification" data-notification-mode="box" data-notification-type="danger">
+	<p><strong>Danger!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+<div class="notification notification--inverse" data-notification-mode="box" data-notification-type="danger">
+	<p><strong>Danger!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+
+<div class="notification" data-notification-type="warning">
 	<p><strong>Warning!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-mode="box" data-type="warning">
+<div class="notification" data-notification-mode="box" data-notification-type="warning">
 	<p><strong>Warning!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-type="info">
+<div class="notification notification--inverse" data-notification-mode="box" data-notification-type="warning">
+	<p><strong>Warning!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+
+<div class="notification" data-notification-type="info">
 	<p><strong>Info!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-mode="box" data-type="info">
+<div class="notification" data-notification-mode="box" data-notification-type="info">
 	<p><strong>Info!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-mode="box" data-type="lightbulb">
-	<p><strong>Lightbulb!</strong> Here is a notification <a href="">with a link</a>.</p>
+<div class="notification notification--inverse" data-notification-mode="box" data-notification-type="info">
+	<p><strong>Info!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
-<div class="notification" data-mode="box" data-type="message">
-	<h3>Message <span>Heading</span></h3>
-	<p>Here is a message <a href="">with a link</a>.</p>
+
+<div class="notification" data-notification-type="message">
+	<p><strong>Message!</strong> Here is a notification <a href="">with a link</a>.</p>
 </div>
+<div class="notification" data-notification-mode="box" data-notification-type="message">
+	<p><strong>Message!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+<div class="notification notification--inverse" data-notification-mode="box" data-notification-type="message">
+	<p><strong>Message!</strong> Here is a notification <a href="">with a link</a>.</p>
+</div>
+
 CODE;
 output_code($code);
 ?>
@@ -1675,88 +1757,256 @@ output_code($code);
 	display: table;
 }
 .color-swatches > div {
-	height: 2.0em;
+	min-height: 5.0em;
 	float: left;
-	width: 2.0em;
+	min-width: 20%;
+	position: relative;
 }
 .color-swatches > br {
 	clear: both;
 }
+.color-swatches span {
+	bottom: 1.0em;
+	display: block;
+	font-family: monospace;
+	font-size: 0.8em;
+	left: auto;
+	opacity: 0.0;
+	position: absolute;
+	right: 1.0em;
+	text-align: right;
+	top: auto;
+	
+	-webkit-transition: all 0.4s ease-out 0.0s;
+	-moz-transition: all 0.4s ease-out 0.0s;
+	-ms-transition: all 0.4s ease-out 0.0s;
+	-o-transition: all 0.4s ease-out 0.0s;
+	transition: all 0.4s ease-out 0.0s;
+}
+.color-swatches:hover span {
+	opacity: 1.0;
+}
+.color-swatches [class$="-dark"],
+.color-swatches [class$="-darker"] {
+	color: #ffffff;
+}
 </style>
+<?php
+function print_color_info ( $class, $hex )
+{
+	echo '<div class="' . $class . '"><span>' . implode('<br>', array(
+		$class,
+		'#' . $hex,
+		hex2rgb($hex, ', '),
+	)) . '</span></div>';
+}
+?>
 <div class="color-swatches">
-	<div class="default-lighter"></div>
-	<div class="default-light"></div>
-	<div class="default-medium"></div>
-	<div class="default-dark"></div>
-	<div class="default-darker"></div>
+	<?php
+	print_color_info('default-lighter', 'f6f6f6');
+	print_color_info('default-light', 'eeeeee');
+	print_color_info('default-medium', 'bdbdbd');
+	print_color_info('default-dark', 'a5a5a5');
+	print_color_info('default-darker', '7e7e7e');
+	?>
 	<br>
-	<div class="success-lighter"></div>
-	<div class="success-light"></div>
-	<div class="success-medium"></div>
-	<div class="success-dark"></div>
-	<div class="success-darker"></div>	
+	<?php
+	print_color_info('primary-lighter', 'e4f3fa');
+	print_color_info('primary-light', 'd4f1ff');
+	print_color_info('primary-medium', '03a9f4');
+	print_color_info('primary-dark', '0295d9');
+	print_color_info('primary-darker', '027fb0');
+	?>
 	<br>
-	<div class="success-alt-lighter"></div>
-	<div class="success-alt-light"></div>
-	<div class="success-alt-medium"></div>
-	<div class="success-alt-dark"></div>
-	<div class="success-alt-darker"></div>
+	<?php
+	print_color_info('success-lighter', 'f1f8e9');
+	print_color_info('success-light', 'e5f2d6');
+	print_color_info('success-medium', '8bc34a');
+	print_color_info('success-dark', '7cb342');
+	print_color_info('success-darker', '558b2f');
+	?>
 	<br>
-	<div class="warning-lighter"></div>
-	<div class="warning-light"></div>
-	<div class="warning-medium"></div>
-	<div class="warning-dark"></div>
-	<div class="warning-darker"></div>
+	<?php
+	print_color_info('success-alt-lighter', 'f1f8e9');
+	print_color_info('success-alt-light', '5cb85c');
+	print_color_info('success-alt-medium', '4cae4c');
+	print_color_info('success-alt-dark', '449d44');
+	print_color_info('success-alt-darker', '398439');
+	?>
 	<br>
-	<div class="warning-alt-lighter"></div>
-	<div class="warning-alt-light"></div>
-	<div class="warning-alt-medium"></div>
-	<div class="warning-alt-dark"></div>
-	<div class="warning-alt-darker"></div>
+	<?php
+	print_color_info('warning-lighter', 'fff8e1');
+	print_color_info('warning-light', 'fff2c7');
+	print_color_info('warning-medium', 'ffc107');
+	print_color_info('warning-dark', 'ffb300');
+	print_color_info('warning-darker', 'ff8f00');
+	?>
 	<br>
-	<div class="error-lighter"></div>
-	<div class="error-light"></div>
-	<div class="error-medium"></div>
-	<div class="error-dark"></div>
-	<div class="error-darker"></div>
+	<?php
+	print_color_info('warning-alt-lighter', 'fff8e1');
+	print_color_info('warning-alt-light', 'f0ad4e');
+	print_color_info('warning-alt-medium', 'eea236');
+	print_color_info('warning-alt-dark', 'ec971f');
+	print_color_info('warning-alt-darker', 'd58512');
+	?>
 	<br>
-	<div class="error-alt-lighter"></div>
-	<div class="error-alt-light"></div>
-	<div class="error-alt-medium"></div>
-	<div class="error-alt-dark"></div>
-	<div class="error-alt-darker"></div>
+	<?php
+	print_color_info('error-lighter', 'f9ece9');
+	print_color_info('error-light', 'f6ddd9');
+	print_color_info('error-medium', 'eb5339');
+	print_color_info('error-dark', 'e64529');
+	print_color_info('error-darker', 'd23419');
+	?>
 	<br>
-	<div class="danger-lighter"></div>
-	<div class="danger-light"></div>
-	<div class="danger-medium"></div>
-	<div class="danger-dark"></div>
-	<div class="danger-darker"></div>
+	<?php
+	print_color_info('error-alt-lighter', 'f9ece9');
+	print_color_info('error-alt-light', 'd9534f');
+	print_color_info('error-alt-medium', 'd43f3a');
+	print_color_info('error-alt-dark', 'c9302c');
+	print_color_info('error-alt-darker', 'ac2925');
+	?>
 	<br>
-	<div class="info-lighter"></div>
-	<div class="info-light"></div>
-	<div class="info-medium"></div>
-	<div class="info-dark"></div>
-	<div class="info-darker"></div>
+	<?php
+	print_color_info('danger-lighter', 'fde0dc');
+	print_color_info('danger-light', 'fccbc4');
+	print_color_info('danger-medium', 'e51c23');
+	print_color_info('danger-dark', 'dd191d');
+	print_color_info('danger-darker', 'c41411');
+	?>
 	<br>
-	<div class="info-alt-lighter"></div>
-	<div class="info-alt-light"></div>
-	<div class="info-alt-medium"></div>
-	<div class="info-alt-dark"></div>
-	<div class="info-alt-darker"></div>
+	<?php
+	print_color_info('info-lighter', 'e0f7fa');
+	print_color_info('info-light', 'caf1f6');
+	print_color_info('info-medium', '00bcd4');
+	print_color_info('info-dark', '00acc1');
+	print_color_info('info-darker', '00838f');
+	?>
 	<br>
-	<div class="primary-lighter"></div>
-	<div class="primary-light"></div>
-	<div class="primary-medium"></div>
-	<div class="primary-dark"></div>
-	<div class="primary-darker"></div>
+	<?php
+	print_color_info('info-alt-lighter', 'e0f7fa');
+	print_color_info('info-alt-light', '5bc0de');
+	print_color_info('info-alt-medium', '46b8da');
+	print_color_info('info-alt-dark', '31b0d5');
+	print_color_info('info-alt-darker', '269abc');
+	?>
 	<br>
-	<div class="message-lighter"></div>
-	<div class="message-light"></div>
-	<div class="message-medium"></div>
-	<div class="message-dark"></div>
-	<div class="message-darker"></div>
+	<?php
+	print_color_info('message-lighter', 'e0f7fa');
+	print_color_info('message-light', '428bca');
+	print_color_info('message-medium', '357ebd');
+	print_color_info('message-dark', '3071a9');
+	print_color_info('message-darker', '285e8e');
+	?>
 </div>
 
+<h4>Other colors example</h4>
+
+<?php
+$colors = array(
+	array(
+		'hex' => '6e162c',
+	),
+	array(
+		'hex' => '432523',
+	),
+	array(
+		'hex' => 'd2c485',
+	),
+	array(
+		'hex' => 'deb156',
+	),
+	array(
+		'hex' => 'd97a36',
+	),
+	
+	array(),
+	
+	array(
+		'hex' => '4e0111',
+	),
+	array(
+		'hex' => '93001a',
+	),
+	array(
+		'hex' => 'cd9759',
+	),
+	array(
+		'hex' => 'fbefd9',
+	),
+	array(
+		'hex' => '6f645e',
+	),
+);
+?>
+<style type="text/css">
+	.swatches {
+	}
+	.swatch-row {
+		font-size: 0;
+		text-align: center;
+	}
+	.swatch-row:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+	.swatch {
+		display: inline-block;
+		font-size: 1.6rem;
+		height: 6.0em;
+		position: relative;
+		vertical-align: top;
+		width: 10.0em;
+	}
+	.swatch-text {
+		bottom: 1.0em;
+		left: auto;
+		opacity: 0.0;
+		position: absolute;
+		right: 1.0em;
+		text-align: right;
+		top: auto;
+		
+		-webkit-transition: all 0.4s ease-out 0.0s;
+		-moz-transition: all 0.4s ease-out 0.0s;
+		-ms-transition: all 0.4s ease-out 0.0s;
+		-o-transition: all 0.4s ease-out 0.0s;
+		transition: all 0.4s ease-out 0.0s;
+	}
+	.swatches:hover .swatch-text {
+		opacity: 1.0;
+	}
+</style>
+<div class="swatches">
+	<div class="swatch-row">
+		<?php
+		foreach ( $colors as $color )
+		{
+			// If no color, treat as a break in rows
+			if ( ! isset($color['hex']) )
+			{
+		?>
+	</div>
+	<div class="swatch-row">
+		<?php
+				continue;
+			}
+			
+			$rgb_string = hex2rgb($color['hex'], ', ');
+			$rgb = explode(', ', $rgb_string);
+			$text_color = ( $rgb[0] < 125 || $rgb[1] < 125 || $rgb[2] < 80 ) ? '#ffffff' : '#000000';
+		?>
+		<div class="swatch" style="background-color: #<?php echo $color['hex']; ?>; color: <?php echo $text_color; ?>;">
+			<span class="swatch-text">
+				#<?php echo $color['hex']; ?><br>
+				rgb(<?php echo $rgb_string; ?>)<br>
+			</span>
+		</div>
+		<?php
+		}
+		?>
+	</div>
+</div>
 
 <h2 id="toc_site-styles">Site Styles</h2>
 
@@ -1811,14 +2061,14 @@ output_code($code);
 
 <?php
 $code = <<< CODE
-<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:Rounded" alt="" title="" class="img img-fluid img-row img-rounded">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:img-rounded" alt="" title="" class="img img-fluid img-row img-rounded">
 
-<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:Circle" alt="" title="" class="img img-fluid img-row img-circle ">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:img-circle" alt="" title="" class="img img-fluid img-row img-circle ">
 
-<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:Thumbnail" alt="" title="" class="img img-fluid img-row img-thumbnail">
+<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:img-thumbnail" alt="" title="" class="img img-fluid img-row img-thumbnail">
 
 <a href="" class="img-thumbnail img-dropshadow">
-	<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:<a> Thumbnail Dropshadow" alt="" title="">
+	<img data-src="<?php echo redlove_url(); ?>javascript/etc/holder.js/200x200/text:<a> img-dropshadow" alt="" title="">
 </a>
 CODE;
 output_code($code);
@@ -1879,6 +2129,7 @@ $code = <<< CODE
 		<div class="column column-unresponsive w50">
 			<p>Hide</p>
 			<ul>
+				<li><span class="hide-xl">Hide XLarge</span></li>
 				<li><span class="hide-l">Hide Large</span></li>
 				<li><span class="hide-m">Hide Medium</span></li>
 				<li><span class="hide-s">Hide Small</span></li>
@@ -1886,6 +2137,7 @@ $code = <<< CODE
 			</ul>
 			<p>Hide up</p>
 			<ul>
+				<li><span class="hide-xl-up">Hide XLarge+</span></li>
 				<li><span class="hide-l-up">Hide Large+</span></li>
 				<li><span class="hide-m-up">Hide Medium+</span></li>
 				<li><span class="hide-s-up">Hide Small+</span></li>
@@ -1893,6 +2145,7 @@ $code = <<< CODE
 			</ul>
 			<p>Hide down</p>
 			<ul>
+				<li><span class="hide-xl-down">Hide XLarge-</span></li>
 				<li><span class="hide-l-down">Hide Large-</span></li>
 				<li><span class="hide-m-down">Hide Medium-</span></li>
 				<li><span class="hide-s-down">Hide Small-</span></li>
@@ -1902,6 +2155,7 @@ $code = <<< CODE
 		<div class="column column-unresponsive w50">
 			<p>Show</p>
 			<ul>
+				<li><span class="show-xl">Show XLarge</span></li>
 				<li><span class="show-l">Show Large</span></li>
 				<li><span class="show-m">Show Medium</span></li>
 				<li><span class="show-s">Show Small</span></li>
@@ -1909,6 +2163,7 @@ $code = <<< CODE
 			</ul>
 			<p>Show up</p>
 			<ul>
+				<li><span class="show-xl-up">Show XLarge+</span></li>
 				<li><span class="show-l-up">Show Large+</span></li>
 				<li><span class="show-m-up">Show Medium+</span></li>
 				<li><span class="show-s-up">Show Small+</span></li>
@@ -1916,6 +2171,7 @@ $code = <<< CODE
 			</ul>
 			<p>Show down</p>
 			<ul>
+				<li><span class="show-xl-down">Show XLarge-</span></li>
 				<li><span class="show-l-down">Show Large-</span></li>
 				<li><span class="show-m-down">Show Medium-</span></li>
 				<li><span class="show-s-down">Show Small-</span></li>

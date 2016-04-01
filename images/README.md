@@ -6,6 +6,8 @@
 * http://www.freeimages.com/ (http://www.sxc.hu/)
 * http://www.freeimages.co.uk/
 * https://www.pexels.com/
+* https://stocksnap.io/
+* http://unsplash.com/
 * https://www.morguefile.com/
 * http://designinstruct.com/roundups/free-stock-photos/
 

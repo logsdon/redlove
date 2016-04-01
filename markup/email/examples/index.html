@@ -131,12 +131,6 @@
 		.line-height--1px {
 			line-height: 1px;
 		}
-		/*<!--
-		Vertical spacing
-		<td align="center" valign="top" class="spacer"><div style="font-size:10px;line-height:10px;">&nbsp;</div></td>
-		Horizontal and vertical spacing
-		<div class="spacer"><img src="images/pixel/transparent.gif" border="0" width="10" height="10" alt="" class="image_fix" /></div>
-		-->*/
 		.spacer {
 			font-size: 1px;
 			line-height: 1.0;
@@ -145,10 +139,10 @@
 			color: #FFFFFF;
 		}
 		.decoration-underline {
-			text-decoration: underline;
+			text-decoration: underline !important;
 		}
 		.decoration-none {
-			text-decoration: none;
+			text-decoration: none !important;
 		}
 		.nowrap {
 			white-space: nowrap;
@@ -180,10 +174,6 @@
 		.page-break-after {
 			page-break-after: always;
 		}
-		/*<!--
-		Before </body>
-		<div class="gmail-body-decrunch"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
-		-->*/
 		.gmail-body-decrunch {
 			display: none;
 			font: 15px courier;
@@ -454,7 +444,7 @@
 									</tbody>
 								</table>
 								
-								<h2>Divs for paragraph spacing</h2>
+								<h2>Divs for paragraph or vertical spacing</h2>
 								
 								<table align="center" border="0" cellpadding="0" cellspacing="0" width="525">
 									<tr>
@@ -474,13 +464,13 @@
 
 								<h2>Spacers and Dividers</h2>
 								
-								<h3>Images</h3>
+								<h3>Images for horizontal and vertical spacing</h3>
 								
 								<div class="spacer"><img src="images/pixel/transparent.gif" border="0" width="20" height="20" alt="" class="image_fix" /></div>
 								<div class="spacer"><img src="images/divider-8a8787.gif" border="0" width="560" height="1" alt="" class="image_fix img-scale-width" style="width: 560px;" /></div>
 								<div class="spacer hide"><img src="images/pixel/transparent.gif" border="0" width="5" height="5" alt="" class="image_fix" /></div>
 								
-								<h3>Font sizes and table cells</h3>
+								<h3>Font sizes and table cells for vertical spacing</h3>
 								
 								<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="full-width">
 									<tbody>

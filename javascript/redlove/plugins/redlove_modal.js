@@ -192,7 +192,7 @@ jQuery(document).ready(function($)
 				var height = self.options.height || 360;
 				//self.options.width = width;
 				//self.options.height = height;
-				var youtube_src = '//www.youtube.com/embed/' + video_id[1] + '?&hl=en&fs=1&rel=0&autoplay=1&egm=0&showinfo=0&hd=0&loop=0&wmode=transparent';
+				var youtube_src = '//www.youtube.com/embed/' + video_id[1] + '?&hl=en&fs=1&rel=0&autoplay=1&egm=0&showinfo=0&hd=0&loop=0&wmode=transparent&enablejsapi=1';
 				content = '<div class="redlove_modal_embed"><iframe width="' + width + '" height="' + height + '" src="' + youtube_src + '" frameborder="0" allowfullscreen></iframe></div>';
 			}
 			
@@ -201,6 +201,10 @@ jQuery(document).ready(function($)
 		
 		//proto.log(self);
 		//proto.log('index: ' + $el.index() + ' auto: ' + self.options.auto);
+		
+		// Trigger custom event
+		$this
+		.trigger('modal_show', {modal : self});
 	};
 	
 	/**
@@ -210,7 +214,7 @@ jQuery(document).ready(function($)
 	*/
 	proto.show = function ( content, options, self )
 	{
-		if ( typeof self !== 'object' || ! (self instanceof Plugin) )
+		if ( typeof(self) !== 'object' || ! (self instanceof Plugin) )
 		{
 			options = $.extend( {}, proto.default_options, options );
 		}
@@ -397,7 +401,7 @@ jQuery(document).ready(function($)
 				height: ''
 			});
 			
-			var embed_class = 'redlove_embed';
+			var embed_class = 'redlove_modal_embed';
 			var $embed = $modal_content_liner.find('.' + embed_class);
 			if ( $embed.length > 0 )
 			{

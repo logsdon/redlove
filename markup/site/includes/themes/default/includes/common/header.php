@@ -5,9 +5,9 @@
 
 	<header class="primary">
 		
-		<h1 class="logo">
+		<div class="logo">
 			<a href="<?php echo theme_nav_url(); ?>">[Logo]<!--<img src="<?php echo theme_base_url(); ?>images/header__logo.jpg" alt="[Logo]" class="scale-with-grid" />--></a>
-		</h1>
+		</div>
 		
 		<nav class="nav-dropdown-setup nav-primary">
 			<ul>

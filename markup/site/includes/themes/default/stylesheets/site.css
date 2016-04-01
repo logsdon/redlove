@@ -67,7 +67,7 @@ body {
 p,
 pre,
 iframe {
-	margin: 0 0 1.0em;
+	margin-bottom: 1.0em;
 }
 
 
@@ -155,7 +155,7 @@ body {
 	width: 960px;
 	max-width: 960px;
 }
-/* Tablet : Design for a width of 768px (0px - 959px) */
+/* Tablet : Design for a width of 768px (0px - 959.99px); 59.99em if 1em=16px */
 @media only screen and (max-width: 59.99em) {
 	.band-liner {
 		width: 100%;
@@ -317,11 +317,11 @@ nav.footer .active a {
 /* 
 	Header logo
 ---------------------------------------- */
-header.primary h1 {
+.logo {
 	float: left;
 	margin: 0;
 }
-header.primary h1 a {
+.logo a {
 	display: block;
 	line-height: 1.0;
 	/*

@@ -134,7 +134,6 @@
 			.on('click' + plugin_namespace, function ( event )
 			{
 				event.preventDefault();
-				event.stopImmediatePropagation();
 				
 				var active_index = $tabs.index( $tabs.filter('.' + options.active_class) );
 				var index = $tabs.index(this);
@@ -149,9 +148,18 @@
 				}
 				
 				// Show the tab content
-				$tabs.eq(index)
-				.add( $tab_contents.eq(index) )
+				var $tab = $tabs.eq(index);
+				var $tab_content = $tab_contents.eq(index);
+				$tab
+				.add( $tab_content )
 				.addClass(options.active_class);
+				
+				// Trigger custom event
+				$(this)
+				.trigger('tab_show', {
+					tab: $tab,
+					tab_content: $tab_content
+				});
 			})
 			.filter('.' + options.active_class)
 			.trigger('click' + plugin_namespace);

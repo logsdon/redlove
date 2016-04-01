@@ -100,7 +100,7 @@ if ( ! defined('ROOT_PATH') )
 
 // --------------------------------------------------------------------
 // REDLOVE
-// Postload includes
+// Preload includes
 $filename = 'preload';
 $file = INCLUDES_PATH . 'config/' . $filename . '.php';
 if ( file_exists($file) )
@@ -361,6 +361,34 @@ if ( file_exists($file) )
 	}
 }
 // --------------------------------------------------------------------
+
+/*
+REDLOVE
+http://ellislab.com/codeigniter/user-guide/general/errors.html
+
+Make your logs folder writable and use log_message()
+
+
+http://stackoverflow.com/questions/3209807/how-to-do-error-logging-in-php-codeigniter
+http://us.php.net/manual/en/ref.errorfunc.php
+
+First, to trigger an error:
+trigger_error("Error message here", E_USER_ERROR);
+
+By default, this will go in the server's error log file. See the ErrorLog directive for Apache. To set your own log file:
+ini_set('error_log', 'path/to/log/file');
+
+Note that the log file you choose must already exist and be writable by the server process. The simplest way to make the file writable is to make the server user the owner of the file. (The server user may be nobody, _www, apache, or something else, depending on your OS distribution.)
+
+To e-mail the error, you need to set up a custom error handler:
+
+function mail_error($errno, $errstr, $errfile, $errline) {
+	$message = "[Error $errno] $errstr - Error on line $errline in file $errfile";
+	error_log($message); // writes the error to the log file
+	mail('you@yourdomain.com', 'I have an error', $message);
+}
+set_error_handler('mail_error', E_ALL^E_NOTICE);
+*/
 
 /*
 // Debugging

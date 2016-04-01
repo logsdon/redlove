@@ -1,0 +1,289 @@
+
+ 
+<div class="draggable ui-widget-content" data-id="315">
+	<p>Drag me to my target</p>
+</div>
+<div class="droppable ui-widget-header">
+	<p>Drop here</p>
+</div>
+
+<style type="text/css">
+	.draggable {
+		border: 1px solid #cccccc;
+		width: 100px;
+		height: 100px;
+		padding: 0.5em;
+		float: left;
+		margin: 10px 10px 10px 0;
+	}
+	.droppable {
+		border: 1px solid #cccccc;
+		width: 150px;
+		height: 150px;
+		padding: 0.5em;
+		float: left;
+		margin: 10px;
+	}
+</style>
+
+
+
+
+
+
+<ul class="selections drag-area">
+	<li>
+		<a href="#"><img src="small-1.jpg" alt="[Item 1]" class="draggable" data-id="1" data-img="large-1.jpg" data-name="Item 1">Item 1</a>
+	</li>
+	<li>
+		<a href="#"><img src="small-2.jpg" alt="[Item 2]" class="draggable" data-id="2" data-img="large-2.jpg" data-name="Item 2">Item 2</a>
+	</li>
+	<li>
+		<a href="#"><img src="small-3.jpg" alt="[Item 3]" class="draggable" data-id="3" data-img="large-3.jpg" data-name="Item 3">Item 3</a>
+	</li>
+	<li>
+		<a href="#"><img src="small-4.jpg" alt="[Item 4]" class="draggable" data-id="4" data-img="large-4.jpg" data-name="Item 4">Item 4</a>
+	</li>
+</ul>
+
+<div class="drop-areas">
+	
+	<div class="drop-area">
+		<div class="image dropzone droppable" data-id="1">
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+			<h5>&nbsp;</h5>
+		</div>
+		<div class="text">
+			<ul>
+				<li>Info item 1</li>
+				<li>Info item 2</li>
+				<li>Info item 3</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="drop-area">
+		<div class="image dropzone droppable" data-id="2">
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+			<h5>&nbsp;</h5>
+		</div>
+		<div class="text">
+			<ul>
+				<li>Info item 1</li>
+				<li>Info item 2</li>
+				<li>Info item 3</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="drop-area">
+		<div class="image dropzone droppable" data-id="3">
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+			<h5>&nbsp;</h5>
+		</div>
+		<div class="text">
+			<ul>
+				<li>Info item 1</li>
+				<li>Info item 2</li>
+				<li>Info item 3</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="drop-area">
+		<div class="image dropzone droppable" data-id="4">
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+			<h5>&nbsp;</h5>
+		</div>
+		<div class="text">
+			<ul>
+				<li>Info item 1</li>
+				<li>Info item 2</li>
+				<li>Info item 3</li>
+			</ul>
+		</div>
+	</div>
+	
+</div>
+
+<style type="text/css">
+
+.selections:after {
+	content: "";
+	display: table;
+	vertical-align: top;
+	width: 100%;
+}
+.selections,
+.selections li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.selections li {
+	float: left;
+}
+.selections a {
+	color: #000000;
+	display: block;
+	font-size: 1.0em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.selections img {
+	border: 1px solid transparent;
+	display: block;
+	padding: 4px;
+	position: relative;
+	margin: 0 4px 2px;
+	z-index: 1;
+}
+.ui-draggable-dragging {
+	z-index: 3;
+}
+.selections .active img {
+	border-color: #ed1c24;
+}
+
+
+.drag-area {
+	border: 1px solid #ed1c24;
+	display: inline-block;
+	padding: 8px 18px;
+}
+.drop-areas {
+	margin-top: 25px;
+}
+.drop-areas * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.drop-area {
+	display: inline-block;
+	float: left;
+	margin-bottom: 25px;
+	width: 50%;
+}
+.drop-area .image {
+	display: inline-block;
+	float: left;
+	position: relative;
+	width: 180px;
+}
+.drop-area .image:after {
+	color: #ffffff;
+	content: "X";
+	font-size: 4.0em;
+	font-weight: 700;
+	margin-top: -0.2em;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.drop-area .image img {
+	border: 1px solid #000000;
+	height: 180px;
+	position: relative;
+	vertical-align: top;
+	z-index: 1;
+}
+.drop-area h5 {
+	background: #ed1c24;
+	border-right: 1px solid transparent;
+	color: #ffffff;
+	font-size: 1.2em;
+	font-weight: 700;
+	margin: 0;
+	padding: 0.3em 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+.drop-area .text {
+	background: #000000;
+	color: #ffffff;
+	display: inline-block;
+	float: left;
+	height: 180px;
+	padding: 1.0em;
+	width: 145px;
+}
+.drop-areas .drop-area:nth-child(2n+0) .text {
+	width: 155px;
+}
+.drop-area .text li {
+	margin-left: 0.5em;
+}
+.drop-area .text li {
+	margin-bottom: 0.5em;
+}
+
+</style>
+
+<script type="text/javascript">
+jQuery(document).ready(function ( $ )
+{
+	// --------------------------------------------------------------------
+	
+	$('.draggable').draggable({
+		appendTo : 'body',
+		cancel : 'a.ui-icon',// clicking an icon won't initiate dragging
+		containment : '.quiz-content',
+		cursor : 'move',
+		helper : 'clone',
+		revert : 'invalid'// when not dropped, the item will revert back to its initial position
+	});
+	$('.droppable').droppable({
+		accept : '.draggable',
+		activeClass : 'ui-state-hover',
+		greedy : true,
+		hoverClass : 'ui-state-active',
+		drop : function ( event, ui )
+		{
+			/*
+			$(this)
+			.addClass('ui-state-highlight')
+			.find('p')
+			.html('Dropped!');
+			*/
+			
+			console.log(this);
+			console.log(ui.draggable[0]);
+			console.log($(this).data('id'));
+			console.log($(ui.draggable[0]).data('id'));
+			
+			/*
+			$( this ).find( ".placeholder" ).remove();
+			$( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+			*/
+			
+			var $droppable = $(this);
+			var $draggable = $(ui.draggable[0]);
+			
+			if ( $droppable.data('id') == $draggable.data('id') )
+			{
+				$droppable.find('img').attr('src', $draggable.data('img'));
+				$droppable.find('h5').text($draggable.data('name'));
+			}
+			else
+			{
+				$droppable.animate({backgroundColor : '#ed1c24'}, 250, function ()
+				{
+					$droppable.animate({backgroundColor : '#ffffff'}, 250);
+				});
+				//alert('Sorry, that is incorrent. Please try again!');
+			}
+		}
+	});
+	
+	// --------------------------------------------------------------------
+	
+});
+</script>

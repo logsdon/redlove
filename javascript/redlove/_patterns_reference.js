@@ -136,7 +136,7 @@ jQuery(document).ready(function($)
 	console.log('// ------------------------------------------------------------');
 	console.log('Wait for resources to become available...');
 	// If objects do not exist, check again shortly
-	if ( document.readyState == 'loading' || typeof jQuery === 'undefined' )
+	if ( document.readyState == 'loading' || typeof(jQuery) === 'undefined' )
 	{
 		console.log('Still waiting...');
 		return setTimeout(arguments.callee, 250);
@@ -548,7 +548,7 @@ window.GLOBAL_OBJECT = $.extend(window.GLOBAL_OBJECT, {
 		// Internal data property
 		this._data = this._data || {};
 		
-		if ( arguments.length == 0 || arguments[0] == undefined )
+		if ( arguments.length == 0 || arguments[0] === undefined )
 		{
 			return this;
 		}
@@ -968,7 +968,7 @@ http://learn.jquery.com/plugins/advanced-plugin-concepts/
 		{
 			return plugin_ref[options].apply(this, Array.prototype.slice.call(arguments, 1));
 		}
-		else if ( typeof options === 'object' || ! options )
+		else if ( typeof(options) === 'object' || ! options )
 		{
 			return plugin_ref.init.apply(this, arguments);
 		}

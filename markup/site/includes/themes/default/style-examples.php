@@ -20,7 +20,7 @@ if ( ! defined('ENVIRONMENT') )
 	<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('stylesheets/redlove/examples.css'); ?>">
 	
 </head>
-<body class="mobile-menu-liner">
+<body class="responsive-menu-liner">
 <?php
 // Body Prepend
 include(THEME_PATH . 'includes/common/body.prepend.php');
@@ -134,6 +134,376 @@ $code = <<< CODE
 CODE;
 output_code($code);
 ?>
+
+<h3>Flip Cards</h3>
+
+<style type="text/css">
+
+.flipcard-container {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.flipcard {
+	cursor: pointer;
+	display: inline-block;
+}
+.flipcard--selected,
+.flipcard--matched {
+	cursor: default;
+}
+.flipcard__sides {
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+.flipcard__sides__front,
+.flipcard__sides__back {
+	backface-visibility: hidden;
+	height: 100%;
+	position: absolute;
+	
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	
+	-webkit-transition: all 0.4s ease-in-out 0.0s;
+	-moz-transition: all 0.4s ease-in-out 0.0s;
+	-ms-transition: all 0.4s ease-in-out 0.0s;
+	-o-transition: all 0.4s ease-in-out 0.0s;
+	transition: all 0.4s ease-in-out 0.0s;
+	
+	width: 100%;
+}
+.flipcard__sides__back {
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+	-o-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+	
+	z-index: 1;
+}
+	.flipcard:hover .flipcard__sides__back,
+	.flipcard--selected .flipcard__sides__back,
+	.flipcard--matched .flipcard__sides__back {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+		
+		z-index: 0;
+	}
+.flipcard__sides__front {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+	.flipcard:hover .flipcard__sides__front,
+	.flipcard--selected .flipcard__sides__front,
+	.flipcard--matched .flipcard__sides__front {
+		-webkit-transform: rotateY(0deg);
+		-moz-transform: rotateY(0deg);
+		-ms-transform: rotateY(0deg);
+		-o-transform: rotateY(0deg);
+		transform: rotateY(0deg);
+	}
+
+
+.flipcard-card {
+	height: 208px;
+	margin: 1.0em;
+	width: 154px;
+}
+.flipcard-card .flipcard__sides__back {
+	background: red;
+}
+.flipcard-card .flipcard__sides__front {
+	background: blue;
+}
+.flipcard-card img {
+	border: 1px solid #333333;
+	
+	-webkit-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
+	-webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+	
+	-webkit-transition: all 0.4s ease-in-out 0.0s;
+	-moz-transition: all 0.4s ease-in-out 0.0s;
+	-ms-transition: all 0.4s ease-in-out 0.0s;
+	-o-transition: all 0.4s ease-in-out 0.0s;
+	transition: all 0.4s ease-in-out 0.0s;
+}
+
+.flipcard-card:hover img {
+	-webkit-box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+	box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+}
+.flipcard-card:active img {
+	-webkit-box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+	box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+}
+.flipcard-card.flipcard--selected img {
+	-webkit-box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+	box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.5);
+}
+.flipcard-card.flipcard--incorrect img {
+	-webkit-box-shadow: 5px 5px 5px rgba(255, 0, 0, 0.5);
+	-moz-box-shadow: 5px 5px 5px rgba(255, 0, 0, 0.5);
+	box-shadow: 5px 5px 5px rgba(255, 0, 0, 0.5);
+}
+.flipcard-card.flipcard--matched img {
+	-webkit-box-shadow: 5px 5px 5px rgba(0, 255, 0, 0.5);
+	-moz-box-shadow: 5px 5px 5px rgba(0, 255, 0, 0.5);
+	box-shadow: 5px 5px 5px rgba(0, 255, 0, 0.5);
+}
+</style>
+
+<div class="flipcard-container">
+
+	<div class="flipcard flipcard-card" ontouchstart="this.classList.toggle('hover');">
+		<div class="flipcard__sides">
+			<!-- back content -->
+			<div class="flipcard__sides__back">
+				<img src="<?php echo base_url(); ?>images/card-set/card_back.png">
+			</div>
+			<!-- front content -->
+			<div class="flipcard__sides__front">
+				<img src="<?php echo base_url(); ?>images/card-set/card_back.png" style="visibility: hidden;">
+			</div>
+		</div>
+	</div>
+	
+	<div class="flipcard flipcard-card" ontouchstart="this.classList.toggle('hover');">
+		<div class="flipcard__sides">
+			<!-- back content -->
+			<div class="flipcard__sides__back">
+				<img src="<?php echo base_url(); ?>images/card-set/card_back.png">
+			</div>
+			<!-- front content -->
+			<div class="flipcard__sides__front">
+				<img src="<?php echo base_url(); ?>images/card-set/card_back.png" style="visibility: hidden;">
+			</div>
+		</div>
+	</div>
+	
+	<div class="flipcard flipcard-card flipcard--matched" ontouchstart="this.classList.toggle('hover');">
+		<div class="flipcard__sides">
+			<!-- back content -->
+			<div class="flipcard__sides__back">
+				<img src="<?php echo base_url(); ?>images/card-set/card_back.png">
+			</div>
+			<!-- front content -->
+			<div class="flipcard__sides__front">
+				<img src="<?php echo base_url(); ?>images/card-set/card_back.png" style="visibility: hidden;">
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<h3>Flip Card Invitation</h3>
+
+<style type="text/css">
+.flipinvite-container {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.flipinvite {
+	display: inline-block;
+}
+.flipinvite--selected {
+	cursor: default;
+}
+.flipinvite__sides {
+	height: 100%;
+	position: relative;
+	width: 100%;
+	
+	-webkit-perspective: preserve-3d;
+	-moz-perspective: preserve-3d;
+	-ms-perspective: preserve-3d;
+	-o-perspective: preserve-3d;
+	perspective: 2000px;
+}
+.flipinvite__sides__front,
+.flipinvite__sides__back {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+	height: 100%;
+	position: absolute;
+	
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	
+	-webkit-transition: all 0.4s ease-in-out 0.0s;
+	-moz-transition: all 0.4s ease-in-out 0.0s;
+	-ms-transition: all 0.4s ease-in-out 0.0s;
+	-o-transition: all 0.4s ease-in-out 0.0s;
+	transition: all 1.0s ease-out 0.0s;
+	
+	width: 100%;
+}
+.flipinvite__sides__back {
+	cursor: pointer;
+	
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+	-o-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+	
+	z-index: 1;
+}
+	.flipinvite:hover .flipinvite__sides__back,
+	.flipinvite--selected .flipinvite__sides__back {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+		
+		z-index: 0;
+	}
+.flipinvite__sides__front {
+	-webkit-transform: rotateY(-180deg);
+	-moz-transform: rotateY(-180deg);
+	-ms-transform: rotateY(-180deg);
+	-o-transform: rotateY(-180deg);
+	transform: rotateY(-180deg);
+}
+.flipinvite__sides__front:before,
+.flipinvite__sides__back:before,
+.flipinvite__sides__front:after,
+.flipinvite__sides__back:after {
+	color: #ffffff;
+	content: "\f111";
+	display: inline-block;
+	font-family: FontAwesome;
+	font-size: 3.0em;
+	left: 50%;
+	position: absolute;
+	top: 0%;
+	
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.flipinvite__sides__front:after,
+.flipinvite__sides__back:after {
+	top: 100%;
+	
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+	.flipinvite:hover .flipinvite__sides__front,
+	.flipinvite--selected .flipinvite__sides__front {
+		-webkit-transform: rotateY(0deg);
+		-moz-transform: rotateY(0deg);
+		-ms-transform: rotateY(0deg);
+		-o-transform: rotateY(0deg);
+		transform: rotateY(0deg);
+	}
+
+.flipinvite-greeting {
+	color: #ffffff;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.flipinvite-form {
+	color: #ffffff;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+</style>
+<div class="flipinvite-container">
+
+	<div class="flipinvite" ontouchstart="this.classList.toggle('hover');" style="width: 600px; height: 400px;">
+		<div class="flipinvite__sides">
+			<!-- back content -->
+			<div class="flipinvite__sides__back">
+				<div style="background-color: rgba(0, 0, 0, 1.0); width: 100%; height: 100%;">
+					<div class="flipinvite-greeting" style="color: #ffffff;">
+						You are invited!
+						<br>
+						<br>
+						Please RSVP inside >
+					</div>
+				</div>
+			</div>
+			<!-- front content -->
+			<div class="flipinvite__sides__front">
+				<div style="background-color: rgba(90, 90, 90, 1.0); width: 100%; height: 100%;">
+					<div class="flipinvite-form">
+						<div class="columns">
+							<div class="column w50">
+								<h3>Party info</h3>
+								<ul>
+									<li>Some info</li>
+									<li>Some info</li>
+									<li>Some info</li>
+								</ul>
+							</div>
+							<div class="column w50">
+								<input type="text" placeholder="Your name">
+								<br>
+								<input type="exmail" placeholder="you@awesome.com">
+								<br>
+								<input type="submit" value="Submit">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
 
 <h2>Shadows</h2>
 
@@ -2562,59 +2932,20 @@ jQuery(document).ready(function($)
 </div>
 
 
-<h3>Mobile Menus</h3>
+<h3>Responsive Menus</h3>
 
 <script type="text/javascript">
-var responsive_menu_active_class = 'mobile-menu-active';
-var responsive_menu_namespace = 'mobile_menu';
-var body_classes = responsive_menu_active_class + ' no-scroll no-select';
-var click_events = 'click.' + responsive_menu_namespace + ' touchstart.' + responsive_menu_namespace;
-
-// Responsive menu helper
-jQuery(document).ready( function ( $ )
-{
-	$('.mobile-menu-checkbox')
-	.each( function ( i, el )
-	{
-		var data_type = this.checked ? $(this).data('type') : '';
-		
-		if ( this.checked )
-		{
-			$('body').addClass(body_classes)
-			.attr('data-type', data_type);
-			
-			if ( data_type == 'height-top' )
-			{
-				$('html, body').animate({scrollTop: $('.mobile-menu[data-type="height-top"]').offset().top}, 500, function(){});
-			}
-		}
-	})
-	.on(click_events, function ( event )
-	{
-		var data_type = this.checked ? $(this).data('type') : '';
-		
-		$('body').toggleClass(body_classes)
-		.attr('data-type', data_type);
-		
-		if ( this.checked )
-		{
-			if ( data_type == 'height-top' )
-			{
-				$('html, body').animate({scrollTop: $('.mobile-menu[data-type="height-top"]').offset().top}, 500, function(){});
-			}
-		}
-	});
-});
+// Responsive menu helper is in redlove/javascript/redlove/common.js
 </script>
 
 <div class="flex-row">
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_fade" type="checkbox" class="mobile-menu-checkbox" data-type="fade">
-		<label for="mobile-menu_cb_fade" class="mobile-menu-button">Menu Button - Fade</label>
-		<nav class="mobile-menu" data-type="fade">
+		<input id="responsive-menu_cb_fade" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="fade">
+		<label for="responsive-menu_cb_fade" class="responsive-menu-button">Menu Button - Fade</label>
+		<nav class="responsive-menu" data-responsive-menu-type="fade">
 			<ul>
-				<li><label for="mobile-menu_cb_fade" class="mobile-menu-button">Menu Button - Fade</label></li>
+				<li><label for="responsive-menu_cb_fade" class="responsive-menu-button">Menu Button - Fade</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>
@@ -2631,11 +2962,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_height-top" type="checkbox" class="mobile-menu-checkbox" data-type="height-top">
-		<label for="mobile-menu_cb_height-top" class="mobile-menu-button">Menu Button - Height Top</label>
-		<nav class="mobile-menu" data-type="height-top">
+		<input id="responsive-menu_cb_height-top" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="height-top">
+		<label for="responsive-menu_cb_height-top" class="responsive-menu-button">Menu Button - Height Top</label>
+		<nav class="responsive-menu" data-responsive-menu-type="height-top">
 			<ul>
-				<li><label for="mobile-menu_cb_height-top" class="mobile-menu-button">Menu Button - Height Top</label></li>
+				<li><label for="responsive-menu_cb_height-top" class="responsive-menu-button">Menu Button - Height Top</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>
@@ -2652,11 +2983,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_fixed-top" type="checkbox" class="mobile-menu-checkbox" data-type="fixed-top">
-		<label for="mobile-menu_cb_fixed-top" class="mobile-menu-button">Menu Button - Fixed Top</label>
-		<nav class="mobile-menu" data-type="fixed-top">
+		<input id="responsive-menu_cb_fixed-top" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="fixed-top">
+		<label for="responsive-menu_cb_fixed-top" class="responsive-menu-button">Menu Button - Fixed Top</label>
+		<nav class="responsive-menu" data-responsive-menu-type="fixed-top">
 			<ul>
-				<li><label for="mobile-menu_cb_fixed-top" class="mobile-menu-button">Menu Button - Fixed Top</label></li>
+				<li><label for="responsive-menu_cb_fixed-top" class="responsive-menu-button">Menu Button - Fixed Top</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>
@@ -2673,11 +3004,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_fixed-bottom" type="checkbox" class="mobile-menu-checkbox" data-type="fixed-bottom">
-		<label for="mobile-menu_cb_fixed-bottom" class="mobile-menu-button">Menu Button - Fixed Bottom</label>
-		<nav class="mobile-menu" data-type="fixed-bottom">
+		<input id="responsive-menu_cb_fixed-bottom" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="fixed-bottom">
+		<label for="responsive-menu_cb_fixed-bottom" class="responsive-menu-button">Menu Button - Fixed Bottom</label>
+		<nav class="responsive-menu" data-responsive-menu-type="fixed-bottom">
 			<ul>
-				<li><label for="mobile-menu_cb_fixed-bottom" class="mobile-menu-button">Menu Button - Fixed Bottom</label></li>
+				<li><label for="responsive-menu_cb_fixed-bottom" class="responsive-menu-button">Menu Button - Fixed Bottom</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>
@@ -2694,11 +3025,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_fixed-left" type="checkbox" class="mobile-menu-checkbox" data-type="fixed-left">
-		<label for="mobile-menu_cb_fixed-left" class="mobile-menu-button">Menu Button - Fixed Left</label>
-		<nav class="mobile-menu" data-type="fixed-left">
+		<input id="responsive-menu_cb_fixed-left" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="fixed-left">
+		<label for="responsive-menu_cb_fixed-left" class="responsive-menu-button">Menu Button - Fixed Left</label>
+		<nav class="responsive-menu" data-responsive-menu-type="fixed-left">
 			<ul>
-				<li><label for="mobile-menu_cb_fixed-left" class="mobile-menu-button">Menu Button - Fixed Left</label></li>
+				<li><label for="responsive-menu_cb_fixed-left" class="responsive-menu-button">Menu Button - Fixed Left</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>
@@ -2715,11 +3046,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_fixed-right" type="checkbox" class="mobile-menu-checkbox" data-type="fixed-right">
-		<label for="mobile-menu_cb_fixed-right" class="mobile-menu-button">Menu Button - Fixed Right</label>
-		<nav class="mobile-menu" data-type="fixed-right">
+		<input id="responsive-menu_cb_fixed-right" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="fixed-right">
+		<label for="responsive-menu_cb_fixed-right" class="responsive-menu-button">Menu Button - Fixed Right</label>
+		<nav class="responsive-menu" data-responsive-menu-type="fixed-right">
 			<ul>
-				<li><label for="mobile-menu_cb_fixed-right" class="mobile-menu-button">Menu Button - Fixed Right</label></li>
+				<li><label for="responsive-menu_cb_fixed-right" class="responsive-menu-button">Menu Button - Fixed Right</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>
@@ -2736,11 +3067,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_push-top" type="checkbox" class="mobile-menu-checkbox" data-type="push-top">
-		<label for="mobile-menu_cb_push-top" class="mobile-menu-button">Menu Button - Push Top</label>
-		<nav class="mobile-menu" data-type="push-top">
+		<input id="responsive-menu_cb_push-top" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="push-top">
+		<label for="responsive-menu_cb_push-top" class="responsive-menu-button">Menu Button - Push Top</label>
+		<nav class="responsive-menu" data-responsive-menu-type="push-top">
 			<ul>
-				<li><label for="mobile-menu_cb_push-top" class="mobile-menu-button">Menu Button - Push Top</label></li>
+				<li><label for="responsive-menu_cb_push-top" class="responsive-menu-button">Menu Button - Push Top</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>
@@ -2757,11 +3088,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_push-bottom" type="checkbox" class="mobile-menu-checkbox" data-type="push-bottom">
-		<label for="mobile-menu_cb_push-bottom" class="mobile-menu-button">Menu Button - Push Bottom</label>
-		<nav class="mobile-menu" data-type="push-bottom">
+		<input id="responsive-menu_cb_push-bottom" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="push-bottom">
+		<label for="responsive-menu_cb_push-bottom" class="responsive-menu-button">Menu Button - Push Bottom</label>
+		<nav class="responsive-menu" data-responsive-menu-type="push-bottom">
 			<ul>
-				<li><label for="mobile-menu_cb_push-bottom" class="mobile-menu-button">Menu Button - Push Bottom</label></li>
+				<li><label for="responsive-menu_cb_push-bottom" class="responsive-menu-button">Menu Button - Push Bottom</label></li>
 			<li><a href="">Home</a></li>
 			<li><a href="">Option</a></li>
 			<li><a href="">Option</a>
@@ -2778,11 +3109,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_push-left" type="checkbox" class="mobile-menu-checkbox" data-type="push-left">
-		<label for="mobile-menu_cb_push-left" class="mobile-menu-button">Menu Button - Push Left</label>
-		<nav class="mobile-menu" data-type="push-left">
+		<input id="responsive-menu_cb_push-left" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="push-left">
+		<label for="responsive-menu_cb_push-left" class="responsive-menu-button">Menu Button - Push Left</label>
+		<nav class="responsive-menu" data-responsive-menu-type="push-left">
 			<ul>
-				<li><label for="mobile-menu_cb_push-left" class="mobile-menu-button">Menu Button - Push Left</label></li>
+				<li><label for="responsive-menu_cb_push-left" class="responsive-menu-button">Menu Button - Push Left</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>
@@ -2799,11 +3130,11 @@ jQuery(document).ready( function ( $ )
 	</div>
 	<div class="flex-cell w25">
 		
-		<input id="mobile-menu_cb_push-right" type="checkbox" class="mobile-menu-checkbox" data-type="push-right">
-		<label for="mobile-menu_cb_push-right" class="mobile-menu-button">Menu Button - Push Right</label>
-		<nav class="mobile-menu" data-type="push-right">
+		<input id="responsive-menu_cb_push-right" type="checkbox" class="responsive-menu-checkbox" data-responsive-menu-type="push-right">
+		<label for="responsive-menu_cb_push-right" class="responsive-menu-button">Menu Button - Push Right</label>
+		<nav class="responsive-menu" data-responsive-menu-type="push-right">
 			<ul>
-				<li><label for="mobile-menu_cb_push-right" class="mobile-menu-button">Menu Button - Push Right</label></li>
+				<li><label for="responsive-menu_cb_push-right" class="responsive-menu-button">Menu Button - Push Right</label></li>
 				<li><a href="">Home</a></li>
 				<li><a href="">Option</a></li>
 				<li><a href="">Option</a>

@@ -20,7 +20,7 @@ $user = true;
 	?>
 	
 </head>
-<body class="mobile-menu-liner">
+<body class="responsive-menu-liner">
 <?php
 // Body Prepend
 include(THEME_PATH . 'includes/common/body.prepend.php');

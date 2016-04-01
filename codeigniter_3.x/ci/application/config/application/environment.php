@@ -31,3 +31,15 @@ $config['environment']['is_production'] = (
 	! $config['environment']['is_testing']
 );
 
+if ( $config['environment']['is_development'] )
+{
+	$config['environment']['redlove']['num_dirs_from_root_path'] = 2;
+}
+elseif ( $config['environment']['is_testing'] )
+{
+	$config['environment']['redlove']['num_dirs_from_root_path'] = 2;
+}
+else
+{
+	$config['environment']['redlove']['num_dirs_from_root_path'] = 0;
+}

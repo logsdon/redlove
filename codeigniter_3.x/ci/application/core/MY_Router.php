@@ -12,8 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * @license http://opensource.org/licenses/MIT MIT License
 * @link http://joshualogsdon.com
 * @filesource
-* @since Version 1.0.0
-* @version 1.0.0
+* @since Version 0.0.0
+* @version 0.0.0
 */
 
 /**

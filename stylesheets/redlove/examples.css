@@ -131,6 +131,7 @@
 }
 
 .border-radius {
+	/* Selective */
 	-webkit-top-right-border-radius: 10px;
 	-webkit-top-left-border-radius: 10px;
 	-khtml-top-right-border-radius: 10px;
@@ -140,11 +141,13 @@
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
 	
+	/* Circle */
 	-webkit-border-radius: 50%;
 	-khtml-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
 	
+	/* Rounded */
 	-webkit-border-radius: 3px;
 	-khtml-border-radius: 3px;
 	-moz-border-radius: 3px;

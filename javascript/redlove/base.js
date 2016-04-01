@@ -63,6 +63,62 @@ $.extend(window.REDLOVE, {
 });
 //]]></script>
 <script style="text/javascript" src="javascript/site.js"></script>
+
+
+	An example of sending data on page load:
+	
+<?php
+session_start();
+$client_timezone_offset = ! empty($_SESSION['client_timezone_offset']) ? $_SESSION['client_timezone_offset'] : '';
+$client_timezone_offset = $this->session->userdata('user__client_timezone_offset');
+if ( ! $client_timezone_offset )
+{
+?>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($)
+	{
+		// Gather data
+		var client_timezone_offset = - new Date().getTimezoneOffset() * 60;
+		var post_data = {client_timezone_offset : client_timezone_offset};
+		// Extend with common and security data
+		$.extend(true, post_data, REDLOVE.form_data);
+		// Serialize the data as a string
+		post_data = REDLOVE.fn.serialize_data(post_data);
+		$.ajax({
+			type: 'POST',
+			url: REDLOVE.base_url + 'admin/home/set_data',
+			data: post_data,
+			success: function(){
+				//window.location.reload();
+			}
+		});
+	});
+	
+	// or
+	
+	// Gather data
+	var client_timezone_offset = 'GMT' + ( - new Date().getTimezoneOffset() / 60 );
+	var post_data = '&ajax=1&client_timezone_offset=' + client_timezone_offset + '&<?php echo $this->csrf->get_token_name(); ?>=<?php echo $this->csrf->get_hash(); ?>';
+	// Create AJAX request - http://www.javascriptkit.com/jsref/ajax.shtml
+	var url = '<?php echo base_url(); ?>set_data';
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open('POST', url, true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.onreadystatechange = function()
+	{
+		if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 )
+		{//xmlhttp.responseText
+			//window.location.reload();
+		}
+	}
+	xmlhttp.send(post_data);
+</script>
+
+<?php
+}
+?>
+
 */
 
 window.REDLOVE = window.REDLOVE || {fn : {}};
@@ -70,15 +126,6 @@ window.REDLOVE = window.REDLOVE || {fn : {}};
 $.extend(window.REDLOVE, {
 	base_url : '',
 	client_timezone_offset : - new Date().getTimezoneOffset() * 60,
-	common_ajax_options : {
-		cache : false,
-		dataType : 'json',
-		timeout : 300000,
-		type : 'POST',
-		error : REDLOVE.fn.ajax_error_handler,
-		beforeSend : REDLOVE.fn.ajax_beforesend_handler,
-		complete : REDLOVE.fn.ajax_complete_handler
-	},
 	debug : false,
 	form_data : {},
 	html_newline : '<br>',
@@ -112,6 +159,7 @@ $.extend(window.REDLOVE.fn, {
 	trim : function ( string )
 	{
 		return String(string).replace(/^\s+/, '').replace(/\s+$/, '');
+		//String.prototype.trim = String.prototype.trim || function trim() { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); };
 	},
 
 	/**
@@ -229,7 +277,7 @@ $.extend(window.REDLOVE.fn, {
 		{
 			for ( var object_index in event_object )
 			{
-				if ( typeof event_object[object_index] === 'object' )
+				if ( typeof(event_object[object_index]) === 'object' )
 				{
 					// If the event type matches
 					if ( event_object[object_index].type == type )
@@ -269,11 +317,11 @@ $.extend(window.REDLOVE.fn, {
 			for(var p in _o){
 				if(_o.hasOwnProperty(p)){
 					t = _o[p];
-					if(t && typeof t == "object"){
+					if(t && typeof(t) == "object"){
 						a[a.length]= p + ":{ " + arguments.callee(t).join(", ") + "}";
 					}
 					else {
-						if(typeof t == "string"){
+						if(typeof(t) == "string"){
 							a[a.length] = [ p+ ": \"" + t.toString() + "\"" ];
 						}
 						else{
@@ -458,6 +506,15 @@ $.extend(window.REDLOVE.fn, {
 	// --------------------------------------------------------------------
 	//	# Numerical
 	// --------------------------------------------------------------------
+
+	/**
+	* Check if value is numeric
+	* http://stackoverflow.com/questions/9716468/is-there-any-function-like-isnumeric-in-javascript-to-validate-numbers
+	*/
+	is_numeric : function ( val )
+	{
+		return ! isNaN(parseFloat(val)) && isFinite(val);
+	},
 
 	/**
 	* Format number with commas
@@ -1349,7 +1406,7 @@ $.extend(window.REDLOVE.fn, {
 	*/
 	javascript_abort : function ( message )
 	{
-		if ( typeof(message) == 'undefined' )
+		if ( typeof(message) === 'undefined' )
 		{
 			message = 'This is not an error. This is just to abort javascript.';
 		}
@@ -1393,14 +1450,14 @@ $.extend(window.REDLOVE.fn, {
 		for ( var arg_i in arguments )
 		{
 			var arg = arguments[arg_i];
-			if ( typeof arg === 'object' )
+			if ( typeof(arg) === 'object' )
 			{
 				data += this.serialize_data(arg);
 			}
 			else
 			{
 				// Check if string is already encoded
-				//arg = ( typeof arg == 'string' && decodeURIComponent(arg) !== arg ) ? arg : encodeURIComponent(arg);
+				//arg = ( typeof(arg) === 'string' && decodeURIComponent(arg) !== arg ) ? arg : encodeURIComponent(arg);
 				data += '&' + arg;
 			}
 		}
@@ -1420,9 +1477,9 @@ $.extend(window.REDLOVE.fn, {
 
 			// Handle non-exception-throwing cases:
 			// Neither JSON.parse(false) or JSON.parse(1234) throw errors, hence the type-checking,
-			// but... JSON.parse(null) returns 'null', and typeof null === "object", 
+			// but... JSON.parse(null) returns 'null', and typeof(null) === "object", 
 			// so we must check for that, too.
-			if ( o && typeof o === 'object' && o !== null )
+			if ( o && typeof(o) === 'object' && o !== null )
 			{
 				return o;
 			}
@@ -1494,7 +1551,7 @@ $.extend(window.REDLOVE.fn, {
 		$notifications.empty();//.html(messages.join("\n"));
 		
 		// If a message string, convert to array
-		if ( typeof messages == 'string' && messages.length > 0 )
+		if ( typeof(messages) === 'string' && messages.length > 0 )
 		{
 			messages = new Array(messages);
 		}
@@ -1526,7 +1583,7 @@ $.extend(window.REDLOVE.fn, {
 	*/
 	show_message : function ( messages, type )
 	{
-		if ( typeof messages === 'string' )
+		if ( typeof(messages) === 'string' )
 		{
 			messages = new Array(messages);
 		}
@@ -1596,33 +1653,27 @@ $.extend(window.REDLOVE.fn, {
 	/**
 	* Register analytics event; work with jQuery helper on .analytics_event
 	*/
-	send_analytics_event : function ( href, category, action, label, value )
+	send_analytics_event : function ( category, action, label, value )
 	{
-		//console.log('send_analytics_hit: ' + href + ', ' + category + ', ' + action + ', ' + label + ', ' + value);
+		//console.log('send_analytics_hit: ' + category + ', ' + action + ', ' + label + ', ' + value);return;
+		
+		if ( typeof(value) === 'undefined' )
+		{
+			value = 0;
+		}
 		
 		// Google Analytics
 		if ( window.ga )
 		{
 			// https://developers.google.com/analytics/devguides/collection/analyticsjs/events
 			// send, event, [category], [action], [label], [value](number)
-			window.ga('send', 'event', category, action, label);
+			window.ga('send', 'event', category, action, label, value);
 		}
 		else if ( window._gaq )
 		{
 			//var _gaq = window._gaq || [];
-			window._gaq.push(['_trackEvent', category, action, label]);
+			window._gaq.push(['_trackEvent', category, action, label, value]);
 		}
-		
-		/*
-		// Lyris
-		$lyris_iframe = $('#lyris_iframe');
-		// Create if it doesn't exist
-		if ( $lyris_iframe.length == 0 )
-		{
-			$lyris_iframe = $('<iframe id="lyris_iframe" src="about:blank" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="position:absolute;width:0;height:0;border:none;" tabindex="-1"  />').appendTo('body');
-		}
-		$lyris_iframe[0].src = REDLOVE.base_url + 'analytics/event/link/click?page=' + encodeURIComponent(href) + '&title=' + encodeURIComponent(label);
-		*/
 	},
 	
 	/**
@@ -1643,6 +1694,17 @@ $.extend(window.REDLOVE.fn, {
 			//var _gaq = window._gaq || [];
 			window._gaq.push(['_trackPageview', href]);
 		}
+		
+		/*
+		// Lyris
+		$lyris_iframe = $('#lyris_iframe');
+		// Create if it doesn't exist
+		if ( $lyris_iframe.length == 0 )
+		{
+			$lyris_iframe = $('<iframe id="lyris_iframe" src="about:blank" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="position:absolute;width:0;height:0;border:none;" tabindex="-1"  />').appendTo('body');
+		}
+		$lyris_iframe[0].src = REDLOVE.base_url + 'analytics/event/link/click?page=' + encodeURIComponent(href) + '&title=' + encodeURIComponent(label);
+		*/
 	},
 	
 	// --------------------------------------------------------------------
@@ -1650,6 +1712,39 @@ $.extend(window.REDLOVE.fn, {
 	'' : ''// Empty so each property above ends with a comma
 	
 });
+
+// --------------------------------------------------------------------
+
+// --------------------------------------------------------------------
+//	# AJAX
+// --------------------------------------------------------------------
+
+$.extend(window.REDLOVE, {
+	common_ajax_options : {
+		cache : false,
+		dataType : 'json',
+		timeout : 300000,
+		type : 'POST',
+		error : window.REDLOVE.fn.ajax_error_handler,
+		beforeSend : window.REDLOVE.fn.ajax_beforesend_handler,
+		complete : window.REDLOVE.fn.ajax_complete_handler
+	}
+});
+
+// --------------------------------------------------------------------
+
+// --------------------------------------------------------------------
+//	# Array
+// --------------------------------------------------------------------
+
+// Fix for IE8 missing Array.indexOf
+if ( ! Array.prototype.indexOf )
+{
+	Array.prototype.indexOf = function ( val )
+	{
+		return jQuery.inArray(val, this);
+	};
+}
 
 // --------------------------------------------------------------------
 

@@ -198,17 +198,18 @@ making it relatively positioned
 and defining its height proportionally
 to its width - giving us a 16:9 ratio
 */
-.redlove_embed {
-	position: relative;
+.redlove_modal_embed {
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
 	padding: 0;
 	padding-bottom: 56.25%; /* 16:9 ratio*/
-	height: 0;
-	overflow: hidden;
+	position: relative;
 }
-.redlove_embed-16-9 {
+.redlove_modal_embed-16-9 {
 	padding-bottom: 56.25%; /* 16:9 ratio*/
 }
-.redlove_embed-4-3 {
+.redlove_modal_embed-4-3 {
 	padding-bottom: 75.00%; /* 4:3 ratio*/
 }
 /*
@@ -216,9 +217,9 @@ then we make the actual embedded content
 behave in terms of its dimensions
 and its position within the container
 */
-.redlove_embed iframe,
-.redlove_embed object,
-.redlove_embed embed {
+.redlove_modal_embed iframe,
+.redlove_modal_embed object,
+.redlove_modal_embed embed {
 	position: absolute;
 	top: 0;
 	left: 0;

@@ -205,23 +205,23 @@ body,
 	Mobile menu
 ------------------------------------------------------------ */
 
-.mobile-menu {
+.responsive-menu {
 	background-color: #36404b;
 	color: #ffffff;
 }
-.mobile-menu > ul > li:nth-child(1) {
+.responsive-menu > ul > li:nth-child(1) {
 	margin-bottom: 1.0em;
 }
-.mobile-menu .active > a {
+.responsive-menu .active > a {
 	color: #FB4848;
 }
 
-.mobile-menu-button {
+.responsive-menu-button {
 	color: #36404b;
 	font-size: 1.5em;
 	font-weight: 400;
 }
-.mobile-menu .mobile-menu-button {
+.responsive-menu .responsive-menu-button {
 	color: #ffffff;
 	display: block;
 	padding-left: 1.0em;
@@ -810,7 +810,7 @@ header .service-box .icon {
 	# Responsive / Media Queries / Target Devices
 ============================================================ */
 
-/* Mobile (Landscape) : Design for a width of 480px (0px - 767px) */
+/* Mobile (Landscape) : Design for a width of 480px (0px - 767.99px); 47.99em if 1em=16px */
 @media only screen and (max-width: 47.99em) {
 	
 	header.primary .column:last-child {

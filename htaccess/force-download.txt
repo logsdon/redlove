@@ -5,3 +5,44 @@
 		Allow from all
 	</FilesMatch>
 </IfModule>
+
+
+
+
+RewriteEngine On
+RewriteCond %{QUERY_STRING} ^view=download$
+RewriteRule .*\.pdf$ - [L,T=applicaton/octet-stream]
+
+
+
+
+RewriteEngine On
+RewriteCond %{QUERY_STRING} dl
+RewriteRule .*\.mp4 - [T=application/octet-stream]
+
+<FilesMatch "filepattern.mp4">
+	<If "%{QUERY_STRING} =~ /dl/">
+		ForceType application/octet-stream
+		Header set Content-Disposition attachment
+	</If>
+</FilesMatch>
+
+
+
+# http://stackoverflow.com/questions/9760189/its-possible-to-force-download-with-htaccess-and-a-specific-get-request-dropb
+# Required Modules are:
+# 1) mod_rewrite.c
+# 2) mod_headers.c
+RewriteEngine On
+RewriteCond %{QUERY_STRING} ^dl=1
+RewriteRule .* - [E=DOWNLOAD_FILE:1]
+Header set Content-Disposition "attachment" env=DOWNLOAD_FILE
+
+
+
+
+# http://www.xoogu.com/2011/htaccess-rule-to-prompt-file-download/
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (download=1|dl=1)
+RewriteRule ([^/]*\.(gif|jpg|jpeg|png|mp3|mp4))$ - [L,E=DOWNLOAD_FILE:$1]
+Header onsuccess set Content-disposition "attachment; filename=%{DOWNLOAD_FILE}e" env=DOWNLOAD_FILE

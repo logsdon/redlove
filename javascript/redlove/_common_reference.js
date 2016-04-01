@@ -306,7 +306,7 @@ jQuery(document).ready(function ( $ )
 			response = try_parse_json(content);
 			
 			// Check if no or invalid response received
-			if ( ! response || typeof response != 'object' )
+			if ( ! response || typeof(response) !== 'object' )
 			{
 				show_message('Invalid response format.', 'error');
 				return false;
@@ -361,13 +361,13 @@ jQuery(document).ready(function ( $ )
 		
 		// or
 		
-		var event_passed = ( event && typeof event === 'object' );
+		var event_passed = ( event && typeof(event) === 'object' );
 		if ( event_passed )
 		{
 			event.preventDefault();
 		}
 		*/
-		var event_passed = ( event && typeof event === 'object' );
+		var event_passed = ( event && typeof(event) === 'object' );
 		if ( event_passed )
 		{
 			event.preventDefault();
@@ -460,7 +460,7 @@ jQuery(document).ready(function ( $ )
 		var validation = $this.data('redlove_validate').validation;
 		// Set validation
 		valid = validation.valid;
-		messages = validation.messages;
+		messages = messages.concat(validation.messages);
 		*/
 		
 		if ( data.name.length == 0 )
@@ -573,7 +573,7 @@ jQuery(document).ready(function ( $ )
 			success : function ( response, text_status, jq_xhr )
 			{
 				// Check if no or invalid response received
-				if ( ! response || typeof response !== 'object' )
+				if ( ! response || typeof(response) !== 'object' )
 				{
 					REDLOVE.fn.show_message('Invalid response format.', 'error');
 					return false;
@@ -590,7 +590,7 @@ jQuery(document).ready(function ( $ )
 				else
 				{
 					var data = response['value'];
-					messages = response['message'];
+					messages = messages = messages.concat(response['message']);
 					
 					// Show form messages
 					REDLOVE.fn.show_message(response['message'], 'success');
@@ -619,7 +619,7 @@ jQuery(document).ready(function ( $ )
 				}
 				
 				// Check if no or invalid response received
-				if ( ! response || typeof response !== 'object' )
+				if ( ! response || typeof(response) !== 'object' )
 				{
 					REDLOVE.fn.show_message('Invalid response format.', 'error');
 					return false;
@@ -799,7 +799,7 @@ jQuery(document).ready(function ( $ )
 		$notifications.empty();//.html(messages.join("\n"));
 		
 		// If a message string, convert to array
-		if ( typeof messages == 'string' && messages.length > 0 )
+		if ( typeof(messages) === 'string' && messages.length > 0 )
 		{
 			messages = new Array(messages);
 		}
@@ -951,7 +951,7 @@ jQuery(document).ready(function ( $ )
 			success : function ( response, text_status, jq_xhr )
 			{
 				// Check if no or invalid response received
-				if ( ! response || typeof response !== 'object' )
+				if ( ! response || typeof(response) !== 'object' )
 				{
 					REDLOVE.fn.show_message('Invalid response format.', 'error');
 					return false;
@@ -1208,7 +1208,7 @@ jQuery(document).ready(function ( $ )
 			success : function( response, text_status, jq_xhr )
 			{
 				// Check if no or invalid response received
-				if ( ! response || typeof response != 'object' )
+				if ( ! response || typeof(response) !== 'object' )
 				{
 					show_message('Invalid response format.', 'error');
 					return false;
@@ -1311,7 +1311,7 @@ jQuery(document).ready(function ( $ )
 		{
 			var attr = $element.data('editable-allow-newline');
 			// If attribute does not exist
-			if ( typeof attr === typeof undefined || attr === false )
+			if ( typeof(attr) === 'undefined' || attr === false )
 			{
 				// Save state
 				event.preventDefault();

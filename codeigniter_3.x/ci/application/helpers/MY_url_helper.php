@@ -12,8 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * @license http://opensource.org/licenses/MIT MIT License
 * @link http://joshualogsdon.com
 * @filesource
-* @since Version 1.0.0
-* @version 1.0.0
+* @since Version 0.0.0
+* @version 0.0.0
 */
 
 // ------------------------------------------------------------------------
@@ -331,6 +331,68 @@ if ( ! function_exists('get_cache_busting_filename') )
 
 // --------------------------------------------------------------------
 
+if ( ! function_exists('base_url') )
+{
+	function base_url( $uri = '' )
+	{
+		//return ROOT;
+		return BASE_URL . ltrim($uri, '/');
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('site_url') )
+{
+	function site_url( $uri = '' )
+	{
+		return BASE_URL . ltrim($uri, '/');
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('theme_base_url') )
+{
+	function theme_base_url( $uri = '' )
+	{
+		//return ROOT . THEME_ROOT;
+		return BASE_URL . THEME_ROOT . ltrim($uri, '/');
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('theme_url') )
+{
+	function theme_url( $uri = '' )
+	{
+		return BASE_URL . THEME_ROOT . ltrim($uri, '/');
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('theme_nav_url') )
+{
+	function theme_nav_url( $uri = '' )
+	{
+		return BASE_URL . THEME_NAV_ROOT . ltrim($uri, '/');
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('redlove_url') )
+{
+	function redlove_url( $uri = '' )
+	{
+		return BASE_URL . REDLOVE_ROOT . ltrim($uri, '/');
+	}
+}
+
+// --------------------------------------------------------------------
+
 if ( ! function_exists('cb_url') )
 {
 	/**
@@ -342,7 +404,41 @@ if ( ! function_exists('cb_url') )
 	*/
 	function cb_url( $file, $bypass = false )
 	{
-		return base_url() . get_cache_busting_filename($file, $bypass);
+		return base_url() . ltrim(get_cache_busting_filename($file, $bypass), '/');
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('theme_cb_url') )
+{
+	/**
+	* Get cache busting url
+	* 
+	* @param string $file
+	* @param bool $bypass (optional)
+	* @return string Url with cache busting versioning applied
+	*/
+	function theme_cb_url( $file, $bypass = false )
+	{
+		return cb_url(THEME_ROOT . $file, $bypass);
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('redlove_cb_url') )
+{
+	/**
+	* Get cache busting url
+	* 
+	* @param string $file
+	* @param bool $bypass (optional)
+	* @return string Url with cache busting versioning applied
+	*/
+	function redlove_cb_url( $file, $bypass = false )
+	{
+		return cb_url(REDLOVE_ROOT . $file, $bypass);
 	}
 }
 

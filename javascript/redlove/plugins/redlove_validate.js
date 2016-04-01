@@ -156,7 +156,7 @@
 ;(function ()// Begin function closure; avoid collisions
 {
 	// If objects do not exist, check again shortly
-	if ( typeof jQuery === 'undefined' )
+	if ( typeof(jQuery) === 'undefined' )
 	{
 		return setTimeout(arguments.callee, 250);
 	}
@@ -352,7 +352,7 @@
 					}
 					
 					// Check validation function
-					else if ( typeof proto.validation_methods[rule] === 'function' )
+					else if ( typeof(proto.validation_methods[rule]) === 'function' )
 					{
 						if ( ! proto.validation_methods[rule]($field.val(), rule_options) )
 						{
@@ -409,11 +409,11 @@
 		{
 			var message = '';
 			
-			if ( typeof validate_info.messages !== 'undefined' && typeof validate_info.messages[rule] !== 'undefined' )
+			if ( typeof(validate_info.messages) !== 'undefined' && typeof(validate_info.messages[rule]) !== 'undefined' )
 			{
 				message = validate_info.messages[rule];
 			}
-			else if ( typeof validate_info.message !== undefined )
+			else if ( typeof(validate_info.message) !== 'undefined' )
 			{
 				message = validate_info.message;
 			}
@@ -495,5 +495,6 @@
 		window[proto.name] = Plugin;
 		
 	})( jQuery, window, document );// End function closure
+	
 })();// End function closure
 //]]>
