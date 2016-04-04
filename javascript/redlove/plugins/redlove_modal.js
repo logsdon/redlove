@@ -330,7 +330,7 @@ jQuery(document).ready(function($)
 			
 			// Remove modal
 			$modal
-			.stop()
+			.stop(true, true)
 			.animate({'opacity' : 0.0}, 500, function()
 			{
 				// Clean up and remove iframe from memory so it stops playing
@@ -356,7 +356,7 @@ jQuery(document).ready(function($)
 			
 			// Remove modal
 			$modal
-			.stop()
+			.stop(true, true)
 			.animate({'opacity' : 0.0}, 500, function()
 			{
 				// Clean up and remove iframe from memory so it stops playing

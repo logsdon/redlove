@@ -205,9 +205,14 @@ if ( ! defined('ENVIRONMENT') )
 	}
 	// REDLOVE_ROOT - The web root to redlove resources
 	$redlove_root = substr(REDLOVE_PATH, strlen(DOCUMENT_ROOT));
+	$redlove_root = '/' . str_repeat('../', $num_dirs_redlove_from_root_path) . $redlove_root;
 	$redlove_root = str_replace('\\', '/', $redlove_root);
-	$redlove_root = trim($redlove_root, '/') . '/';
-	define('REDLOVE_ROOT', str_repeat('../', $num_dirs_redlove_from_root_path) . $redlove_root);
+	$redlove_root = rtrim($redlove_root, '/') . '/';
+	if ( $num_dirs_redlove_from_root_path == 0 )
+	{
+		$redlove_root = str_replace(ROOT, '/', $redlove_root);
+	}
+	define('REDLOVE_ROOT', $redlove_root);
 	// REDLOVE_URL - The url to redlove resources
 	$redlove_url = $protocol . $_SERVER['HTTP_HOST'] . '/' . str_replace(DOCUMENT_ROOT, '', REDLOVE_PATH);
 	define('REDLOVE_URL', $redlove_url);

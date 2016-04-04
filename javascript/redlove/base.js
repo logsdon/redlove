@@ -1635,11 +1635,15 @@ $.extend(window.REDLOVE.fn, {
 		{
 			// Prevent body scrolling and text selection
 			$('body').addClass('no-scroll no-select');
-			$site_loading.stop().fadeIn(300);
+			$site_loading
+			.stop(true, true)
+			.fadeIn(300);
 		}
 		else
 		{
-			$site_loading.stop().fadeOut(300, function ()
+			$site_loading
+			.stop(true, true)
+			.fadeOut(300, function ()
 			{
 				$('body').removeClass('no-scroll no-select');
 			});

@@ -672,7 +672,7 @@ audio:not([controls]) {
 ------------------------------------------------------------ */
 
 img {
-	border-style: none 0;
+	border-style: none;
 	display: inline-block;*display: inline;*zoom: 1;/*ie6/7*/
 	-ms-interpolation-mode: bicubic;
 	vertical-align: bottom;

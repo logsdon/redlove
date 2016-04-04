@@ -112,7 +112,9 @@
 	{
 		if ( $growl && $growl.length > 0 )
 		{
-			$growl.stop().fadeOut(this.options.fade_interval, function ()
+			$growl
+			.stop(true, true)
+			.fadeOut(this.options.fade_interval, function ()
 			{
 				$growl.remove();
 				proto.num_instances--;

@@ -895,7 +895,9 @@ jQuery(document).ready(function ( $ )
 		
 		if ( hide )
 		{
-			$site_loading.stop().fadeOut(300, function ()
+			$site_loading
+			.stop(true, true)
+			.fadeOut(300, function ()
 			{
 				$('body').removeClass('no-scroll no-select');
 			});
@@ -904,7 +906,9 @@ jQuery(document).ready(function ( $ )
 		{
 			// Prevent body scrolling and text selection
 			$('body').addClass('no-scroll no-select');
-			$site_loading.stop().fadeIn(300);
+			$site_loading
+			.stop(true, true)
+			.fadeIn(300);
 		}
 	}
 
