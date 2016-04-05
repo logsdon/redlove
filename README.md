@@ -1,6 +1,6 @@
 # RedLove
 
-RedLove is a homegrown collection of toolkits, tricks, tweaks, templates, and other things that start with a "t" for web projects.
+RedLove code is a homegrown collection of toolkits, tricks, tweaks, templates, and other things that start with a "t" for web projects.
 
 It's a culmination inspired by web folk and their solutions, fed by the privilege and joy of creating something from nothing, and cultivated over time through experiments and experiences. Attribution for supporting resources or originating thoughts, all of which have no affiliation, have been preserved where applicable or remembered.
 
