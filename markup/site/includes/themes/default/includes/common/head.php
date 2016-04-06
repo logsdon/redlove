@@ -63,6 +63,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('stylesheets/daneden/animate.min.css'); ?>">
 
 	<!-- JavaScript -->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo redlove_cb_url('javascript/etc/html5.js'); ?>"></script><![endif]-->
 	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo redlove_cb_url('javascript/etc/respond.min.js'); ?>"></script><![endif]-->
 	

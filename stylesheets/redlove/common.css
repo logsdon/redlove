@@ -2693,7 +2693,7 @@ fieldset[disabled] .button-link {
 ------------------------------------------------------------ */
 
 .site-loading {
-	background: #FFFFFF url('images/icons/preloader.png') scroll no-repeat 50% 50%;
+	background: #FFFFFF url('images/graphics/preloader.gif') scroll no-repeat 50% 50%;
 	background-color: rgba(255, 255, 255, 0.8);
 	bottom: 0;
 	display: none;
