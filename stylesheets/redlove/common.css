@@ -3751,6 +3751,14 @@ data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw
 	max-width: 100%;
 	overflow: hidden;
 	position: relative;
+	
+	/* Help with mobile address bar hiding/showing on scrolls changing the browser height and causing the page to jump */
+	-webkit-transition: all 0.4s ease-in-out 0.0s;
+	-moz-transition: all 0.4s ease-in-out 0.0s;
+	-ms-transition: all 0.4s ease-in-out 0.0s;
+	-o-transition: all 0.4s ease-in-out 0.0s;
+	transition: all 0.4s ease-in-out 0.0s;
+	
 	width: 100vw;
 }
 .screen__contain {
