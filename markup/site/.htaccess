@@ -250,6 +250,7 @@ AddDefaultCharset utf-8
 
 <IfModule mod_rewrite.c>
 	Options +FollowSymLinks
+	# Options -MultiViews
 	# Options +SymLinksIfOwnerMatch
 	RewriteOptions MaxRedirects=15
 	
@@ -257,6 +258,9 @@ AddDefaultCharset utf-8
 	RewriteEngine On
 	# Use a base if the site URL is based on a specific site root directory.
 	#RewriteBase /_work-kit/codeigniter-kit/
+	
+	# Disable automatic directory detection
+	# DirectorySlash Off
 	
 	# Generate rewrite base dynamically
 	RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
