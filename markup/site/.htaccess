@@ -260,7 +260,7 @@ AddDefaultCharset utf-8
 	#RewriteBase /_work-kit/codeigniter-kit/
 	
 	# Disable automatic directory detection
-	# DirectorySlash Off
+	DirectorySlash Off
 	
 	# Generate rewrite base dynamically
 	RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
