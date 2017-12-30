@@ -1,12 +1,11 @@
 # Apache Configuration File
 
-# Allow access to resources in this directory
-Allow from all
-
 # (!) Using `.htaccess` files slows down Apache, therefore, if you have access
 # to the main server config file (usually called `httpd.conf`), you should add
 # this logic there: http://httpd.apache.org/docs/current/howto/htaccess.html.
 
+# Allow access to resources in this directory
+#Allow from all
 
 # ###########################################################
 # CROSS-ORIGIN RESOURCE SHARING (CORS)
@@ -252,6 +251,7 @@ AddDefaultCharset utf-8
 
 <IfModule mod_rewrite.c>
 	Options +FollowSymLinks
+	# Options -MultiViews
 	# Options +SymLinksIfOwnerMatch
 	RewriteOptions MaxRedirects=15
 	
@@ -260,10 +260,39 @@ AddDefaultCharset utf-8
 	# Use a base if the site URL is based on a specific site root directory.
 	#RewriteBase /_work-kit/codeigniter-kit/
 	
+	# Disable automatic directory detection
+	DirectorySlash Off
+	
 	# Generate rewrite base dynamically
 	RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
 	RewriteRule ^(.*)$ - [E=BASE:%1]
 	#%{ENV:BASE}
+	
+	# Set application environment; helps to ignore rules like https in development
+	# http://stackoverflow.com/questions/10231324/apache-mod-rewrite-force-www-only-if-not-in-localhost
+	#RewriteCond %{HTTP_HOST} ^localhost$
+	#RewriteRule .* - [E=APPLICATION_ENVIRONMENT:development,NE]
+	#RewriteCond %{HTTP_HOST} ^127\.0\.0\.1$
+	#RewriteRule .* - [E=APPLICATION_ENVIRONMENT:development,NE]
+	#RewriteCond %{REMOTE_ADDR} ^127\.0\.0\.1$
+	#RewriteRule .* - [E=APPLICATION_ENVIRONMENT:development,NE]
+	#RewriteCond %{REMOTE_ADDR} ^::1$
+	#RewriteRule .* - [E=APPLICATION_ENVIRONMENT:development,NE]
+	#%{ENV:APPLICATION_ENVIRONMENT}
+	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
+	# Set application environment; helps to ignore rules like https in development
+	# http://stackoverflow.com/questions/19362746/rewritecond-with-setenv
+	SetEnvIfNoCase HOST 42cdev.com APPLICATION_ENVIRONMENT=development
+	SetEnvIfNoCase HOST localhost APPLICATION_ENVIRONMENT=development
+	SetEnvIfNoCase HOST 127.0.0.1 APPLICATION_ENVIRONMENT=development
+	SetEnvIfNoCase REMOTE_ADDR 127.0.0.1 APPLICATION_ENVIRONMENT=development
+	SetEnvIfNoCase REMOTE_ADDR ::1 APPLICATION_ENVIRONMENT=development
+	#%{ENV:APPLICATION_ENVIRONMENT}
+	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
+	
+	# Try to fix mysql admin issues
+	#RewriteCond %{HTTP_HOST} ^(mysql)\..+$ [NC]
+	#RewriteRule (.*) $1 [L]
 	
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	
@@ -332,14 +361,21 @@ AddDefaultCharset utf-8
 	#RewriteCond %{HTTP_HOST} !^(www) [NC]
 	#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 	
+	# Ignore if in development
+	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
 	# Enforce https
 	#RewriteCond %{HTTPS} !=on
 	#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 	
+	# Ignore if in development
+	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
 	# Enforce https on CloudFlare
 	#RewriteCond %{HTTP:CF-Visitor} '"scheme":"http"'
 	#RewriteRule ^(.*)$ https://www.domain.com/$1 [L]
+	#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 	
+	# Ignore if in development
+	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
 	# Enforce www
 	#RewriteCond %{HTTP_HOST} !^(www|subdomain)\..+$ [NC]
 	#RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -376,6 +412,11 @@ AddDefaultCharset utf-8
 	#RewriteRule ^industry-news/(.*)$ industry-news\.php/$1 [NC,L]
 	#RewriteRule ^wellness/(.*)$ wellness\.php/$1 [NC,L]
 	
+	# Rewrite PPC Landing pages
+	#RewriteCond %{REQUEST_FILENAME} !-f
+	#RewriteRule ^(.*)-store-lander$ ppc/landing\.php?store=$1-something&ab=c [NC]
+	#RewriteRule ^(.*)-ppc-lander-?(.*)$ ppc/landing\.php?store=$1&ab=$2 [NC,L]
+	
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	
 	# Redirect to existing file
@@ -401,8 +442,15 @@ AddDefaultCharset utf-8
 	
 	# Redirect to external file
 	#RewriteCond %{REQUEST_FILENAME} !-f
-	#RewriteRule ^(images/.*)$ http://42cdev.com/client/frekol.com/$1 [L,R=301,NC]
+	#RewriteRule ^(images/.*)$ http://www.example.com/client/site.com/$1 [L,R=301,NC]
 
+	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	
+	# Force download
+	RewriteCond %{QUERY_STRING} download=1
+	RewriteRule ([^/]*\.(gif|jpg|jpeg|png|mp3|mp4))$ - [L,E=DOWNLOAD_FILE:$1]
+	Header onsuccess set Content-disposition "attachment; filename=%{DOWNLOAD_FILE}e" env=DOWNLOAD_FILE
+	
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	
 	## If the file or directory DOES NOT exist
@@ -411,8 +459,8 @@ AddDefaultCharset utf-8
 	
 	## Permanent redirects
 	#RewriteRule ^emerge(.*)$ %{ENV:BASE}connect/young-adults$1 [R=301,L,QSA]
-	#Redirect 301 /connect/kids(.*) http://www.fbccolumbus.com/connect/children/$1
-	#Redirect 301 /staff.php http://www.fbccolumbus.com/about/our-leadership-team/
+	#Redirect 301 /connect/kids(.*) http://www.example.com/connect/children/$1
+	#Redirect 301 /staff.php http://www.example.com/about/team/
 	
 	## Error
 	#RewriteRule ^(.*)$ %{ENV:BASE}404.php?url=$1 [L,QSA]

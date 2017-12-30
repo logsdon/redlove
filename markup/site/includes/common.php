@@ -4,7 +4,7 @@
 *
 * @package RedLove
 * @subpackage PHP
-* @category 
+* @category
 * @author Joshua Logsdon <joshua@joshualogsdon.com>
 * @author Various from CodeIgniter to Internet
 * @copyright Copyright (c) 2015, Joshua Logsdon (http://joshualogsdon.com/)
@@ -12,9 +12,9 @@
 * @link https://github.com/logsdon/redlove
 * @link http://redlove.org
 * @version 0.0.0
-* 
+*
 * Usage:
-* 
+*
 
 Include this file at the top of page files like so:
 
@@ -35,13 +35,13 @@ if ( file_exists($file) )
 }
 ?>
 
-* 
+*
 */
 
 // --------------------------------------------------------------------
 /* REDLOVE
 	Setup global paths
-	
+
 	http://codeigniter.com/wiki/Dynamic_Base_Url/
 	http://codeigniter.com/wiki/Automatic_configbase_url/
 */
@@ -54,19 +54,19 @@ if ( ! defined('ROOT_PATH') )
 	$realpath = str_replace('\\', '/', $realpath);// Swap directory separators to Unix style for consistency
 	$realpath = rtrim($realpath, '/') . '/';// Make sure the path has a trailing slashx
 	define('ROOT_PATH', $realpath);
-	
+
 	// DOCUMENT_ROOT - The server path to the site root
 	$document_root = ! empty($_SERVER['PHP_DOCUMENT_ROOT']) ? $_SERVER['PHP_DOCUMENT_ROOT'] : $_SERVER['DOCUMENT_ROOT'];
 	$realpath = realpath($document_root);
 	$realpath = str_replace('\\', '/', $realpath);
 	$realpath = rtrim($realpath, '/') . '/';
 	define('DOCUMENT_ROOT', $realpath);
-	
+
 	// ROOT - The relative web path to this file
 	$root = str_replace(DOCUMENT_ROOT, '/', ROOT_PATH);
 	$root = rtrim($root, '/') . '/';
 	define('ROOT', $root);
-	
+
 	// REQUEST - Get the server request
 	$request = ! empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';// Apache
 	$request = ( strlen($request) > 0 && ! empty($_SERVER['PATH_INFO']) ) ? $_SERVER['PATH_INFO'] : $request;// IIS
@@ -74,7 +74,7 @@ if ( ! defined('ROOT_PATH') )
 	// REQUEST_URI - The relative server request URI
 	$request_uri = ( strlen(ROOT) > 0 && strpos(REQUEST, ROOT) === 0 ) ? substr(REQUEST, strlen(ROOT)) : REQUEST;
 	define('REQUEST_URI', $request_uri);
-	
+
 	// BASE_URL - The base url to the site
 	// Assuming a web request, let the base url set itself
 	$protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
@@ -90,7 +90,7 @@ if ( ! defined('ROOT_PATH') )
 	}
 	$base_url = $protocol . $_SERVER['HTTP_HOST'] . ROOT;
 	define('BASE_URL', $base_url);
-	
+
 	// VIEWPATH - The path to view files
 	define('VIEWPATH', ROOT_PATH);
 	// INCLUDES_PATH - The path to includes
@@ -145,7 +145,7 @@ if ( ! defined('ENVIRONMENT') )
 	{
 		define('ENVIRONMENT', 'production');
 	}
-	
+
 	/*
 	*---------------------------------------------------------------
 	* ERROR REPORTING
@@ -190,7 +190,7 @@ if ( ! defined('ENVIRONMENT') )
 			echo 'The application environment is not set correctly.';
 			exit(1);// EXIT_ERROR
 	}
-	
+
 	// --------------------------------------------------------------------
 	// REDLOVE_PATH - The path to redlove resources
 	$config['environment']['redlove']['num_dirs_from_root_path'] = ! empty($config['environment']['redlove']['num_dirs_from_root_path']) ? $config['environment']['redlove']['num_dirs_from_root_path'] : 0;
@@ -272,7 +272,7 @@ if ( ! defined('THEMES_PATH') )
 		$theme_url = BASE_URL . $theme_root;
 	}
 	define('THEME_URL', $theme_url);
-	
+
 	// PAGE - The cleaned up REQUEST_URI
 	//define('PAGE', trim(parse_url(REQUEST_URI, PHP_URL_PATH), '/'));
 	$page = ltrim(parse_url(REQUEST_URI, PHP_URL_PATH), '/');
@@ -301,9 +301,9 @@ if ( ! defined('THEMES_PATH') )
 // http://stackoverflow.com/questions/1646171/mysql-datetime-fields-and-daylight-savings-time-how-do-i-reference-the-extra
 $config['site']['timezone'] = ! empty($config['site']['timezone']) ? $config['site']['timezone'] : 'America/New_York';
 $timezone = $config['site']['timezone'];
-if ( 
-	function_exists('date_default_timezone_set') && 
-	function_exists('date_default_timezone_get') && 
+if (
+	function_exists('date_default_timezone_set') &&
+	function_exists('date_default_timezone_get') &&
 	@date_default_timezone_get() != $timezone
 )
 {

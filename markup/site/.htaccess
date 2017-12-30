@@ -4,6 +4,7 @@
 # to the main server config file (usually called `httpd.conf`), you should add
 # this logic there: http://httpd.apache.org/docs/current/howto/htaccess.html.
 
+# Allow access to resources in this directory
 #Allow from 127.0.0.1/21
 
 # ###########################################################
@@ -38,7 +39,7 @@
 # ###########################################################
 # ERRORS
 # ###########################################################
- 
+
 # ------------------------------------------------------------------------------
 # | 404 error prevention for non-existing redirected folders
 # ------------------------------------------------------------------------------
@@ -222,11 +223,11 @@ AddDefaultCharset utf-8
     <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
         Header unset X-UA-Compatible
     </FilesMatch>
-	
+
 	<FilesMatch "\.(html|htm|php)$">
 		Header set imagetoolbar "no"
 	</FilesMatch>
-	
+
 </IfModule>
 
 
@@ -253,20 +254,20 @@ AddDefaultCharset utf-8
 	# Options -MultiViews
 	# Options +SymLinksIfOwnerMatch
 	RewriteOptions MaxRedirects=15
-	
+
 	# Start rewriting
 	RewriteEngine On
 	# Use a base if the site URL is based on a specific site root directory.
 	#RewriteBase /_work-kit/codeigniter-kit/
-	
+
 	# Disable automatic directory detection
 	DirectorySlash Off
-	
+
 	# Generate rewrite base dynamically
 	RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
 	RewriteRule ^(.*)$ - [E=BASE:%1]
 	#%{ENV:BASE}
-	
+
 	# Set application environment; helps to ignore rules like https in development
 	# http://stackoverflow.com/questions/10231324/apache-mod-rewrite-force-www-only-if-not-in-localhost
 	#RewriteCond %{HTTP_HOST} ^localhost$
@@ -288,13 +289,13 @@ AddDefaultCharset utf-8
 	SetEnvIfNoCase REMOTE_ADDR ::1 APPLICATION_ENVIRONMENT=development
 	#%{ENV:APPLICATION_ENVIRONMENT}
 	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
-	
+
 	# Try to fix mysql admin issues
 	#RewriteCond %{HTTP_HOST} ^(mysql)\..+$ [NC]
 	#RewriteRule (.*) $1 [L]
-	
+
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	
+
 	# Rewrite rules to block out some common exploits
 	## If you experience problems on your site block out the operations listed below
 	## This attempts to block the most common type of exploit `attempts` to Joomla!
@@ -335,12 +336,12 @@ AddDefaultCharset utf-8
 	# and uncomment the ones from option 2.
 
 	# IMPORTANT: NEVER USE BOTH RULES AT THE SAME TIME!
-	
+
 	# Option 1: rewrite www.example.com to example.com
 	#RewriteCond %{HTTPS} !=on
 	#RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 	#RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
-	
+
 	# Option 2: rewrite example.com to www.example.com
 	# Be aware that the following might not be a good idea if you use "real"
 	# subdomains for certain parts of your website.
@@ -348,43 +349,54 @@ AddDefaultCharset utf-8
 	#RewriteCond %{HTTPS} !=on
 	#RewriteCond %{HTTP_HOST} !^(www|subdomain)\..+$ [NC]
 	#RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-	
+
 	# Redirect certain pages
 	#Redirect 301 /buying-a-mattress/support /best-mattress-for-you/support
 	# or
 	#RewriteCond %{REQUEST_URI} buying-a-mattress/support$
 	#RewriteRule ^(.*)$ %{ENV:BASE}best-mattress-for-you/support [R=301,L]
-	
-	# Enforce www on https
-	#RewriteCond %{HTTPS} on
-	#RewriteCond %{HTTP_HOST} !^(www) [NC]
-	#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-	
+
+	# Ignore if in development
+	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
+	# Redirect to HTTPS and WWW
+	#https://stackoverflow.com/questions/13977851/htaccess-redirect-to-https-www
+	# Don't put www. here. If it is already there it will be included, if not the subsequent www rule will catch it.
+	#RewriteCond %{HTTPS} off
+	#RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	# Now, rewrite any request to the wrong domain to use www.
+	#RewriteCond %{HTTP_HOST} !^www\. [NC]
+	#RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 	# Ignore if in development
 	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
 	# Enforce https
 	#RewriteCond %{HTTPS} !=on
 	#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-	
+
 	# Ignore if in development
 	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
 	# Enforce https on CloudFlare
 	#RewriteCond %{HTTP:CF-Visitor} '"scheme":"http"'
 	#RewriteRule ^(.*)$ https://www.domain.com/$1 [L]
 	#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-	
+
+	# Enforce www on https
+	#RewriteCond %{HTTPS} on
+	#RewriteCond %{HTTP_HOST} !^(www) [NC]
+	#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 	# Ignore if in development
 	#RewriteCond %{ENV:APPLICATION_ENVIRONMENT} !=development [NC]
 	# Enforce www
 	#RewriteCond %{HTTP_HOST} !^(www|subdomain)\..+$ [NC]
 	#RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-	
+
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	
+
 	# ------------------------------------------------------------------------------
 	# | Filename-based cache busting
 	# ------------------------------------------------------------------------------
-	
+
 	# If you're not using a build process to manage your filename version revving,
 	# you might want to consider enabling the following directives to route all
 	# requests such as `/css/style.12345.css` to `/css/style.css`.
@@ -397,33 +409,38 @@ AddDefaultCharset utf-8
 	#    RewriteCond %{REQUEST_FILENAME} !-d
 	#    RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
 	# </IfModule>
-	
+
 	#RewriteRule ^__ver[0-9]+__/(.*)$ /$1 [QSA]
-	
+
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ %{ENV:BASE}$1.$3 [NC,L]
-	
+
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 	# Normal Rewrites
 	#RewriteCond %{REQUEST_URI} !/$
 	#RewriteRule ^industry-news/(.*)$ industry-news\.php/$1 [NC,L]
 	#RewriteRule ^wellness/(.*)$ wellness\.php/$1 [NC,L]
-	
+
+	#RewriteCond %{REQUEST_URI} series.php [OR]
+	#RewriteCond %{REQUEST_URI} products.php
+	#RewriteRule ^(.*)$ %{ENV:BASE}mattresses/ [R=301,L]
+	#RewriteRule ^products(.*)$ %{ENV:BASE}mattresses$1 [NC,R=301,L]
+
 	# Rewrite PPC Landing pages
 	#RewriteCond %{REQUEST_FILENAME} !-f
 	#RewriteRule ^(.*)-store-lander$ ppc/landing\.php?store=$1-something&ab=c [NC]
 	#RewriteRule ^(.*)-ppc-lander-?(.*)$ ppc/landing\.php?store=$1&ab=$2 [NC,L]
-	
+
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	
+
 	# Redirect to existing file
 	RewriteCond %{REQUEST_URI} !/$
 	RewriteCond %{REQUEST_FILENAME}.php -f
 	RewriteRule (.*) %{ENV:BASE}$1\.php [L]
 	#RewriteRule ^.*(testing).*$ http://google.com?regex=$1&r_f=%{REQUEST_FILENAME}&d_r=%{DOCUMENT_ROOT}&r_u=%{REQUEST_URI}&s_f=%{SCRIPT_FILENAME}&b=%{ENV:BASE} [L]
-	
+
 	# Removes trailing slashes (prevents SEO duplicate content issues); RewriteBase was necessary for me
 	#RewriteCond %{REQUEST_FILENAME} !-d
 	#RewriteRule ^(.+)/$ /$1 [L,R=301]
@@ -438,29 +455,29 @@ AddDefaultCharset utf-8
 	# Enforce trailing slash
 	#RewriteCond %{REQUEST_FILENAME} !-f
 	#RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
-	
+
 	# Redirect to external file
 	#RewriteCond %{REQUEST_FILENAME} !-f
 	#RewriteRule ^(images/.*)$ http://www.example.com/client/site.com/$1 [L,R=301,NC]
 
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	
+
 	# Force download
 	RewriteCond %{QUERY_STRING} download=1
 	RewriteRule ([^/]*\.(gif|jpg|jpeg|png|mp3|mp4))$ - [L,E=DOWNLOAD_FILE:$1]
 	Header onsuccess set Content-disposition "attachment; filename=%{DOWNLOAD_FILE}e" env=DOWNLOAD_FILE
-	
+
 	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	
+
 	## If the file or directory DOES NOT exist
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	
+
 	## Permanent redirects
 	#RewriteRule ^emerge(.*)$ %{ENV:BASE}connect/young-adults$1 [R=301,L,QSA]
 	#Redirect 301 /connect/kids(.*) http://www.example.com/connect/children/$1
 	#Redirect 301 /staff.php http://www.example.com/about/team/
-	
+
 	## Error
 	#RewriteRule ^(.*)$ %{ENV:BASE}404.php?url=$1 [L,QSA]
 
@@ -468,7 +485,7 @@ AddDefaultCharset utf-8
 	RewriteRule ^(.*)$ %{ENV:BASE}index.php/$1 [L,QSA]
 	#RewriteRule ^(.*)$ index.php/$1 [L,QSA]
 	#RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
-	
+
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -573,7 +590,7 @@ AddDefaultCharset utf-8
 			text/plain \
 			text/x-component \
 			text/xml
-			
+
 		# Netscape 4.x has some problems...
 		BrowserMatch ^Mozilla/4 gzip-only-text/html
 		# Netscape 4.06-4.08 have some more problems
@@ -584,7 +601,7 @@ AddDefaultCharset utf-8
 		# the above regex won't work. You can use the following
 		# workaround to get the desired effect:
 		BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
-		
+
 		# Don't compress images, already zipped files, or pdfs
 		SetEnvIfNoCase Request_URI \
 			\.(?:gif|jpe?g|png)$ no-gzip dont-vary
@@ -672,7 +689,7 @@ FileETag None
 	ExpiresByType application/x-font-ttf "access plus 1 month"
 	ExpiresByType font/opentype "access plus 1 month"
 	ExpiresByType image/svg+xml "access plus 1 month"
-	
+
 	<IfModule mod_headers.c>
 
 		# Set up caching on media files for 1 year
@@ -703,7 +720,7 @@ FileETag None
 		</FilesMatch>
 
 	</IfModule>
-	
+
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -733,4 +750,3 @@ FileETag None
 # php_value max_execution_time 300
 # php_value max_input_time 600
 # php_value memory_limit 96M
-

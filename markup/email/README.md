@@ -41,6 +41,7 @@
 
 * http://htmlemailboilerplate.com/ (https://github.com/seanpowell/Email-Boilerplate)
 * Campaign Monitor
+	* https://www.campaignmonitor.com/css/
 	* http://www.campaignmonitor.com/resources/will-it-work/
 	* http://www.campaignmonitor.com/guides/
 	* http://www.campaignmonitor.com/templates/
@@ -54,6 +55,9 @@
 * http://www.sitepoint.com/code-html-email-newsletters/
 * http://24ways.org/2009/rock-solid-html-emails
 * http://emailframe.work/
+* Gmail App on Android issues
+	* https://www.campaignmonitor.com/forums/topic/7733/android-gmail-image-resizing-issues/
+	* https://litmus.com/community/discussions/257-gmail-app-android-how-to-stop-text-from-auto-resizing
 
 ## Responsive Email Markup Resources
 

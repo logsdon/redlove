@@ -50,7 +50,7 @@ $config['base_url'] = $protocol . $_SERVER['HTTP_HOST'] . ROOT;
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';//index.php
+$config['index_page'] = '';// Default index.php
 
 /*
 |--------------------------------------------------------------------------
@@ -174,6 +174,7 @@ $config['composer_autoload'] = FALSE;
 |
 */
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
+// REDLOVE
 $config['permitted_uri_chars'] .= ',\/&?=+@';
 
 
@@ -184,9 +185,6 @@ $config['permitted_uri_chars'] .= ',\/&?=+@';
 |
 | By default CodeIgniter uses search-engine friendly segment based URLs:
 | example.com/who/what/where/
-|
-| By default CodeIgniter enables access to the $_GET array.  If for some
-| reason you would like to disable it, set 'allow_get_array' to FALSE.
 |
 | You can optionally enable standard query string based URLs:
 | example.com?who=me&what=something&where=here
@@ -202,11 +200,24 @@ $config['permitted_uri_chars'] .= ',\/&?=+@';
 | use segment based URLs.
 |
 */
-$config['allow_get_array'] = TRUE;
 $config['enable_query_strings'] = FALSE;
 $config['controller_trigger'] = 'c';
 $config['function_trigger'] = 'm';
 $config['directory_trigger'] = 'd';
+
+/*
+|--------------------------------------------------------------------------
+| Allow $_GET array
+|--------------------------------------------------------------------------
+|
+| By default CodeIgniter enables access to the $_GET array.  If for some
+| reason you would like to disable it, set 'allow_get_array' to FALSE.
+|
+| WARNING: This feature is DEPRECATED and currently available only
+|          for backwards compatibility purposes!
+|
+*/
+$config['allow_get_array'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -396,7 +407,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 // For 'files' session driver, avoid open_basedir restrictions by using a writable path
 // Ideally, the last path is a /tmp/ path
 $open_basedir = ini_get('open_basedir');
-if ( strlen($open_basedir) > 0 )
+if ( $config['sess_driver'] == 'files' && strlen($open_basedir) > 0 )
 {
 	$dirs = explode(PATH_SEPARATOR, $open_basedir);
 	$config['sess_save_path'] = $dirs[ count($dirs) - 1 ];
@@ -431,8 +442,8 @@ $config['cookie_httponly'] 	= FALSE;
 | Determines whether to standardize newline characters in input data,
 | meaning to replace \r\n, \r, \n occurrences with the PHP_EOL value.
 |
-| This is particularly useful for portability between UNIX-based OSes,
-| (usually \n) and Windows (\r\n).
+| WARNING: This feature is DEPRECATED and currently available only
+|          for backwards compatibility purposes!
 |
 */
 $config['standardize_newlines'] = FALSE;

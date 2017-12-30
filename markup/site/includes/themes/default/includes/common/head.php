@@ -59,7 +59,7 @@
 
 	<!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
 	<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('stylesheets/font-awesome/css/font-awesome.min.css'); ?>">
-	
+
 	<link rel="stylesheet" type="text/css" href="<?php echo redlove_cb_url('stylesheets/daneden/animate.min.css'); ?>">
 
 	<!-- JavaScript -->
@@ -67,14 +67,14 @@
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo redlove_cb_url('javascript/etc/html5.js'); ?>"></script><![endif]-->
 	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo redlove_cb_url('javascript/etc/respond.min.js'); ?>"></script><![endif]-->
-	
+
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/jquery/jquery.min.js'); ?>"><\/script>')</script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script type="text/javascript">window.jQuery.ui || document.write('<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/jquery/jquery-ui.min.js'); ?>"><\/script>')</script>
-	
+
 	<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/etc/holder.js'); ?>"></script>
-	
+
 	<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/base.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo redlove_cb_url('javascript/redlove/common.js'); ?>"></script>
 	<script type="text/javascript">
@@ -107,7 +107,7 @@
 		});
 	//]]>
 	</script>
-	
+
 	<!-- Favicons - http://realfavicongenerator.net/, https://css-tricks.com/favicon-quiz/ -->
 	<link rel="image_src" href="<?php echo theme_base_url(); ?>images/favicon/favicon.png">
 	<link rel="apple-touch-icon-precomposed" href="<?php echo theme_base_url(); ?>images/favicon/apple-touch-icon-precomposed.png">

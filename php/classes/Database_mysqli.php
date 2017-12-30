@@ -534,6 +534,196 @@ class Database_mysqli// extends OtherClass
 
 	// --------------------------------------------------------------------
 
+	/** 
+	* 
+	*/
+	public function protect_identifiers ( $string = '', $separator = '`' )
+	{
+		if ( strpos($separator, $string) === false )
+		{
+			$string = $separator . $string . $separator;
+		}
+		
+		return $string;
+	}
+
+	// --------------------------------------------------------------------
+	
+	// --------------------------------------------------------------------
+	// 
+	// Query building functions
+	// 
+	// --------------------------------------------------------------------
+
+	/** 
+	* 
+	
+		enabled = 1
+		AND
+		(
+			published > 0 AND published > NOW()
+		)
+		
+		$sql_data = array(
+			'enabled' => 1,
+			array(
+				'AND' => array(
+					'AND' => array(
+						'published_start >' => 0,
+						'published_start <= NOW()' => false,
+					),
+					'OR' => array(
+						'published_stop' => 0,
+						'published_stop > NOW()' => false,
+					),
+				),
+			),
+		);
+		echo $DB->sql_from_field_value_data($sql_data, 'AND');
+		
+	* 
+	*/
+	public function sql_from_field_value_data ( $data = array(), $type = 'AND' )
+	{
+		$sql_array = array();
+		
+		foreach ( $data as $field => $value )
+		{
+			if ( is_array($value) )
+			{
+				if ( isset($value['AND']) || isset($value['OR']) )
+				{
+					$and_or = isset($value['OR']) ? 'OR' : 'AND';
+					$sql = '(';
+					$sql .= $this->sql_from_field_value_data($value[$and_or], $and_or);
+					$sql .= ')';
+					$sql_array[] = $sql;
+					continue;
+				}
+				elseif ( in_array($field, array('AND', 'OR')) )
+				{
+					$type = $field;
+				}
+				
+				$sql = '(';
+				$sql_nested_array = array();
+				foreach ( $value as $nested_field => $nested_value )
+				{
+					$sql_nested_array[] = $this->sql_from_field_value($nested_field, $nested_value);
+				}
+				$sql .= implode(' ' . $type . ' ', $sql_nested_array);
+				$sql .= ')';
+				$sql_array[] = $sql;
+			}
+			else
+			{
+				$sql_array[] = $this->sql_from_field_value($field, $value);
+			}
+			/*
+			if ( $field === 'AND' )
+			{
+				$sql .= '(';
+				// Process field and value
+				$sql .=  $this->sql_from_field_value($field, $value);
+				$sql .= ')';
+			}
+			else
+			{
+				$sql .= ' AND ' . $this->sql_from_field_value($field, $value);
+			}
+			*/
+		}
+		
+		$sql = implode(' ' . $type . ' ', $sql_array);
+		return $sql;
+	}
+	
+	// --------------------------------------------------------------------
+
+	/** 
+	* 
+	
+		$sql_data = array(
+			'test1' => 1,
+			'test2 >' => 0,
+			't_3.test3' => 1,
+			't_4.test4 >=' => 1,
+			'AVERAGE(`monkeys`) >=' => 1,
+			'CONCAT("David", "Goliath")' => false,
+			'CONCAT("Jonah", " and the ", "Whale")' => true,
+			'CONCAT(t_1.field_1, t_2.field_2) =' => 'Monkeys',
+			't_1.field IS NOT NULL' => false,
+		);
+		// Create SQL from field and value
+		foreach ( $sql_data as $field => $value )
+		{
+			$sql = $DB->sql_from_field_value($field, $value);
+			
+			echo "'{$sql}'<br>";
+		}
+		
+	* 
+	*/
+	public function sql_from_field_value ( $field, $value = false )
+	{
+		$escape_field = true;
+		
+		// Check for comparison at the end of the field name: 'table_alias.field_name >=' => 3
+		$compare_type_whitelist = array('=', '>', '>=', '<', '<=', '!=');
+		$compare_type = is_bool($value) ? false : '=';//trim(strrchr($field, ' '));
+		$compare_type_end = strrpos($field, ' ');
+		if ( $compare_type_end !== false )
+		{
+			$tmp_field = substr($field, 0, $compare_type_end);
+			$tmp_compare_type = substr($field, $compare_type_end + 1);
+			// Validate compare type
+			if ( in_array($tmp_compare_type, $compare_type_whitelist) )
+			{
+				$field = $tmp_field;//substr($field, 0, strrpos($field, ' '));
+				$compare_type = $tmp_compare_type;
+			}
+			// Must not be a field name or known comparison so do not escape
+			else
+			{
+				$escape_field = false;
+			}
+		}
+		
+		// Do not escape a field name with special characters
+		if ( strpos($field, '(') !== false )
+		{
+			$escape_field = false;
+		}
+		
+		// Override escape based on value
+		if ( is_bool($value) )
+		{
+			$escape_field = (bool)$value;
+		}
+		
+		// If escaping the field
+		if ( $escape_field )
+		{
+			// Check for a single aliased field: 'table_alias.field_name' => 1
+			$table_alias = '';
+			$table_alias_begin = strpos($field, '.');
+			$table_alias_end = strrpos($field, '.');
+			if ( $table_alias_begin !== false && $table_alias_begin === $table_alias_end )
+			{
+				$table_alias = substr($field, 0, $table_alias_begin);
+				$field = substr($field, $table_alias_begin + 1);
+			}
+			
+			// Escape the field and alias
+			$field = ( $table_alias !== '' ? $this->protect_identifiers($table_alias) . '.' : '' ) . $this->protect_identifiers($field);
+		}
+		
+		$sql = $field . ( $compare_type === false ? '' : ' ' . $compare_type . ' ' ) . ( is_bool($value) ? '' : $this->escape($value) );
+		return $sql;
+	}
+	
+	// --------------------------------------------------------------------
+
 	// --------------------------------------------------------------------
 	// 
 	// Utility functions

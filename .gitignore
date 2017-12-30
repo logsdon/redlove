@@ -10,3 +10,4 @@ codeigniter_3.x/ci/system/
 markup/site/includes/config/email.php
 _info/
 php/flash_image-upload/
+node_modules/

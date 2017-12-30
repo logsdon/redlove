@@ -185,12 +185,11 @@ class Auth_controller extends Public_controller
 		{
 			// Give end response if request type detected, e.g. AJAX
 			$this->load->library('utility/request');
-			$response = '<p>Your session is no longer valid. Please log in and try again.</p>';
+			$response = '<p>Please log in and try again.</p>';
 			$this->request->response($response, 'html');
 			
 			// Redirect to the default controller:
 			redirect();
-			
 		}
 		
 		log_message('info', __CLASS__ . ' class initialized.');
@@ -426,12 +425,12 @@ class Admin_controller extends Public_controller//Auth_controller
 			
 			if ( $success )
 			{
-				$params = array(
+				$query_params = array(
 					'where' => array(
 						$this->default_model_id_field => $item_id,
 					),
 				);
-				$success = $this->{$this->default_model}->delete($params);
+				$success = $this->{$this->default_model}->delete($query_params);
 				
 				// Clear relations
 				
@@ -503,7 +502,7 @@ class Admin_controller extends Public_controller//Auth_controller
 			
 			// Update record
 			$this->load->model($this->default_model);
-			$params = array(
+			$query_params = array(
 				'data' => array(
 					$field => $new_value,
 				),
@@ -512,7 +511,7 @@ class Admin_controller extends Public_controller//Auth_controller
 				),
 				'limit' => 1,
 			);
-			$query = $this->{$this->default_model}->update($params);
+			$query = $this->{$this->default_model}->update($query_params);
 			$success = $query;
 		}
 		

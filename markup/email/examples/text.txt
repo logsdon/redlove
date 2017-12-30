@@ -1,4 +1,4 @@
-Special character reference: ®™©°¶€£¢±≈≠½«»≤≥–‘’—“”…·•†‡
+Special character reference: ®™©°¶€£¢±≈≠½«»≤≥–‘’—“”…·•†‡→
 
 My Company® [http://www.example.com/]
 Company slogan or tagline
