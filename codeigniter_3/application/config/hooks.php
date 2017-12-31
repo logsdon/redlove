@@ -11,3 +11,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
+
+// REDLOVE
+$hook['pre_controller'][] = array(
+	'class' => 'Redlove',
+	'function' => 'init',
+	'filename' => 'Redlove.php',
+	'filepath' => 'hooks',
+	'params' => array(),
+);

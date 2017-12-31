@@ -1,0 +1,40 @@
+
+# ###########################################################
+# ENVIRONMENT VARIABLES
+# ###########################################################
+
+# https://staff.washington.edu/fmf/2013/04/24/using-setenv-and-setenvif-together-in-apache/
+# https://serverfault.com/questions/496202/how-to-escape-spaces-in-apache-setenvif-value
+#SetEnv CI_ENV "production"
+SetEnvIfNoCase Host ".*" "CI_ENV=production"
+SetEnvIfNoCase Host "^(testing\.|qa\.)|(\.testing|\.qa)$" "CI_ENV=testing"
+SetEnvIfNoCase Host "^(localhost|127\.0\.0\.1|local\.|dev\.)|(\.local|\.dev)$" "CI_ENV=development"
+
+# ###########################################################
+# URL REWRITES
+# ###########################################################
+
+# ------------------------------------------------------------------------------
+# | Rewrite engine
+# ------------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+
+	Options +FollowSymLinks
+	RewriteOptions MaxRedirects=15
+
+	# Start rewriting
+	RewriteEngine On
+
+	# Generate rewrite base dynamically
+	RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+	RewriteRule ^(.*)$ - [E=BASE:%1]
+	#%{ENV:BASE}
+
+	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	# Access control with mod_rewrite: https://httpd.apache.org/docs/2.2/howto/access.html, https://httpd.apache.org/docs/2.4/rewrite/flags.html
+
+	# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	
+</IfModule>
